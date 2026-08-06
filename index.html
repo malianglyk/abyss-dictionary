@@ -509,8 +509,8 @@ function renderBattle() {
         hintHtml = `<span class="monster-hint" style="color:#f1c40f;">📜 Scroll reveals: ${word.m}</span>`;
       } else if (mon.hintLevel >= 1 && word.s) {
         hintHtml = `<span class="monster-hint" style="color:var(--text-dim);">💡 ${word.s}</span>`;
-      } else if (st.status === 'learning' && word.s) {
-        hintHtml = `<span class="monster-hint" style="color:var(--text-dim);">📖 ${word.s}</span>`;
+      } else if (st.status === 'learning') {
+        hintHtml = `<span class="monster-hint" style="color:#27ae60;">📖 ${word.m}</span>`;
       }
     }
     let hint2 = '';
@@ -655,11 +655,11 @@ function handleWrongAnswer(target) {
     logLine(`📉 "${word.w}" double wrong, demoted to [Learning]`, 'info');
   }
 
-  if (target.wrongCount >= 3) {
+  if (target.wrongCount >= 2) {
     // Force skip
     target.skipped = true;
     target.defeated = true;
-    logLine(`⊘ "${word.w}" revealed: ${word.m} (forced skip, no progress, no damage)`, 'system');
+    logLine(`⊘ "${word.w}" — ${word.m} (failed to answer)`, 'system');
     advanceTarget();
     return;
   }
@@ -682,8 +682,6 @@ function handleWrongAnswer(target) {
   target.hintLevel = target.wrongCount;
   if (target.wrongCount === 1 && word.s) {
     logLine(`💡 Hint: ${word.s}`, 'info');
-  } else if (target.wrongCount === 2) {
-    logLine(`🔤 Hint: starts with "${getPinyinInitial(word.m)}"`, 'info');
   }
 
   if (G.hp <= 0) {
