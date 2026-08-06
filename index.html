@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>深渊词典：百房深渊</title>
+<title>Abyss Lexicon: The Hundred-Room Abyss</title>
 <style>
 :root {
   --bg: #0a0a0f;
@@ -176,22 +176,22 @@ body {
 
 <!-- TITLE SCREEN -->
 <div id="title-screen">
-  <h1>深渊词典</h1>
-  <p class="subtitle">百 房 深 渊</p>
+  <h1>Abyss Lexicon</h1>
+  <p class="subtitle">The Hundred-Room Abyss</p>
   <div class="wordbank-select">
-    <label>选择词库</label>
+    <label>Word Bank</label>
     <select id="wordbank-select">
-      <option value="sat">SAT机考阅读词汇 (100词)</option>
+      <option value="sat">SAT Digital Reading Vocab (100 words)</option>
     </select>
   </div>
-  <button onclick="startGame()">踏 入 深 渊</button>
-  <p class="mastered-count" id="mastered-count-display">学识录：0 / 100</p>
+  <button onclick="startGame()">Enter the Abyss</button>
+  <p class="mastered-count" id="mastered-count-display">Mastered: 0 / 100</p>
 </div>
 
 <!-- GAME SCREEN -->
 <div id="game-screen">
   <div id="map-area">
-    <div id="map-title"><span>▸ 深渊轨迹</span> <span id="floor-label">第 1 层</span> <span id="room-progress">1 / 20</span></div>
+    <div id="map-title"><span>▸ Abyss Trail</span> <span id="floor-label">Floor 1</span> <span id="room-progress">1 / 20</span></div>
     <div id="map-nodes"></div>
   </div>
   <div id="battle-area">
@@ -205,12 +205,12 @@ body {
       <span class="stat"><span class="icon">✨</span> <span class="val" id="spirit-val">3</span></span>
       <span class="stat"><span class="icon">🪙</span> <span class="val" id="gold-val">0</span></span>
       <span class="stat"><span class="icon">📖</span> <span class="val" id="mastered-val">0/100</span></span>
-      <span class="stat" style="margin-left:auto;"><span class="icon">🎒</span> <span id="inventory-display">空</span></span>
+      <span class="stat" style="margin-left:auto;"><span class="icon">🎒</span> <span id="inventory-display">Empty</span></span>
     </div>
     <div id="log-area"></div>
     <div id="input-line">
       <span class="prompt">&gt;</span>
-      <input id="cmd-input" type="text" placeholder="输入中文释义... (Tab 使用卷轴)" autocomplete="off" spellcheck="false">
+      <input id="cmd-input" type="text" placeholder="Type Chinese meaning... (Tab = use scroll)" autocomplete="off" spellcheck="false">
     </div>
   </div>
 </div>
@@ -220,7 +220,7 @@ body {
 
 <script>
 // ============ WORD DATA ============
-const WORD_DATA = [{"w":"efficacy","m":"功效；有效性","p":"/ˈefɪkəsi/","s":"The placebo effect challenges conventional ideas about medical treatment efficacy.","sc":"安慰剂效应挑战了人们对医疗治疗效力的传统观念。","a":["功效","有效性"]},{"w":"prohibitive","m":"高得令人却步的；起阻止作用的","p":"/prəˈhɪbɪtɪv/","s":"Right now the expense is prohibitive, but researchers are searching for low-cost solutions.","sc":"眼下这笔开销高得令人望而却步，但研究人员正在寻找低成本解决方案。","a":["高得令人却步的","起阻止作用的"]},{"w":"distinctive","m":"独特的；易于辨认的","p":"/dɪˈstɪŋk.tɪv/","s":"Then, I noticed the distinctive smell of rotting meat.","sc":"然后，我注意到了腐烂肉类的独特气味。","a":["独特的","易于辨认的"]},{"w":"convey","m":"传达；表达","p":"/kənˈveɪ/","s":"Art can convey powerful messages and provoke thought and discussion about important social and cultural issues.","sc":"艺术能够传达强有力的信息，并引发对重要社会和文化问题的思考与讨论。","a":["传达","表达"]},{"w":"misconstrue","m":"误解；曲解","p":"/ˌmɪskənˈstruː/","s":"They may misconstrue his silence as anger.","sc":"他们也许会把他的沉默误解为生气。","a":["误解","曲解"]},{"w":"disseminate","m":"传播；散布","p":"/dɪˈsemɪneɪt/","s":"We must disseminate the news quickly.","sc":"我们必须迅速传播这消息。","a":["传播","散布"]},{"w":"disregard","m":"忽视；不理会","p":"/ˌdɪsrɪˈɡɑːd/","s":"It is a testimony to Jin's abilities that the novel manages to be engrossing despite its total disregard for narrative tension.","sc":"这部小说尽管完全不顾叙事张力，仍然引人入胜，这证明了金的才华。","a":["忽视","不理会"]},{"w":"curiosity","m":"好奇心；求知欲","p":"/ˌkjʊəriˈɒsəti/","s":"Many scientists share this curiosity about the age of inanimate objects like rocks, fossils and precious stones.","sc":"许多科学家都对岩石、化石和宝石等无生命物体的年龄怀有这种好奇心。","a":["好奇心","求知欲"]},{"w":"candor","m":"坦率；直言不讳","p":"/ˈkændə/","s":"Its young mix of writers, thinkers, and artists stood at the vanguard of a shift in manners away from nineteenth-century formality and reticence and toward twentieth-century candor and playfulness.","sc":"那群年轻的作家、思想家和艺术家走在风气转变的前沿，使礼仪从十九世纪的拘谨和矜持，转向二十世纪的坦率与俏皮。","a":["坦率","直言不讳"]},{"w":"individually","m":"单独地；分别地","p":"/ˌɪndɪˈvɪdʒuəli/","s":"However, gradually he got to know them individually and became close friends with them.","sc":"然而，渐渐地他逐个认识了他们，并和他们成了亲密朋友。","a":["单独地","分别地"]},{"w":"buttress","m":"支持；加强","p":"/ˈbʌtrəs/","s":"The old stone wall leaned on a buttress for support.","sc":"那道旧石墙靠着一座扶壁获得支撑。","a":["支持","加强"]},{"w":"heterogeneous","m":"异质的；由不同成分组成的","p":"/ˌhetərəˈdʒiːniəs/","s":"The reports in the nineteenth-century press reveal a heterogeneous world of dock labour.","sc":"十九世纪报刊中的报道揭示了一个异质而混杂的码头劳工世界。","a":["异质的","由不同成分组成的"]},{"w":"reverence","m":"崇敬；敬畏","p":"/ˈrevərəns/","s":"Because of the trained patterns of response, you are (or are not) stirred to patriotism by martial music, your feelings of reverence are aroused by symbols of your religion, you listen more respectfully to the health advice of someone who has \\\"MD\\\" after his name than to that of someone who hasn't.","sc":"由于训练形成的反应模式，进行曲会不会激起你的爱国情感，宗教象征会不会唤起你的崇敬之情，你会不会更恭敬地听从一位名字后面带有“医学博士”头衔的人的健康建议，而不是听从没有这种头衔的人。","a":["崇敬","敬畏"]},{"w":"consensus","m":"共识；一致意见","p":"/ˈkɒnsənsəs/","s":"Despite such efforts, the literature shows little consensus regarding the causes or manifestations of human bias.","sc":"尽管做出了这些努力，相关文献在有关人类偏见的原因或表现方面几乎没有形成共识。","a":["共识","一致意见"]},{"w":"prudence","m":"谨慎；审慎","p":"/ˈpruːdəns/","s":"Prudence is the better part of valor.","sc":"谨慎是勇敢中更明智的一面。","a":["谨慎","审慎"]},{"w":"exhaustive","m":"详尽全面的","p":"/ɪɡˈzɔːstɪv/","s":"America’s Geological Survey prepared an exhaustive study of oil depletion last year that put the peak of production some decades off.","sc":"美国地质调查局去年做了一项详尽的石油枯竭研究，认为产量高峰还要推迟几十年。","a":["详尽全面的"]},{"w":"denounce","m":"公开谴责","p":"/dɪˈnaʊns/","s":"Many characters denounce corruption in the novel.","sc":"小说中的许多人物公开谴责腐败。","a":["公开谴责"]},{"w":"substitute","m":"替代；替代品","p":"/ˈsʌbstɪtjuːt/","s":"One might think that desert sand would be a ready substitute, but its grains are finer and smoother; they don't adhere to rougher sand grains, and tend to blow away.","sc":"人们可能会以为沙漠沙子会是一种现成的替代品，但它的颗粒更细更滑；它���不会黏附在更粗糙的沙粒上，而且容易被风吹走。","a":["替代","替代品"]},{"w":"superficial","m":"表面的；肤浅的","p":"/ˌsuːpəˈfɪʃəl/","s":"The attractions of video games, however, are superficial and short-lived.","sc":"然而，电子游戏的吸引力只是表面的，而且短暂。","a":["表面的","肤浅的"]},{"w":"protract","m":"延长；拖延","p":"/prəˈtrækt/","s":"The council hoped to protract the discussion until morning.","sc":"委员会希望把讨论拖到早上。","a":["延长","拖延"]},{"w":"anticipate","m":"预期；预先想到","p":"/ænˈtɪs.ɪ.peɪt/","s":"Many firms that failed to anticipate the consequences of this evolving body of research have been bankrupted by the results.","sc":"许多未能预见这一不断发展的研究体系所带来后果的公司，最终都因此破产了。","a":["预期","预先想到"]},{"w":"contentious","m":"有争议的；好争辩的","p":"/kənˈtenʃəs/","s":"Although the issue is highly contentious, some researchers argue that many of these microbes belong to a distinct and previously unrecognized branch of life.","sc":"尽管这个问题极具争议，但一些研究人员认为，其中许多微生物属于一个独特且此前未被识别的生命分支。","a":["有争议的","好争辩的"]},{"w":"supplement","m":"补充；增补","p":"/ˈsʌplɪment/","s":"Each group took a dietary supplement.","sc":"每组都服用了一种膳食补充剂。","a":["补充","增补"]},{"w":"elide","m":"省略；回避处理","p":"/ɪˈlaɪd/","s":"The editor chose to elide the repetitive paragraph.","sc":"编辑选择省去那段重复的文字。","a":["省略","回避处理"]},{"w":"expound","m":"详细阐述","p":"/ɪkˈspaʊnd/","s":"Yet, while experts continue to expound a powerful argument for the importance of play in children’s lives, the actual time children spend playing continues to decrease.","sc":"然而，尽管专家们继续详细阐述玩耍对儿童生活重要性的有力论据，儿童实际用于玩耍的时间却继续减少。","a":["详细阐述"]},{"w":"deliberation","m":"慎重考虑；商议","p":"/ˌdel.ɪ.bəˈreɪ.ʃən/","s":"One foreign affair decision made by a well-known US political leader in the 1960s is typically held us as an example of the perils of inadequate thought, whereas his successful handling of a water crisis is cited as an example of the advantages of careful deliberation.","sc":"一位美国知名政治领袖在二十世纪六十年代作出的一项外交决策，通常被视为思考不足风险的例子；而他对一场水危机的成功处理，则被视为审慎权衡的优势的例子。","a":["慎重考虑","商议"]},{"w":"collaborator","m":"合作者；协作者","p":"/kəˈlæbəreɪtə/","s":"Some of these early alterations were likely made by the theater company to adapt a play to a particular occasion, others by a collaborator, others for the government censors, still others by the printer, but many of the most significant changes seem to bear the mark of Shakespeare himself.","sc":"其中一些早期改动很可能是剧团为了适应特定场合而做的，另一些则出自一位合作者，还有一些是为了政府审查官，另外一些是印刷商所为，但许多最重要的改动似乎都带有莎士比亚本人的印记。","a":["合作者","协作者"]},{"w":"reprieve","m":"暂缓；暂时解脱","p":"/rɪˈpriːv/","s":"There was a lucky reprieve for the State Bed too.","sc":"州床也幸运地获得了缓期处理。","a":["暂缓","暂时解脱"]},{"w":"designate","m":"指定；标明","p":"/ˈdezɪɡneɪt/","s":"The word 'cobot', from 'collaborative robot', has been invented to designate this type of robot.","sc":"“cobot”这个词来自“协作机器人”，是用来指称这种机器人类型的。","a":["指定","标明"]},{"w":"prolong","m":"延长；拖延","p":"/prəˈlɒŋ/","s":"The doctor said he could prolong his life with treatment.","sc":"医生说他可以通过治疗延长生命。","a":["延长","拖延"]},{"w":"summation","m":"总结；概括","p":"/ˌsʌmˈeɪʃən/","s":"The summation of the case was clear by the end of the trial.","sc":"到审判结束时，这个案件的总结已经很清楚了。","a":["总结","概括"]},{"w":"assuage","m":"缓解；减轻","p":"/əˈsweɪdʒ/","s":"She said nothing could assuage her guilt.","sc":"她说没有什么能减轻她的内疚。","a":["缓解","减轻"]},{"w":"feasible","m":"可行的；能够实现的","p":"/ˈfiːzəbl/","s":"However, unless the usage of the bridge was to be greatly restricted, only two generic options to improve its performance were considered feasible.","sc":"然而，除非大幅限制这座桥的使用，否则只有两个通用方案被认为可行，以改善其性能。","a":["可行的","能够实现的"]},{"w":"imitator","m":"模仿者；仿制者","p":"/ˈɪmɪteɪtə/","s":"The imitator copied the singer's style.","sc":"这个模仿者模仿了那位歌手的风格。","a":["模仿者","仿制者"]},{"w":"esteem","m":"尊敬；高度评价","p":"/ɪˈstiːm/","s":"One may well wonder, therefore, why some minerals are held in so much higher esteem than others.","sc":"因此，人们不禁要问，为什么有些矿物比另一些矿物受到高得多的敬重。","a":["尊敬","高度评价"]},{"w":"illuminate","m":"阐明；照亮","p":"/ɪˈluːmɪneɪt/","s":"Floodlights in the cave's main chamber illuminate the ceiling, vaulted like a cathedral above 5,000 square feet of floor space.","sc":"洞穴主厅里的泛光灯照亮了天花板，那天花板拱起如同大教堂，覆盖着五千平方英尺的地面空间。","a":["阐明","照亮"]},{"w":"extend","m":"延伸；扩大；延长","p":"/ɪkˈstend/","s":"I am an American writer, in the American mainstream, trying to extend it.","sc":"我是美国主流中的一名美国作家，试图扩展它。","a":["延伸","扩大","延长"]},{"w":"coincidence","m":"巧合","p":"/ˌkəʊˈɪnsɪdəns/","s":"It is no coincidence that these are the areas where languages are disappearing the fastest.","sc":"这些地区的语言消失得最快，这绝非巧合。","a":["巧合"]},{"w":"vigilance","m":"警觉；警惕","p":"/ˈvɪdʒɪləns/","s":"The balance between rest and vigilance is crucial for survival, revealing the intricate adaptations across the animal kingdom.","sc":"休息与警觉之间的平衡对生存至关重要，揭示了整个动物王国中错综复杂的适应机制。","a":["警觉","警惕"]},{"w":"incident","m":"事件；事变","p":"/ˈɪnsɪdənt/","s":"In 1956, after their home was bombed, supporters were told how much his wife's strength had helped him through that incident.","sc":"一九五六年，他们的家被炸毁后，支持者们被告知他妻子的坚强在那起事件中给了他多大帮助。","a":["事件","事变"]},{"w":"overlook","m":"忽视；未注意到","p":"/ˌəʊvəˈlʊk/","s":"For instance, the assumption that technological immersion leads to skepticism may overlook other factors, such as economic precarity or political polarization, which also influence trust.","sc":"例如，认为技术沉浸会导致怀疑的假设可能会忽略其他因素，比如经济不稳定或政治极化，而这些因素也会影响信任。","a":["忽视","未注意到"]},{"w":"amass in","m":"在……聚集；积累","p":"/əˈmæs ɪn/","s":"The dust will amass in the corner if the window stays open.","sc":"如果窗户一直开着，灰尘就会在角落里堆积起来。","a":["在……聚集","积累"]},{"w":"exemplification","m":"例证；典型体现","p":"/ˌeksɪmplɪfɪˈkeɪʃən/","s":"The exemplification of the rule was clear in her careful explanation.","sc":"这条规则的例证在她细致的解释中很清楚。","a":["例证","典型体现"]},{"w":"detractor","m":"批评者；贬低者","p":"/dɪˈtræktə/","s":"Even his detractor admitted that he was a skilled negotiator.","sc":"甚至连他的批评者都承认他是个熟练的谈判者。","a":["批评者","贬低者"]},{"w":"precursor","m":"先驱；前兆","p":"/ˈpriːkɜːsə/","s":"Within a millennium, however, Chinese chariot-makers had developed a vehicle with shafts, the precursor of the true carriage or cart.","sc":"然而，经过一千年，中国的战车制造者已经发展出一种带车辕的车辆，它是后来真正马车或货车的前身。","a":["先驱","前兆"]},{"w":"satisfy","m":"满足；使满意","p":"/ˈsætɪfaɪ/","s":"However, the abundance of this resource in Australia could satisfy the entire country's needs for thousands of years at the current rate of consumption.","sc":"然而，在当前消费速度下，澳大利亚这种资源的丰富程度足以满足全国数千年的需求。","a":["满足","使满意"]},{"w":"brood on","m":"反复忧思；沉思","p":"/bruːd ɒn/","s":"He would brood on the past for hours.","sc":"他会几个小时地对过去的事反复思虑。","a":["反复忧思","沉思"]},{"w":"omit","m":"省略；遗漏","p":"/ˈɒmɪt/","s":"You can omit the salt if you prefer.","sc":"如果你愿意，可以省略盐。","a":["省略","遗漏"]},{"w":"permissible","m":"允许的；可接受的","p":"/pəˈmɪsɪbəl/","s":"Synthetic fingernails are also highly flammable and therefore not permissible.","sc":"人造指甲也极易燃，因此不被允许。","a":["允许的","可接受的"]},{"w":"prevail over","m":"战胜；压倒","p":"/prɪˈveɪl ˈəʊvə/","s":"The desire to prevail over fear pushed her forward.","sc":"战胜恐惧的愿望推动着她继续前进。","a":["战胜","压倒"]},{"w":"indulgently","m":"宽容地；纵容地","p":"/ɪnˈdʌldʒəntli/","s":"She smiled indulgently at the child.","sc":"她纵容地朝那个孩子微笑。","a":["宽容地","纵容地"]},{"w":"lighthearted about","m":"对……轻松随意的","p":"/ˌlaɪtˈhɑːtɪd əˈbaʊt/","s":"She remained lighthearted about the move.","sc":"她对这次搬家始终保持轻松愉快的态度。","a":["对……轻松随意的"]},{"w":"thoughtfulness","m":"体贴；深思熟虑","p":"/ˈθɔːtfʊlnəs/","s":"And he did so with great care, although at a slower tempo than was called for and with a formality that lent the Tin Pan Alley tune a depth and thoughtfulness no one else would have accorded it.","sc":"而且他确实做到了，虽然速度比要求的更慢，而且带着一种拘谨，使这首百老汇流行曲获得了无人会赋予它的深度与周到。","a":["体贴","深思熟虑"]},{"w":"counterfactual","m":"与事实相反的；假设性的","p":"/ˌkaʊntəˈfæktʃuəl/","s":"Such thinking about situations that do not exist involves what is termed counterfactual reasoning.","sc":"这种对不存在情境的思考涉及所谓的反事实推理。","a":["与事实相反的","假设性的"]},{"w":"modest about","m":"对……谦逊的","p":"/ˈmɒdɪst əˈbaʊt/","s":"She is modest about her success.","sc":"她对自己的成功很谦逊。","a":["对……谦逊的"]},{"w":"originality","m":"原创性；独创性","p":"/ˌɒrɪdʒɪˈnæləti/","s":"To grasp the originality of this idea, it's necessary to realize two things about how music has traditionally been understood.","sc":"要理解这个想法的新颖性，有必要认识到关于音乐一直以来是如何被理解的两件事。","a":["原创性","独创性"]},{"w":"outsized","m":"超大的；影响异常重大的","p":"/ˌaʊtˈsaɪzd/","s":"Empirically, reconciling transcriptomic inventories with proteomic profiles remains problematic: many transcripts lack detectable peptide counterparts, while minor proteoforms can exert outsized physiological influence.","sc":"从实证上看，将转录组清单与蛋白质组谱相互对应仍然很困难：许多转录本缺乏可检测的肽对应物，而少量蛋白变体却可能产生过大的生理影响。","a":["超大的","影响异常重大的"]},{"w":"controversy","m":"争议；公开争论","p":"/ˈkɒntrəvɜːsi/","s":"The controversy went on, and for a good reason.","sc":"这场争议持续不断，而且有其充分理由。","a":["争议","公开争论"]},{"w":"ineffectual","m":"无效的；不起作用的","p":"/ˌɪnɪˈfektʃuəl/","s":"It was a nice, polite gesture but also an utterly ineffectual one.","sc":"这是一种友善而有礼貌的举动，但也完全无效。","a":["无效的","不起作用的"]},{"w":"corroborate","m":"证实；提供佐证","p":"/ˈkɒrəˌbɒreɪt/","s":"Rothen and his colleagues corroborate the theory by showing that non-synaesthetic subjects were able to mimic synaesthetic associations long after leaving the lab.","sc":"Rothen 及其同事通过表明非联觉受试者在离开实验室很久之后仍能模仿联觉联想，从而证实了这一理论。","a":["证实","提供佐证"]},{"w":"reverentially","m":"恭敬地；怀着敬意地","p":"/ˌrevərənˈʃəli/","s":"He spoke reverentially of the old master.","sc":"他说起那位老大师时带着恭敬之情。","a":["恭敬地","怀着敬意地"]},{"w":"associative","m":"联想的；关联性的","p":"/əˈsəʊʃiətɪv/","s":"The chapters describing Franklin's early years are a medley of separate fragments, rhetorical questions, associative jumps and exclamation marks.","sc":"描写富兰克林早年岁月的章节是一些零散片段、反问句、联想性的跳跃和感叹号的混合体。","a":["联想的","关联性的"]},{"w":"skeptically","m":"怀疑地；审慎质疑地","p":"/ˈskeptɪkli/","s":"She handed me a wool hat, which I regarded skeptically.","sc":"她递给我一顶羊毛帽子，我怀疑地看着它。","a":["怀疑地","审慎质疑地"]},{"w":"conjecture","m":"推测；猜想","p":"/kənˈdʒektʃə/","s":"If there was talk, it was quiet conjecture about the indiscretions of our friends and neighbors.","sc":"如果有人议论，那也只是对我们朋友和邻居不检点行为的低声猜测。","a":["推测","猜想"]},{"w":"dispassionate in","m":"在……方面客观冷静的","p":"/ˌdɪspəˈʃeɪtɪn/","s":"No valid source sentence with the exact substring dispassionate in could be produced.","sc":"无法生成包含目标词原形的有效出处例句。","a":["在……方面客观冷静的"]},{"w":"explicable","m":"可以解释的","p":"/ɪkˈspleɪkəbl/","s":"The odd result was explicable once the data were checked.","sc":"一旦核对了数据，这个奇怪的结果就可以解释了。","a":["可以解释的"]},{"w":"confound","m":"使困惑；难倒","p":"/kənˈfaʊnd/","s":"She calls this the 'self-defeating prophecy effect': a man with a baby face strives to confound expectations and ends up overcompensating.","sc":"她把这称为“自我挫败的预言效应”：一个娃娃脸的男人努力打破人们的预期，结果反而矫枉过正。","a":["使困惑","难倒"]},{"w":"overreach by","m":"因……而做得过头或越权","p":"/ˌəʊvəˈriːtʃ baɪ/","s":"You can overreach by trying to solve everything at once.","sc":"你可能会因为试图一次解决所有问题而失去分寸。","a":["因……而做得过头或越权"]},{"w":"tranquil","m":"宁静的；平和的","p":"/ˈtræŋkwɪl/","s":"Often, when I feel a need within myself to have a tranquil moment, I try to summon images of the tall grasses and furry cattails and the mallards, herons, and geese whom are found in the 32,000-acre marsh.","sc":"通常，当我内心感到需要一个宁静的时刻时，我会努力唤起高高的青草、毛茸茸的香蒲，以及那片三万二千英亩沼泽里栖息的野鸭、苍鹭和大雁的画面。","a":["宁静的","平和的"]},{"w":"arduous","m":"艰巨的；费力的","p":"/ˈɑːdjʊəs/","s":"The journey forward undoubtedly will be a long and arduous one.","sc":"前方的旅程无疑将是漫长而艰辛的。","a":["艰巨的","费力的"]},{"w":"adept at","m":"擅长……的","p":"/əˈdɛpt ət/","s":"Birds are adept at both, and, in laboratory tests, some have been shown to detect the minute difference in barometric pressure between the floor and ceiling of a room.","sc":"鸟类两者都很擅长，而且在实验室测试中，已经有人发现某些鸟能够察觉房间地板与天花板之间气压的微小差异。","a":["擅长……的"]},{"w":"oddity","m":"奇特事物；反常现象","p":"/ˈɒdɪti/","s":"Castle Ward This mid-18th-century mansion is an architectural oddity of its time, inside and outside having been built in two distinct architectural styles.","sc":"卡斯尔沃德这座十八世纪中期的宅邸，在当时堪称建筑奇观，内外采用了两种截然不同的建筑风格。","a":["奇特事物","反常现象"]},{"w":"unflattering","m":"不讨好的；有损形象的","p":"/ʌnˈflætərɪŋ/","s":"Consequently, the machine earned the unflattering popular nickname 'The Boneshaker'.","sc":"因此，这台机器得到了一个并不讨人喜欢的绰号“碎骨机”。","a":["不讨好的","有损形象的"]},{"w":"intangible","m":"无形的；难以触及或衡量的","p":"/ɪnˈtændʒəbəl/","s":"In the end, rigorous attention to harmonizing tangible space by Pei with its intangible spirit may prove to be his most exciting legacy.","sc":"最后，佩里的严谨关注——让有形空间与其无形精神相协调——或许会成为他最令人兴奋的遗产。","a":["无形的","难以触及或衡量的"]},{"w":"permeate","m":"渗透；遍及","p":"/ˈpɜːmieɪt/","s":"The smell of rain permeate the old house.","sc":"雨后的气味弥漫在这座老房子里。","a":["渗透","遍及"]},{"w":"constrain within","m":"将……限制在某范围内","p":"/kənˈstreɪn wɪˈðɪn/","s":"","sc":"","a":["将……限制在某范围内"]},{"w":"magnify","m":"放大；夸大","p":"/ˈmæɡnɪfaɪ/","s":"Using microscopes of his own design that could magnify up to 270 times, he examined a drop of water from a nearby lake and found it teeming with tiny creatures he called 'animalcules'.","sc":"他使用自己设计的显微镜，能够放大到二百七十倍，检查了附近湖里的一滴水，发现里面充满了他称为“微小动物”的生物。","a":["放大","夸大"]},{"w":"aesthetics","m":"美学；审美特征","p":"/esˈθetɪks/","s":"A critical determinant of trust is the user experience, which encompasses website aesthetics and navigational ease.","sc":"信任的一个关键决定因素是用户体验，它包括网站美学和导航的便捷性。","a":["美学","审美特征"]},{"w":"selective","m":"有选择的；筛选严格的","p":"/sɪˈlektɪv/","s":"Their razor-sharp mandibles can slice through some of the fleshiest leaves and even twigs and stems With regard to defense compounds, the leafcutters are selective about what they cut, but in species-rich tropical forests they have a lot of choice.","sc":"它们对切割对象很挑剔。","a":["有选择的","筛选严格的"]},{"w":"analogical","m":"类比的；基于相似性的","p":"/ˌæn.əˈlɒdʒ.ɪ.kəl/","s":"My analogical reading brain enables the development of some of our most important intellectual and affective processes.","sc":"我的类比式阅读大脑使我们一些最重要的智力和情感过程得以发展。","a":["类比的","基于相似性的"]},{"w":"discount","m":"低估；不予重视","p":"/ˈdɪskaʊnt/","s":"Some were offered the tickets at full price and others at a discount.","sc":"有些人按全价拿到票，另一些人则享受了折扣。","a":["低估","不予重视"]},{"w":"implausible","m":"难以置信的；不合理的","p":"/ɪmˈplɔːzəbl/","s":"I am not troubled by the empirical difficulties, for these do not render the theory implausible.","sc":"我并不为这些经验上的困难所困扰，因为这些并不会使这个理论显得不可信。","a":["难以置信的","不合理的"]},{"w":"isolation from","m":"与……隔离或脱离","p":"/ˌaɪsəˈleɪʃən frəm/","s":"The quality of any given option cannot be assessed in isolation from its alternatives.","sc":"任何给定选项的优劣都不能脱离其备选项而评估。","a":["与……隔离或脱离"]},{"w":"collaboration with","m":"与……合作","p":"/kəˌlæbəˈreɪʃən wɪð/","s":"E Scientists at Shark Attack Mitigation Systems (SAMS), in collaboration with the Oceans Institute at the University of Western Australia, have come up with a novel and pragmatic solution to the shark problem: a shark deterrent wetsuit.","sc":"海洋研究人员与西澳大利亚大学海洋研究所合作，想出了一种新颖而务实的鲨鱼问题解决方案：一种防鲨潜水服。","a":["与……合作"]},{"w":"competition with","m":"与……竞争","p":"/ˌkɒmpəˈtɪʃən wɪð/","s":"Competition with Japanese and European imports","sc":"与日本和欧洲进口产品竞争","a":["与……竞争"]},{"w":"deference to","m":"对……的尊重或顺从","p":"/ˈdefərəns tuː/","s":"It's a steamy 80 degrees Fahrenheit in Christopher Viney's lab, in deference to a six-inch-long golden orb weaver spider, who is dining on crickets while being silked.","sc":"在克里斯托弗·瓦尼的实验室里，温度高达闷热的华氏八十度，这是为了照顾一只六英寸长的金色圆蛛，它正一边吃蟋蟀，一边被缫丝。","a":["对……的尊重或顺从"]},{"w":"derive from","m":"源自……；由……获得","p":"/dɪˈraɪv frɒm/","s":"If we assume that opportunity costs reduce the overall desirability of the most preferred choice, then the more alternatives there are, the deeper our sense of loss will be and the less satisfaction we will derive from our ultimate decision.","sc":"如果我们假定机会成本会降低最优选择的总体吸引力，那么备选方案越多，我们的失落感就越深，而我们从最终决定中得到的满足感就越少。","a":["源自……","由……获得"]},{"w":"unspecified","m":"未明确说明的","p":"/ˌʌnspəˈsɪfɪd/","s":"The bulk of what we launch into space orbits the Earth for some unspecified period of time and then comes back down.","sc":"我们发射到太空的大部分物体会在某个未指明的时间段内绕地球运行，然后再返回地面。","a":["未明确说明的"]},{"w":"ambivalent","m":"矛盾的；犹豫不定的","p":"/ˌæmbɪˈvɑːlənt/","s":"The effects are ambivalent.","sc":"这些影响是矛盾的。","a":["矛盾的","犹豫不定的"]},{"w":"retain","m":"保留；保持","p":"/rɪˈteɪn/","s":"Some educators believe that students retain information more effectively when they actively engage through discussion, problem-solving activities, and hands-on practice rather than simply listening to lectures.","sc":"一些教育工作者认为，学生在通过讨论、解决问题的活动和动手练习主动参与时，往往比仅仅听讲更能有效地记住信息。","a":["保留","保持"]},{"w":"imprecise","m":"不精确的；不严谨的","p":"/ˌɪmprɪˈsaɪs/","s":"The instructions were imprecise, so everyone did the task differently.","sc":"这些说明不够精确，所以每个人做这项任务的方式都不同。","a":["不精确的","不严谨的"]},{"w":"erratic","m":"不稳定的；无规律的","p":"/ɪˈrætɪk/","s":"With the current erratic behaviour of the weather, it is difficult not to subscribe to such despair.","sc":"由于当前天气变化无常，很难不认同这种绝望的情绪。","a":["不稳定的","无规律的"]},{"w":"indoctrinate","m":"向……灌输特定观念","p":"/ɪnˈdɒktrɪneɪt/","s":"Teachers should not indoctrinate students with their personal beliefs.","sc":"老师不应该用个人信仰来灌输学生。","a":["向……灌输特定观念"]},{"w":"fragile","m":"脆弱的；易损坏的","p":"/ˈfrædʒaɪl/","s":"Opals are also fragile.","sc":"蛋白石也很易碎。","a":["脆弱的","易损坏的"]},{"w":"concur with","m":"同意……；与……一致","p":"/kənˈkɜː wɪð/","s":"I concur with your assessment.","sc":"我同意你的判断。","a":["同意……","与……一致"]},{"w":"insurmountable","m":"无法克服的；难以逾越的","p":"/ˌɪnsəˈmaʊntəbəl/","s":"With no insurmountable problems identified, the Japanese have used the experience gained from this station to begin their own massive residential photovoltaics campaign.","sc":"在没有发现无法克服的问题后，日本方面利用从这个站点获得的经验，开始了他们自己的大规模住宅光伏运动。","a":["无法克服的","难以逾越的"]},{"w":"mandatory","m":"强制性的；必须的","p":"/ˈmændətəri/","s":"\\\"Information design for patient safety\\\" is not intended to be mandatory.","sc":"《患者安全的信息设计》并不打算成为强制要求。","a":["强制性的","必须的"]},{"w":"amplify","m":"放大；增强","p":"/ˈæmplɪfaɪ/","s":"The letter writer, an eccentric inventor and repairman named Nathaniel Baldwin, from the US state of Utah, made what at the time was an astonishing claim: he had built, in his kitchen, a new kind of headset that could amplify sound.","sc":"这封信的作者是一位名叫内森尼尔·鲍德温的古怪发明家兼修理工，来自美国犹他州；他当时提出了一个令人震惊的说法：他在自己的厨房里造出了一种能放大声音的新型耳机。","a":["放大","增强"]},{"w":"appease","m":"安抚；平息","p":"/əˈpiːz/","s":"She tried to appease her crying child with a toy.","sc":"她试图用一个玩具来安抚哭闹的孩子。","a":["安抚","平息"]},{"w":"sincerity","m":"真诚；诚恳","p":"/sɪnˈsɪrəti/","s":"Until then, Aitken's charm, fluency and flair for theatrical displays of sincerity looked as if they might bring him victory.","sc":"在那之前，艾特肯的魅力、流利和带有戏剧色彩的真诚表演似乎可能为他带来胜利。","a":["真诚","诚恳"]}];
+const WORD_DATA = [{"w":"efficacy","m":"功效；有效性","p":"/ˈefɪkəsi/","s":"The placebo effect challenges conventional ideas about medical treatment efficacy.","sc":"安慰剂效应挑战了人们对医疗治疗效力的传统观念。","a":["功效","有效性"]},{"w":"prohibitive","m":"高得令人却步的；起阻止作用的","p":"/prəˈhɪbɪtɪv/","s":"Right now the expense is prohibitive, but researchers are searching for low-cost solutions.","sc":"眼下这笔开销高得令人望而却步，但研究人员正在寻找低成本解决方案。","a":["高得令人却步的","起阻止作用的"]},{"w":"distinctive","m":"独特的；易于辨认的","p":"/dɪˈstɪŋk.tɪv/","s":"Then, I noticed the distinctive smell of rotting meat.","sc":"然后，我注意到了腐烂肉类的独特气味。","a":["独特的","易于辨认的"]},{"w":"convey","m":"传达；表达","p":"/kənˈveɪ/","s":"Art can convey powerful messages and provoke thought and discussion about important social and cultural issues.","sc":"艺术能够传达强有力的信息，并引发对重要社会和文化问题的思考与讨论。","a":["传达","表达"]},{"w":"misconstrue","m":"误解；曲解","p":"/ˌmɪskənˈstruː/","s":"They may misconstrue his silence as anger.","sc":"他们也许会把他的沉默误解为生气。","a":["误解","曲解"]},{"w":"disseminate","m":"传播；散布","p":"/dɪˈsemɪneɪt/","s":"We must disseminate the news quickly.","sc":"我们必须迅速传播这消息。","a":["传播","散布"]},{"w":"disregard","m":"忽视；不理会","p":"/ˌdɪsrɪˈɡɑːd/","s":"It is a testimony to Jin's abilities that the novel manages to be engrossing despite its total disregard for narrative tension.","sc":"这部小说尽管完全不顾叙事张力，仍然引人入胜，这证明了金的才华。","a":["忽视","不理会"]},{"w":"curiosity","m":"好奇心；求知欲","p":"/ˌkjʊəriˈɒsəti/","s":"Many scientists share this curiosity about the age of inanimate objects like rocks, fossils and precious stones.","sc":"许多科学家都对岩石、化石和宝石等无生命物体的年龄怀有这种好奇心。","a":["好奇心","求知欲"]},{"w":"candor","m":"坦率；直言不讳","p":"/ˈkændə/","s":"Its young mix of writers, thinkers, and artists stood at the vanguard of a shift in manners away from nineteenth-century formality and reticence and toward twentieth-century candor and playfulness.","sc":"那群年轻的作家、思想家和艺术家走在风气转变的前沿，使礼仪从十九世纪的拘谨和矜持，转向二十世纪的坦率与俏皮。","a":["坦率","直言不讳"]},{"w":"individually","m":"单独地；分别地","p":"/ˌɪndɪˈvɪdʒuəli/","s":"However, gradually he got to know them individually and became close friends with them.","sc":"然而，渐渐地他逐个认识了他们，并和他们成了亲密朋友。","a":["单独地","分别地"]},{"w":"buttress","m":"支持；加强","p":"/ˈbʌtrəs/","s":"The old stone wall leaned on a buttress for support.","sc":"那道旧石墙靠着一座扶壁获得支撑。","a":["支持","加强"]},{"w":"heterogeneous","m":"异质的；由不同成分组成的","p":"/ˌhetərəˈdʒiːniəs/","s":"The reports in the nineteenth-century press reveal a heterogeneous world of dock labour.","sc":"十九世纪报刊中的报道揭示了一个异质而混杂的码头劳工世界。","a":["异质的","由不同成分组成的"]},{"w":"reverence","m":"崇敬；敬畏","p":"/ˈrevərəns/","s":"Because of the trained patterns of response, you are (or are not) stirred to patriotism by martial music, your feelings of reverence are aroused by symbols of your religion, you listen more respectfully to the health advice of someone who has \\\"MD\\\" after his name than to that of someone who hasn't.","sc":"由于训练形成的反应模式，进行曲会不会激起你的爱国情感，宗教象征会不会唤起你的崇敬之情，你会不会更恭敬地听从一位名字后面带有“医学博士”头衔的人的健康建议，而不是听从没有这种头衔的人。","a":["崇敬","敬畏"]},{"w":"consensus","m":"共识；一致意见","p":"/ˈkɒnsənsəs/","s":"Despite such efforts, the literature shows little consensus regarding the causes or manifestations of human bias.","sc":"尽管做出了这些努力，相关文献在有关人类偏见的原因或表现方面几乎没有形成共识。","a":["共识","一致意见"]},{"w":"prudence","m":"谨慎；审慎","p":"/ˈpruːdəns/","s":"Prudence is the better part of valor.","sc":"谨慎是勇敢中更明智的一面。","a":["谨慎","审慎"]},{"w":"exhaustive","m":"详尽全面的","p":"/ɪɡˈzɔːstɪv/","s":"America’s Geological Survey prepared an exhaustive study of oil depletion last year that put the peak of production some decades off.","sc":"美国地质调查局去年做了一项详尽的石油枯竭研究，认为产量高峰还要推迟几十年。","a":["详尽全面的"]},{"w":"denounce","m":"公开谴责","p":"/dɪˈnaʊns/","s":"Many characters denounce corruption in the novel.","sc":"小说中的许多人物公开谴责腐败。","a":["公开谴责"]},{"w":"substitute","m":"替代；替代品","p":"/ˈsʌbstɪtjuːt/","s":"One might think that desert sand would be a ready substitute, but its grains are finer and smoother; they don't adhere to rougher sand grains, and tend to blow away.","sc":"人们可能会以为沙漠沙子会是一种现成的替代品，但它的颗粒更细更滑；它���不会黏附在更粗糙的沙粒上，而且容易被风吹走。","a":["替代","替代品"]},{"w":"superficial","m":"表面的；肤浅的","p":"/ˌsuːpəˈfɪʃəl/","s":"The attractions of video games, however, are superficial and short-lived.","sc":"然而，电子游戏的吸引力只是表面的，而且短暂。","a":["表面的","肤浅的"]},{"w":"protract","m":"延长；拖延","p":"/prəˈtrækt/","s":"The council hoped to protract the discussion until morning.","sc":"委员会希望把讨论拖到早上。","a":["延长","拖延"]},{"w":"anticipate","m":"预期；预先想到","p":"/ænˈtɪs.ɪ.peɪt/","s":"Many firms that failed to anticipate the consequences of this evolving body of research have been bankrupted by the results.","sc":"许多未能预见这一不断发展的研究体系所带来后果的公司，最终都因此破产了。","a":["预期","预先想到"]},{"w":"contentious","m":"有争议的；好争辩的","p":"/kənˈtenʃəs/","s":"Although the issue is highly contentious, some researchers argue that many of these microbes belong to a distinct and previously unrecognized branch of life.","sc":"尽管这个问题极具争议，但一些研究人员认为，其中许多微生物属于一个独特且此前未被识别的生命分支。","a":["有争议的","好争辩的"]},{"w":"supplement","m":"补充；增补","p":"/ˈsʌplɪment/","s":"Each group took a dietary supplement.","sc":"每组都服用了一种膳食补充剂。","a":["补充","增补"]},{"w":"elide","m":"省略；回避处理","p":"/ɪˈlaɪd/","s":"The editor chose to elide the repetitive paragraph.","sc":"编辑选择省去那段重复的文字。","a":["省略","回避处理"]},{"w":"expound","m":"详细阐述","p":"/ɪkˈspaʊnd/","s":"Yet, while experts continue to expound a powerful argument for the importance of play in children’s lives, the actual time children spend playing continues to decrease.","sc":"然而，尽管专家们Continue详细阐述玩耍对儿童生活重要性的有力论据，儿童实际用于玩耍的时间却继续减少。","a":["详细阐述"]},{"w":"deliberation","m":"慎重考虑；商议","p":"/ˌdel.ɪ.bəˈreɪ.ʃən/","s":"One foreign affair decision made by a well-known US political leader in the 1960s is typically held us as an example of the perils of inadequate thought, whereas his successful handling of a water crisis is cited as an example of the advantages of careful deliberation.","sc":"一位美国知名政治领袖在二十世纪六十年代作出的一项外交决策，通常被视为思考不足风险的例子；而他对一场水危机的成功处理，则被视为审慎权衡的优势的例子。","a":["慎重考虑","商议"]},{"w":"collaborator","m":"合作者；协作者","p":"/kəˈlæbəreɪtə/","s":"Some of these early alterations were likely made by the theater company to adapt a play to a particular occasion, others by a collaborator, others for the government censors, still others by the printer, but many of the most significant changes seem to bear the mark of Shakespeare himself.","sc":"其中一些早期改动很可能是剧团为了适应特定场合而做的，另一些则出自一位合作者，还有一些是为了政府审查官，另外一些是印刷商所为，但许多最重要的改动似乎都带有莎士比亚本人的印记。","a":["合作者","协作者"]},{"w":"reprieve","m":"暂缓；暂时解脱","p":"/rɪˈpriːv/","s":"There was a lucky reprieve for the State Bed too.","sc":"州床也幸运地获得了缓期处理。","a":["暂缓","暂时解脱"]},{"w":"designate","m":"指定；标明","p":"/ˈdezɪɡneɪt/","s":"The word 'cobot', from 'collaborative robot', has been invented to designate this type of robot.","sc":"“cobot”这个词来自“协作机器人”，是用来指称这种机器人类型的。","a":["指定","标明"]},{"w":"prolong","m":"延长；拖延","p":"/prəˈlɒŋ/","s":"The doctor said he could prolong his life with treatment.","sc":"医生说他可以通过治疗延长生命。","a":["延长","拖延"]},{"w":"summation","m":"总结；概括","p":"/ˌsʌmˈeɪʃən/","s":"The summation of the case was clear by the end of the trial.","sc":"到审判结束时，这个案件的总结已经很清楚了。","a":["总结","概括"]},{"w":"assuage","m":"缓解；减轻","p":"/əˈsweɪdʒ/","s":"She said nothing could assuage her guilt.","sc":"她说没有什么能减轻她的内疚。","a":["缓解","减轻"]},{"w":"feasible","m":"可行的；能够实现的","p":"/ˈfiːzəbl/","s":"However, unless the usage of the bridge was to be greatly restricted, only two generic options to improve its performance were considered feasible.","sc":"然而，除非大幅限制这座桥的使用，否则只有两个通用方案被认为可行，以改善其性能。","a":["可行的","能够实现的"]},{"w":"imitator","m":"模仿者；仿制者","p":"/ˈɪmɪteɪtə/","s":"The imitator copied the singer's style.","sc":"这个模仿者模仿了那位歌手的风格。","a":["模仿者","仿制者"]},{"w":"esteem","m":"尊敬；高度评价","p":"/ɪˈstiːm/","s":"One may well wonder, therefore, why some minerals are held in so much higher esteem than others.","sc":"因此，人们不禁要问，为什么有些矿物比另一些矿物受到高得多的敬重。","a":["尊敬","高度评价"]},{"w":"illuminate","m":"阐明；照亮","p":"/ɪˈluːmɪneɪt/","s":"Floodlights in the cave's main chamber illuminate the ceiling, vaulted like a cathedral above 5,000 square feet of floor space.","sc":"洞穴主厅里的泛光灯照亮了天花板，那天花板拱起如同大教堂，覆盖着五千平方英尺的地面空间。","a":["阐明","照亮"]},{"w":"extend","m":"延伸；扩大；延长","p":"/ɪkˈstend/","s":"I am an American writer, in the American mainstream, trying to extend it.","sc":"我是美国主流中的一名美国作家，试图扩展它。","a":["延伸","扩大","延长"]},{"w":"coincidence","m":"巧合","p":"/ˌkəʊˈɪnsɪdəns/","s":"It is no coincidence that these are the areas where languages are disappearing the fastest.","sc":"这些地区的语言消失得最快，这绝非巧合。","a":["巧合"]},{"w":"vigilance","m":"警觉；警惕","p":"/ˈvɪdʒɪləns/","s":"The balance between rest and vigilance is crucial for survival, revealing the intricate adaptations across the animal kingdom.","sc":"休息与警觉之间的平衡对生存至关重要，揭示了整个动物王国中错综复杂的适应机制。","a":["警觉","警惕"]},{"w":"incident","m":"事件；事变","p":"/ˈɪnsɪdənt/","s":"In 1956, after their home was bombed, supporters were told how much his wife's strength had helped him through that incident.","sc":"一九五六年，他们的家被炸毁后，支持者们被告知他妻子的坚强在那起事件中给了他多大帮助。","a":["事件","事变"]},{"w":"overlook","m":"忽视；未注意到","p":"/ˌəʊvəˈlʊk/","s":"For instance, the assumption that technological immersion leads to skepticism may overlook other factors, such as economic precarity or political polarization, which also influence trust.","sc":"例如，认为技术沉浸会导致怀疑的假设可能会忽略其他因素，比如经济不稳定或政治极化，而这些因素也会影响信任。","a":["忽视","未注意到"]},{"w":"amass in","m":"在……聚集；积累","p":"/əˈmæs ɪn/","s":"The dust will amass in the corner if the window stays open.","sc":"如果窗户一直开着，灰尘就会在角落里堆积起来。","a":["在……聚集","积累"]},{"w":"exemplification","m":"例证；典型体现","p":"/ˌeksɪmplɪfɪˈkeɪʃən/","s":"The exemplification of the rule was clear in her careful explanation.","sc":"这条规则的例证在她细致的解释中很清楚。","a":["例证","典型体现"]},{"w":"detractor","m":"批评者；贬低者","p":"/dɪˈtræktə/","s":"Even his detractor admitted that he was a skilled negotiator.","sc":"甚至连他的批评者都承认他是个熟练的谈判者。","a":["批评者","贬低者"]},{"w":"precursor","m":"先驱；前兆","p":"/ˈpriːkɜːsə/","s":"Within a millennium, however, Chinese chariot-makers had developed a vehicle with shafts, the precursor of the true carriage or cart.","sc":"然而，经过一千年，中国的战车制造者已经发展出一种带车辕的车辆，它是后来真正马车或货车的前身。","a":["先驱","前兆"]},{"w":"satisfy","m":"满足；使满意","p":"/ˈsætɪfaɪ/","s":"However, the abundance of this resource in Australia could satisfy the entire country's needs for thousands of years at the current rate of consumption.","sc":"然而，在当前消费速度下，澳大利亚这种资源的丰富程度足以满足全国数千年的需求。","a":["满足","使满意"]},{"w":"brood on","m":"反复忧思；沉思","p":"/bruːd ɒn/","s":"He would brood on the past for hours.","sc":"他会几个小时地对过去的事反复思虑。","a":["反复忧思","沉思"]},{"w":"omit","m":"省略；遗漏","p":"/ˈɒmɪt/","s":"You can omit the salt if you prefer.","sc":"如果你愿意，可以省略盐。","a":["省略","遗漏"]},{"w":"permissible","m":"允许的；可接受的","p":"/pəˈmɪsɪbəl/","s":"Synthetic fingernails are also highly flammable and therefore not permissible.","sc":"人造指甲也极易燃，因此不被允许。","a":["允许的","可接受的"]},{"w":"prevail over","m":"战胜；压倒","p":"/prɪˈveɪl ˈəʊvə/","s":"The desire to prevail over fear pushed her forward.","sc":"战胜恐惧的愿望推动着她继续前进。","a":["战胜","压倒"]},{"w":"indulgently","m":"宽容地；纵容地","p":"/ɪnˈdʌldʒəntli/","s":"She smiled indulgently at the child.","sc":"她纵容地朝那个孩子微笑。","a":["宽容地","纵容地"]},{"w":"lighthearted about","m":"对……轻松随意的","p":"/ˌlaɪtˈhɑːtɪd əˈbaʊt/","s":"She remained lighthearted about the move.","sc":"她对这次搬家始终保持轻松愉快的态度。","a":["对……轻松随意的"]},{"w":"thoughtfulness","m":"体贴；深思熟虑","p":"/ˈθɔːtfʊlnəs/","s":"And he did so with great care, although at a slower tempo than was called for and with a formality that lent the Tin Pan Alley tune a depth and thoughtfulness no one else would have accorded it.","sc":"而且他确实做到了，虽然速度比要求的更慢，而且带着一种拘谨，使这首百老汇流行曲获得了无人会赋予它的深度与周到。","a":["体贴","深思熟虑"]},{"w":"counterfactual","m":"与事实相反的；假设性的","p":"/ˌkaʊntəˈfæktʃuəl/","s":"Such thinking about situations that do not exist involves what is termed counterfactual reasoning.","sc":"这种对不存在情境的思考涉及所谓的反事实推理。","a":["与事实相反的","假设性的"]},{"w":"modest about","m":"对……谦逊的","p":"/ˈmɒdɪst əˈbaʊt/","s":"She is modest about her success.","sc":"她对自己的成功很谦逊。","a":["对……谦逊的"]},{"w":"originality","m":"原创性；独创性","p":"/ˌɒrɪdʒɪˈnæləti/","s":"To grasp the originality of this idea, it's necessary to realize two things about how music has traditionally been understood.","sc":"要理解这个想法的新颖性，有必要认识到关于音乐一直以来是如何被理解的两件事。","a":["原创性","独创性"]},{"w":"outsized","m":"超大的；影响异常重大的","p":"/ˌaʊtˈsaɪzd/","s":"Empirically, reconciling transcriptomic inventories with proteomic profiles remains problematic: many transcripts lack detectable peptide counterparts, while minor proteoforms can exert outsized physiological influence.","sc":"从实证上看，将转录组清单与蛋白质组谱相互对应仍然很困难：许多转录本缺乏可检测的肽对应物，而少量蛋白变体却可能产生过大的生理影响。","a":["超大的","影响异常重大的"]},{"w":"controversy","m":"争议；公开争论","p":"/ˈkɒntrəvɜːsi/","s":"The controversy went on, and for a good reason.","sc":"这场争议持续不断，而且有其充分理由。","a":["争议","公开争论"]},{"w":"ineffectual","m":"无效的；不起作用的","p":"/ˌɪnɪˈfektʃuəl/","s":"It was a nice, polite gesture but also an utterly ineffectual one.","sc":"这是一种友善而有礼貌的举动，但也完全无效。","a":["无效的","不起作用的"]},{"w":"corroborate","m":"证实；提供佐证","p":"/ˈkɒrəˌbɒreɪt/","s":"Rothen and his colleagues corroborate the theory by showing that non-synaesthetic subjects were able to mimic synaesthetic associations long after leaving the lab.","sc":"Rothen 及其同事通过表明非联觉受试者在离开实验室很久之后仍能模仿联觉联想，从而证实了这一理论。","a":["证实","提供佐证"]},{"w":"reverentially","m":"恭敬地；怀着敬意地","p":"/ˌrevərənˈʃəli/","s":"He spoke reverentially of the old master.","sc":"他说起那位老大师时带着恭敬之情。","a":["恭敬地","怀着敬意地"]},{"w":"associative","m":"联想的；关联性的","p":"/əˈsəʊʃiətɪv/","s":"The chapters describing Franklin's early years are a medley of separate fragments, rhetorical questions, associative jumps and exclamation marks.","sc":"描写富兰克林早年岁月的章节是一些零散片段、反问句、联想性的跳跃和感叹号的混合体。","a":["联想的","关联性的"]},{"w":"skeptically","m":"怀疑地；审慎质疑地","p":"/ˈskeptɪkli/","s":"She handed me a wool hat, which I regarded skeptically.","sc":"她递给我一顶羊毛帽子，我怀疑地看着它。","a":["怀疑地","审慎质疑地"]},{"w":"conjecture","m":"推测；猜想","p":"/kənˈdʒektʃə/","s":"If there was talk, it was quiet conjecture about the indiscretions of our friends and neighbors.","sc":"如果有人议论，那也只是对我们朋友和邻居不检点行为的低声猜测。","a":["推测","猜想"]},{"w":"dispassionate in","m":"在……方面客观冷静的","p":"/ˌdɪspəˈʃeɪtɪn/","s":"No valid source sentence with the exact substring dispassionate in could be produced.","sc":"无法生成包含目标词原形的有效出处例句。","a":["在……方面客观冷静的"]},{"w":"explicable","m":"可以解释的","p":"/ɪkˈspleɪkəbl/","s":"The odd result was explicable once the data were checked.","sc":"一旦核对了数据，这个奇怪的结果就可以解释了。","a":["可以解释的"]},{"w":"confound","m":"使困惑；难倒","p":"/kənˈfaʊnd/","s":"She calls this the 'self-defeating prophecy effect': a man with a baby face strives to confound expectations and ends up overcompensating.","sc":"她把这称为“自我挫败的预言效应”：一个娃娃脸的男人努力打破人们的预期，结果反而矫枉过正。","a":["使困惑","难倒"]},{"w":"overreach by","m":"因……而做得过头或越权","p":"/ˌəʊvəˈriːtʃ baɪ/","s":"You can overreach by trying to solve everything at once.","sc":"你可能会因为试图一次解决所有问题而失去分寸。","a":["因……而做得过头或越权"]},{"w":"tranquil","m":"宁静的；平和的","p":"/ˈtræŋkwɪl/","s":"Often, when I feel a need within myself to have a tranquil moment, I try to summon images of the tall grasses and furry cattails and the mallards, herons, and geese whom are found in the 32,000-acre marsh.","sc":"通常，当我内心感到需要一个宁静的时刻时，我会努力唤起高高的青草、毛茸茸的香蒲，以及那片三万二千英亩沼泽里栖息的野鸭、苍鹭和大雁的画面。","a":["宁静的","平和的"]},{"w":"arduous","m":"艰巨的；费力的","p":"/ˈɑːdjʊəs/","s":"The journey forward undoubtedly will be a long and arduous one.","sc":"前方的旅程无疑将是漫长而艰辛的。","a":["艰巨的","费力的"]},{"w":"adept at","m":"擅长……的","p":"/əˈdɛpt ət/","s":"Birds are adept at both, and, in laboratory tests, some have been shown to detect the minute difference in barometric pressure between the floor and ceiling of a room.","sc":"鸟类两者都很擅长，而且在实验室测试中，已经有人发现某些鸟能够察觉房间地板与天花板之间气压的微小差异。","a":["擅长……的"]},{"w":"oddity","m":"奇特事物；反常现象","p":"/ˈɒdɪti/","s":"Castle Ward This mid-18th-century mansion is an architectural oddity of its time, inside and outside having been built in two distinct architectural styles.","sc":"卡斯尔沃德这座十八世纪中期的宅邸，在当时堪称建筑奇观，内外采用了两种截然不同的建筑风格。","a":["奇特事物","反常现象"]},{"w":"unflattering","m":"不讨好的；有损形象的","p":"/ʌnˈflætərɪŋ/","s":"Consequently, the machine earned the unflattering popular nickname 'The Boneshaker'.","sc":"因此，这台机器得到了一个并不讨人喜欢的绰号“碎骨机”。","a":["不讨好的","有损形象的"]},{"w":"intangible","m":"无形的；难以触及或衡量的","p":"/ɪnˈtændʒəbəl/","s":"In the end, rigorous attention to harmonizing tangible space by Pei with its intangible spirit may prove to be his most exciting legacy.","sc":"最后，佩里的严谨关注——让有形空间与其无形精神相协调——或许会成为他最令人兴奋的遗产。","a":["无形的","难以触及或衡量的"]},{"w":"permeate","m":"渗透；遍及","p":"/ˈpɜːmieɪt/","s":"The smell of rain permeate the old house.","sc":"雨后的气味弥漫在这座老房子里。","a":["渗透","遍及"]},{"w":"constrain within","m":"将……限制在某范围内","p":"/kənˈstreɪn wɪˈðɪn/","s":"","sc":"","a":["将……限制在某范围内"]},{"w":"magnify","m":"放大；夸大","p":"/ˈmæɡnɪfaɪ/","s":"Using microscopes of his own design that could magnify up to 270 times, he examined a drop of water from a nearby lake and found it teeming with tiny creatures he called 'animalcules'.","sc":"他使用自己设计的显微镜，能够放大到二百七十倍，检查了附近湖里的一滴水，发现里面充满了他称为“微小动物”的生物。","a":["放大","夸大"]},{"w":"aesthetics","m":"美学；审美特征","p":"/esˈθetɪks/","s":"A critical determinant of trust is the user experience, which encompasses website aesthetics and navigational ease.","sc":"信任的一个关键决定因素是用户体验，它包括网站美学和导航的便捷性。","a":["美学","审美特征"]},{"w":"selective","m":"有选择的；筛选严格的","p":"/sɪˈlektɪv/","s":"Their razor-sharp mandibles can slice through some of the fleshiest leaves and even twigs and stems With regard to defense compounds, the leafcutters are selective about what they cut, but in species-rich tropical forests they have a lot of choice.","sc":"它们对切割对象很挑剔。","a":["有选择的","筛选严格的"]},{"w":"analogical","m":"类比的；基于相似性的","p":"/ˌæn.əˈlɒdʒ.ɪ.kəl/","s":"My analogical reading brain enables the development of some of our most important intellectual and affective processes.","sc":"我的类比式阅读大脑使我们一些最重要的智力和情感过程得以发展。","a":["类比的","基于相似性的"]},{"w":"discount","m":"低估；不予重视","p":"/ˈdɪskaʊnt/","s":"Some were offered the tickets at full price and others at a discount.","sc":"有些人按全价拿到票，另一些人则享受了折扣。","a":["低估","不予重视"]},{"w":"implausible","m":"难以置信的；不合理的","p":"/ɪmˈplɔːzəbl/","s":"I am not troubled by the empirical difficulties, for these do not render the theory implausible.","sc":"我并不为这些经验上的困难所困扰，因为这些并不会使这个理论显得不可信。","a":["难以置信的","不合理的"]},{"w":"isolation from","m":"与……隔离或脱离","p":"/ˌaɪsəˈleɪʃən frəm/","s":"The quality of any given option cannot be assessed in isolation from its alternatives.","sc":"任何给定选项的优劣都不能脱离其备选项而评估。","a":["与……隔离或脱离"]},{"w":"collaboration with","m":"与……合作","p":"/kəˌlæbəˈreɪʃən wɪð/","s":"E Scientists at Shark Attack Mitigation Systems (SAMS), in collaboration with the Oceans Institute at the University of Western Australia, have come up with a novel and pragmatic solution to the shark problem: a shark deterrent wetsuit.","sc":"海洋研究人员与西澳大利亚大学海洋研究所合作，想出了一种新颖而务实的鲨鱼问题解决方案：一种防鲨潜水服。","a":["与……合作"]},{"w":"competition with","m":"与……竞争","p":"/ˌkɒmpəˈtɪʃən wɪð/","s":"Competition with Japanese and European imports","sc":"与日本和欧洲进口产品竞争","a":["与……竞争"]},{"w":"deference to","m":"对……的尊重或顺从","p":"/ˈdefərəns tuː/","s":"It's a steamy 80 degrees Fahrenheit in Christopher Viney's lab, in deference to a six-inch-long golden orb weaver spider, who is dining on crickets while being silked.","sc":"在克里斯托弗·瓦尼的实验室里，温度高达闷热的华氏八十度，这是为了照顾一只六英寸长的金色圆蛛，它正一边吃蟋蟀，一边被缫丝。","a":["对……的尊重或顺从"]},{"w":"derive from","m":"源自……；由……获得","p":"/dɪˈraɪv frɒm/","s":"If we assume that opportunity costs reduce the overall desirability of the most preferred choice, then the more alternatives there are, the deeper our sense of loss will be and the less satisfaction we will derive from our ultimate decision.","sc":"如果我们假定机会成本会降低最优选择的总体吸引力，那么备选方案越多，我们的失落感就越深，而我们从最终决定中得到的满足感就越少。","a":["源自……","由……获得"]},{"w":"unspecified","m":"未明确说明的","p":"/ˌʌnspəˈsɪfɪd/","s":"The bulk of what we launch into space orbits the Earth for some unspecified period of time and then comes back down.","sc":"我们发射到太空的大部分物体会在某个未指明的时间段内绕地球运行，然后再返回地面。","a":["未明确说明的"]},{"w":"ambivalent","m":"矛盾的；犹豫不定的","p":"/ˌæmbɪˈvɑːlənt/","s":"The effects are ambivalent.","sc":"这些影响是矛盾的。","a":["矛盾的","犹豫不定的"]},{"w":"retain","m":"保留；保持","p":"/rɪˈteɪn/","s":"Some educators believe that students retain information more effectively when they actively engage through discussion, problem-solving activities, and hands-on practice rather than simply listening to lectures.","sc":"一些教育工作者认为，学生在通过讨论、解决问题的活动和动手练习主动参与时，往往比仅仅听讲更能有效地记住信息。","a":["保留","保持"]},{"w":"imprecise","m":"不精确的；不严谨的","p":"/ˌɪmprɪˈsaɪs/","s":"The instructions were imprecise, so everyone did the task differently.","sc":"这些说明不够精确，所以每个人做这项任务的方式都不同。","a":["不精确的","不严谨的"]},{"w":"erratic","m":"不稳定的；无规律的","p":"/ɪˈrætɪk/","s":"With the current erratic behaviour of the weather, it is difficult not to subscribe to such despair.","sc":"由于当前天气变化无常，很难不认同这种绝望的情绪。","a":["不稳定的","无规律的"]},{"w":"indoctrinate","m":"向……灌输特定观念","p":"/ɪnˈdɒktrɪneɪt/","s":"Teachers should not indoctrinate students with their personal beliefs.","sc":"老师不应该用个人信仰来灌输学生。","a":["向……灌输特定观念"]},{"w":"fragile","m":"脆弱的；易损坏的","p":"/ˈfrædʒaɪl/","s":"Opals are also fragile.","sc":"蛋白石也很易碎。","a":["脆弱的","易损坏的"]},{"w":"concur with","m":"同意……；与……一致","p":"/kənˈkɜː wɪð/","s":"I concur with your assessment.","sc":"我同意你的判断。","a":["同意……","与……一致"]},{"w":"insurmountable","m":"无法克服的；难以逾越的","p":"/ˌɪnsəˈmaʊntəbəl/","s":"With no insurmountable problems identified, the Japanese have used the experience gained from this station to begin their own massive residential photovoltaics campaign.","sc":"在没有发现无法克服的问题后，日本方面利用从这个站点获得的经验，开始了他们自己的大规模住宅光伏运动。","a":["无法克服的","难以逾越的"]},{"w":"mandatory","m":"强制性的；必须的","p":"/ˈmændətəri/","s":"\\\"Information design for patient safety\\\" is not intended to be mandatory.","sc":"《患者安全的信息设计》并不打算成为强制要求。","a":["强制性的","必须的"]},{"w":"amplify","m":"放大；增强","p":"/ˈæmplɪfaɪ/","s":"The letter writer, an eccentric inventor and repairman named Nathaniel Baldwin, from the US state of Utah, made what at the time was an astonishing claim: he had built, in his kitchen, a new kind of headset that could amplify sound.","sc":"这封信的作者是一位名叫内森尼尔·鲍德温的古怪发明家兼修理工，来自美国犹他州；他当时提出了一个令人震惊的说法：他在自己的厨房里造出了一种能放大声音的新型耳机。","a":["放大","增强"]},{"w":"appease","m":"安抚；平息","p":"/əˈpiːz/","s":"She tried to appease her crying child with a toy.","sc":"她试图用一个玩具来安抚哭闹的孩子。","a":["安抚","平息"]},{"w":"sincerity","m":"真诚；诚恳","p":"/sɪnˈsɪrəti/","s":"Until then, Aitken's charm, fluency and flair for theatrical displays of sincerity looked as if they might bring him victory.","sc":"在那之前，艾特肯的魅力、流利和带有戏剧色彩的真诚表演似乎可能为他带来胜利。","a":["真诚","诚恳"]}];
 
 // ============ GAME STATE ============
 const TOTAL_FLOORS = 5;
@@ -231,11 +231,11 @@ const NODE_TYPES = ['battle','battle','battle','battle','event','event','shop','
 const NODE_WEIGHTS = [40,40,20,15,15,7,3]; // battle,event,shop,rest,spring,trap
 
 const EVENTS = [
-  {name:'遗忘迷雾',desc:'一阵迷雾笼罩了你，你的记忆开始模糊...',optA:'随机遗忘1个精通词，获得5金币',optB:'支付2金币，不受影响'},
-  {name:'智慧石碑',desc:'古老的石碑上刻着神秘的符文...',optA:'免费获得1个记忆卷轴',optB:'消耗1精神力，将1个"学习中"词直接晋升"复习中"'},
-  {name:'诅咒之书',desc:'一本散发着不祥气息的书...',optA:'本局最大生命值+2，失去1精神力',optB:'失去2金币，躲避诅咒'},
-  {name:'记忆回响',desc:'深渊中回荡着过去的记忆...',optA:'强制复习3个学习中词（答对计进度，答错不扣血）',optB:'跳过此事件，但本层护盾破碎'},
-  {name:'幸运宝箱',desc:'一个神秘的宝箱出现在眼前...',optA:'稳定获得3金币',optB:'博弈：50%概率获得8金币，50%概率失去1件随机道具'},
+  {name:'Mist of Oblivion',desc:'A fog surrounds you, blurring your memory...',optA:'Lose 1 mastered word, gain 5 gold',optB:'Pay 2 gold, resist the mist'},
+  {name:'Stele of Wisdom',desc:'Ancient runes glow on a stone tablet...',optA:'Gain 1 Memory Scroll (free)',optB:'Spend 1 Spirit to promote a "learning" word to "reviewing"'},
+  {name:'Cursed Tome',desc:'A tome radiating dark energy...',optA:'Max HP +2, lose 1 Spirit',optB:'Lose 2 gold, evade the curse'},
+  {name:'Echo of Memory',desc:'Past memories echo through the abyss...',optA:'Review 3 learning words (no HP penalty for errors)',optB:'Skip — but your floor shield shatters'},
+  {name:'Lucky Chest',desc:'A mysterious chest materializes...',optA:'Gain 3 gold (safe)',optB:'Gamble: 50% gain 8 gold, 50% lose 1 random item'},
 ];
 
 let G = {
@@ -387,8 +387,8 @@ function nextFloor() {
   G.node = 0;
   G.map = generateFloor(G.floor);
   distributeWords();
-  logSystem(`═══ 第 ${G.floor+1} 层深渊 ═══`);
-  logSystem(`护盾已恢复至 ${G.shield} 层。`);
+  logSystem(`═══ Floor ${G.floor+1} — The Abyss ═══`);
+  logSystem(`Shield restored to ${G.shield} layer.`);
   updateDisplay();
   renderMap();
   enterNode(0);
@@ -421,7 +421,7 @@ function advanceNode() {
   const node = G.map[G.node];
   node.cleared = true;
   if (G.node >= NODES_PER_FLOOR - 1) {
-    logSystem('深渊领主已被击败！通往下一层的门开启了...');
+    logSystem('The Abyss Lord is defeated! A gate to the next floor opens...');
     G.floor++;
     if (G.floor >= TOTAL_FLOORS) { victory(); return; }
     setTimeout(() => nextFloor(), 1500);
@@ -441,17 +441,17 @@ function showBranchChoice(nodeIdx) {
   const battleArea = document.getElementById('battle-scene');
   const choiceArea = document.getElementById('choice-area');
   battleArea.innerHTML = `
-    <div class="room-label">⚡ 岔路口</div>
-    <div class="scene-title">选择你的道路</div>
-    <div class="scene-desc">两条分支将在下一个岔路汇合。节点总数不变。</div>`;
+    <div class="room-label">⚡ Crossroads</div>
+    <div class="scene-title">Choose Your Path</div>
+    <div class="scene-desc">Both paths converge at the next junction. Total nodes unchanged.</div>`;
   choiceArea.innerHTML = `
-    <button onclick="chooseBranch(${nodeIdx},'left')">⬅ 左路 — 穿越暗影裂隙</button>
-    <button onclick="chooseBranch(${nodeIdx},'right')">➡ 右路 — 途经幽光回廊</button>`;
+    <button onclick="chooseBranch(${nodeIdx},'left')">⬅ Left — Through the Shadow Rift</button>
+    <button onclick="chooseBranch(${nodeIdx},'right')">➡ Right — Via the Glimmer Corridor</button>`;
 }
 
 function chooseBranch(nodeIdx, direction) {
   document.getElementById('choice-area').innerHTML = '';
-  logSystem(`选择了${direction==='left'?'左':'右'}路...`);
+  logSystem(`Took the ${direction==='left'?'left':'right'} path...`);
   // Both branches lead to the same next node - just flavor
   setTimeout(() => enterNode(nodeIdx), 300);
 }
@@ -459,7 +459,7 @@ function chooseBranch(nodeIdx, direction) {
 // ============ BATTLE SYSTEM ============
 function startBattle(node) {
   if (!node.wordIndices || node.wordIndices.length === 0) {
-    logSystem('这个房间空无一物...');
+    logSystem('This room is empty...');
     setTimeout(() => advanceNode(), 800);
     return;
   }
@@ -479,23 +479,23 @@ function startBattle(node) {
 function renderBattle() {
   const area = document.getElementById('battle-scene');
   const node = G.map[G.node];
-  const nodeTypeNames = {battle:'⚔️ 战斗',boss:'💀 Boss战',event:'❓ 事件',shop:'🛒 商店',rest:'🛌 休息',spring:'💧 记忆泉',trap:'💀 陷阱'};
+  const nodeTypeNames = {battle:'⚔️ Battle',boss:'💀 Boss',event:'❓ Event',shop:'🛒 Shop',rest:'🛌 Rest',spring:'💧 Spring',trap:'💀 Trap'};
 
   if (G.bossFight) {
     area.innerHTML = `
-      <div class="room-label">💀 深渊领主 — 第 ${G.floor+1} 层</div>
+      <div class="room-label">💀 Abyss Lord — Floor ${G.floor+1}</div>
       <div class="scene-title" style="color:#ff4444;">Boss HP: ${'█'.repeat(Math.max(0,G.bossHp))}${'░'.repeat(Math.max(0,G.bossMaxHp-G.bossHp))} ${G.bossHp}/${G.bossMaxHp}</div>`;
     return;
   }
 
   if (G.currentNodeMonsters.length === 0) {
     area.innerHTML = `<div class="room-label">${nodeTypeNames[node.type] || ''}</div>
-      <div class="scene-title">${node.type==='rest'?'宁静的庇护所':node.type==='shop'?'深渊商人的摊位':node.type==='event'?'命运的岔路':''}</div>`;
+      <div class="scene-title">${node.type==='rest'?'A quiet sanctuary':node.type==='shop'?'Abyss Merchant stall':node.type==='event'?'Fork in fate':''}</div>`;
     return;
   }
 
   let html = `<div class="room-label">${nodeTypeNames[node.type]} · 房间 ${G.node+1}</div>
-    <div style="color:var(--text-dim);margin-bottom:8px;">击败进度：${G.currentNodeMonsters.filter(m=>m.defeated||m.skipped).length} / ${G.currentNodeMonsters.length}</div>
+    <div style="color:var(--text-dim);margin-bottom:8px;">Progress: ${G.currentNodeMonsters.filter(m=>m.defeated||m.skipped).length} / ${G.currentNodeMonsters.length}</div>
     <div id="monster-list">`;
 
   G.currentNodeMonsters.forEach((mon, i) => {
@@ -506,7 +506,7 @@ function renderBattle() {
     let hintHtml = '';
     if (isActive && !mon.skipped) {
       if (G.scrollActive) {
-        hintHtml = `<span class="monster-hint" style="color:#f1c40f;">📜 卷轴揭示：${word.m}</span>`;
+        hintHtml = `<span class="monster-hint" style="color:#f1c40f;">📜 Scroll reveals: ${word.m}</span>`;
       } else if (mon.hintLevel >= 1 && word.s) {
         hintHtml = `<span class="monster-hint" style="color:var(--text-dim);">💡 ${word.s}</span>`;
       } else if (st.status === 'learning' && word.s) {
@@ -589,14 +589,14 @@ function handleNormalBattle(input) {
 }
 
 function useScrollItem() {
-  if (G.bossFight) { logSystem('卷轴在 Boss 战中无效。'); return; }
-  if (!G.inventory.includes('scroll')) { logSystem('你没有任何记忆卷轴。'); return; }
+  if (G.bossFight) { logSystem('Scrolls are ineffective in Boss fights.'); return; }
+  if (!G.inventory.includes('scroll')) { logSystem('You have no Memory Scrolls.'); return; }
   const target = G.currentNodeMonsters[G.currentTargetIdx];
-  if (!target || target.defeated || target.skipped) { logSystem('当前没有目标单词。'); return; }
+  if (!target || target.defeated || target.skipped) { logSystem('No target word right now.'); return; }
   G.inventory = G.inventory.filter(i => i !== 'scroll');
   G.scrollActive = true;
   const word = WORD_DATA[target.wordIndex];
-  logSystem(`📜 使用记忆卷轴！"${word.w}" → ${word.m}`, 'gold');
+  logSystem(`📜 Used Memory Scroll! "${word.w}" → ${word.m}`, 'gold');
   updateDisplay();
   renderBattle();
   focusInput();
@@ -617,7 +617,7 @@ function handleCorrectAnswer(target) {
   target.defeated = true;
   G.gold += 2;
 
-  logLine(`✓ 正确！${word.w} — ${word.m} <span class="gold">+2🪙</span>`, 'correct');
+  logLine(`✓ Correct! ${word.w} — ${word.m} <span class="gold">+2🪙</span>`, 'correct');
   spawnFloatText('+2 🪙', '#f1c40f');
 
   st.correct++;
@@ -628,11 +628,11 @@ function handleCorrectAnswer(target) {
   if (st.status === 'learning' && st.correct >= 2) {
     st.status = 'reviewing';
     st.correct = 0;
-    logLine(`📈 "${word.w}" 晋升为【复习中】`, 'info');
+    logLine(`📈 "${word.w}" promoted to [Reviewing]`, 'info');
   } else if (st.status === 'reviewing' && st.correct >= 2) {
     st.status = 'mastered';
     G.mastered.push(target.wordIndex);
-    logLine(`🌟 "${word.w}" 已精通！写入学识录。`, 'gold');
+    logLine(`🌟 "${word.w}" Mastered! Added to Codex.`, 'gold');
     spawnFloatText('精通！', '#c9a050');
   }
 
@@ -652,14 +652,14 @@ function handleWrongAnswer(target) {
     st.status = 'learning';
     st.correct = Math.floor(st.correct / 2);
     st.wrongStreak = 0;
-    logLine(`📉 "${word.w}" 连续答错，退回【学习中】`, 'info');
+    logLine(`📉 "${word.w}" double wrong, demoted to [Learning]`, 'info');
   }
 
   if (target.wrongCount >= 3) {
     // Force skip
     target.skipped = true;
     target.defeated = true;
-    logLine(`⊘ "${word.w}" 已揭示：${word.m}（强制跳过，不计进度，不扣血）`, 'system');
+    logLine(`⊘ "${word.w}" revealed: ${word.m} (forced skip, no progress, no damage)`, 'system');
     advanceTarget();
     return;
   }
@@ -668,11 +668,11 @@ function handleWrongAnswer(target) {
   if (G.shield > 0 && !G.shieldBroken) {
     G.shield = 0;
     G.shieldBroken = true;
-    logLine(`🛡️ 护盾破碎！抵挡了本次伤害。`, 'wrong');
+    logLine(`🛡️ Shield shattered! Damage absorbed.`, 'wrong');
     spawnFloatText('护盾破碎！', '#3498db');
   } else {
     G.hp--;
-    logLine(`💔 答错！${word.w} — 受到 1 点伤害。HP: ${G.hp}`, 'wrong');
+    logLine(`💔 Wrong! ${word.w} — took 1 damage. HP: ${G.hp}`, 'wrong');
     spawnFloatText('-1 ❤️', '#e74c3c');
     document.getElementById('battle-area').classList.add('shake');
     setTimeout(() => document.getElementById('battle-area').classList.remove('shake'), 500);
@@ -681,9 +681,9 @@ function handleWrongAnswer(target) {
   // Progressive hints
   target.hintLevel = target.wrongCount;
   if (target.wrongCount === 1 && word.s) {
-    logLine(`💡 提示：${word.s}`, 'info');
+    logLine(`💡 Hint: ${word.s}`, 'info');
   } else if (target.wrongCount === 2) {
-    logLine(`🔤 提示：首字 "${getPinyinInitial(word.m)}"`, 'info');
+    logLine(`🔤 Hint: starts with "${getPinyinInitial(word.m)}"`, 'info');
   }
 
   if (G.hp <= 0) {
@@ -708,7 +708,7 @@ function advanceTarget() {
   const allDone = G.currentNodeMonsters.every(m => m.defeated || m.skipped);
   if (allDone) {
     G.gold += 1; // Clear bonus
-    logLine(`⚔️ 群怪清除！+1🪙 奖励`, 'gold');
+    logLine(`⚔️ Room cleared! +1🪙 bonus`, 'gold');
     G.map[G.node].cleared = true;
     G.currentNodeMonsters = [];
     renderBattle();
@@ -729,7 +729,7 @@ function startBoss(node) {
     wordIndex: wi, hintLevel: 0, defeated: false, skipped: false, wrongCount: 0, isBossWord: true,
   }));
   G.currentTargetIdx = 0;
-  logSystem(`💀 深渊领主现身！击败 ${G.bossWords.length} 个复习词...`);
+  logSystem(`💀 The Abyss Lord appears! Defeat ${G.bossWords.length} review words...`);
   renderBattle();
   renderBossBattle();
   focusInput();
@@ -762,7 +762,7 @@ function handleBossInput(input) {
     target.defeated = true;
     G.bossHp--;
     G.gold += 2;
-    logLine(`✓ 命中！Boss HP: ${G.bossHp}/${G.bossMaxHp}`, 'correct');
+    logLine(`✓ Hit! Boss HP: ${G.bossHp}/${G.bossMaxHp}`, 'correct');
     spawnFloatText('暴击！', '#ff4444');
     advanceBossTarget();
     if (G.bossHp <= 0) {
@@ -771,7 +771,7 @@ function handleBossInput(input) {
     }
   } else {
     G.bossHp = Math.min(G.bossMaxHp, G.bossHp + 1);
-    logLine(`✗ 领主恢复 1 点生命！Boss HP: ${G.bossHp}/${G.bossMaxHp}`, 'wrong');
+    logLine(`✗ The Lord recovers 1 HP! Boss HP: ${G.bossHp}/${G.bossMaxHp}`, 'wrong');
     document.getElementById('battle-area').classList.add('shake');
     setTimeout(() => document.getElementById('battle-area').classList.remove('shake'), 500);
     if (G.shield > 0 && !G.shieldBroken) {
@@ -805,7 +805,7 @@ function advanceBossTarget() {
 function bossDefeated() {
   const reward = (G.floor + 1) * 5;
   G.gold += reward;
-  logSystem(`💀 深渊领主已被击败！+${reward}🪙`);
+  logSystem(`💀 Abyss Lord defeated! +${reward}🪙`);
   G.bossFight = false;
   G.currentNodeMonsters = [];
   G.map[G.node].cleared = true;
@@ -821,7 +821,7 @@ function startEvent(node) {
   const evt = EVENTS[Math.floor(Math.random() * EVENTS.length)];
   G._currentEvent = evt;
   const area = document.getElementById('battle-scene');
-  area.innerHTML = `<div class="room-label">❓ 事件</div>
+  area.innerHTML = `<div class="room-label">❓ Event</div>
     <div class="scene-title">${evt.name}</div>
     <div class="scene-desc">${evt.desc}</div>`;
   const choiceArea = document.getElementById('choice-area');
@@ -831,7 +831,7 @@ function startEvent(node) {
 }
 
 function handleEventInput(input) {
-  logSystem('请点击上方选项按钮做出选择。');
+  logSystem('Click the option buttons above to choose.');
   focusInput();
 }
 
@@ -850,17 +850,17 @@ function eventChoice(opt) {
           getWordState(idx).status = 'reviewing';
           getWordState(idx).correct = 0;
           G.gold += 5;
-          logSystem(`"${WORD_DATA[idx].w}" 退回复习中。+5🪙`);
-        } else { logSystem('没有精通词可遗忘。'); }
+          logSystem(`"${WORD_DATA[idx].w}" demoted to Reviewing. +5🪙`);
+        } else { logSystem('No mastered words to forget.'); }
       } else {
-        if (G.gold >= 2) { G.gold -= 2; logSystem('支付了2金币，驱散迷雾。'); }
-        else { logSystem('金币不足，迷雾消散...无事发生。'); }
+        if (G.gold >= 2) { G.gold -= 2; logSystem('Paid 2 gold, the mist dissipates.'); }
+        else { logSystem('Not enough gold... the mist fades.'); }
       }
       break;
     case '智慧石碑':
       if (opt === 'A') {
         G.inventory.push('scroll');
-        logSystem('获得 1 个记忆卷轴！');
+        logSystem('Gained 1 Memory Scroll!');
       } else {
         if (G.spirit >= 1) {
           G.spirit--;
@@ -869,19 +869,19 @@ function eventChoice(opt) {
             const w = learning[Math.floor(Math.random() * learning.length)];
             getWordState(w).status = 'reviewing';
             getWordState(w).correct = 0;
-            logSystem(`"${WORD_DATA[w].w}" 直接晋升【复习中】！消耗1精神力。`);
+            logSystem(`"${WORD_DATA[w].w}" promoted to [Reviewing]! Used 1 Spirit.`);
           }
-        } else { logSystem('精神力不足！'); }
+        } else { logSystem('Not enough Spirit!'); }
       }
       break;
     case '诅咒之书':
       if (opt === 'A') {
         G.maxHp += 2;
         if (G.spirit >= 1) G.spirit--;
-        logSystem('最大生命值 +2，失去 1 精神力。');
+        logSystem('Max HP +2, lost 1 Spirit.');
       } else {
-        if (G.gold >= 2) { G.gold -= 2; logSystem('失去2金币，避开了诅咒。'); }
-        else { logSystem('金币不足...诅咒降临但无金币可扣。'); }
+        if (G.gold >= 2) { G.gold -= 2; logSystem('Lost 2 gold, evaded the curse.'); }
+        else { logSystem('Not enough gold... the curse fizzles.'); }
       }
       break;
     case '记忆回响':
@@ -891,23 +891,23 @@ function eventChoice(opt) {
       } else {
         G.shieldBroken = true;
         G.shield = 0;
-        logSystem('本层护盾已破碎！');
+        logSystem('Floor shield shattered!');
       }
       break;
     case '幸运宝箱':
       if (opt === 'A') {
         G.gold += 3;
-        logSystem('获得 3 🪙！');
+        logSystem('Gained 3 🪙!');
       } else {
         if (Math.random() < 0.5) {
           G.gold += 8;
-          logSystem('幸运！获得 8 🪙！', 'gold');
+          logSystem('Lucky! Gained 8 🪙!', 'gold');
         } else {
           if (G.inventory.length > 0) {
             const lost = G.inventory.pop();
-            logSystem(`不幸...失去了 ${lost==='scroll'?'记忆卷轴':lost==='potion'?'复习药剂':'道具'}。`, 'wrong');
+            logSystem(`Unlucky... lost ${lost==='scroll'?'Memory Scroll':lost==='potion'?'Review Potion':'an item'}.`, 'wrong');
           } else {
-            logSystem('背包空空，无物可失。');
+            logSystem('Inventory empty, nothing to lose.');
           }
         }
       }
@@ -924,7 +924,7 @@ function startEventReview() {
   const pool = getAllWords().filter(i => getWordState(i).status === 'learning' && !isWordMastered(i));
   const selected = pool.slice(0, Math.min(3, pool.length));
   if (selected.length === 0) {
-    logSystem('没有学习中单词可复习。');
+    logSystem('No learning words to review.');
     G.eventReviewMode = false;
     setTimeout(() => advanceNode(), 800);
     return;
@@ -933,7 +933,7 @@ function startEventReview() {
     wordIndex: wi, hintLevel: 0, defeated: false, skipped: false, wrongCount: 0,
   }));
   G.currentTargetIdx = 0;
-  logSystem('记忆回响：答错不扣血！');
+  logSystem('Memory Echo: no HP penalty for errors!');
   renderBattle();
   focusInput();
 }
@@ -947,9 +947,9 @@ function handleReviewInput(input) {
     const st = getWordState(target.wordIndex);
     st.correct++;
     if (st.status === 'learning' && st.correct >= 2) { st.status = 'reviewing'; st.correct = 0; }
-    logLine(`✓ ${word.w} — 正确！`, 'correct');
+    logLine(`✓ ${word.w} — Correct!`, 'correct');
   } else {
-    logLine(`✗ ${word.w} — 答错（不扣血）`, 'system');
+    logLine(`✗ ${word.w} — Wrong (no penalty)`, 'system');
     target.skipped = true;
   }
   advanceReviewTarget();
@@ -966,25 +966,25 @@ function advanceReviewTarget() {
   }
   G.eventReviewMode = false;
   G.currentNodeMonsters = [];
-  logSystem('记忆回响结束。');
+  logSystem('Memory Echo ended.');
   setTimeout(() => advanceNode(), 800);
 }
 
 // ============ SHOP SYSTEM ============
 const SHOP_ITEMS = [
-  {id:'scroll',name:'记忆卷轴',price:3,desc:'下次遭遇单词时直接显示中文释义（Boss战无效）'},
-  {id:'review_potion',name:'复习药剂',price:2,desc:'立即测验3个"复习中"单词（答错不扣血，答对计入进度）'},
-  {id:'health_potion',name:'生命药水',price:4,desc:'恢复2点生命值'},
-  {id:'forget_charm',name:'遗忘护符',price:5,desc:'主动将一个"精通"词退回"复习中"，使用后返还2金币'},
-  {id:'root_lens',name:'词根透镜',price:8,desc:'永久（本局内）：学习阶段额外显示词根拆解'},
-  {id:'shield_rune',name:'护盾符石',price:6,desc:'立即恢复本层已破碎的护盾'},
+  {id:'scroll',name:'Memory Scroll',price:3,desc:'Reveal the answer for the next word (not in Boss fights)'},
+  {id:'review_potion',name:'Review Potion',price:2,desc:'Quiz 3 "reviewing" words (no HP penalty, progress counts)'},
+  {id:'health_potion',name:'Health Potion',price:4,desc:'Restore 2 HP'},
+  {id:'forget_charm',name:'Oblivion Charm',price:5,desc:'Demote 1 "mastered" word back to "reviewing", refund 2 gold'},
+  {id:'root_lens',name:'Etymology Lens',price:8,desc:'Permanent (this run): show root/stem breakdowns in learning stage'},
+  {id:'shield_rune',name:'Shield Rune',price:6,desc:'Instantly restore your broken floor shield'},
 ];
 
 function startShop(node) {
   G._shopMode = true;
   const area = document.getElementById('battle-scene');
-  area.innerHTML = `<div class="room-label">🛒 深渊商人的摊位</div>
-    <div class="scene-title">选购道具</div>`;
+  area.innerHTML = `<div class="room-label">🛒 Abyss Merchant</div>
+    <div class="scene-title">Purchase Items</div>`;
   let html = '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;justify-content:center;">';
   SHOP_ITEMS.forEach((item, i) => {
     const canBuy = G.gold >= item.price;
@@ -999,30 +999,30 @@ function startShop(node) {
     </div>`;
   });
   html += '</div>';
-  html += '<div style="margin-top:10px;color:var(--text-dim);">输入数字 1-6 购买，或输入 "离开" 继续前进</div>';
+  html += '<div style="margin-top:10px;color:var(--text-dim);">Type 1-6 to buy, or type "leave" to continue</div>';
   area.innerHTML += html;
   document.getElementById('choice-area').innerHTML = '';
 }
 
 function buyItem(id, price) {
-  if (G.gold < price) { logSystem('金币不足！'); return; }
+  if (G.gold < price) { logSystem('Not enough gold!'); return; }
   G.gold -= price;
   switch (id) {
-    case 'scroll': G.inventory.push('scroll'); logSystem('获得 记忆卷轴！'); break;
+    case 'scroll': G.inventory.push('scroll'); logSystem('Gained Memory Scroll!'); break;
     case 'review_potion': startReviewPotion(); break;
-    case 'health_potion': G.hp = Math.min(G.maxHp, G.hp + 2); logSystem('恢复 2 点生命值！'); break;
+    case 'health_potion': G.hp = Math.min(G.maxHp, G.hp + 2); logSystem('Restored 2 HP!'); break;
     case 'forget_charm':
       if (G.mastered.length > 0) {
         const idx = G.mastered.pop();
         getWordState(idx).status = 'reviewing'; getWordState(idx).correct = 0;
         G.gold += 2;
-        logSystem(`"${WORD_DATA[idx].w}" 退回复习中。返还 2🪙。`);
-      } else { G.gold += price; logSystem('无精通词可遗忘，退款。'); }
+        logSystem(`"${WORD_DATA[idx].w}" demoted to Reviewing. Refund 2🪙.`);
+      } else { G.gold += price; logSystem('No mastered words, refunded.'); }
       break;
-    case 'root_lens': G.lensActive = true; logSystem('词根透镜已装备（本局有效）！'); break;
+    case 'root_lens': G.lensActive = true; logSystem('Etymology Lens equipped (this run only)!'); break;
     case 'shield_rune':
-      if (G.shieldBroken) { G.shield = 1; G.shieldBroken = false; logSystem('护盾已恢复！'); }
-      else { G.gold += price; logSystem('护盾完好，无需恢复。退款。'); }
+      if (G.shieldBroken) { G.shield = 1; G.shieldBroken = false; logSystem('Shield restored!'); }
+      else { G.gold += price; logSystem('Shield intact, refunded.'); }
       break;
   }
   updateDisplay();
@@ -1031,14 +1031,14 @@ function buyItem(id, price) {
 function startReviewPotion() {
   const pool = getAllWords().filter(i => getWordState(i).status === 'reviewing' && !isWordMastered(i));
   const selected = pool.slice(0, Math.min(3, pool.length));
-  if (selected.length === 0) { logSystem('没有复习中单词。'); return; }
+  if (selected.length === 0) { logSystem('No reviewing words available.'); return; }
   G.currentNodeMonsters = selected.map(wi => ({
     wordIndex: wi, hintLevel: 0, defeated: false, skipped: false, wrongCount: 0,
   }));
   G.currentTargetIdx = 0;
   G.eventReviewMode = true;
   G._shopMode = false;
-  logSystem('复习药剂生效：答错不扣血！');
+  logSystem('Review Potion active: no HP penalty!');
   renderBattle();
   focusInput();
 }
@@ -1059,14 +1059,14 @@ function handleShopInput(input) {
     if (!G.eventReviewMode) startShop(G.map[G.node]); // refresh
     return;
   }
-  logSystem('输入数字 1-6 购买，或输入"离开"。');
+  logSystem('Type 1-6 to buy, or "leave" to exit.');
 }
 
 // ============ REST / SPRING / TRAP ============
 function startRest(node) {
   G.hp = Math.min(G.maxHp, G.hp + 1);
-  logSystem('🛌 休息了一刻...恢复了 1 点生命值。');
-  document.getElementById('battle-scene').innerHTML = `<div class="room-label">🛌 休息</div><div class="scene-title">宁静的庇护所</div><div class="scene-desc">HP +1</div>`;
+  logSystem('🛌 Rested... restored 1 HP.');
+  document.getElementById('battle-scene').innerHTML = `<div class="room-label">🛌 休息</div><div class="scene-title">Quiet Sanctuary</div><div class="scene-desc">HP +1</div>`;
   G.map[G.node].cleared = true;
   updateDisplay();
   setTimeout(() => advanceNode(), 1000);
@@ -1077,22 +1077,22 @@ function startSpring(node) {
   if (learning.length > 0) {
     const w = learning[Math.floor(Math.random() * learning.length)];
     getWordState(w).correct = Math.min(getWordState(w).correct + 1, 4);
-    logSystem(`💧 记忆泉："${WORD_DATA[w].w}" 的学习进度 +1。`);
+    logSystem(`💧 Memory Spring: "${WORD_DATA[w].w}" learning progress +1.`);
   }
-  document.getElementById('battle-scene').innerHTML = `<div class="room-label">💧 记忆泉</div><div class="scene-title">记忆之泉涌动...</div><div class="scene-desc">随机学习中单词进度+1</div>`;
+  document.getElementById('battle-scene').innerHTML = `<div class="room-label">💧 记忆泉</div><div class="scene-title">Memory waters surge...</div><div class="scene-desc">Random learning word progress +1</div>`;
   G.map[G.node].cleared = true;
   updateDisplay();
   setTimeout(() => advanceNode(), 1000);
 }
 
 function startTrap(node) {
-  document.getElementById('battle-scene').innerHTML = `<div class="room-label">💀 陷阱</div><div class="scene-title">触发陷阱！</div><div class="scene-desc">失去 1 点生命值</div>`;
+  document.getElementById('battle-scene').innerHTML = `<div class="room-label">💀 陷阱</div><div class="scene-title">Trap triggered!</div><div class="scene-desc">Lose 1 HP</div>`;
   if (G.shield > 0 && !G.shieldBroken) {
     G.shield = 0; G.shieldBroken = true;
-    logSystem('💀 陷阱！护盾抵挡了伤害。');
+    logSystem('💀 Trap! Shield absorbed the damage.');
   } else {
     G.hp--;
-    logSystem('💀 陷阱！受到 1 点伤害。');
+    logSystem('💀 Trap! Took 1 damage.');
   }
   G.map[G.node].cleared = true;
   updateDisplay();
@@ -1102,7 +1102,7 @@ function startTrap(node) {
 
 // ============ UI UPDATE ============
 function updateDisplay() {
-  document.getElementById('floor-label').textContent = `第 ${G.floor+1} 层`;
+  document.getElementById('floor-label').textContent = `Floor ${G.floor+1}`;
   document.getElementById('room-progress').textContent = `${G.node+1} / ${NODES_PER_FLOOR}`;
   document.getElementById('hp-val').textContent = G.hp;
   document.getElementById('shield-val').textContent = G.shieldBroken ? '破碎' : G.shield;
@@ -1112,7 +1112,7 @@ function updateDisplay() {
   document.getElementById('mastered-val').textContent = `${totalMastered}/100`;
   const invMap = {scroll:'📜',review_potion:'🧪',health_potion:'❤️',forget_charm:'💫',root_lens:'🔍',shield_rune:'🛡️'};
   const invDisplay = G.inventory.length > 0 ? G.inventory.map(i=>invMap[i]||i).join(' ') : '空';
-  document.getElementById('inventory-display').textContent = invDisplay + (G.lensActive ? ' 🔍' : '');
+  document.getElementById('inventory-display').textContent = (invDisplay === 'Empty' ? 'Empty' : invDisplay) + (G.lensActive ? ' 🔍' : '');
 }
 
 function renderMap() {
@@ -1247,12 +1247,12 @@ function victory() {
   const overlay = document.getElementById('overlay-container');
   overlay.innerHTML = `
     <div class="overlay">
-      <h2>${isFullClear ? '🏆 永恒殿堂' : '🌟 踏出深渊之门'}</h2>
-      <p>${isFullClear ? '恭喜！100 个单词全部精通！' : '本局通关！所有单词已写入学识录。'}</p>
-      <p>学识录进度：${totalMastered} / 100</p>
-      <p>总答错次数：${G.totalWrong} | 用时：${mins}分${secs}秒</p>
-      ${isFullClear ? '<p style="color:var(--gold);font-size:1.2em;">全局通关成就达成！</p>' : ''}
-      <button onclick="location.reload()">${isFullClear ? '再入深渊' : '继续挑战'}</button>
+      <h2>${isFullClear ? '🏆 Hall of Eternity' : '🌟 You Escaped the Abyss!'}</h2>
+      <p>${isFullClear ? 'Congratulations! All 100 words mastered!' : 'Floor 5 cleared! All words recorded in Codex.'}</p>
+      <p>Codex Progress: ${totalMastered} / 100</p>
+      <p>Total Errors：${G.totalWrong} | Time：${mins}分${secs}秒</p>
+      ${isFullClear ? '<p style="color:var(--gold);font-size:1.2em;">FULL CLEAR ACHIEVEMENT UNLOCKED!</p>' : ''}
+      <button onclick="location.reload()">${isFullClear ? 'Enter Again' : 'Continue'}</button>
     </div>`;
 }
 
@@ -1266,10 +1266,10 @@ function gameOver_defeat() {
   document.getElementById('game-screen').style.display = 'none';
   document.getElementById('overlay-container').innerHTML = `
     <div class="overlay">
-      <h2>💀 深渊吞噬了你...</h2>
-      <p>生命值归零。已精通的单词已写入学识录。</p>
+      <h2>💀 The Abyss consumed you...</h2>
+      <p>HP reached 0. Mastered words saved to Codex.</p>
       <p>学识录进度：${G.permanentMastered.length} / 100</p>
-      <button onclick="location.reload()">再次挑战</button>
+      <button onclick="location.reload()">Try Again</button>
     </div>`;
 }
 
@@ -1307,17 +1307,17 @@ function init() {
   const mastered = loadMastered();
   if (mastered.length > 0) {
     G.permanentMastered = mastered;
-    document.getElementById('mastered-count-display').textContent = `学识录：${mastered.length} / 100`;
+    document.getElementById('mastered-count-display').textContent = `Codex: ${mastered.length} / 100`;
   }
 
   // Check for saved game
   if (localStorage.getItem('abyss_dict_save')) {
     document.getElementById('overlay-container').innerHTML = `
       <div class="overlay">
-        <h2>📜 继续深渊之旅？</h2>
-        <p>检测到未完成的旅程。</p>
+        <h2>📜 Continue your journey?</h2>
+        <p>An unfinished journey awaits.</p>
         <button onclick="resumeGame()">继续</button>
-        <button onclick="newGame()" style="border-color:var(--text-dim);color:var(--text-dim);">重新开始</button>
+        <button onclick="newGame()" style="border-color:var(--text-dim);color:var(--text-dim);">New Game</button>
       </div>`;
   }
 
