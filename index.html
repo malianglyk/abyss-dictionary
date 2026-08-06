@@ -494,7 +494,7 @@ function renderBattle() {
     return;
   }
 
-  let html = `<div class="room-label">${nodeTypeNames[node.type]} · 房间 ${G.node+1}</div>
+  let html = `<div class="room-label">${nodeTypeNames[node.type]} · Room ${G.node+1}</div>
     <div style="color:var(--text-dim);margin-bottom:8px;">Progress: ${G.currentNodeMonsters.filter(m=>m.defeated||m.skipped).length} / ${G.currentNodeMonsters.length}</div>
     <div id="monster-list">`;
 
@@ -515,17 +515,17 @@ function renderBattle() {
     }
     let hint2 = '';
     if (isActive && mon.hintLevel >= 2) {
-      hint2 = `<span class="monster-hint" style="color:#f1c40f;">🔤 首字母：${getPinyinInitial(word.m)}</span>`;
+      hint2 = `<span class="monster-hint" style="color:#f1c40f;">🔤 Initial: ${getPinyinInitial(word.m)}</span>`;
     }
     if (isActive && mon.hintLevel >= 3) {
-      hint2 = `<span class="monster-hint" style="color:#e74c3c;">❗ 答案：${word.m}</span>`;
+      hint2 = `<span class="monster-hint" style="color:#e74c3c;">❗ Answer: ${word.m}</span>`;
     }
     const statusLabel = mon.defeated ? '✓' : (mon.skipped ? '⊘' : (isActive ? '◈' : '○'));
     html += `<div class="monster-row ${cls}">
       <span class="monster-status">${statusLabel}</span>
       <span class="monster-word">${word.w}</span>
       ${hintHtml} ${hint2}
-      ${st.status==='reviewing'&&!mon.defeated&&!mon.skipped?'<span style="color:#8e44ad;font-size:0.75em;">复习</span>':''}
+      ${st.status==='reviewing'&&!mon.defeated&&!mon.skipped?'<span style="color:#8e44ad;font-size:0.75em;">Review</span>':''}
     </div>`;
   });
   html += '</div>';
@@ -558,7 +558,7 @@ document.getElementById('cmd-input').addEventListener('keydown', function(e) {
 // Central input dispatcher
 function dispatchInput(input) {
   if (G.gameOver) return;
-  if (input === '卷轴' || input === '使用卷轴') { useScrollItem(); return; }
+  if (input === 'scroll' || input === 'use scroll' || input === '卷轴' || input === '使用卷轴') { useScrollItem(); return; }
 
   if (G._shopMode) { handleShopInput(input); return; }
   if (G._eventMode) { handleEventInput(input); return; }
@@ -633,7 +633,7 @@ function handleCorrectAnswer(target) {
     st.status = 'mastered';
     G.mastered.push(target.wordIndex);
     logLine(`🌟 "${word.w}" Mastered! Added to Codex.`, 'gold');
-    spawnFloatText('精通！', '#c9a050');
+    spawnFloatText('Mastered!', '#c9a050');
   }
 
   // Advance to next monster
@@ -669,7 +669,7 @@ function handleWrongAnswer(target) {
     G.shield = 0;
     G.shieldBroken = true;
     logLine(`🛡️ Shield shattered! Damage absorbed.`, 'wrong');
-    spawnFloatText('护盾破碎！', '#3498db');
+    spawnFloatText('Shield Broken!', '#3498db');
   } else {
     G.hp--;
     logLine(`💔 Wrong! ${word.w} — took 1 damage. HP: ${G.hp}`, 'wrong');
@@ -763,7 +763,7 @@ function handleBossInput(input) {
     G.bossHp--;
     G.gold += 2;
     logLine(`✓ Hit! Boss HP: ${G.bossHp}/${G.bossMaxHp}`, 'correct');
-    spawnFloatText('暴击！', '#ff4444');
+    spawnFloatText('Critical!', '#ff4444');
     advanceBossTarget();
     if (G.bossHp <= 0) {
       bossDefeated();
@@ -841,7 +841,7 @@ function eventChoice(opt) {
   G._eventMode = false;
 
   switch (evt.name) {
-    case '遗忘迷雾':
+    case 'Mist of Oblivion':
       if (opt === 'A') {
         const mastered = [...G.mastered];
         if (mastered.length > 0) {
@@ -857,7 +857,7 @@ function eventChoice(opt) {
         else { logSystem('Not enough gold... the mist fades.'); }
       }
       break;
-    case '智慧石碑':
+    case 'Stele of Wisdom':
       if (opt === 'A') {
         G.inventory.push('scroll');
         logSystem('Gained 1 Memory Scroll!');
@@ -874,7 +874,7 @@ function eventChoice(opt) {
         } else { logSystem('Not enough Spirit!'); }
       }
       break;
-    case '诅咒之书':
+    case 'Cursed Tome':
       if (opt === 'A') {
         G.maxHp += 2;
         if (G.spirit >= 1) G.spirit--;
@@ -884,7 +884,7 @@ function eventChoice(opt) {
         else { logSystem('Not enough gold... the curse fizzles.'); }
       }
       break;
-    case '记忆回响':
+    case 'Echo of Memory':
       if (opt === 'A') {
         startEventReview();
         return;
@@ -894,7 +894,7 @@ function eventChoice(opt) {
         logSystem('Floor shield shattered!');
       }
       break;
-    case '幸运宝箱':
+    case 'Lucky Chest':
       if (opt === 'A') {
         G.gold += 3;
         logSystem('Gained 3 🪙!');
@@ -994,7 +994,7 @@ function startShop(node) {
       <div style="color:${canBuy?'#f1c40f':'#999'};">🪙 ${item.price}</div>
       <button onclick="buyItem('${item.id}',${item.price})" ${!canBuy?'disabled':''}
         style="margin-top:4px;padding:4px 12px;background:${canBuy?'rgba(201,160,80,0.2)':'transparent'};color:${canBuy?'var(--gold)':'var(--text-dim)'};border:1px solid ${canBuy?'var(--gold-dim)':'var(--border)'};border-radius:4px;cursor:${canBuy?'pointer':'default'};">
-        购买 [${i+1}]
+        Buy [${i+1}]
       </button>
     </div>`;
   });
@@ -1066,7 +1066,7 @@ function handleShopInput(input) {
 function startRest(node) {
   G.hp = Math.min(G.maxHp, G.hp + 1);
   logSystem('🛌 Rested... restored 1 HP.');
-  document.getElementById('battle-scene').innerHTML = `<div class="room-label">🛌 休息</div><div class="scene-title">Quiet Sanctuary</div><div class="scene-desc">HP +1</div>`;
+  document.getElementById('battle-scene').innerHTML = `<div class="room-label">🛌 Rest</div><div class="scene-title">Quiet Sanctuary</div><div class="scene-desc">HP +1</div>`;
   G.map[G.node].cleared = true;
   updateDisplay();
   setTimeout(() => advanceNode(), 1000);
@@ -1079,14 +1079,14 @@ function startSpring(node) {
     getWordState(w).correct = Math.min(getWordState(w).correct + 1, 4);
     logSystem(`💧 Memory Spring: "${WORD_DATA[w].w}" learning progress +1.`);
   }
-  document.getElementById('battle-scene').innerHTML = `<div class="room-label">💧 记忆泉</div><div class="scene-title">Memory waters surge...</div><div class="scene-desc">Random learning word progress +1</div>`;
+  document.getElementById('battle-scene').innerHTML = `<div class="room-label">💧 Memory Spring</div><div class="scene-title">Memory waters surge...</div><div class="scene-desc">Random learning word progress +1</div>`;
   G.map[G.node].cleared = true;
   updateDisplay();
   setTimeout(() => advanceNode(), 1000);
 }
 
 function startTrap(node) {
-  document.getElementById('battle-scene').innerHTML = `<div class="room-label">💀 陷阱</div><div class="scene-title">Trap triggered!</div><div class="scene-desc">Lose 1 HP</div>`;
+  document.getElementById('battle-scene').innerHTML = `<div class="room-label">💀 Trap</div><div class="scene-title">Trap triggered!</div><div class="scene-desc">Lose 1 HP</div>`;
   if (G.shield > 0 && !G.shieldBroken) {
     G.shield = 0; G.shieldBroken = true;
     logSystem('💀 Trap! Shield absorbed the damage.');
@@ -1105,13 +1105,13 @@ function updateDisplay() {
   document.getElementById('floor-label').textContent = `Floor ${G.floor+1}`;
   document.getElementById('room-progress').textContent = `${G.node+1} / ${NODES_PER_FLOOR}`;
   document.getElementById('hp-val').textContent = G.hp;
-  document.getElementById('shield-val').textContent = G.shieldBroken ? '破碎' : G.shield;
+  document.getElementById('shield-val').textContent = G.shieldBroken ? 'Broken' : G.shield;
   document.getElementById('spirit-val').textContent = G.spirit;
   document.getElementById('gold-val').textContent = G.gold;
   const totalMastered = G.permanentMastered.length + G.mastered.length;
   document.getElementById('mastered-val').textContent = `${totalMastered}/100`;
   const invMap = {scroll:'📜',review_potion:'🧪',health_potion:'❤️',forget_charm:'💫',root_lens:'🔍',shield_rune:'🛡️'};
-  const invDisplay = G.inventory.length > 0 ? G.inventory.map(i=>invMap[i]||i).join(' ') : '空';
+  const invDisplay = G.inventory.length > 0 ? G.inventory.map(i=>invMap[i]||i).join(' ') : 'Empty';
   document.getElementById('inventory-display').textContent = (invDisplay === 'Empty' ? 'Empty' : invDisplay) + (G.lensActive ? ' 🔍' : '');
 }
 
@@ -1127,7 +1127,7 @@ function renderMap() {
     if (node.branchLeft) cls += ' branch';
     const icons = {battle:'⚔',event:'?',shop:'$',rest:'♨',spring:'💧',trap:'☠',boss:'👹'};
     const label = node.type === 'boss' ? 'BOSS' : icons[node.type] || '?';
-    html += `<div class="${cls}" onclick="onMapNodeClick(${i})" title="房间${i+1}: ${node.type}">${label}</div>`;
+    html += `<div class="${cls}" onclick="onMapNodeClick(${i})" title="Room ${i+1}: ${node.type}">${label}</div>`;
     if (i < G.map.length - 1) {
       const pathCls = (i === G.node || i === G.node - 1) ? 'map-path active' : 'map-path';
       html += `<div class="${pathCls}"></div>`;
@@ -1250,7 +1250,7 @@ function victory() {
       <h2>${isFullClear ? '🏆 Hall of Eternity' : '🌟 You Escaped the Abyss!'}</h2>
       <p>${isFullClear ? 'Congratulations! All 100 words mastered!' : 'Floor 5 cleared! All words recorded in Codex.'}</p>
       <p>Codex Progress: ${totalMastered} / 100</p>
-      <p>Total Errors：${G.totalWrong} | Time：${mins}分${secs}秒</p>
+      <p>Total Errors: ${G.totalWrong} | Time: ${mins}m ${secs}s</p>
       ${isFullClear ? '<p style="color:var(--gold);font-size:1.2em;">FULL CLEAR ACHIEVEMENT UNLOCKED!</p>' : ''}
       <button onclick="location.reload()">${isFullClear ? 'Enter Again' : 'Continue'}</button>
     </div>`;
@@ -1268,7 +1268,7 @@ function gameOver_defeat() {
     <div class="overlay">
       <h2>💀 The Abyss consumed you...</h2>
       <p>HP reached 0. Mastered words saved to Codex.</p>
-      <p>学识录进度：${G.permanentMastered.length} / 100</p>
+      <p>Codex Progress: ${G.permanentMastered.length} / 100</p>
       <button onclick="location.reload()">Try Again</button>
     </div>`;
 }
@@ -1316,7 +1316,7 @@ function init() {
       <div class="overlay">
         <h2>📜 Continue your journey?</h2>
         <p>An unfinished journey awaits.</p>
-        <button onclick="resumeGame()">继续</button>
+        <button onclick="resumeGame()">Continue</button>
         <button onclick="newGame()" style="border-color:var(--text-dim);color:var(--text-dim);">New Game</button>
       </div>`;
   }
