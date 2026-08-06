@@ -210,7 +210,7 @@ body {
     <div id="log-area"></div>
     <div id="input-line">
       <span class="prompt">&gt;</span>
-      <input id="cmd-input" type="text" placeholder="输入中文释义..." autocomplete="off" spellcheck="false">
+      <input id="cmd-input" type="text" placeholder="输入中文释义... (Tab 使用卷轴)" autocomplete="off" spellcheck="false">
     </div>
   </div>
 </div>
@@ -547,24 +547,28 @@ function focusInput() {
 
 // Handle input submission
 document.getElementById('cmd-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Tab') { e.preventDefault(); useScrollItem(); return; }
   if (e.key !== 'Enter') return;
   const input = this.value.trim();
   if (!input) return;
   this.value = '';
-  handleInput(input);
+  dispatchInput(input);
 });
 
-function handleInput(input) {
+// Central input dispatcher
+function dispatchInput(input) {
   if (G.gameOver) return;
+  if (input === '卷轴' || input === '使用卷轴') { useScrollItem(); return; }
 
-  // If in shop mode
   if (G._shopMode) { handleShopInput(input); return; }
-  // If in event mode
   if (G._eventMode) { handleEventInput(input); return; }
-  // If in review event mode
   if (G.eventReviewMode) { handleReviewInput(input); return; }
+  if (G.bossFight) { handleBossInput(input); return; }
 
-  // Normal battle input
+  handleNormalBattle(input);
+}
+
+function handleNormalBattle(input) {
   if (G.currentNodeMonsters.length === 0) return;
 
   const target = G.currentNodeMonsters[G.currentTargetIdx];
@@ -582,6 +586,20 @@ function handleInput(input) {
   updateDisplay();
   focusInput();
   saveGame();
+}
+
+function useScrollItem() {
+  if (G.bossFight) { logSystem('卷轴在 Boss 战中无效。'); return; }
+  if (!G.inventory.includes('scroll')) { logSystem('你没有任何记忆卷轴。'); return; }
+  const target = G.currentNodeMonsters[G.currentTargetIdx];
+  if (!target || target.defeated || target.skipped) { logSystem('当前没有目标单词。'); return; }
+  G.inventory = G.inventory.filter(i => i !== 'scroll');
+  G.scrollActive = true;
+  const word = WORD_DATA[target.wordIndex];
+  logSystem(`📜 使用记忆卷轴！"${word.w}" → ${word.m}`, 'gold');
+  updateDisplay();
+  renderBattle();
+  focusInput();
 }
 
 function checkAnswer(input, acceptableAnswers) {
@@ -733,21 +751,6 @@ function renderBossBattle() {
   document.getElementById('battle-scene').innerHTML = html;
 }
 
-// Override handleInput for boss
-const origHandleInput = handleInput;
-handleInput = function(input) {
-  if (G.gameOver) return;
-  if (G._shopMode) { handleShopInput(input); return; }
-  if (G._eventMode) { handleEventInput(input); return; }
-  if (G.eventReviewMode) { handleReviewInput(input); return; }
-
-  if (G.bossFight) {
-    handleBossInput(input);
-    return;
-  }
-  origHandleInput(input);
-};
-
 function handleBossInput(input) {
   const target = G.currentNodeMonsters[G.currentTargetIdx];
   if (!target || target.defeated || target.skipped) { advanceBossTarget(); return; }
@@ -781,6 +784,7 @@ function handleBossInput(input) {
   renderBattle();
   updateDisplay();
   focusInput();
+  saveGame();
 }
 
 function advanceBossTarget() {
@@ -791,7 +795,6 @@ function advanceBossTarget() {
       return;
     }
   }
-  // Cycle back if boss still alive
   if (G.bossHp > 0) {
     G.currentNodeMonsters.forEach(m => { m.defeated = false; m.skipped = false; });
     G.currentTargetIdx = 0;
@@ -825,6 +828,11 @@ function startEvent(node) {
   choiceArea.innerHTML = `
     <button onclick="eventChoice('A')">🅰 ${evt.optA}</button>
     <button onclick="eventChoice('B')">🅱 ${evt.optB}</button>`;
+}
+
+function handleEventInput(input) {
+  logSystem('请点击上方选项按钮做出选择。');
+  focusInput();
 }
 
 function eventChoice(opt) {
@@ -1102,7 +1110,9 @@ function updateDisplay() {
   document.getElementById('gold-val').textContent = G.gold;
   const totalMastered = G.permanentMastered.length + G.mastered.length;
   document.getElementById('mastered-val').textContent = `${totalMastered}/100`;
-  document.getElementById('inventory-display').textContent = G.inventory.length > 0 ? G.inventory.map(i=>i==='scroll'?'📜':i).join(' ') : '空';
+  const invMap = {scroll:'📜',review_potion:'🧪',health_potion:'❤️',forget_charm:'💫',root_lens:'🔍',shield_rune:'🛡️'};
+  const invDisplay = G.inventory.length > 0 ? G.inventory.map(i=>invMap[i]||i).join(' ') : '空';
+  document.getElementById('inventory-display').textContent = invDisplay + (G.lensActive ? ' 🔍' : '');
 }
 
 function renderMap() {
