@@ -668,8 +668,9 @@ function handleCardAnswer(input) {
 
   if (isCorrect) {
     // Apply effect
+    const pow = 1 + card.stars;
     if (card.type === 'defensive') {
-      const pow = 1 + card.stars; G.armor += pow;
+      G.armor += pow;
       logLine(`✓ Correct! "${word.w}" — +${pow} Armor (now ${G.armor})`, 'correct');
       spawnFloatText('+1 🛡️', '#3498db');
     } else {
