@@ -403,6 +403,7 @@ function resetGameState() {
     selectedCardIdx: -1,
     selectedTargetIdx: 0,
     battleCardsUsed: [],   // word indices correctly answered this battle
+    battleCardsWrong: [],  // word indices incorrectly answered this battle
     battleInProgress: false,
     nodes: [],
     nodeIdx: 0,
@@ -597,6 +598,7 @@ function spawnMonsters() {
 function startBattle() {
   G.battleInProgress = true;
   G.battleCardsUsed = [];
+  G.battleCardsWrong = [];
   G.discardPile = [];
   G.hand = [];
   G.armor = G.nextBattleBonusArmor;
@@ -667,15 +669,15 @@ function handleCardAnswer(input) {
   if (isCorrect) {
     // Apply effect
     if (card.type === 'defensive') {
-      G.armor += 1;
-      logLine(`✓ Correct! "${word.w}" — +1 Armor (now ${G.armor})`, 'correct');
+      const pow = 1 + card.stars; G.armor += pow;
+      logLine(`✓ Correct! "${word.w}" — +${pow} Armor (now ${G.armor})`, 'correct');
       spawnFloatText('+1 🛡️', '#3498db');
     } else {
       const target = G.monsters[G.selectedTargetIdx];
       if (target && !target.defeated) {
-        target.hp -= 1;
-        logLine(`✓ Correct! "${word.w}" — 1 damage to ${target.name}`, 'correct');
-        spawnFloatText('-1', '#e74c3c');
+        target.hp -= pow;
+        logLine(`✓ Correct! "${word.w}" — ${pow} damage to ${target.name}`, 'correct');
+        spawnFloatText('-${pow}', '#e74c3c');
         if (target.hp <= 0) {
           target.defeated = true;
           target.hp = 0;
@@ -686,9 +688,9 @@ function handleCardAnswer(input) {
         // Target already dead, find new one
         const alive = G.monsters.find(m => !m.defeated);
         if (alive) {
-          alive.hp -= 1;
+          alive.hp -= pow;
           G.selectedTargetIdx = G.monsters.indexOf(alive);
-          logLine(`✓ Correct! "${word.w}" — 1 damage to ${alive.name}`, 'correct');
+          logLine(`✓ Correct! "${word.w}" — ${pow} damage to ${alive.name}`, 'correct');
           if (alive.hp <= 0) { alive.defeated = true; alive.hp = 0; logLine(`💀 ${alive.name} defeated!`, 'gold'); }
         }
       }
@@ -703,6 +705,7 @@ function handleCardAnswer(input) {
     // Wrong: discard for this battle (store full card to preserve stars)
     G.discardPile.push({ wordIndex: card.wordIndex, type: card.type, stars: card.stars });
     G.totalWrong++;
+    if (!G.battleCardsWrong.includes(card.wordIndex)) G.battleCardsWrong.push(card.wordIndex);
     logLine(`✗ Wrong! "${word.w}" = ${word.m} — Card discarded for this battle.`, 'wrong');
     document.getElementById('battle-field').classList.add('shake');
     setTimeout(() => document.getElementById('battle-field').classList.remove('shake'), 500);
@@ -769,38 +772,73 @@ function endBattle_victory() {
   G.selectedCardIdx = -1;
   G.nextBattleBonusDraws = 0;
 
-  // Award stars
-  const starEarned = G.battleCardsUsed.length;
+  // Award stars — only cards answered correctly AND never answered wrong
+
+  const qualifiedCards = G.battleCardsUsed.filter(wi => !G.battleCardsWrong.includes(wi));
+
+  const disqualified = G.battleCardsUsed.length - qualifiedCards.length;
+
   let masteredThisBattle = 0;
+
   const masteredWords = [];
 
-  G.battleCardsUsed.forEach(wi => {
+
+
+  qualifiedCards.forEach(wi => {
+
     const card = getDeckCardByWordIndex(wi);
+
     if (card) {
+
       card.stars += 1;
+
       if (card.stars >= STARS_TO_MASTER) {
+
         removeCardFromDeck(wi);
+
         G.masteredCount++;
+
         masteredThisBattle++;
+
         masteredWords.push(WORD_DATA[wi].w);
+
       }
+
     }
+
   });
 
+
+
   // Gold reward
+
   const baseGold = G.monsters.length * 2;
+
   const eliteBonus = (G.nodes[G.nodeIdx] && (G.nodes[G.nodeIdx].type === 'elite' || G.nodes[G.nodeIdx].type === 'boss')) ? Math.floor(baseGold * 0.5) : 0;
+
   const goldEarned = baseGold + eliteBonus;
+
   G.gold += goldEarned;
 
+
+
   logSystem(`═══ Battle won! ═══`);
-  logLine(`⭐ ${starEarned} card(s) earned a star!`, 'gold');
+
+  logLine(`⭐ ${qualifiedCards.length} card(s) earned a star!`, 'gold');
+
+  if (disqualified > 0) logLine(`⚠️ ${disqualified} card(s) disqualified (answered wrong during battle).`, 'wrong');
+
   if (masteredThisBattle > 0) {
+
     logLine(`🌟 Mastered: ${masteredWords.join(', ')} (${G.masteredCount}/${WORD_DATA.length})`, 'gold');
+
   }
+
   logLine(`🪙 +${goldEarned} gold`, 'gold');
 
   G.battleCardsUsed = [];
+
+  G.battleCardsWrong = [];
 
   // Add new cards from word bank
   const addedIndices = addCardsToDeck(POST_BATTLE_CARDS);
@@ -918,11 +956,15 @@ function startBattleNode() {
   const node = G.nodes[G.nodeIdx];
   const typeLabels = { battle:'⚔️ Battle', elite:'💀 Elite Battle', boss:'👹 Boss Battle' };
   const scene = document.getElementById('monster-zone');
-  scene.innerHTML = `<div style="text-align:center;color:var(--gold);font-size:1.2em;">${typeLabels[node.type] || '⚔️ Battle'}</div>
-    <div style="text-align:center;color:var(--text-dim);">Prepare for combat...</div>`;
-  document.getElementById('hand-zone').innerHTML = '<div id="end-turn-wrap"><button id="end-turn-btn" onclick="endTurn()">End Turn ⏎</button></div>';
+  scene.innerHTML = `<div id="scene-area">
+    <div class="scene-icon">⚔️</div>
+    <div class="scene-title">${typeLabels[node.type] || '⚔️ Battle'}</div>
+    <div class="scene-desc">Level ${G.level} · Room ${G.nodeIdx+1}</div>
+    <button onclick="startBattle()" style="background:var(--red);color:#fff;border:none;padding:12px 32px;cursor:pointer;border-radius:4px;font-weight:bold;font-size:1.1em;">⚔️ Start Battle</button>
+  </div>`;
+  document.getElementById('hand-zone').innerHTML = '';
+  disableInput();
   logSystem(`——— ${typeLabels[node.type] || 'Battle'} · Level ${G.level} · Room ${G.nodeIdx+1} ———`);
-  setTimeout(() => startBattle(), 800);
 }
 
 // ============ EVENT SYSTEM ============
