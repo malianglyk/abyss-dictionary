@@ -243,6 +243,9 @@ body {
 }
 .shop-item button:hover { background:var(--gold); color:var(--bg); }
 .shop-item button:disabled { opacity:0.3; cursor:default; }
+.shop-item.sold { opacity:0.45; filter:grayscale(0.5); }
+.shop-item.ability { border-color:rgba(142,68,173,0.4); background:rgba(20,12,28,0.9); }
+.shop-item .shop-icon { font-size:1.5em; margin-bottom:2px; }
 
 /* ============ EVENT / NON-COMBAT ============ */
 #scene-area { text-align:center; padding:20px; }
@@ -270,6 +273,13 @@ body {
 ::-webkit-scrollbar { width:4px; height:4px; }
 ::-webkit-scrollbar-track { background:transparent; }
 ::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
+
+/* ============ INVENTORY ============ */
+.inv-slot { cursor:pointer; padding:1px 6px; border-radius:3px; font-size:0.85em; transition:all 0.3s; }
+.inv-slot.empty { color:var(--text-dim); cursor:default; }
+.inv-slot.filled { color:var(--gold); background:rgba(201,160,80,0.15); border:1px solid var(--gold-dim); }
+.inv-slot.filled:hover { background:var(--gold); color:var(--bg); }
+.inv-tooltip { display:none; position:absolute; background:rgba(0,0,0,0.9); color:var(--text); border:1px solid var(--border); padding:6px 10px; border-radius:4px; font-size:0.75em; white-space:nowrap; z-index:50; pointer-events:none; }
 
 /* ============ RESPONSIVE ============ */
 @media (max-width:700px) {
@@ -314,11 +324,12 @@ body {
     <span class="stat"><span class="icon">📖</span> Deck: <span class="val" id="deck-val">10</span></span>
     <span class="stat"><span class="icon">⭐</span> <span class="val" id="mastered-val">0</span>/<span id="total-words-val">100</span></span>
     <button id="deck-viewer-btn" onclick="openDeckViewer()">📚 View Deck</button>
+            <span class="stat" id="inventory-display"><span class="icon">🎒</span> <span id="inv-slot-0" class="inv-slot empty">—</span> <span id="inv-slot-1" class="inv-slot empty">—</span></span>
   </div>
 
   <!-- Map Bar -->
   <div id="map-bar">
-    <span id="map-label">▸ <span>Level <span id="map-level">1</span></span> · <span id="map-progress">1/20</span></span>
+    <span id="map-label">▸ <span>Level <span id="map-level">1</span></span> · <span id="map-progress">1/15</span></span>
     <div id="map-nodes"></div>
   </div>
 
@@ -483,7 +494,7 @@ async function initWordSystem() {
     sel.value = (WORD_BANKS[savedBankId] || savedBankId === 'custom') ? savedBankId : 'default';
   }
 }
-const NODES_PER_LEVEL = 20;
+const NODES_PER_LEVEL = 15;
 const STARS_TO_MASTER = 3;
 const CARDS_PER_TURN = 3;
 const INITIAL_DECK_SIZE = 10;
@@ -491,6 +502,7 @@ const POST_BATTLE_CARDS = 5;
 const MAX_MONSTERS = 5;
 
 const NODE_WEIGHTS = { battle:50, event:18, shop:15, rest:10, spring:7 };
+const MAX_INVENTORY = 2;
 const MONSTER_NAMES = ['Shadow Drifter','Abyss Hound','Void Specter','Gloom Warden','Dread Moth','Echo Shade','Fog Revenant','Rune Husk','Chitin Crawler','Pale Wretch','Night Scribe','Hollow Saint','Blight Weaver','Cinder Monk','Deep Watcher'];
 const MONSTER_ICONS = ['👾','🐺','👻','🗿','🦋','🌫️','💀','📜','🕷️','🧟','📖','😇','🕸️','🔥','👁️'];
 
@@ -514,7 +526,9 @@ function resetGameState() {
     battleInProgress: false,
     nodes: [],
     nodeIdx: 0,
-    inventory: [],
+    inventory: [],         // potion items (max 2), e.g. [{id:'health_potion',name:'Health Potion',desc:'Restore 4 HP'}]
+    abilities: [],         // permanent ability ids
+    abilityData: {},       // runtime data for abilities (e.g. bloodlust_used this battle)
     nextBattleBonusArmor: 0,
     nextBattleBonusDraws: 0,
     gameOver: false,
@@ -596,6 +610,27 @@ function updateDisplay() {
   // Enable/disable deck viewer button
   const dvBtn = document.getElementById('deck-viewer-btn');
   if (dvBtn) dvBtn.style.display = (G.battleInProgress && !G._trainingMode) ? 'none' : '';
+  // Render inventory
+  renderInventory();
+}
+
+function renderInventory() {
+  for (let slot = 0; slot < MAX_INVENTORY; slot++) {
+    const el = document.getElementById('inv-slot-' + slot);
+    if (!el) continue;
+    if (slot < G.inventory.length) {
+      const item = G.inventory[slot];
+      el.className = 'inv-slot filled';
+      el.textContent = (item.icon || '🧪') + ' ' + item.name;
+      el.title = item.desc + ' (Click or press ' + (slot+1) + ' to use)';
+      el.onclick = function() { useInventoryItem(slot); };
+    } else {
+      el.className = 'inv-slot empty';
+      el.textContent = '—';
+      el.title = '';
+      el.onclick = null;
+    }
+  }
 }
 
 function focusInput() {
@@ -633,8 +668,9 @@ function addCardsToDeck(count) {
   if (unused.length === 0) return [];
   shuffle(unused);
   const toAdd = unused.slice(0, Math.min(count, unused.length));
+  const startStars = G.abilities.includes('scholar_pact') ? 1 : 0;
   toAdd.forEach(i => {
-    G.deck.push({ wordIndex: i, type: G.wordTypeMap[i], stars: 0 });
+    G.deck.push({ wordIndex: i, type: G.wordTypeMap[i], stars: startStars });
     G.usedWordIndices.add(i);
   });
   shuffle(G.deck);
@@ -708,13 +744,20 @@ function startBattle() {
   G.battleCardsWrong = [];
   G.discardPile = [];
   G.hand = [];
+  G._bloodlustUsed = false;
+  G._fortifiedMindUsed = false;
+  G._lastStandUsed = false;
   const bonusArmor = G.nextBattleBonusArmor;
   G.nextBattleBonusArmor = 0;
+  // Quick Draw ability: permanent +1 draw
+  if (G.abilities.includes('quick_draw')) { G.nextBattleBonusDraws = (G.nextBattleBonusDraws || 0) + 1; }
+  // Thick Armor ability: permanent +1 starting armor
+  const permArmor = G.abilities.includes('thick_armor') ? 1 : 0;
   spawnMonsters();
   logSystem('═══ Battle begins! ═══');
   beginTurn();
-  G.armor = bonusArmor;
-  if (G.armor > 0) logSystem(`Iron Rune: +${G.armor} starting armor.`);
+  G.armor = bonusArmor + permArmor;
+  if (G.armor > 0) logSystem(`Armor: +${G.armor} starting armor.`);
 }
 
 function beginTurn() {
@@ -762,7 +805,7 @@ function endTurn() {
 }
 
 function handleCardAnswer(input) {
-  if (G._trainingMode) { handleTrainingInput(input); return; }
+  if (G._trainingMode) { if (G._wordStormMode) { handleWordStormInput(input); } else { handleTrainingInput(input); } return; }
   if (!G.battleInProgress) return;
   if (G.selectedCardIdx < 0 || G.selectedCardIdx >= G.hand.length) {
     logSystem('Click a card first.');
@@ -776,13 +819,20 @@ function handleCardAnswer(input) {
 
   if (isCorrect) {
     // Apply effect
-    const pow = 1 + card.stars;
+    let pow = 1 + card.stars;
+    // Strength Tonic: double damage on offensive
+    if (card.type === 'offensive' && G.nextDoubleDmg) {
+      pow *= 2;
+      G.nextDoubleDmg = false;
+      logSystem('💪 Strength Tonic: DOUBLE damage!');
+    }
     if (card.type === 'defensive') {
       G.armor += pow;
       logLine(`✓ Correct! "${word.w}" — +${pow} Armor (now ${G.armor})`, 'correct');
       spawnFloatText(`+${pow} 🛡️`, '#3498db');
     } else {
       const target = G.monsters[G.selectedTargetIdx];
+      let killedMonster = false;
       if (target && !target.defeated) {
         target.hp -= pow;
         logLine(`✓ Correct! "${word.w}" — ${pow} damage to ${target.name}`, 'correct');
@@ -790,6 +840,7 @@ function handleCardAnswer(input) {
         if (target.hp <= 0) {
           target.defeated = true;
           target.hp = 0;
+          killedMonster = true;
           logLine(`💀 ${target.name} defeated!`, 'gold');
           spawnFloatText('Defeated!', '#c9a050');
         }
@@ -800,18 +851,51 @@ function handleCardAnswer(input) {
           alive.hp -= pow;
           G.selectedTargetIdx = G.monsters.indexOf(alive);
           logLine(`✓ Correct! "${word.w}" — ${pow} damage to ${alive.name}`, 'correct');
-          if (alive.hp <= 0) { alive.defeated = true; alive.hp = 0; logLine(`💀 ${alive.name} defeated!`, 'gold'); }
+          if (alive.hp <= 0) { alive.defeated = true; alive.hp = 0; killedMonster = true; logLine(`💀 ${alive.name} defeated!`, 'gold'); }
         }
+      }
+      // Bloodlust: first kill each battle heals 2 HP
+      if (killedMonster && G.abilities.includes('bloodlust') && !G._bloodlustUsed) {
+        G._bloodlustUsed = true;
+        G.hp = Math.min(G.maxHp, G.hp + 2);
+        logSystem('🗡️ Bloodlust: +2 HP!');
+        spawnFloatText('+2 ❤️', '#e74c3c');
+      }
+      // Vampiric Edge: each offensive kill heals 1 HP
+      if (killedMonster && G.abilities.includes('vampiric_edge')) {
+        G.hp = Math.min(G.maxHp, G.hp + 1);
+        logSystem('🩸 Vampiric Edge: +1 HP!');
       }
     }
     // Track for post-battle stars
     if (!G.battleCardsUsed.includes(card.wordIndex)) {
       G.battleCardsUsed.push(card.wordIndex);
+      // Star Seeker: 30% chance for double star on correct answer
+      if (G.abilities.includes('star_seeker') && Math.random() < 0.3) {
+        G.battleCardsUsed.push(card.wordIndex); // Push again for double credit
+        logLine(`🌟 Star Seeker: double star chance for "${word.w}"!`, 'gold');
+      }
     }
     // Card goes to discard pile (reshuffles when deck runs out)
     G.discardPile.push(card);
   } else {
-    // Wrong: discard for this battle (store full card to preserve stars)
+    // Wrong answer
+    const hasWrongSafe = G.nextWrongSafe || (G.abilities.includes('fortified_mind') && !G._fortifiedMindUsed);
+    if (hasWrongSafe) {
+      // Card stays in hand, not discarded
+      if (G.nextWrongSafe) { G.nextWrongSafe = false; }
+      if (G.abilities.includes('fortified_mind')) { G._fortifiedMindUsed = true; }
+      G.totalWrong++;
+      if (!G.battleCardsWrong.includes(card.wordIndex)) G.battleCardsWrong.push(card.wordIndex);
+      logLine(`✗ Wrong! "${word.w}" = ${word.m} — but card is saved!`, 'info');
+      // Don't remove card from hand
+      G.selectedCardIdx = -1;
+      updateDisplay();
+      renderBattle();
+      focusInput();
+      return;
+    }
+    // Normal wrong: discard for this battle (store full card to preserve stars)
     G.discardPile.push({ wordIndex: card.wordIndex, type: card.type, stars: card.stars });
     G.totalWrong++;
     if (!G.battleCardsWrong.includes(card.wordIndex)) G.battleCardsWrong.push(card.wordIndex);
@@ -858,7 +942,15 @@ function monsterPhase() {
       logLine(`🛡️ ${monster.name} attacks! All ${monster.atk} damage absorbed by armor.`, 'info');
     }
     G.armor = Math.max(0, G.armor - monster.atk);
-    if (G.hp <= 0) { gameOver_defeat(); return; }
+    if (G.hp <= 0) {
+      if (G.abilities.includes('last_stand') && !G._lastStandUsed) {
+        G._lastStandUsed = true;
+        G.hp = 1;
+        logSystem('💀 Last Stand: You survive at 1 HP!');
+      } else {
+        gameOver_defeat(); return;
+      }
+    }
   }
   if (totalDmg > 0) {
     document.getElementById('battle-field').classList.add('flash-red');
@@ -925,7 +1017,7 @@ function endBattle_victory() {
 
   const eliteBonus = (G.nodes[G.nodeIdx] && (G.nodes[G.nodeIdx].type === 'elite' || G.nodes[G.nodeIdx].type === 'boss')) ? Math.floor(baseGold * 0.5) : 0;
 
-  const goldEarned = baseGold + eliteBonus;
+  const goldEarned = baseGold + eliteBonus + (G.abilities.includes('golden_touch') ? 3 : 0);
 
   G.gold += goldEarned;
 
@@ -943,7 +1035,7 @@ function endBattle_victory() {
 
   }
 
-  logLine(`🪙 +${goldEarned} gold`, 'gold');
+  logLine(`🪙 +${goldEarned} gold${G.abilities.includes('golden_touch')?' (incl. +3 Golden Touch)':''}`, 'gold');
 
   G.battleCardsUsed = [];
 
@@ -974,14 +1066,14 @@ function generateLevel() {
   const nodes = [];
   // Node 0: always battle
   nodes.push({ type: 'battle', visited: false, cleared: false });
-  // Nodes 1-17: random
-  for (let i = 1; i <= 17; i++) {
+  // Nodes 1-12: random
+  for (let i = 1; i <= 12; i++) {
     const t = types[Math.floor(Math.random() * types.length)];
     nodes.push({ type: t, visited: false, cleared: false });
   }
-  // Node 18: battle or elite
+  // Node 13: battle or elite
   nodes.push({ type: isEliteLevel() ? 'elite' : 'battle', visited: false, cleared: false });
-  // Node 19: boss
+  // Node 14: boss
   nodes.push({ type: 'boss', visited: false, cleared: false });
   return nodes;
 }
@@ -1139,9 +1231,10 @@ const EVENTS = [
       G.nextBattleBonusArmor += 1;
       logSystem(`❤️ +3 HP. +1 armor for next battle.`);
     }},
-    optB: { label: 'Bottle', desc: 'Gain 1 Health Potion (use anytime)', action: () => {
-      G.inventory.push('health_potion');
-      logSystem('🧪 Gained 1 Health Potion! Use from inventory.');
+    optB: { label: 'Bottle', desc: 'Gain 1 Health Potion (stored in inventory)', action: () => {
+      if (G.inventory.length >= MAX_INVENTORY) { logSystem('Inventory full! Have 4 gold instead.'); G.gold += 4; return; }
+      G.inventory.push({ id:'health_potion', name:'Health Potion', desc:'Restore 4 HP', icon:'❤️', action: POTION_POOL[0].action });
+      logSystem('🧪 Gained 1 Health Potion! Stored in inventory.');
     }},
   },
   {
@@ -1155,6 +1248,108 @@ const EVENTS = [
       G.gold += 6;
       G.hp = Math.max(1, G.hp - 1);
       logSystem('Gained 6 🪙, lost 1 HP.');
+    }},
+  },
+  {
+    name: 'Shadow Gambler', icon: '🎲',
+    flavor: 'A cloaked figure shakes a cup of bone dice. "Feeling lucky, traveler?"',
+    optA: { label: 'Bet 3g', desc: '50%: win 8g. 50%: lose your bet.', action: () => {
+      if (G.gold < 3) { logSystem('Not enough gold! The gambler scoffs.'); return; }
+      G.gold -= 3;
+      if (Math.random() < 0.5) { G.gold += 8; logSystem('🎲 You won! +8 gold!'); }
+      else { logSystem('🎲 You lost the bet... -3 gold.'); }
+    }},
+    optB: { label: 'Bet HP', desc: 'Lose 3 HP, 60%: gain 12 gold. 40%: nothing.', action: () => {
+      G.hp = Math.max(1, G.hp - 3);
+      if (Math.random() < 0.6) { G.gold += 12; logSystem('🎲 Risky bet paid off! +12 gold, -3 HP.'); }
+      else { logSystem('🎲 The gamble failed... -3 HP, nothing gained.'); }
+    }},
+  },
+  {
+    name: 'Cursed Altar', icon: '🕯️',
+    flavor: 'An ancient altar pulses with dark energy. Sacrifices made here grant power...',
+    optA: { label: 'Blood Sacrifice', desc: 'Lose 4 HP, gain a random ability permanently.', action: () => {
+      G.hp = Math.max(1, G.hp - 4);
+      const ab = ABILITY_POOL[Math.floor(Math.random() * ABILITY_POOL.length)];
+      if (!G.abilities.includes(ab.id)) {
+        G.abilities.push(ab.id);
+        logSystem(`🩸 Lost 4 HP. Gained: ${ab.name}!`);
+        ab.action();
+      } else {
+        logSystem('🩸 Lost 4 HP. Ability already owned — gained 8 gold instead.');
+        G.gold += 8;
+      }
+    }},
+    optB: { label: 'Gold Offering', desc: 'Pay 5 gold, restore 6 HP.', action: () => {
+      if (G.gold < 5) { logSystem('Not enough gold! The altar flickers.'); return; }
+      G.gold -= 5;
+      G.hp = Math.min(G.maxHp, G.hp + 6);
+      logSystem(`🕯️ The altar glows... +6 HP. HP: ${G.hp}/${G.maxHp}`);
+    }},
+  },
+  {
+    name: 'Word Storm', icon: '🌪️',
+    flavor: 'A vortex of swirling letters engulfs you! Words flash before your eyes...',
+    optA: { label: 'Embrace', desc: 'Quiz 4 cards rapidly. Each correct = +2 gold. No penalty for wrong.', action: () => {
+      startWordStormMode();
+      return 'defer';
+    }},
+    optB: { label: 'Flee', desc: 'Escape safely, gain 3 gold.', action: () => {
+      G.gold += 3;
+      logSystem('🌪️ Fled the storm. +3 gold.');
+    }},
+  },
+  {
+    name: 'Mysterious Pillar', icon: '🗿',
+    flavor: 'A towering obsidian pillar covered in glowing runes. It hums with power...',
+    optA: { label: 'Read Runes', desc: 'Reveal all hidden nodes on the map for this level.', action: () => {
+      logSystem('🗿 The runes illuminate the path ahead! Map revealed.');
+      renderMap(); // Map already shows current+2, this is flavor + minor benefit
+      G.gold += 2; // Small bonus
+    }},
+    optB: { label: 'Take Crystal', desc: 'Gain 7 gold. The pillar crumbles.', action: () => {
+      G.gold += 7;
+      logSystem('💎 Took the crystal. +7 gold. The pillar collapses behind you.');
+      G.hp = Math.max(1, G.hp - 1); // Minor trap
+    }},
+  },
+  {
+    name: 'Abyss Whisper', icon: '👁️',
+    flavor: 'A disembodied voice echoes from the darkness: "Knowledge is power... but power has a price..."',
+    optA: { label: 'Listen', desc: 'Add 1 star to a random card. Random chance of -2 HP.', action: () => {
+      if (G.deck.length === 0) { logSystem('Deck empty. The voice fades.'); return; }
+      const c = G.deck[Math.floor(Math.random() * G.deck.length)];
+      c.stars += 1;
+      logSystem(`👁️ "${WORD_DATA[c.wordIndex].w}" +1 star (now ${c.stars}).`);
+      if (c.stars >= STARS_TO_MASTER) { removeCardFromDeck(c.wordIndex); G.masteredCount++; logLine(`🌟 Mastered!`, 'gold'); }
+      if (Math.random() < 0.4) { G.hp = Math.max(1, G.hp - 2); logSystem('The whisper drains your life... -2 HP.'); }
+      if (G.masteredCount >= WORD_DATA.length) { victory(); }
+    }},
+    optB: { label: 'Ignore', desc: 'Resist the voice. Nothing happens.', action: () => {
+      logSystem('👁️ You resist the whisper. The silence returns.');
+    }},
+  },
+  {
+    name: 'Wandering Merchant', icon: '🧳',
+    flavor: 'A weary traveler offers you a bargain from their tattered pack...',
+    optA: { label: 'Trade', desc: 'Pay 3 gold, add a random potion to inventory.', action: () => {
+      if (G.gold < 3) { logSystem('Not enough gold!'); return; }
+      if (G.inventory.length >= MAX_INVENTORY) { logSystem('Inventory full! Cannot carry more.'); return; }
+      G.gold -= 3;
+      const pot = POTION_POOL[Math.floor(Math.random() * POTION_POOL.length)];
+      G.inventory.push({ id:pot.id, name:pot.name, desc:pot.desc, icon:pot.icon, action:pot.action });
+      logSystem(`🧳 Bought ${pot.name} for 3 gold!`);
+    }},
+    optB: { label: 'Rob', desc: '50%: gain random potion free. 50%: lose 4 HP and get nothing.', action: () => {
+      if (Math.random() < 0.5) {
+        if (G.inventory.length >= MAX_INVENTORY) { logSystem('Inventory full! Have 6 gold instead.'); G.gold += 6; return; }
+        const pot = POTION_POOL[Math.floor(Math.random() * POTION_POOL.length)];
+        G.inventory.push({ id:pot.id, name:pot.name, desc:pot.desc, icon:pot.icon, action:pot.action });
+        logSystem(`🧳 Stole ${pot.name}! The merchant runs away.`);
+      } else {
+        G.hp = Math.max(1, G.hp - 4);
+        logSystem('🧳 The merchant fights back! -4 HP. They escape with their wares.');
+      }
     }},
   },
 ];
@@ -1235,84 +1430,188 @@ function handleTrainingInput(input) {
   }
 }
 
+// ============ WORD STORM MODE ============
+let wordStormCount = 0;
+let wordStormGold = 0;
+function startWordStormMode() {
+  G._trainingMode = true;
+  G.battleInProgress = false;
+  const stormPool = shuffle([...G.deck]).slice(0, Math.min(4, G.deck.length));
+  if (stormPool.length === 0) { logSystem('No cards to quiz! Have 3 gold instead.'); G.gold += 3; G._trainingMode = false; G.nodes[G.nodeIdx].cleared = true; setTimeout(() => advanceNode(), 800); return; }
+  G.hand = stormPool.map(c => ({ wordIndex: c.wordIndex, type: c.type, stars: c.stars }));
+  G.selectedCardIdx = -1;
+  wordStormCount = 0;
+  wordStormGold = 0;
+  G._wordStormMode = true;
+  logSystem('🌪️ Word Storm: each correct = +2 gold, no penalty for wrong!');
+  renderBattle();
+  enableInput();
+  focusInput();
+}
+
+function handleWordStormInput(input) {
+  if (G.selectedCardIdx < 0 || G.selectedCardIdx >= G.hand.length) { logSystem('Click a card first.'); focusInput(); return; }
+  const card = G.hand[G.selectedCardIdx];
+  const word = WORD_DATA[card.wordIndex];
+  const isCorrect = checkAnswer(input, word.a);
+  if (isCorrect) {
+    wordStormGold += 2;
+    logLine(`✓ Correct! "${word.w}" = ${word.m} (+2g)`, 'correct');
+  } else {
+    logLine(`✗ "${word.w}" = ${word.m} (no penalty in storm)`, 'info');
+  }
+  wordStormCount++;
+  G.hand.splice(G.selectedCardIdx, 1);
+  G.selectedCardIdx = -1;
+  renderBattle();
+  if (G.hand.length === 0) {
+    G._trainingMode = false;
+    G._wordStormMode = false;
+    G.hand = [];
+    G.gold += wordStormGold;
+    logSystem(`🌪️ Word Storm complete! Earned ${wordStormGold} gold.`);
+    G.nodes[G.nodeIdx].cleared = true;
+    disableInput();
+    renderBattle();
+    updateDisplay();
+    setTimeout(() => advanceNode(), 1000);
+  } else {
+    focusInput();
+  }
+}
+
 // ============ SHOP SYSTEM ============
-const SHOP_ITEMS = [
-  { id:'star_scroll', name:'Star Scroll', price:5, desc:'Add 1 star to a random card in your deck.' },
-  { id:'health_potion', name:'Health Potion', price:4, desc:'Restore 4 HP immediately.' },
-  { id:'iron_rune', name:'Iron Rune', price:3, desc:'Start next battle with 2 bonus armor.' },
-  { id:'quick_wit', name:'Quick Wit', price:3, desc:'Draw 4 cards/turn next battle (instead of 3).' },
-  { id:'forge_hammer', name:'Forge Hammer', price:4, desc:'Convert 1 card: defensive↔offensive.' },
-  { id:'oblivion_dust', name:'Oblivion Dust', price:6, desc:'Remove 1 random 0-star card. Gain 3g refund.' },
+const POTION_POOL = [
+  { id:'health_potion', name:'Health Potion', price:3, desc:'Restore 4 HP. (Stored in inventory)', icon:'❤️', action(){ G.hp=Math.min(G.maxHp,G.hp+4); logSystem(`❤️ +4 HP. HP: ${G.hp}/${G.maxHp}`); }},
+  { id:'greater_potion', name:'Greater Potion', price:5, desc:'Restore 8 HP. (Stored in inventory)', icon:'💚', action(){ G.hp=Math.min(G.maxHp,G.hp+8); logSystem(`💚 +8 HP. HP: ${G.hp}/${G.maxHp}`); }},
+  { id:'armor_elixir', name:'Armor Elixir', price:4, desc:'Start next battle with +3 armor. (Stored in inventory)', icon:'🛡️', action(){ G.nextBattleBonusArmor+=3; logSystem('🛡️ +3 starting armor for next battle.'); }},
+  { id:'star_dust', name:'Star Dust', price:6, desc:'Add 1 star to a random card. (Stored in inventory)', icon:'✨', action(){
+    if(G.deck.length===0){logSystem('Deck empty! No effect.');return;}
+    const c=G.deck[Math.floor(Math.random()*G.deck.length)];c.stars+=1;
+    logSystem(`✨ Star Dust: "${WORD_DATA[c.wordIndex].w}" +1 star (now ${c.stars}).`);
+    if(c.stars>=STARS_TO_MASTER){removeCardFromDeck(c.wordIndex);G.masteredCount++;logLine(`🌟 Mastered! (${G.masteredCount}/${WORD_DATA.length})`,'gold');}
+    if(G.masteredCount>=WORD_DATA.length){victory();}
+  }},
+  { id:'lucky_brew', name:'Lucky Brew', price:2, desc:'Gain 5 gold immediately. (Stored in inventory)', icon:'🍀', action(){ G.gold+=5; logSystem('🍀 +5 gold!'); }},
+  { id:'mind_sharpener', name:'Mind Sharpener', price:3, desc:'Next wrong answer: card is NOT discarded. (Stored in inventory)', icon:'🧠', action(){ G.nextWrongSafe=true; logSystem('🧠 Next wrong answer will be forgiven!'); }},
+  { id:'strength_tonic', name:'Strength Tonic', price:4, desc:'Next offensive card deals double damage. (Stored in inventory)', icon:'💪', action(){ G.nextDoubleDmg=true; logSystem('💪 Next offensive card deals DOUBLE damage!'); }},
+  { id:'oblivion_dust', name:'Oblivion Dust', price:5, desc:'Remove 1 random 0-star card. Gain 3g refund. (Stored in inventory)', icon:'💨', action(){
+    const zs=G.deck.filter(c=>c.stars===0);
+    if(zs.length===0){logSystem('No 0-star cards! No effect.');return;}
+    const rm=zs[Math.floor(Math.random()*zs.length)];removeCardFromDeck(rm.wordIndex);G.gold+=3;
+    logSystem(`💨 Removed "${WORD_DATA[rm.wordIndex].w}" (+3g refund).`);
+  }},
+  { id:'rejuv_vial', name:'Rejuvenation Vial', price:3, desc:'Restore 2 HP & +1 armor next battle. (Stored in inventory)', icon:'🧪', action(){ G.hp=Math.min(G.maxHp,G.hp+2);G.nextBattleBonusArmor+=1; logSystem('🧪 +2 HP & +1 armor next battle.'); }},
+  { id:'forge_vial', name:'Forge Vial', price:5, desc:'Convert 1 card: defensive↔offensive. (Stored in inventory)', icon:'🔨', action(){ startForgeMode(); return 'defer'; }},
+];
+
+const ABILITY_POOL = [
+  { id:'iron_constitution', name:'Iron Constitution', price:10, desc:'+3 max HP permanently.', icon:'💎', action(){ G.maxHp+=3; G.hp+=3; logSystem('💎 Max HP increased by 3!'); }},
+  { id:'quick_draw', name:'Quick Draw', price:8, desc:'Draw 1 extra card every turn permanently.', icon:'⚡', action(){ G.nextBattleBonusDraws+=1; logSystem('⚡ Permanent +1 card draw per turn!'); }},
+  { id:'thick_armor', name:'Thick Armor', price:7, desc:'Start each battle with +1 armor permanently.', icon:'🛡️', action(){ G.nextBattleBonusArmor+=1; logSystem('🛡️ Permanent +1 starting armor!'); }},
+  { id:'golden_touch', name:'Golden Touch', price:8, desc:'+3 gold after each battle permanently.', icon:'✨', action(){ logSystem('✨ +3 bonus gold from all future battles!'); }},
+  { id:'bloodlust', name:'Bloodlust', price:9, desc:'First monster kill each battle heals 2 HP.', icon:'🗡️', action(){ logSystem('🗡️ First kill each battle heals 2 HP!'); }},
+  { id:'scholar_pact', name:"Scholar's Pact", price:10, desc:'New cards start at 1 star instead of 0.', icon:'📜', action(){ logSystem('📜 New cards start at 1 star!'); }},
+  { id:'fortified_mind', name:'Fortified Mind', price:7, desc:'Once per battle, a wrong answer won\'t discard the card.', icon:'🧿', action(){ G.nextWrongSafe=true; logSystem('🧿 1 free wrong answer per battle!'); }},
+  { id:'star_seeker', name:'Star Seeker', price:9, desc:'Correctly answered cards have 30% chance for +2 stars.', icon:'🌟', action(){ logSystem('🌟 Cards have 30% chance for double stars!'); }},
+  { id:'vampiric_edge', name:'Vampiric Edge', price:8, desc:'Offensive kills heal 1 HP.', icon:'🩸', action(){ logSystem('🩸 Offensive kills heal 1 HP!'); }},
+  { id:'last_stand', name:'Last Stand', price:8, desc:'When HP would drop to 0, survive at 1 HP (once).', icon:'💀', action(){ logSystem('💀 Last Stand: survive a fatal blow once!'); }},
 ];
 
 function startShopNode() {
   G._shopMode = true;
+  // Pick 3 random potions + 3 random abilities (no duplicates per visit)
+  const potions = shuffle([...POTION_POOL]).slice(0,3);
+  const abilities = shuffle([...ABILITY_POOL]).slice(0,3);
+  G._shopItems = { potions, abilities, soldPotions: new Set(), soldAbilities: new Set() };
+
   const mz = document.getElementById('monster-zone');
   let html = `<div id="scene-area">
     <div class="scene-icon">🛒</div>
     <div class="scene-title">Abyss Merchant</div>
-    <div class="scene-desc">Gold: ${G.gold} 🪙</div>
+    <div class="scene-desc">Gold: ${G.gold} 🪙 | Inventory: ${G.inventory.length}/${MAX_INVENTORY} 🎒</div>
+    <div style="color:var(--gold);font-size:0.9em;margin-bottom:6px;">🧪 Potions — single use, stored in inventory</div>
     <div id="shop-grid">`;
-  SHOP_ITEMS.forEach((item, i) => {
-    const canBuy = G.gold >= item.price;
-    html += `<div class="shop-item">
+
+  potions.forEach((item, i) => {
+    const sold = G._shopItems.soldPotions.has(i);
+    const canBuy = G.gold >= item.price && G.inventory.length < MAX_INVENTORY && !sold;
+    html += `<div class="shop-item ${sold?'sold':''}">
+      <div class="shop-icon">${item.icon}</div>
       <div class="shop-name">${item.name}</div>
       <div class="shop-desc">${item.desc}</div>
       <div class="shop-price">🪙 ${item.price}</div>
-      <button onclick="buyItem('${item.id}',${item.price})" ${canBuy ? '' : 'disabled'}>Buy [${i+1}]</button>
+      <button onclick="buyPotion(${i})" ${canBuy?'':'disabled'}>${sold?'Sold Out':(G.inventory.length>=MAX_INVENTORY?'Inv Full':'Buy [p'+(i+1)+']')}</button>
     </div>`;
   });
-  html += `</div><div style="margin-top:10px;color:var(--text-dim);">Type 1-6 to buy, or "leave" to exit</div></div>`;
+
+  html += `</div><div style="color:var(--gold);font-size:0.9em;margin:8px 0 6px;">🔮 Abilities — permanent, more expensive</div><div id="shop-grid">`;
+
+  abilities.forEach((item, i) => {
+    const sold = G._shopItems.soldAbilities.has(i);
+    const alreadyHave = G.abilities.includes(item.id);
+    const canBuy = G.gold >= item.price && !sold && !alreadyHave;
+    html += `<div class="shop-item ability ${sold||alreadyHave?'sold':''}">
+      <div class="shop-icon">${item.icon}</div>
+      <div class="shop-name">${item.name}</div>
+      <div class="shop-desc">${item.desc}</div>
+      <div class="shop-price">🪙 ${item.price}</div>
+      <button onclick="buyAbility(${i})" ${canBuy?'':'disabled'}>${sold?'Sold Out':(alreadyHave?'Owned':'Buy [a'+(i+1)+']')}</button>
+    </div>`;
+  });
+
+  html += `</div><div style="margin-top:10px;color:var(--text-dim);">Type p1-p3 for potions, a1-a3 for abilities, "inv" to use inventory, or "leave" to exit</div></div>`;
   mz.innerHTML = html;
   document.getElementById('hand-zone').innerHTML = '';
   disableInput();
-  enableInput(); // Re-enable for shop commands
+  enableInput();
   focusInput();
 }
 
-function buyItem(id, price) {
-  if (G.gold < price) { logSystem('Not enough gold!'); return; }
-  G.gold -= price;
-  switch (id) {
-    case 'star_scroll':
-      if (G.deck.length === 0) { logSystem('Deck empty! Refunded.'); G.gold += price; return; }
-      const card = G.deck[Math.floor(Math.random() * G.deck.length)];
-      card.stars += 1;
-      logSystem(`⭐ Star Scroll: "${WORD_DATA[card.wordIndex].w}" +1 star (now ${card.stars}).`);
-      if (card.stars >= STARS_TO_MASTER) { removeCardFromDeck(card.wordIndex); G.masteredCount++; logLine(`🌟 Mastered! (${G.masteredCount}/${WORD_DATA.length})`, 'gold'); }
-      if (G.masteredCount >= WORD_DATA.length) { G._shopMode = false; victory(); return; }
-      break;
-    case 'health_potion':
-      G.hp = Math.min(G.maxHp, G.hp + 4);
-      logSystem(`❤️ +4 HP. HP: ${G.hp}/${G.maxHp}`);
-      break;
-    case 'iron_rune':
-      G.nextBattleBonusArmor += 2;
-      logSystem('🛡️ Iron Rune: +2 starting armor for next battle.');
-      break;
-    case 'quick_wit':
-      G.nextBattleBonusDraws += 1;
-      logSystem('⚡ Quick Wit: Draw 4 cards/turn next battle.');
-      break;
-    case 'forge_hammer':
-      startForgeMode();
-      return; // Don't refresh shop
-    case 'oblivion_dust':
-      const zeroStars = G.deck.filter(c => c.stars === 0);
-      if (zeroStars.length === 0) { logSystem('No 0-star cards! Refunded.'); G.gold += price; return; }
-      const removed = zeroStars[Math.floor(Math.random() * zeroStars.length)];
-      removeCardFromDeck(removed.wordIndex);
-      G.gold += 3;
-      logSystem(`💨 Oblivion Dust: Removed "${WORD_DATA[removed.wordIndex].w}" (+3g refund).`);
-      break;
-  }
+function buyPotion(idx) {
+  const item = G._shopItems.potions[idx];
+  if (G._shopItems.soldPotions.has(idx)) return;
+  if (G.gold < item.price) { logSystem('Not enough gold!'); return; }
+  if (G.inventory.length >= MAX_INVENTORY) { logSystem('Inventory full! Use or discard an item first.'); return; }
+  G.gold -= item.price;
+  G._shopItems.soldPotions.add(idx);
+  G.inventory.push({ id:item.id, name:item.name, desc:item.desc, icon:item.icon, action:item.action });
+  logSystem(`🧪 Bought ${item.name}! Stored in inventory.`);
   updateDisplay();
-  startShopNode(); // Refresh
+  startShopNode();
 }
 
+function buyAbility(idx) {
+  const item = G._shopItems.abilities[idx];
+  if (G._shopItems.soldAbilities.has(idx)) return;
+  if (G.abilities.includes(item.id)) return;
+  if (G.gold < item.price) { logSystem('Not enough gold!'); return; }
+  G.gold -= item.price;
+  G._shopItems.soldAbilities.add(idx);
+  G.abilities.push(item.id);
+  logSystem(`🔮 Acquired ${item.name}!`);
+  item.action();
+  updateDisplay();
+  startShopNode();
+}
+
+function useInventoryItem(slotIdx) {
+  if (slotIdx < 0 || slotIdx >= G.inventory.length) { logSystem('No item in that slot.'); return; }
+  const item = G.inventory[slotIdx];
+  G.inventory.splice(slotIdx, 1);
+  logSystem(`🧪 Using ${item.name} from inventory...`);
+  const result = item.action();
+  updateDisplay();
+  renderInventory();
+  G._shopInventoryView = false;
+  if (G._shopMode) { startShopNode(); }
+  if (result === 'defer') return;
+}
+
+// Keep forge mode for the Forge Vial
 function startForgeMode() {
   G._forgeMode = true;
-  G._shopMode = false;
+  if (G._shopMode) { G._shopMode = false; }
   const cards = [...G.deck];
   const mz = document.getElementById('monster-zone');
   let html = `<div style="text-align:center;padding:10px;"><div style="color:var(--gold);font-size:1.1em;margin-bottom:8px;">🔨 Pick a card to convert:</div><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">`;
@@ -1336,19 +1635,33 @@ function forgeCard(idx) {
   G.wordTypeMap[card.wordIndex] = card.type;
   logSystem(`🔨 "${WORD_DATA[card.wordIndex].w}" converted to ${card.type==='defensive'?'🛡️ Defensive':'⚔️ Offensive'}!`);
   G._forgeMode = false;
-  G._shopMode = true;
   updateDisplay();
-  startShopNode();
+  if (G.inventory.length > 0 && !G.battleInProgress) {
+    // Forge was from inventory — just return to normal
+    renderBattle();
+    return;
+  }
 }
 
 function cancelForge() {
   G._forgeMode = false;
-  G._shopMode = true;
-  startShopNode();
+  updateDisplay();
+  if (G.inventory.length > 0 && !G.battleInProgress) {
+    renderBattle();
+    return;
+  }
 }
 
 function handleShopInput(input) {
   const cmd = input.toLowerCase().trim();
+  // If showing inventory dialog, handle inventory commands
+  if (G._shopInventoryView) {
+    const invNum = parseInt(cmd);
+    if (invNum >= 1 && invNum <= G.inventory.length) { useInventoryItem(invNum-1); }
+    else { G._shopInventoryView = false; startShopNode(); }
+    focusInput();
+    return;
+  }
   if (cmd === 'leave' || cmd === 'exit' || cmd === 'q' || cmd === '离开') {
     G._shopMode = false;
     G.nodes[G.nodeIdx].cleared = true;
@@ -1359,14 +1672,57 @@ function handleShopInput(input) {
     setTimeout(() => advanceNode(), 500);
     return;
   }
-  const num = parseInt(cmd);
-  if (num >= 1 && num <= 6) {
-    const item = SHOP_ITEMS[num-1];
-    buyItem(item.id, item.price);
+  if (cmd === 'inv') {
+    showInventoryDialog();
+    focusInput();
     return;
   }
-  logSystem('Type 1-6 to buy, or "leave" to exit.');
+  // p1-p3 for potions
+  const pMatch = cmd.match(/^p(\d)$/);
+  if (pMatch) {
+    const idx = parseInt(pMatch[1]) - 1;
+    if (idx >= 0 && idx < 3) { buyPotion(idx); }
+    else logSystem('Type p1, p2, or p3 for potions.');
+    return;
+  }
+  // a1-a3 for abilities
+  const aMatch = cmd.match(/^a(\d)$/);
+  if (aMatch) {
+    const idx = parseInt(aMatch[1]) - 1;
+    if (idx >= 0 && idx < 3) { buyAbility(idx); }
+    else logSystem('Type a1, a2, or a3 for abilities.');
+    return;
+  }
+  // Legacy number support
+  const num = parseInt(cmd);
+  if (num >= 1 && num <= 3) { buyPotion(num-1); return; }
+  if (num >= 4 && num <= 6) { buyAbility(num-4); return; }
+  logSystem('Type p1-p3 for potions, a1-a3 for abilities, "inv" for inventory, "leave" to exit.');
   focusInput();
+}
+
+function showInventoryDialog() {
+  G._shopInventoryView = true;
+  const mz = document.getElementById('monster-zone');
+  let html = `<div id="scene-area">
+    <div class="scene-icon">🎒</div>
+    <div class="scene-title">Inventory</div>
+    <div class="scene-desc">Click to use an item. (Max ${MAX_INVENTORY} items)</div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">`;
+  if (G.inventory.length === 0) {
+    html += '<div style="color:var(--text-dim);">Inventory is empty.</div>';
+  } else {
+    G.inventory.forEach((item, i) => {
+      html += `<div class="shop-item" onclick="useInventoryItem(${i})" style="cursor:pointer;">
+        <div class="shop-icon">${item.icon||'🧪'}</div>
+        <div class="shop-name">${item.name}</div>
+        <div class="shop-desc">${item.desc}</div>
+        <button>Use [${i+1}]</button>
+      </div>`;
+    });
+  }
+  html += `</div><div style="margin-top:8px;color:var(--text-dim);">Type 1-${G.inventory.length} to use, any other key to go back to shop.</div></div>`;
+  mz.innerHTML = html;
 }
 
 // ============ REST NODE ============
@@ -1440,15 +1796,6 @@ document.getElementById('cmd-input').addEventListener('keydown', function(e) {
   if (G.gameOver) return;
   handleCardAnswer(input);
 });
-
-// Use health potion from inventory
-function useHealthPotion() {
-  if (!G.inventory.includes('health_potion')) { logSystem('No health potions in inventory.'); return; }
-  G.inventory = G.inventory.filter(i => i !== 'health_potion');
-  G.hp = Math.min(G.maxHp, G.hp + 3);
-  logSystem(`🧪 Used Health Potion! +3 HP. HP: ${G.hp}/${G.maxHp}`);
-  updateDisplay();
-}
 
 // ============ NEW CARDS STUDY ============
 function showNewCardsStudy(indices, onDone) {
@@ -1565,10 +1912,20 @@ function renderDeckViewer() {
 
 // Close deck viewer with Escape
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape' && G._deckViewerOpen) { closeDeckViewer(); }
-  if (e.key === 'Escape' && G._studyOnDone) { continueFromStudy(); }
-  if (e.key === 'h' && !G.battleInProgress && !G._shopMode && !G._eventMode && !G._deckViewerOpen && !G._forgeMode) {
-    useHealthPotion();
+  if (e.key === 'Escape' && G._deckViewerOpen) { closeDeckViewer(); return; }
+  if (e.key === 'Escape' && G._studyOnDone) { continueFromStudy(); return; }
+  // Inventory hotkeys: 1-2 to use items
+  if (e.key === '1' && G.inventory.length >= 1 && !G.battleInProgress && !G._shopMode && !G._eventMode && !G._deckViewerOpen && !G._forgeMode && !G._trainingMode) {
+    useInventoryItem(0); return;
+  }
+  if (e.key === '2' && G.inventory.length >= 2 && !G.battleInProgress && !G._shopMode && !G._eventMode && !G._deckViewerOpen && !G._forgeMode && !G._trainingMode) {
+    useInventoryItem(1); return;
+  }
+  // 'h' hotkey: use first health potion from inventory
+  if (e.key === 'h' && !G.battleInProgress && !G._shopMode && !G._eventMode && !G._deckViewerOpen && !G._forgeMode && !G._trainingMode) {
+    const hpIdx = G.inventory.findIndex(i => i.id === 'health_potion' || i.id === 'greater_potion' || i.id === 'rejuv_vial');
+    if (hpIdx >= 0) { useInventoryItem(hpIdx); }
+    else { logSystem('No healing items in inventory.'); }
   }
 });
 
