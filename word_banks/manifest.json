@@ -1,0 +1,16 @@
+[
+  {
+    "id": "default",
+    "name": "SAT Core Vocabulary",
+    "description": "100 SAT reading core vocabulary words (original)",
+    "file": "word_banks/default.json",
+    "wordCount": 100
+  },
+  {
+    "id": "sat_vocab_4",
+    "name": "10S SAT 词汇-4",
+    "description": "100 SAT机考阅读词汇题词汇-4 (from Flying Tiger)",
+    "file": "word_banks/sat_vocab_4.json",
+    "wordCount": 100
+  }
+]

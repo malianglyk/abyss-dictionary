@@ -46,6 +46,16 @@ cd abyss-dictionary
 # 用浏览器直接打开 index.html
 ```
 
+## 📚 词库选择
+
+游戏启动前可在标题画面选择不同的词库：
+
+- **SAT Core Vocabulary** — 100 个 SAT 阅读核心词汇（默认词库）
+- **10S SAT 词汇-4** — 100 个 SAT 机考阅读词汇题词汇（来自 Flying Tiger 平台）
+- **📝 Custom** — 使用内置编辑器自定义词库
+
+词库数据存储在 `word_banks/` 目录下。可通过修改 JSON 文件添加更多词库，并在 `word_banks/manifest.json` 中注册。
+
 ## 🛠 技术栈
 
 - 纯 HTML/CSS/JavaScript 单页应用
