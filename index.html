@@ -343,6 +343,16 @@ body {
 <!-- GENERIC OVERLAY -->
 <div id="overlay-container"></div>
 
+<!-- NEW CARDS STUDY OVERLAY -->
+<div id="new-cards-overlay" style="position:fixed;inset:0;z-index:350;background:rgba(0,0,0,0.93);display:none;flex-direction:column;padding:30px 20px;overflow-y:auto;">
+  <h2 style="color:var(--gold);text-align:center;margin-bottom:4px;">📖 New Cards Added!</h2>
+  <p style="color:var(--text-dim);text-align:center;margin-bottom:12px;">Study these new words before continuing. Click a card to flip it and see the Chinese meaning.</p>
+  <div class="deck-grid" id="new-cards-grid"></div>
+  <div style="text-align:center;margin-top:16px;">
+    <button onclick="continueFromStudy()" style="background:var(--gold);color:var(--bg);border:none;padding:10px 28px;cursor:pointer;border-radius:4px;font-weight:bold;font-size:1em;">Continue ▸</button>
+  </div>
+</div>
+
 <!-- WORD LIST EDITOR OVERLAY -->
 <div id="word-editor-overlay" style="position:fixed;inset:0;z-index:400;background:rgba(0,0,0,0.95);display:none;flex-direction:column;padding:30px 20px;overflow-y:auto;">
   <h2 style="color:var(--gold);text-align:center;margin-bottom:4px;">📝 Custom Word List</h2>
@@ -410,6 +420,8 @@ function resetGameState() {
     _trainingCards: [],
     _forgeMode: false,      // Forge Hammer card picker
     _restContinueReady: false,
+    _pendingStudyCards: null,
+    _studyOnDone: null,
   };
 }
 
@@ -510,7 +522,7 @@ function getUnusedWordIndices() {
 
 function addCardsToDeck(count) {
   const unused = getUnusedWordIndices();
-  if (unused.length === 0) return 0;
+  if (unused.length === 0) return [];
   shuffle(unused);
   const toAdd = unused.slice(0, Math.min(count, unused.length));
   toAdd.forEach(i => {
@@ -518,7 +530,7 @@ function addCardsToDeck(count) {
     G.usedWordIndices.add(i);
   });
   shuffle(G.deck);
-  return toAdd.length;
+  return toAdd;
 }
 
 function drawHand() {
@@ -791,14 +803,14 @@ function endBattle_victory() {
   G.battleCardsUsed = [];
 
   // Add new cards from word bank
-  const added = addCardsToDeck(POST_BATTLE_CARDS);
-  if (added > 0) logLine(`📖 ${added} new cards added to deck from the word bank.`, 'info');
+  const addedIndices = addCardsToDeck(POST_BATTLE_CARDS);
+  if (addedIndices.length > 0) logLine(`📖 ${addedIndices.length} new cards added to deck from the word bank.`, 'info');
 
   updateDisplay();
   renderBattle();
 
   if (G.masteredCount >= WORD_DATA.length) { victory(); return; }
-  setTimeout(() => advanceNode(), 1500);
+  showNewCardsStudy(addedIndices, () => setTimeout(() => advanceNode(), 500));
 }
 
 function getCardStars(wordIndex) {
@@ -813,8 +825,8 @@ function generateLevel() {
     for (let i = 0; i < weight; i++) types.push(type);
   }
   const nodes = [];
-  // Node 0: always rest (safe start)
-  nodes.push({ type: 'rest', visited: false, cleared: false });
+  // Node 0: always battle
+  nodes.push({ type: 'battle', visited: false, cleared: false });
   // Nodes 1-17: random
   for (let i = 1; i <= 17; i++) {
     const t = types[Math.floor(Math.random() * types.length)];
@@ -920,11 +932,13 @@ const EVENTS = [
     flavor: 'Shelves of ancient tomes stretch into darkness. Words whisper from the pages...',
     optA: { label: 'Study', desc: 'Add 3 random word bank cards to your deck', action: () => {
       const added = addCardsToDeck(3);
+	      G._pendingStudyCards = added;
       if (added > 0) logSystem(`📖 ${added} new cards added to deck.`);
       else logSystem('No words remain in the word bank. Have 3 gold instead.'), G.gold += 3;
     }},
     optB: { label: 'Cram', desc: 'Add 6 cards but lose 2 HP', action: () => {
       const added = addCardsToDeck(6);
+	      G._pendingStudyCards = added;
       G.hp = Math.max(1, G.hp - 2);
       if (added > 0) logSystem(`📖 ${added} cards added. Lost 2 HP from mental strain.`);
       else logSystem('No words remain. HP unchanged.');
@@ -961,7 +975,8 @@ const EVENTS = [
       if (G.gold < 4) { logSystem('Not enough gold! The figure scoffs.'); return; }
       G.gold -= 4;
       const added = addCardsToDeck(2);
-      if (added > 0) logSystem(`Bought ${added} cards for 4 🪙.`);
+	      G._pendingStudyCards = added;
+      if (added.length > 0) logSystem(`Bought ${added.length} cards for 4 🪙.`);
       else { logSystem('No words left in bank. Refunded.'); G.gold += 4; }
     }},
   },
@@ -1019,6 +1034,12 @@ function eventChoice(opt) {
   updateDisplay();
   if (result === 'defer') return; // Training mode handles its own flow
   G.nodes[G.nodeIdx].cleared = true;
+  const studyCards = G._pendingStudyCards;
+  G._pendingStudyCards = null;
+  if (studyCards && studyCards.length > 0) {
+    showNewCardsStudy(studyCards, () => setTimeout(() => advanceNode(), 500));
+    return;
+  }
   setTimeout(() => advanceNode(), 1000);
 }
 
@@ -1278,6 +1299,44 @@ function useHealthPotion() {
   updateDisplay();
 }
 
+// ============ NEW CARDS STUDY ============
+function showNewCardsStudy(indices, onDone) {
+  if (!indices || indices.length === 0) { onDone(); return; }
+  G._studyOnDone = onDone;
+  const overlay = document.getElementById('new-cards-overlay');
+  overlay.style.display = 'flex';
+  const grid = document.getElementById('new-cards-grid');
+  let html = '';
+  indices.forEach(i => {
+    const w = WORD_DATA[i];
+    const ct = G.wordTypeMap[i] || 'defensive';
+    html += `<div class="flashcard ${ct}" onclick="flipCard(this)">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <div class="fc-word">${w.w}</div>
+          <div class="fc-sentence">${w.s || ''}</div>
+          <div class="fc-badge ${ct}">${ct==='defensive'?'🛡️ Defensive':'⚔️ Offensive'}</div>
+          <div class="fc-stars">☆☆☆</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="fc-meaning">${w.m}</div>
+          <div class="fc-sc">${w.sc || ''}</div>
+          <div class="fc-stars">☆☆☆</div>
+        </div>
+      </div>
+    </div>`;
+  });
+  grid.innerHTML = html;
+  logSystem(`📖 ${indices.length} new card(s) added! Study them and click Continue when ready.`);
+}
+
+function continueFromStudy() {
+  document.getElementById('new-cards-overlay').style.display = 'none';
+  const cb = G._studyOnDone;
+  G._studyOnDone = null;
+  if (cb) cb();
+}
+
 // ============ DECK VIEWER ============
 let deckViewerFilter = 'all';
 let deckViewerSort = 'stars';
@@ -1356,6 +1415,7 @@ function renderDeckViewer() {
 // Close deck viewer with Escape
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape' && G._deckViewerOpen) { closeDeckViewer(); }
+  if (e.key === 'Escape' && G._studyOnDone) { continueFromStudy(); }
   if (e.key === 'h' && !G.battleInProgress && !G._shopMode && !G._eventMode && !G._deckViewerOpen && !G._forgeMode) {
     useHealthPotion();
   }
