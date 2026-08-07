@@ -601,12 +601,13 @@ function startBattle() {
   G.battleCardsWrong = [];
   G.discardPile = [];
   G.hand = [];
-  G.armor = G.nextBattleBonusArmor;
+  const bonusArmor = G.nextBattleBonusArmor;
   G.nextBattleBonusArmor = 0;
   spawnMonsters();
   logSystem('═══ Battle begins! ═══');
-  if (G.armor > 0) logSystem(`Iron Rune: +${G.armor} starting armor.`);
   beginTurn();
+  G.armor = bonusArmor;
+  if (G.armor > 0) logSystem(`Iron Rune: +${G.armor} starting armor.`);
 }
 
 function beginTurn() {
@@ -672,13 +673,13 @@ function handleCardAnswer(input) {
     if (card.type === 'defensive') {
       G.armor += pow;
       logLine(`✓ Correct! "${word.w}" — +${pow} Armor (now ${G.armor})`, 'correct');
-      spawnFloatText('+1 🛡️', '#3498db');
+      spawnFloatText(`+${pow} 🛡️`, '#3498db');
     } else {
       const target = G.monsters[G.selectedTargetIdx];
       if (target && !target.defeated) {
         target.hp -= pow;
         logLine(`✓ Correct! "${word.w}" — ${pow} damage to ${target.name}`, 'correct');
-        spawnFloatText('-${pow}', '#e74c3c');
+        spawnFloatText(`-${pow}`, '#e74c3c');
         if (target.hp <= 0) {
           target.defeated = true;
           target.hp = 0;
