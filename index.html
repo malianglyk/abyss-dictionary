@@ -697,8 +697,8 @@ function handleCardAnswer(input) {
     if (!G.battleCardsUsed.includes(card.wordIndex)) {
       G.battleCardsUsed.push(card.wordIndex);
     }
-    // Return card to deck (unless mastered later)
-    G.deck.push(card);
+    // Card goes to discard pile (reshuffles when deck runs out)
+    G.discardPile.push(card);
   } else {
     // Wrong: discard for this battle (store full card to preserve stars)
     G.discardPile.push({ wordIndex: card.wordIndex, type: card.type, stars: card.stars });
