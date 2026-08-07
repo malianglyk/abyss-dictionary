@@ -727,7 +727,8 @@ function endBattle_victory() {
   G.battleInProgress = false;
   G._trainingMode = false;
   G.discardPile = []; // Return all discards by not actually tracking them
-  // Return discarded cards to deck (preserve their star counts)
+  // Return unplayed hand cards and discarded cards to deck
+  G.deck.push(...G.hand);
   G.deck.push(...G.discardPile);
   G.discardPile = [];
   G.hand = [];
