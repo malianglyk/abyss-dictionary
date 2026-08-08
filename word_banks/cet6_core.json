@@ -1,0 +1,802 @@
+[
+  {
+    "w": "abandon",
+    "m": "放弃；抛弃",
+    "p": "/əˈbændən/",
+    "s": "They had to abandon the plan due to lack of funding.",
+    "sc": "由于缺乏资金，他们不得不放弃这项计划。",
+    "a": ["放弃", "抛弃"]
+  },
+  {
+    "w": "abundant",
+    "m": "丰富的；充裕的",
+    "p": "/əˈbʌndənt/",
+    "s": "The region has abundant natural resources waiting to be developed.",
+    "sc": "该地区拥有丰富的自然资源等待开发。",
+    "a": ["丰富的", "充裕的"]
+  },
+  {
+    "w": "accommodate",
+    "m": "容纳；适应",
+    "p": "/əˈkɒmədeɪt/",
+    "s": "The new stadium can accommodate over 50,000 spectators.",
+    "sc": "新体育场能容纳超过五万名观众。",
+    "a": ["容纳", "适应"]
+  },
+  {
+    "w": "acquire",
+    "m": "获得；习得",
+    "p": "/əˈkwaɪə/",
+    "s": "Children acquire language naturally through interaction with others.",
+    "sc": "儿童通过与他人互动自然地习得语言。",
+    "a": ["获得", "习得"]
+  },
+  {
+    "w": "adequate",
+    "m": "足够的；恰当的",
+    "p": "/ˈædɪkwət/",
+    "s": "The company failed to provide adequate safety training for its workers.",
+    "sc": "该公司未能为工人提供足够的安全培训。",
+    "a": ["足够的", "恰当的"]
+  },
+  {
+    "w": "adopt",
+    "m": "采纳；收养",
+    "p": "/əˈdɒpt/",
+    "s": "Many countries have decided to adopt stricter environmental regulations.",
+    "sc": "许多国家已决定采纳更严格的环境法规。",
+    "a": ["采纳", "收养"]
+  },
+  {
+    "w": "advocate",
+    "m": "提倡；倡导者",
+    "p": "/ˈædvəkeɪt/",
+    "s": "She has long been an advocate for women's rights in the workplace.",
+    "sc": "长期以来，她一直是职场女性权益的倡导者。",
+    "a": ["提倡", "倡导者"]
+  },
+  {
+    "w": "affect",
+    "m": "影响；使改变",
+    "p": "/əˈfekt/",
+    "s": "Climate change continues to affect agricultural production worldwide.",
+    "sc": "气候变化持续影响全球农业生产。",
+    "a": ["影响", "使改变"]
+  },
+  {
+    "w": "aggressive",
+    "m": "激进的；有进取心的",
+    "p": "/əˈɡresɪv/",
+    "s": "The company adopted an aggressive marketing strategy to expand its market share.",
+    "sc": "该公司采取了激进的市场策略以扩大市场份额。",
+    "a": ["激进的", "有进取心的"]
+  },
+  {
+    "w": "alleviate",
+    "m": "减轻；缓解",
+    "p": "/əˈliːvieɪt/",
+    "s": "The new medicine can effectively alleviate the symptoms of chronic pain.",
+    "sc": "这种新药能有效缓解慢性疼痛的症状。",
+    "a": ["减轻", "缓解"]
+  },
+  {
+    "w": "alternative",
+    "m": "替代的；替代品",
+    "p": "/ɔːlˈtɜːnətɪv/",
+    "s": "We need to find alternative energy sources to reduce carbon emissions.",
+    "sc": "我们需要寻找替代能源以减少碳排放。",
+    "a": ["替代的", "替代品"]
+  },
+  {
+    "w": "ambiguous",
+    "m": "模棱两可的",
+    "p": "/æmˈbɪɡjuəs/",
+    "s": "The contract contains several ambiguous clauses that need clarification.",
+    "sc": "合同中有几条模棱两可的条款需要澄清。",
+    "a": ["模棱两可的"]
+  },
+  {
+    "w": "ambition",
+    "m": "抱负；野心",
+    "p": "/æmˈbɪʃən/",
+    "s": "His ambition to become a surgeon drove him to study tirelessly.",
+    "sc": "他成为外科医生的抱负驱使他不知疲倦地学习。",
+    "a": ["抱负", "野心"]
+  },
+  {
+    "w": "analyze",
+    "m": "分析；研究",
+    "p": "/ˈænəlaɪz/",
+    "s": "Researchers analyze the data to identify patterns and trends.",
+    "sc": "研究人员分析数据以识别模式和趋势。",
+    "a": ["分析", "研究"]
+  },
+  {
+    "w": "annoy",
+    "m": "使恼怒；打扰",
+    "p": "/əˈnɔɪ/",
+    "s": "The constant noise from the construction site began to annoy the residents.",
+    "sc": "建筑工地持续不断的噪音开始让居民感到恼怒。",
+    "a": ["使恼怒", "打扰"]
+  },
+  {
+    "w": "apparent",
+    "m": "明显的；表面的",
+    "p": "/əˈpærənt/",
+    "s": "It soon became apparent that the project was not going to succeed.",
+    "sc": "很快就变得很明显，这个项目不会成功。",
+    "a": ["明显的", "表面的"]
+  },
+  {
+    "w": "appreciate",
+    "m": "感激；重视；欣赏",
+    "p": "/əˈpriːʃieɪt/",
+    "s": "I really appreciate all the support you have given me over the years.",
+    "sc": "我真心感激你多年来给予我的所有支持。",
+    "a": ["感激", "重视", "欣赏"]
+  },
+  {
+    "w": "approach",
+    "m": "方法；接近",
+    "p": "/əˈprəʊtʃ/",
+    "s": "We need a new approach to solve this complex problem.",
+    "sc": "我们需要一种新方法来解决这个复杂问题。",
+    "a": ["方法", "接近"]
+  },
+  {
+    "w": "appropriate",
+    "m": "合适的；恰当的",
+    "p": "/əˈprəʊpriət/",
+    "s": "It is important to wear appropriate clothing for a job interview.",
+    "sc": "求职面试时穿着合适的服装很重要。",
+    "a": ["合适的", "恰当的"]
+  },
+  {
+    "w": "arise",
+    "m": "出现；产生",
+    "p": "/əˈraɪz/",
+    "s": "New problems may arise when the system is put into operation.",
+    "sc": "系统投入运行时可能会出现新问题。",
+    "a": ["出现", "产生"]
+  },
+  {
+    "w": "artificial",
+    "m": "人造的；虚假的",
+    "p": "/ˌɑːtɪˈfɪʃəl/",
+    "s": "Artificial intelligence is transforming industries across the globe.",
+    "sc": "人工智能正在改变全球各行各业。",
+    "a": ["人造的", "虚假的"]
+  },
+  {
+    "w": "assess",
+    "m": "评估；评定",
+    "p": "/əˈses/",
+    "s": "Teachers need to assess students' progress on a regular basis.",
+    "sc": "教师需要定期评估学生的进步情况。",
+    "a": ["评估", "评定"]
+  },
+  {
+    "w": "assign",
+    "m": "分配；指派",
+    "p": "/əˈsaɪn/",
+    "s": "The manager will assign each team member a specific task.",
+    "sc": "经理将给每位团队成员分配一项具体任务。",
+    "a": ["分配", "指派"]
+  },
+  {
+    "w": "assume",
+    "m": "假定；认为；承担",
+    "p": "/əˈsjuːm/",
+    "s": "Many people assume that success comes easily, but it rarely does.",
+    "sc": "许多人认为成功来得容易，但事实并非如此。",
+    "a": ["假定", "认为", "承担"]
+  },
+  {
+    "w": "assure",
+    "m": "确保；使确信",
+    "p": "/əˈʃʊə/",
+    "s": "I can assure you that the product has been thoroughly tested.",
+    "sc": "我可以向你保证，该产品已经过彻底测试。",
+    "a": ["确保", "使确信"]
+  },
+  {
+    "w": "attain",
+    "m": "获得；达到",
+    "p": "/əˈteɪn/",
+    "s": "She worked hard to attain her goal of becoming a doctor.",
+    "sc": "她努力工作以实现成为医生的目标。",
+    "a": ["获得", "达到"]
+  },
+  {
+    "w": "attitude",
+    "m": "态度；看法",
+    "p": "/ˈætɪtjuːd/",
+    "s": "A positive attitude can make a significant difference in your life.",
+    "sc": "积极的态度能给你的生活带来巨大改变。",
+    "a": ["态度", "看法"]
+  },
+  {
+    "w": "attribute",
+    "m": "归因于；属性",
+    "p": "/əˈtrɪbjuːt/",
+    "s": "Experts attribute the decline in air quality to increased industrial emissions.",
+    "sc": "专家将空气质量下降归因于工业排放的增加。",
+    "a": ["归因于", "属性"]
+  },
+  {
+    "w": "authority",
+    "m": "权威；当局",
+    "p": "/ɔːˈθɒrəti/",
+    "s": "The local authority is responsible for maintaining public roads and parks.",
+    "sc": "地方当局负责维护公共道路和公园。",
+    "a": ["权威", "当局"]
+  },
+  {
+    "w": "automatic",
+    "m": "自动的；无意识的",
+    "p": "/ˌɔːtəˈmætɪk/",
+    "s": "The doors are equipped with automatic sensors that detect movement.",
+    "sc": "这些门配备了检测移动的自动感应器。",
+    "a": ["自动的", "无意识的"]
+  },
+  {
+    "w": "barrier",
+    "m": "障碍；壁垒",
+    "p": "/ˈbæriə/",
+    "s": "Language barriers can make communication between cultures difficult.",
+    "sc": "语言障碍会使不同文化之间的交流变得困难。",
+    "a": ["障碍", "壁垒"]
+  },
+  {
+    "w": "beneficial",
+    "m": "有益的；有利的",
+    "p": "/ˌbenɪˈfɪʃəl/",
+    "s": "Regular exercise is highly beneficial to both physical and mental health.",
+    "sc": "定期锻炼对身心健康都极为有益。",
+    "a": ["有益的", "有利的"]
+  },
+  {
+    "w": "bias",
+    "m": "偏见；偏袒",
+    "p": "/ˈbaɪəs/",
+    "s": "The study aims to eliminate bias in the hiring process.",
+    "sc": "该研究旨在消除招聘过程中的偏见。",
+    "a": ["偏见", "偏袒"]
+  },
+  {
+    "w": "blame",
+    "m": "责备；责任",
+    "p": "/bleɪm/",
+    "s": "It is unfair to blame a single person for the team's failure.",
+    "sc": "把团队的失败归咎于一个人是不公平的。",
+    "a": ["责备", "责任"]
+  },
+  {
+    "w": "bounce",
+    "m": "反弹；蹦跳",
+    "p": "/baʊns/",
+    "s": "The basketball failed to bounce properly on the uneven surface.",
+    "sc": "篮球在不平整的地面上无法正常反弹。",
+    "a": ["反弹", "蹦跳"]
+  },
+  {
+    "w": "brutal",
+    "m": "残酷的；野蛮的",
+    "p": "/ˈbruːtəl/",
+    "s": "The documentary exposed the brutal conditions in the factory.",
+    "sc": "这部纪录片揭露了工厂里残酷的条件。",
+    "a": ["残酷的", "野蛮的"]
+  },
+  {
+    "w": "burden",
+    "m": "负担；使负重担",
+    "p": "/ˈbɜːdən/",
+    "s": "The rising cost of healthcare has become a heavy burden for many families.",
+    "sc": "不断上涨的医疗费用已成为许多家庭的沉重负担。",
+    "a": ["负担", "使负重担"]
+  },
+  {
+    "w": "campaign",
+    "m": "活动；战役；发起运动",
+    "p": "/kæmˈpeɪn/",
+    "s": "The government launched a nationwide campaign to promote healthy eating.",
+    "sc": "政府发起了一场全国性的活动来推广健康饮食。",
+    "a": ["活动", "战役", "发起运动"]
+  },
+  {
+    "w": "capable",
+    "m": "有能力的",
+    "p": "/ˈkeɪpəbəl/",
+    "s": "She is more than capable of handling this challenging project.",
+    "sc": "她完全有能力处理这个具有挑战性的项目。",
+    "a": ["有能力的"]
+  },
+  {
+    "w": "cautious",
+    "m": "谨慎的；小心的",
+    "p": "/ˈkɔːʃəs/",
+    "s": "Investors have become more cautious amid the economic uncertainty.",
+    "sc": "在经济不确定性中，投资者变得更加谨慎。",
+    "a": ["谨慎的", "小心的"]
+  },
+  {
+    "w": "challenge",
+    "m": "挑战；质疑",
+    "p": "/ˈtʃælɪndʒ/",
+    "s": "The biggest challenge we face is the shortage of skilled workers.",
+    "sc": "我们面临的最大挑战是熟练工人的短缺。",
+    "a": ["挑战", "质疑"]
+  },
+  {
+    "w": "circumstance",
+    "m": "情况；环境",
+    "p": "/ˈsɜːkəmstəns/",
+    "s": "Under no circumstance should safety regulations be ignored.",
+    "sc": "在任何情况下都不应忽视安全规定。",
+    "a": ["情况", "环境"]
+  },
+  {
+    "w": "collaborate",
+    "m": "合作；协作",
+    "p": "/kəˈlæbəreɪt/",
+    "s": "The two universities decided to collaborate on the research project.",
+    "sc": "两所大学决定在这个研究项目上展开合作。",
+    "a": ["合作", "协作"]
+  },
+  {
+    "w": "combine",
+    "m": "结合；联合",
+    "p": "/kəmˈbaɪn/",
+    "s": "The chef manages to combine traditional flavors with modern techniques.",
+    "sc": "这位厨师成功地将传统风味与现代技术结合起来。",
+    "a": ["结合", "联合"]
+  },
+  {
+    "w": "commercial",
+    "m": "商业的；广告",
+    "p": "/kəˈmɜːʃəl/",
+    "s": "The commercial success of the film surprised many critics.",
+    "sc": "这部电影的商业成功让许多评论家感到惊讶。",
+    "a": ["商业的", "广告"]
+  },
+  {
+    "w": "commit",
+    "m": "承诺；犯（错/罪）",
+    "p": "/kəˈmɪt/",
+    "s": "The company has committed to achieving carbon neutrality by 2030.",
+    "sc": "该公司已承诺到2030年实现碳中和。",
+    "a": ["承诺", "犯"]
+  },
+  {
+    "w": "compete",
+    "m": "竞争；角逐",
+    "p": "/kəmˈpiːt/",
+    "s": "Small businesses often struggle to compete with large corporations.",
+    "sc": "小企业往往难以与大公司竞争。",
+    "a": ["竞争", "角逐"]
+  },
+  {
+    "w": "complicate",
+    "m": "使复杂化",
+    "p": "/ˈkɒmplɪkeɪt/",
+    "s": "Adding too many features may complicate the user experience.",
+    "sc": "添加太多功能可能会使用户体验复杂化。",
+    "a": ["使复杂化"]
+  },
+  {
+    "w": "comprehensive",
+    "m": "全面的；综合的",
+    "p": "/ˌkɒmprɪˈhensɪv/",
+    "s": "The report provides a comprehensive analysis of the current market.",
+    "sc": "这份报告提供了对当前市场的全面分析。",
+    "a": ["全面的", "综合的"]
+  },
+  {
+    "w": "compromise",
+    "m": "妥协；折中",
+    "p": "/ˈkɒmprəmaɪz/",
+    "s": "Both sides must be willing to compromise to reach an agreement.",
+    "sc": "双方都必须愿意妥协才能达成协议。",
+    "a": ["妥协", "折中"]
+  },
+  {
+    "w": "concentrate",
+    "m": "集中；专心",
+    "p": "/ˈkɒnsəntreɪt/",
+    "s": "I find it difficult to concentrate with so much noise around me.",
+    "sc": "周围这么吵，我很难集中注意力。",
+    "a": ["集中", "专心"]
+  },
+  {
+    "w": "concern",
+    "m": "担忧；涉及",
+    "p": "/kənˈsɜːn/",
+    "s": "Environmental pollution is a growing concern for people around the world.",
+    "sc": "环境污染越来越引起全世界人民的担忧。",
+    "a": ["担忧", "涉及"]
+  },
+  {
+    "w": "consequence",
+    "m": "后果；结果",
+    "p": "/ˈkɒnsɪkwəns/",
+    "s": "Every decision we make has consequences that we must be prepared to face.",
+    "sc": "我们做的每一个决定都有后果，我们必须准备好面对。",
+    "a": ["后果", "结果"]
+  },
+  {
+    "w": "conservative",
+    "m": "保守的；保守者",
+    "p": "/kənˈsɜːvətɪv/",
+    "s": "His conservative approach to investment has proven successful over time.",
+    "sc": "他保守的投资方式随着时间的推移被证明是成功的。",
+    "a": ["保守的", "保守者"]
+  },
+  {
+    "w": "considerable",
+    "m": "相当大的；重要的",
+    "p": "/kənˈsɪdərəbəl/",
+    "s": "The project has made considerable progress since last month.",
+    "sc": "自上月以来，该项目取得了相当大的进展。",
+    "a": ["相当大的", "重要的"]
+  },
+  {
+    "w": "consist",
+    "m": "由……组成",
+    "p": "/kənˈsɪst/",
+    "s": "The committee consists of twelve members from different departments.",
+    "sc": "该委员会由来自不同部门的十二名成员组成。",
+    "a": ["由……组成"]
+  },
+  {
+    "w": "constant",
+    "m": "持续的；恒定的",
+    "p": "/ˈkɒnstənt/",
+    "s": "The constant flow of information can be overwhelming at times.",
+    "sc": "持续不断的信息流有时会让人应接不暇。",
+    "a": ["持续的", "恒定的"]
+  },
+  {
+    "w": "construct",
+    "m": "建造；构建",
+    "p": "/kənˈstrʌkt/",
+    "s": "The city plans to construct a new bridge across the river.",
+    "sc": "该市计划在河上修建一座新桥。",
+    "a": ["建造", "构建"]
+  },
+  {
+    "w": "contribute",
+    "m": "贡献；促成；投稿",
+    "p": "/kənˈtrɪbjuːt/",
+    "s": "Everyone should contribute to the community in their own way.",
+    "sc": "每个人都应该以自己的方式为社区做出贡献。",
+    "a": ["贡献", "促成", "投稿"]
+  },
+  {
+    "w": "convince",
+    "m": "说服；使信服",
+    "p": "/kənˈvɪns/",
+    "s": "It took a long time to convince the board to approve the proposal.",
+    "sc": "花了很长时间才说服董事会批准这项提案。",
+    "a": ["说服", "使信服"]
+  },
+  {
+    "w": "cope",
+    "m": "应对；处理",
+    "p": "/kəʊp/",
+    "s": "She is learning to cope with the stress of her new position.",
+    "sc": "她正在学习应对新职位带来的压力。",
+    "a": ["应对", "处理"]
+  },
+  {
+    "w": "correspond",
+    "m": "对应；通信",
+    "p": "/ˌkɒrɪˈspɒnd/",
+    "s": "The results of the experiment correspond closely with our predictions.",
+    "sc": "实验结果与我们的预测非常吻合。",
+    "a": ["对应", "通信"]
+  },
+  {
+    "w": "create",
+    "m": "创造；创作",
+    "p": "/kriˈeɪt/",
+    "s": "Artists create works that reflect the society they live in.",
+    "sc": "艺术家创作反映其所处社会的作品。",
+    "a": ["创造", "创作"]
+  },
+  {
+    "w": "criticize",
+    "m": "批评；评论",
+    "p": "/ˈkrɪtɪsaɪz/",
+    "s": "It is easy to criticize, but difficult to offer constructive solutions.",
+    "sc": "批评很容易，但提出建设性解决方案却很难。",
+    "a": ["批评", "评论"]
+  },
+  {
+    "w": "cultivate",
+    "m": "培养；耕作",
+    "p": "/ˈkʌltɪveɪt/",
+    "s": "Reading widely helps cultivate critical thinking and imagination.",
+    "sc": "广泛阅读有助于培养批判性思维和想象力。",
+    "a": ["培养", "耕作"]
+  },
+  {
+    "w": "deceive",
+    "m": "欺骗；蒙蔽",
+    "p": "/dɪˈsiːv/",
+    "s": "The company was fined for attempting to deceive its customers.",
+    "sc": "该公司因试图欺骗顾客而被罚款。",
+    "a": ["欺骗", "蒙蔽"]
+  },
+  {
+    "w": "decline",
+    "m": "下降；衰退；谢绝",
+    "p": "/dɪˈklaɪn/",
+    "s": "The population of the species has declined sharply in recent decades.",
+    "sc": "近几十年来，该物种的种群数量急剧下降。",
+    "a": ["下降", "衰退", "谢绝"]
+  },
+  {
+    "w": "defeat",
+    "m": "击败；战胜",
+    "p": "/dɪˈfiːt/",
+    "s": "They managed to defeat the defending champions in the final match.",
+    "sc": "他们在决赛中击败了卫冕冠军。",
+    "a": ["击败", "战胜"]
+  },
+  {
+    "w": "defend",
+    "m": "防御；辩护",
+    "p": "/dɪˈfend/",
+    "s": "The lawyer worked hard to defend his client in court.",
+    "sc": "律师在法庭上努力为他的当事人辩护。",
+    "a": ["防御", "辩护"]
+  },
+  {
+    "w": "define",
+    "m": "下定义；界定",
+    "p": "/dɪˈfaɪn/",
+    "s": "How you define success depends on your personal values and goals.",
+    "sc": "你如何定义成功取决于你的个人价值观和目标。",
+    "a": ["下定义", "界定"]
+  },
+  {
+    "w": "deliberate",
+    "m": "故意的；深思熟虑的",
+    "p": "/dɪˈlɪbərət/",
+    "s": "It was not an accident but a deliberate attempt to mislead the public.",
+    "sc": "这不是意外，而是故意误导公众的行为。",
+    "a": ["故意的", "深思熟虑的"]
+  },
+  {
+    "w": "demonstrate",
+    "m": "证明；展示；示威",
+    "p": "/ˈdemənstreɪt/",
+    "s": "The experiment demonstrates that water expands when it freezes.",
+    "sc": "这个实验证明了水在结冰时会膨胀。",
+    "a": ["证明", "展示", "示威"]
+  },
+  {
+    "w": "depend",
+    "m": "依靠；依赖",
+    "p": "/dɪˈpend/",
+    "s": "The success of the project depends on everyone's cooperation.",
+    "sc": "项目的成功取决于每个人的合作。",
+    "a": ["依靠", "依赖"]
+  },
+  {
+    "w": "depict",
+    "m": "描述；描绘",
+    "p": "/dɪˈpɪkt/",
+    "s": "The novel depicts life in a small village during the war.",
+    "sc": "这部小说描绘了战争期间一个小村庄的生活。",
+    "a": ["描述", "描绘"]
+  },
+  {
+    "w": "desperate",
+    "m": "绝望的；不顾一切的",
+    "p": "/ˈdespərət/",
+    "s": "The refugees were in desperate need of food and medical supplies.",
+    "sc": "这些难民迫切需要食物和医疗用品。",
+    "a": ["绝望的", "不顾一切的"]
+  },
+  {
+    "w": "destiny",
+    "m": "命运；天命",
+    "p": "/ˈdestəni/",
+    "s": "Some believe that destiny is shaped by the choices we make.",
+    "sc": "有些人相信命运是由我们所做的选择决定的。",
+    "a": ["命运", "天命"]
+  },
+  {
+    "w": "detect",
+    "m": "发现；察觉；探测",
+    "p": "/dɪˈtekt/",
+    "s": "The system can detect even the slightest changes in temperature.",
+    "sc": "该系统甚至能检测到最微小的温度变化。",
+    "a": ["发现", "察觉", "探测"]
+  },
+  {
+    "w": "determine",
+    "m": "决定；确定",
+    "p": "/dɪˈtɜːmɪn/",
+    "s": "Further investigation is needed to determine the cause of the accident.",
+    "sc": "需要进一步调查来确定事故原因。",
+    "a": ["决定", "确定"]
+  },
+  {
+    "w": "dilemma",
+    "m": "困境；进退两难",
+    "p": "/dɪˈlemə/",
+    "s": "The government faces a dilemma between economic growth and environmental protection.",
+    "sc": "政府在经济增长和环境保护之间面临两难境地。",
+    "a": ["困境", "进退两难"]
+  },
+  {
+    "w": "diminish",
+    "m": "减少；减弱",
+    "p": "/dɪˈmɪnɪʃ/",
+    "s": "The value of the currency has diminished significantly over the past year.",
+    "sc": "在过去一年里，该货币的价值已大幅下降。",
+    "a": ["减少", "减弱"]
+  },
+  {
+    "w": "discard",
+    "m": "丢弃；抛弃",
+    "p": "/dɪsˈkɑːd/",
+    "s": "We should recycle rather than discard old electronic devices.",
+    "sc": "我们应该回收而不是丢弃旧的电子设备。",
+    "a": ["丢弃", "抛弃"]
+  },
+  {
+    "w": "discourage",
+    "m": "使气馁；阻碍",
+    "p": "/dɪsˈkʌrɪdʒ/",
+    "s": "Failure should not discourage you from pursuing your dreams.",
+    "sc": "失败不应让你气馁，放弃追求梦想。",
+    "a": ["使气馁", "阻碍"]
+  },
+  {
+    "w": "diverse",
+    "m": "多样的；不同的",
+    "p": "/daɪˈvɜːs/",
+    "s": "The university prides itself on having a culturally diverse student body.",
+    "sc": "这所大学以拥有文化多元的学生群体而自豪。",
+    "a": ["多样的", "不同的"]
+  },
+  {
+    "w": "dominate",
+    "m": "支配；主导",
+    "p": "/ˈdɒmɪneɪt/",
+    "s": "A few large companies continue to dominate the global technology market.",
+    "sc": "少数几家大公司继续主导全球科技市场。",
+    "a": ["支配", "主导"]
+  },
+  {
+    "w": "doubtful",
+    "m": "怀疑的；不确定的",
+    "p": "/ˈdaʊtfəl/",
+    "s": "Many experts remain doubtful about the effectiveness of the new policy.",
+    "sc": "许多专家对新政策的有效性仍持怀疑态度。",
+    "a": ["怀疑的", "不确定的"]
+  },
+  {
+    "w": "dramatic",
+    "m": "巨大的；戏剧性的",
+    "p": "/drəˈmætɪk/",
+    "s": "The city has undergone dramatic changes over the past two decades.",
+    "sc": "在过去的二十年里，这座城市经历了巨大的变化。",
+    "a": ["巨大的", "戏剧性的"]
+  },
+  {
+    "w": "economical",
+    "m": "节俭的；经济的",
+    "p": "/ˌiːkəˈnɒmɪkəl/",
+    "s": "This new engine is more economical and produces fewer emissions.",
+    "sc": "这种新发动机更加经济，产生的排放也更少。",
+    "a": ["节俭的", "经济的"]
+  },
+  {
+    "w": "eliminate",
+    "m": "消除；淘汰",
+    "p": "/ɪˈlɪmɪneɪt/",
+    "s": "The goal is to eliminate poverty and hunger worldwide by 2030.",
+    "sc": "目标是在2030年前消除全球贫困和饥饿。",
+    "a": ["消除", "淘汰"]
+  },
+  {
+    "w": "emphasize",
+    "m": "强调；着重",
+    "p": "/ˈemfəsaɪz/",
+    "s": "The teacher emphasized the importance of regular practice in language learning.",
+    "sc": "老师强调了在语言学习中定期练习的重要性。",
+    "a": ["强调", "着重"]
+  },
+  {
+    "w": "enable",
+    "m": "使能够；促成",
+    "p": "/ɪˈneɪbəl/",
+    "s": "Technology enables people to communicate instantly across the globe.",
+    "sc": "技术使人们能够在全球范围内即时交流。",
+    "a": ["使能够", "促成"]
+  },
+  {
+    "w": "encounter",
+    "m": "遭遇；邂逅",
+    "p": "/ɪnˈkaʊntə/",
+    "s": "We may encounter unexpected difficulties during the journey.",
+    "sc": "我们在旅途中可能会遇到意想不到的困难。",
+    "a": ["遭遇", "邂逅"]
+  },
+  {
+    "w": "enhance",
+    "m": "提升；增强",
+    "p": "/ɪnˈhɑːns/",
+    "s": "Regular exercise can enhance both physical and mental performance.",
+    "sc": "定期锻炼能提升身体和心理两方面的表现。",
+    "a": ["提升", "增强"]
+  },
+  {
+    "w": "enormous",
+    "m": "巨大的；庞大的",
+    "p": "/ɪˈnɔːməs/",
+    "s": "The project required an enormous amount of time and resources.",
+    "sc": "这个项目需要大量的时间和资源。",
+    "a": ["巨大的", "庞大的"]
+  },
+  {
+    "w": "ensure",
+    "m": "保证；确保",
+    "p": "/ɪnˈʃʊə/",
+    "s": "Please ensure that all doors are locked before leaving the building.",
+    "sc": "请确保离开大楼前所有门都已锁好。",
+    "a": ["保证", "确保"]
+  },
+  {
+    "w": "entertain",
+    "m": "娱乐；招待",
+    "p": "/ˌentəˈteɪn/",
+    "s": "The show is designed to entertain as well as educate young audiences.",
+    "sc": "这个节目旨在娱乐和教育年轻观众。",
+    "a": ["娱乐", "招待"]
+  },
+  {
+    "w": "establish",
+    "m": "建立；确立",
+    "p": "/ɪˈstæblɪʃ/",
+    "s": "The company was established in 1985 and has since grown rapidly.",
+    "sc": "该公司成立于1985年，此后迅速发展。",
+    "a": ["建立", "确立"]
+  },
+  {
+    "w": "evaluate",
+    "m": "评价；评估",
+    "p": "/ɪˈvæljueɪt/",
+    "s": "We need to evaluate the effectiveness of the new teaching method.",
+    "sc": "我们需要评估新教学方法的有效性。",
+    "a": ["评价", "评估"]
+  },
+  {
+    "w": "evolve",
+    "m": "进化；发展",
+    "p": "/ɪˈvɒlv/",
+    "s": "Species evolve over millions of years to adapt to their environment.",
+    "sc": "物种经过数百万年的进化来适应环境。",
+    "a": ["进化", "发展"]
+  },
+  {
+    "w": "exaggerate",
+    "m": "夸大；夸张",
+    "p": "/ɪɡˈzædʒəreɪt/",
+    "s": "The media sometimes exaggerates the severity of certain events.",
+    "sc": "媒体有时会夸大某些事件的严重性。",
+    "a": ["夸大", "夸张"]
+  },
+  {
+    "w": "accumulate",
+    "m": "积累；积聚",
+    "p": "/əˈkjuːmjəleɪt/",
+    "s": "Over time, small savings can accumulate into a substantial amount of wealth.",
+    "sc": "随着时间的推移，小笔积蓄可以积累成一笔可观的财富。",
+    "a": ["积累", "积聚"]
+  }
+]

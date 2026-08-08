@@ -305,6 +305,7 @@ body {
     <select id="wordbank-select" onchange="onWordBankChange()">
       <option value="default">SAT Core Vocabulary (100 words)</option>
       <option value="sat_vocab_4">10S SAT 词汇-4 (100 words)</option>
+      <option value="cet6_core">CET-6 Core Vocabulary (100 words)</option>
       <option value="custom">📝 Custom (from editor)</option>
     </select>
     <div id="wordbank-loading"></div>
@@ -411,6 +412,7 @@ const DEFAULT_WORD_DATA = [{"w":"efficacy","m":"功效；有效性","p":"/ˈefɪ
 const WORD_BANKS = {
   'default': { name: 'SAT Core Vocabulary', file: 'word_banks/default.json', count: 100 },
   'sat_vocab_4': { name: '10S SAT 词汇-4', file: 'word_banks/sat_vocab_4.json', count: 100 },
+  'cet6_core': { name: 'CET-6 Core Vocabulary', file: 'word_banks/cet6_core.json', count: 100 },
 };
 let currentWordBankId = 'default';
 
