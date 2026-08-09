@@ -19,5 +19,12 @@
     "description": "100 六级核心词汇",
     "file": "word_banks/cet6_core.json",
     "wordCount": 100
+  },
+  {
+    "id": "sat_core_list_1",
+    "name": "SAT核心词汇list 1",
+    "description": "100 SAT核心词汇 list 1 (from Flying Tiger)",
+    "file": "word_banks/sat_core_list_1.json",
+    "wordCount": 100
   }
 ]
