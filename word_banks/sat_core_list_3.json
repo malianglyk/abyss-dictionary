@@ -1,0 +1,1334 @@
+[
+  {
+    "w": "census",
+    "m": "人口普查",
+    "p": "/ˈsensəs/",
+    "s": "According to the Census Bureau, over an adult's working life, high school graduates earn an average of $1.",
+    "sc": "根据人口普查局的说法，在成年人的整个工作生涯中，高中毕业生平均能赚一美元。",
+    "a": [
+      "人口普查",
+      "调查统计",
+      "对某一群体或现象的系统性统计调查"
+    ]
+  },
+  {
+    "w": "chaotic",
+    "m": "混乱的",
+    "p": "/keɪˈɒtɪk/",
+    "s": "The classroom was chaotic during the fire drill.",
+    "sc": "火灾演习期间，教室里一片混乱。",
+    "a": [
+      "混乱的"
+    ]
+  },
+  {
+    "w": "circuitry",
+    "m": "脑回路，电路",
+    "p": "/ˈsɜː.kɪ.tri/",
+    "s": "Hormone leptin is a crucial player in the brain's weigh-management circuitry.",
+    "sc": "激素瘦素是大脑体重管理回路中的关键参与者。",
+    "a": [
+      "电路系统",
+      "线路与回路的整体构成"
+    ]
+  },
+  {
+    "w": "be through doing sth",
+    "m": "做完的，完成的",
+    "p": "/θruː/",
+    "s": "I be through doing sth and can go home now.",
+    "sc": "我已经做完了，现在可以回家了。",
+    "a": [
+      "完成的",
+      "结束了的",
+      "不再继续的"
+    ]
+  },
+  {
+    "w": "cherish",
+    "m": "珍惜；怀有",
+    "p": "/ˈtʃerɪʃ/",
+    "s": "I cherish my old snapshots as much as the next person.",
+    "sc": "我同样珍视我那些旧照片，和别人一样。",
+    "a": [
+      "珍爱",
+      "珍视",
+      "深深爱护并看重"
+    ]
+  },
+  {
+    "w": "cite",
+    "m": "引用",
+    "p": "/saɪt/",
+    "s": "Since AI doesn't always cite its sources, writers could unintentionally use ideas from others without proper attribution.",
+    "sc": "由于人工智能并不总是注明其来源，作者可能会在无意中使用他人的观点而未作适当致谢。",
+    "a": [
+      "引用",
+      "援引",
+      "提及",
+      "列举"
+    ]
+  },
+  {
+    "w": "bear",
+    "m": "拥有，显示；承受，应对；承载",
+    "p": "/beə/",
+    "s": "Any piece of art may bear the fingerprints of the artist who created it.",
+    "sc": "任何艺术作品都可能带有创作者的痕迹。",
+    "a": [
+      "承受",
+      "忍受",
+      "支撑",
+      "带有",
+      "生育",
+      "熊",
+      "一种大型食肉哺乳动物"
+    ]
+  },
+  {
+    "w": "characteristic",
+    "m": "典型的、有特点的",
+    "p": "/ˌkærɪktəˈrɪstɪk/",
+    "s": "One vital characteristic of a highly creative person, she says, is that they have at least one other person in their life who doesn't think they are completely nuts.",
+    "sc": "她说，一个极具创造力的人的一个重要特征是，他们生活中至少有另一个人不觉得他们完全疯了。",
+    "a": [
+      "特征",
+      "特点",
+      "特性",
+      "典型的",
+      "有某种人或物所特有的"
+    ]
+  },
+  {
+    "w": "bizarre",
+    "m": "奇怪的，离奇的",
+    "p": "/bɪˈzɑː(r)/",
+    "s": "It floated in deep space like a chunk of bizarre Titter.",
+    "sc": "它像一大块怪异的碎屑一样漂浮在深空中。",
+    "a": [
+      "怪异的",
+      "离奇的",
+      "古怪到不同寻常的"
+    ]
+  },
+  {
+    "w": "bond",
+    "m": "联系，纽带；束缚",
+    "p": "/bɒnd/",
+    "s": "A bond between us held through the years.",
+    "sc": "我们之间的纽带经受住了岁月的考验。",
+    "a": [
+      "纽带",
+      "联系",
+      "约束",
+      "黏合物",
+      "以及金融上的债券",
+      "法律上的担保保证书",
+      "使建立联系",
+      "使紧密结合",
+      "使形成情感上的依附"
+    ]
+  },
+  {
+    "w": "be wont to do",
+    "m": "习惯于做...",
+    "p": "/biː ˈwɒnt tə duː/",
+    "s": "People be wont to do that in winter, but not in summer.",
+    "sc": "人们冬天常常那么做，但夏天不会。",
+    "a": [
+      "习惯于做某事",
+      "常常做某事"
+    ]
+  },
+  {
+    "w": "bias",
+    "m": "偏见",
+    "p": "/ˈbaɪəs/",
+    "s": "Despite such efforts, the literature shows little consensus regarding the causes or manifestations of human bias.",
+    "sc": "尽管做了这些努力，相关文献对人类偏见的成因或表现几乎没有共识。",
+    "a": [
+      "偏见",
+      "偏向",
+      "偏爱",
+      "倾向",
+      "使有偏向",
+      "使偏斜",
+      "使偏置",
+      "有偏见的",
+      "有偏向的"
+    ]
+  },
+  {
+    "w": "blame A on B",
+    "m": "将A归咎于B",
+    "p": "/bleɪm ˈeɪ ɒn ˈbiː/",
+    "s": "In The Godfather, Michael does not blame A on B.",
+    "sc": "在《教父》中，迈克尔没有把Ａ归咎于Ｂ。",
+    "a": [
+      "把A归咎于B",
+      "把A的问题",
+      "错误或后果说成是B造成的"
+    ]
+  },
+  {
+    "w": "boost",
+    "m": "提高",
+    "p": "/buːst/",
+    "s": "Video games give your child's brain a real boost.",
+    "sc": "电子游戏会给你孩子的大脑带来真正的提升。",
+    "a": [
+      "促进",
+      "提升",
+      "增益",
+      "推动作用",
+      "增强",
+      "提高"
+    ]
+  },
+  {
+    "w": "blunt",
+    "m": "不锋利的；说话过于直白的",
+    "p": "/blʌnt/",
+    "s": "He was blunt about the bad news.",
+    "sc": "他把坏消息说得很直白。",
+    "a": [
+      "钝的",
+      "直率的",
+      "生硬的",
+      "削弱",
+      "使变钝"
+    ]
+  },
+  {
+    "w": "benchmark",
+    "m": "标准",
+    "p": "/ˈbentʃmɑːk/",
+    "s": "Hence this is becoming a minimum requirement for existing members of staff, and a benchmark against which to measure new recruits.",
+    "sc": "因此，这正成为现有员工的一项最低要求，也成为衡量新进人员的基准。",
+    "a": [
+      "基准",
+      "标杆",
+      "衡量标准",
+      "基准测试",
+      "把……作为基准进行比较",
+      "对……做基准测试"
+    ]
+  },
+  {
+    "w": "charge",
+    "m": "任务，职责",
+    "p": "/tʃɑːdʒ/",
+    "s": "Mobile service providers charge appreciable rates for messages to certain numbers, which is why TV-texting can bring in a lot of cash.",
+    "sc": "移动服务提供商会向某些号码的信息收取相当高的费用，这就是电视短信能带来很多现金的原因。",
+    "a": [
+      "收费",
+      "索取费用",
+      "费用",
+      "价款",
+      "索要的金额",
+      "电荷",
+      "电荷量",
+      "带电状态"
+    ]
+  },
+  {
+    "w": "cleave",
+    "m": "劈开；分化",
+    "p": "/kliːv/",
+    "s": "On its own, Oaks’ study was intriguing but not enough to convince the larger scientific community to cleave the Nile crocodile into two species.",
+    "sc": "单靠这一项研究很有趣，但还不足以说服更大的科学界把尼罗鳄劈分为两个物种。",
+    "a": [
+      "劈开",
+      "使分裂",
+      "也可表示紧紧依附",
+      "忠诚追随"
+    ]
+  },
+  {
+    "w": "bind",
+    "m": "束缚",
+    "p": "/baɪnd/",
+    "s": "There’s a growing body of grim evidence to support our belief that the destruction of traditional downtowns and older neighborhoods—places that people care about—is corroding the very sense of community that helps bind us together as a people and as a nation.",
+    "sc": "越来越多令人不安的证据支持我们的看法：传统市中心和老社区的破坏——那些人们在意的地方——正在侵蚀那种帮助把我们作为一个民族、作为一个国家紧密团结起来的社区感。",
+    "a": [
+      "系",
+      "绑",
+      "固定",
+      "使结合",
+      "使团结"
+    ]
+  },
+  {
+    "w": "burdensome",
+    "m": "麻烦的；困难的",
+    "p": "/ˈbɜːdnsəm/",
+    "s": "It can be burdensome, but you should try to read every food package label.",
+    "sc": "这可能很繁重，但你还是应该尽量阅读每个食品包装标签。",
+    "a": [
+      "繁重的",
+      "令人负担沉重的",
+      "麻烦的"
+    ]
+  },
+  {
+    "w": "coarse",
+    "m": "粗俗的，粗糙的",
+    "p": "/kɔːs/",
+    "s": "Hutchinson sits nothing something to her left, and the viewer, disarmed at first perhaps by the flatness of the composition and the coarse brushwork, feels as much as sees the various tones of the few colors in the portrait—ochre, green, and pink, and, where the whites of the eyes should be, teal.",
+    "sc": "赫钦森在她左侧坐着，观者起初也许会被构图的平面感和粗糙的笔触所消解防备，既感到也看到这幅肖像中少数几种颜色的不同色调——赭色、绿色和粉色，以及本应是眼白的地方是蓝绿色。",
+    "a": [
+      "粗糙的",
+      "粗的",
+      "颗粒大的",
+      "粗俗的",
+      "粗鄙的"
+    ]
+  },
+  {
+    "w": "beautifully preserved",
+    "m": "完好地被保存的",
+    "p": "/ˌbjuːtɪfəli prɪˈzɜːvd/",
+    "s": "A beautifully preserved boat, made around 3, 000 years ago and discovered by chance in a muddy hole, has had a profound impact on archaeological research.",
+    "sc": "一艘保存极好的船，大约在三千年前制成，偶然在一个泥坑中被发现，对考古研究产生了深远影响。",
+    "a": [
+      "保存极好",
+      "保存状态极佳的",
+      "也可指外表依然十分完好的"
+    ]
+  },
+  {
+    "w": "coalesce",
+    "m": "合并。聚合而成",
+    "p": "/kəʊəˈles/",
+    "s": "So, what happens when the conventions of three media coalesce?",
+    "sc": "那么，当三种媒介的惯例融合在一起时，会发生什么？",
+    "a": [
+      "合并",
+      "融合",
+      "联合成一体"
+    ]
+  },
+  {
+    "w": "besides",
+    "m": "除了",
+    "p": "/bɪˈsaɪdz/",
+    "s": "Besides, I already knew that first principle of everyday magic: once you say something, give it a name, then, only then, can it happen.",
+    "sc": "再说，我早就知道日常魔法的第一原则：一旦你说出某件事，给它命名，然后，只有那时，它才会发生。",
+    "a": [
+      "此外",
+      "而且",
+      "再说",
+      "表示“除……之外",
+      "除了……以外”",
+      "也可表示“加上",
+      "再加上”",
+      "用于引出补充观点或理由",
+      "表示“此外",
+      "再说”"
+    ]
+  },
+  {
+    "w": "bounty",
+    "m": "丰富的资源；慷慨",
+    "p": "/ˈbaʊnti/",
+    "s": "Taking advantage of this rich bounty, Alaska's commercial fisheries have developed into some of the largest in the world.",
+    "sc": "凭借这一丰富的物产，阿拉斯加的商业渔业已发展成世界上规模最大的一些渔业。",
+    "a": [
+      "由政府或其他机构悬赏支付的奖金",
+      "赏金",
+      "也指大量而丰富的供应",
+      "收获或产出"
+    ]
+  },
+  {
+    "w": "bear with",
+    "m": "忍受",
+    "p": "/beə wɪð/",
+    "s": "Bear with me while I find the right page.",
+    "sc": "请耐心等我一下，我来找一找正确的页码。",
+    "a": [
+      "耐心等待",
+      "稍等一下",
+      "容忍一会儿"
+    ]
+  },
+  {
+    "w": "beforehand",
+    "m": "提前",
+    "p": "/ˌbɪəˈhænd/",
+    "s": "Beforehand, though, contestants dig through the tubs of outdated models, searching for the phone with the greatest flight potential.",
+    "sc": "不过，事先，参赛者要翻找那些装着过时机型的桶，寻找最具飞行潜力的手机。",
+    "a": [
+      "事先",
+      "预先",
+      "提前"
+    ]
+  },
+  {
+    "w": "be used to doing/to sth",
+    "m": "适应于/习惯于做...",
+    "p": "",
+    "s": "I am used to waking up early.",
+    "sc": "我习惯于早起。",
+    "a": [
+      "适应于/习惯于做..."
+    ]
+  },
+  {
+    "w": "boast of",
+    "m": "吹嘘，夸大",
+    "p": "/bəʊst əv/",
+    "s": "He did not boast of these things.",
+    "sc": "他没有为这些事情自夸。",
+    "a": [
+      "自夸",
+      "吹嘘",
+      "夸耀自己有某物或做过某事"
+    ]
+  },
+  {
+    "w": "beneficial",
+    "m": "有益的",
+    "p": "/ˌbenɪˈfɪʃəl/",
+    "s": "Some argue that digital media has had a beneficial effect overall, as it has greatly improved global communication and connectivity.",
+    "sc": "有人认为数字媒体总体上产生了有益的影响，因为它极大地改善了全球交流和连接。",
+    "a": [
+      "有益的",
+      "有利的",
+      "有帮助的"
+    ]
+  },
+  {
+    "w": "certain",
+    "m": "某些",
+    "p": "/ˈsɜːtn/",
+    "s": "In certain professional contexts, however, a distinction is drawn between people who work with the spoken or signed language (interpreters) and those who work with the written language (translators).",
+    "sc": "然而，在某些职业语境中，会把从事口语或手语工作的人（口译员）与从事书面语言工作的人（笔译员）区分开来。",
+    "a": [
+      "确定的",
+      "肯定的",
+      "必定的",
+      "有把握的",
+      "某些",
+      "若干",
+      "一定的",
+      "表示不具体指明但限定范围"
+    ]
+  },
+  {
+    "w": "cling to",
+    "m": "紧抓不放",
+    "p": "/klɪŋ tuː/",
+    "s": "No one was around to help her; she dropped the ice cream she was carrying and managed to cling to the edge and hoist herself out of the hole.",
+    "sc": "周围没有人能帮她；她把自己拿着的冰淇淋掉了，但还是设法紧紧抓住边缘，把自己拉出了洞外。",
+    "a": [
+      "紧紧抓住",
+      "坚持不放弃",
+      "执意保留"
+    ]
+  },
+  {
+    "w": "benevolent",
+    "m": "仁慈的",
+    "p": "/bəˈnevələnt/",
+    "s": "This is an uncompromising exhibition; many of the drawings are small and faint, and there are no sideshows for children, but the impact of harmonious lines and satisfying proportions is to impart in a viewer a feeling of benevolent calm.",
+    "sc": "这是一场毫不妥协的展览；许多画作都很小、很淡，也没有给孩子们看的余兴节目，但和谐的线条与令人满足的比例所产生的效果，是让观众感到一种仁慈而平静的气息。",
+    "a": [
+      "仁慈的",
+      "善意的",
+      "出于好心的"
+    ]
+  },
+  {
+    "w": "bottom line",
+    "m": "账本底线，盈亏状况",
+    "p": "/ˌbɒtəm ˈlaɪn/",
+    "s": "The bottom line is that the future is almost definitely going to be electric.",
+    "sc": "归根结底，未来几乎肯定会是电动化的。",
+    "a": [
+      "底线",
+      "结论",
+      "尤指账面上的最终财务结果或利润/亏损",
+      "归根结底",
+      "总之"
+    ]
+  },
+  {
+    "w": "certification",
+    "m": "认证，证书",
+    "p": "/ˌsɜːtɪfɪˈkeɪʃən/",
+    "s": "These environmental problems, along with historically poor conditions for banana workers, have prompted several organizations to creat certification and seals of approval for producers that meet certain and seals of approval for producers that meet certain environmental and social standards.",
+    "sc": "这些环境问题，加上香蕉工人长期恶劣的工作条件，促使几个组织为符合某些环境和社会标准的生产者创建认证和认可标志。",
+    "a": [
+      "认证",
+      "证明某人或某物符合标准的正式程序或结果",
+      "认证证书"
+    ]
+  },
+  {
+    "w": "bound",
+    "m": "边界，范围",
+    "p": "/baʊnd/",
+    "s": "I knew he would bound for the coast at first light, with the road, the rain, and the long silence ahead of him.",
+    "sc": "我知道他会在天亮时前往海岸，前方是道路、雨和漫长的沉默。",
+    "a": [
+      "必定会",
+      "注定要",
+      "一定会发生的",
+      "使捆绑",
+      "系牢",
+      "把……绑在一起",
+      "使受约束",
+      "跳跃",
+      "跃动",
+      "弹跳的一次动作"
+    ]
+  },
+  {
+    "w": "bridegroom",
+    "m": "新郎官",
+    "p": "/ˈbraɪdɡruːm/",
+    "s": "The bridegroom waited outside the church.",
+    "sc": "新郎在教堂外等候。",
+    "a": [
+      "新郎",
+      "即将结婚的男子"
+    ]
+  },
+  {
+    "w": "chronology",
+    "m": "年代记、编年史",
+    "p": "/krəˈnɒlədʒi/",
+    "s": "Presented as a chronology of her life, these materials paint a far more vivid portrait than any biographer's account.",
+    "sc": "这些材料以她一生的时间顺序呈现，比任何传记作者的记述都更生动地勾勒出她的形象。",
+    "a": [
+      "年代学",
+      "按时间先后排列的事件顺序",
+      "年代记述"
+    ]
+  },
+  {
+    "w": "behold",
+    "m": "看",
+    "p": "/bɪˈhəʊld/",
+    "s": "Once again do I behold these steep and lofty cliffs.",
+    "sc": "我又一次看见这些陡峭而高耸的悬崖。",
+    "a": [
+      "看见",
+      "注视",
+      "凝视",
+      "目睹",
+      "感叹语",
+      "常见于固定短语 lo and behold",
+      "表示“瞧",
+      "看哪",
+      "果然”",
+      "用于引出意外出现或令人惊讶的结果"
+    ]
+  },
+  {
+    "w": "boundless",
+    "m": "无边无际的，无穷的",
+    "p": "/ˈbaʊndləs/",
+    "s": "Time, to a child, was boundless and unmeasurable.",
+    "sc": "对一个孩子来说，时间是无边无际、无法衡量的。",
+    "a": [
+      "无边无际的",
+      "无限的",
+      "极大的"
+    ]
+  },
+  {
+    "w": "bulk",
+    "m": "大部分",
+    "p": "/bʌlk/",
+    "s": "She ate quite heartily, though in a delicate, pecking way; it seemed almost surprising that any considerable bulk of the food should vanish.",
+    "sc": "她吃得相当香，虽然动作细小而轻啄般；那么多食物竟然会消失，几乎令人惊讶。",
+    "a": [
+      "体积",
+      "体量",
+      "庞大身躯",
+      "大部分",
+      "主体"
+    ]
+  },
+  {
+    "w": "close",
+    "m": "（空间）令人窒息的，窒闷的",
+    "p": "/kləʊs/",
+    "s": "At the same time, the close link between emotions and expressions can also work in the other direction; it has been observed that voluntarily assuming an expression can actually cause the associated emotion.",
+    "sc": "与此同时，情绪和表情之间的紧密联系也可以反向起作用；人们已经观察到，主动做出某种表情实际上会引发相应的情绪。",
+    "a": [
+      "接近的",
+      "亲近的",
+      "紧密的",
+      "接近地",
+      "几乎"
+    ]
+  },
+  {
+    "w": "brevity",
+    "m": "言简意赅；短暂",
+    "p": "/ˈbrevəti/",
+    "s": "By considering the organisms, viewers get a sense of the brevity of human lives and the vastness of time.",
+    "sc": "通过观察这些生物，观众会感受到人类生命的短暂以及时间的浩瀚。",
+    "a": [
+      "短暂",
+      "简短",
+      "简洁",
+      "尤指时间或生命的短促"
+    ]
+  },
+  {
+    "w": "bittersweet",
+    "m": "苦涩而甜蜜的",
+    "p": "/ˌbɪtəˈswiːt/",
+    "s": "She watched her husband of 30 years depart with a mixture of bittersweet sensations, wondering \"when or whether he will ever come home again.\"",
+    "sc": "她看着相伴三十年的丈夫离去，心中交织着苦乐参半的感觉，想着“他是否还会回家，或者何时才会回来”。",
+    "a": [
+      "苦乐参半的",
+      "又甜又苦的",
+      "令人喜忧交织的"
+    ]
+  },
+  {
+    "w": "clarify",
+    "m": "解释，澄清",
+    "p": "/ˈklærɪfaɪ/",
+    "s": "These elaborations are helpful, but in cases of complex phenomena, an interview may help participants clarify their intentions (Markwell, 1997).",
+    "sc": "这些补充说明很有帮助，但在复杂现象的情况下，访谈可以帮助参与者澄清他们的意图。",
+    "a": [
+      "澄清",
+      "使清楚",
+      "使更容易理解",
+      "说明白"
+    ]
+  },
+  {
+    "w": "characterize",
+    "m": "是...的特征；描述，刻画",
+    "p": "/ˈkærəktəraɪz/",
+    "s": "They characterize the village as quiet and remote.",
+    "sc": "他们把这个村庄描述为安静而偏远。",
+    "a": [
+      "描述",
+      "刻画",
+      "把……看作",
+      "使具有……特征"
+    ]
+  },
+  {
+    "w": "cloister",
+    "m": "回廊",
+    "p": "/ˈklɔɪstə/",
+    "s": "The cloister was cool and silent at dusk.",
+    "sc": "黄昏时，回廊里凉爽而寂静。",
+    "a": [
+      "修道院的回廊",
+      "修道院或女修道院内供行走和静修的封闭走廊或庭院",
+      "使隐居",
+      "使与世隔绝",
+      "把某人限制在封闭",
+      "安静的环境中"
+    ]
+  },
+  {
+    "w": "chronological",
+    "m": "按时间顺序的",
+    "p": "/ˌkrɒnəˈlɒdʒɪkəl/",
+    "s": "Most stories have a beginning, a middle and an end, but real memories are not usually related in chronological order.",
+    "sc": "大多数故事都有开头、中间和结尾，但真正的记忆通常并不是按时间顺序叙述的。",
+    "a": [
+      "按时间顺序的",
+      "按年代顺序排列的"
+    ]
+  },
+  {
+    "w": "catastrophic",
+    "m": "灾难性的",
+    "p": "/ˌkætəˈstrɒfɪk/",
+    "s": "Although the public often opposes any type of fire—and the smoke that goes with it一these frequent, low-intensity burns reduce the risk of catastrophic conflagrations.",
+    "sc": "尽管公众常常反对任何形式的火——以及随之而来的烟——这些频繁的低强度燃烧会降低发生灾难性大火的风险。",
+    "a": [
+      "灾难性的",
+      "造成极大破坏的",
+      "灾祸似的"
+    ]
+  },
+  {
+    "w": "breakthrough",
+    "m": "突破、成就",
+    "p": "/ˈbreɪkθruː/",
+    "s": "But to be saved, humankind needs a radical breakthrough in solar-fuel technology: artificial leaves that will capture solar rays and churn out chemical fuel on the spot, much as plants do.",
+    "sc": "但要获得拯救，人类需要在太阳燃料技术上取得一次重大突破：人工叶片能够捕捉太阳光线，并像植物那样当场转化出化学燃料。",
+    "a": [
+      "突破",
+      "重大进展",
+      "关键性进展"
+    ]
+  },
+  {
+    "w": "bunch",
+    "m": "一群、一组",
+    "p": "/bʌntʃ/",
+    "s": "Drivers at that time were an adventurous bunch; they would go out regardless of the weather condition even if they weren't even protected by an enclosed body or a convertible top.",
+    "sc": "那时的司机是一群爱冒险的人；不管天气如何，即使没有封闭车身或敞篷顶，他们也会出门。",
+    "a": [
+      "一群人",
+      "一伙人",
+      "一束",
+      "一簇",
+      "一堆",
+      "使聚拢",
+      "使成束",
+      "挤作一团"
+    ]
+  },
+  {
+    "w": "cheering",
+    "m": "令人高兴的",
+    "p": "/ˈtʃɪərɪŋ/",
+    "s": "I thought, If he's cheering, maybe I'm close.",
+    "sc": "我想，如果他在欢呼，也许我就快到了。",
+    "a": [
+      "欢呼",
+      "喝彩",
+      "助威的声音或行为"
+    ]
+  },
+  {
+    "w": "browse",
+    "m": "浏览；吃草",
+    "p": "/braʊz/",
+    "s": "In this way, the clerks would not do the unnecessary work but arrange more delicate aisle and shelves to display the goods and enable the customers to browse through all the items.",
+    "sc": "这样，店员就不用做那些不必要的工作，而是把过道和货架布置得更精致，以展示商品并让顾客浏览所有商品。",
+    "a": [
+      "浏览",
+      "随意翻看",
+      "逛看"
+    ]
+  },
+  {
+    "w": "broach",
+    "m": "提出",
+    "p": "/brəʊtʃ/",
+    "s": "I didn't want to broach the subject of money.",
+    "sc": "我不想提起金钱这个话题。",
+    "a": [
+      "提出",
+      "首次提及并开始讨论（尤指敏感或困难的话题）"
+    ]
+  },
+  {
+    "w": "circulation",
+    "m": "传播，流通",
+    "p": "/ˌsɜːkjəˈleɪʃn/",
+    "s": "Indeed, the International Ivory Society, on whose advisory board I sit, believes that taking valuable ivory objects out of circulation will only increase the market price for raw ivory abroad and put elephants in even more danger than at the present.",
+    "sc": "事实上，我担任顾问委员会成员的国际象牙协会认为，把有价值的象牙制品撤出流通只会抬高国外原象牙的市场价格，并使大象比现在更加危险。",
+    "a": [
+      "循环",
+      "环流",
+      "血液循环",
+      "流通",
+      "公开发行"
+    ]
+  },
+  {
+    "w": "but",
+    "m": "只有；除非",
+    "p": "/bʌt/",
+    "s": "B His first two books—The End of Economic Man (1939) and The Future of Industrial Man (1942)—received praise from readers, including Winston Churchill, but they annoyed academic critics for the wide range over so many different subjects.",
+    "sc": "他的前两本书——《经济人的终结》（1939）和《工业人的未来》（1942）——得到了读者的赞扬，包括温斯顿·丘吉尔，但它们因涉及面过于广泛而惹恼了学术批评者。",
+    "a": [
+      "但是",
+      "然而",
+      "用于引出转折",
+      "对比或让步",
+      "表示“除了……",
+      "除非",
+      "要不是”",
+      "常见于 but for"
+    ]
+  },
+  {
+    "w": "cocoon",
+    "m": "（蚕）茧；舒服之地",
+    "p": "/kəˈkuːn/",
+    "s": "She also devised a special reel to draw the fibres from the cocoon into a single thread so that they would be strong enough to be woven into fabric.",
+    "sc": "她还设计了一个特殊的绕线器，把茧里的纤维抽成一根单线，这样它们才足够结实，能够织成布料。",
+    "a": [
+      "茧",
+      "昆虫幼虫分泌丝质形成的保护性外壳",
+      "也可指包裹性的保护层或外罩"
+    ]
+  },
+  {
+    "w": "cease to do/cease doing",
+    "m": "停止做某事",
+    "p": "",
+    "s": "I will cease to play video games after dinner.",
+    "sc": "我将在晚餐后停止玩电子游戏。",
+    "a": [
+      "停止做某事"
+    ]
+  },
+  {
+    "w": "celebrated",
+    "m": "著名的",
+    "p": "/ˈselɪbreɪtɪd/",
+    "s": "These celebrated landmarks were designed to inspire feelings of patriotism and pride.",
+    "sc": "这些著名地标的设计旨在激发爱国主义和自豪感。",
+    "a": [
+      "著名的",
+      "有名望的",
+      "受人称道的",
+      "公开赞扬",
+      "举行庆祝"
+    ]
+  },
+  {
+    "w": "calibrate",
+    "m": "调整",
+    "p": "/ˈkælɪbreɪt/",
+    "s": "Moreover, not only do time signals beamed down from Global Positioning System satellites calibrate the functions of precision navigation equipment, they do so as well for mobile phones, instant stock-trading systems and nationwide power-distribution grids.",
+    "sc": "此外，从全球定位系统卫星传下来的时间信号不仅校准精密导航设备的功能，也同样校准手机、即时股票交易系统和全国输配电网络的功能。",
+    "a": [
+      "校准",
+      "使与标准一致",
+      "调准"
+    ]
+  },
+  {
+    "w": "capacity",
+    "m": "容量；能力",
+    "p": "/kəˈpæsəti/",
+    "s": "Hospitals were overwhelmed with patients, and morgues quickly reached capacity.",
+    "sc": "医院里病人爆满，太平间很快就满了。",
+    "a": [
+      "容量",
+      "容积",
+      "承载量",
+      "能力",
+      "资格",
+      "职务",
+      "身份"
+    ]
+  },
+  {
+    "w": "cement",
+    "m": "令关系更加紧密；纽带",
+    "p": "/ˈsem.ənt/",
+    "s": "One is the content of the cement that binds the material in the concrete.",
+    "sc": "其中之一是把材料黏结在混凝土里的水泥含量。",
+    "a": [
+      "水泥",
+      "胶结材料",
+      "也指把砖石",
+      "骨料等黏合在一起的硬化黏结物",
+      "亦可指牙科用粘固剂",
+      "把东西黏合",
+      "固定在一起",
+      "使牢固结合"
+    ]
+  },
+  {
+    "w": "cluster",
+    "m": "围城一群，汇聚",
+    "p": "/ˈklʌstə/",
+    "s": "In the 1960s, the astronomer Gerald Hawkins suggested that the cluster of megalithic stones operated as a form of calendar, with different points corresponding to astrological phenomena such as solstices, equinoxes and eclipses occurring at different times of the year.",
+    "sc": "在二十世纪六十年代，天文学家杰拉德·霍金斯提出，那一簇巨石像一种历法，不同的点对应着至日、分点和日食等天象，并在一年中的不同时间出现。",
+    "a": [
+      "一群",
+      "一簇",
+      "一组紧密聚集在一起的人",
+      "物或事物",
+      "使聚集",
+      "使成簇",
+      "聚拢在一起"
+    ]
+  },
+  {
+    "w": "broaden",
+    "m": "拓宽、变广",
+    "p": "/ˈbrɔːdən/",
+    "s": "With many friends, we can gain different perspectives and broaden our understanding.",
+    "sc": "有许多朋友，我们可以获得不同的视角，并开阔我们的理解。",
+    "a": [
+      "使变宽",
+      "扩大",
+      "开阔（视野",
+      "范围",
+      "理解等）"
+    ]
+  },
+  {
+    "w": "charity",
+    "m": "仁慈",
+    "p": "/ˈtʃær.ɪ.ti/",
+    "s": "Most often pianos came to him from auctions and charity sales, their history anonymous.",
+    "sc": "大多数时候，钢琴是从拍卖会和慈善义卖中来到他手里的，它们的来历无人知晓。",
+    "a": [
+      "慈善",
+      "对贫困",
+      "患病或有需要者的捐助",
+      "救济与帮助",
+      "慈善机构或慈善事业"
+    ]
+  },
+  {
+    "w": "care for",
+    "m": "喜欢；照顾",
+    "p": "/keə fɔː/",
+    "s": "As more families rely on dual incomes parents often struggle to find enough time and energy to care for their children effectively.",
+    "sc": "随着越来越多的家庭依赖双收入，父母往往很难找到足够的时间和精力有效照顾自己的孩子。",
+    "a": [
+      "照料",
+      "照顾",
+      "照管"
+    ]
+  },
+  {
+    "w": "ceaselessly",
+    "m": "不停地",
+    "p": "/ˈsiːsləsli/",
+    "s": "They farm fungi, raise aphids* as livestock, launch armies to war, use chemical sprays to alarm and confuse enemies, capture slaves, engage in child labour, exchange information ceaselessly.",
+    "sc": "他们种植真菌，把蚜虫当作牲畜饲养，派出军队作战，使用化学喷雾来惊扰并迷惑敌人，抓捕奴隶，从事童工劳动，并不断交换信息。",
+    "a": [
+      "不断地",
+      "不停地",
+      "持续不断地"
+    ]
+  },
+  {
+    "w": "brew",
+    "m": "开始形成",
+    "p": "/bruː/",
+    "s": "Step into Luna Café, where every cup tells a story beyond the usual brew.",
+    "sc": "走进露娜咖啡馆，每一杯都诉说着不同于寻常饮品的故事。",
+    "a": [
+      "一杯冲泡出来的饮品",
+      "尤指茶",
+      "咖啡或啤酒等经冲泡",
+      "煮制或酿造得到的饮料",
+      "冲泡",
+      "煮制",
+      "酿造"
+    ]
+  },
+  {
+    "w": "burgeoning",
+    "m": "快速发展的",
+    "p": "/ˈbɜːdʒənɪŋ/",
+    "s": "Whereas musicians had hitherto been required to source financial support from a wealthy patron (usually from the royal court), they now earned their living by performing for burgeoning middle-class audiences.",
+    "sc": "过去音乐家往往需要从富有的赞助人那里获得资金支持（通常来自王室宫廷），如今他们则通过为日益壮大的中产阶级观众表演来谋生。",
+    "a": [
+      "迅速发展的",
+      "蓬勃兴起的"
+    ]
+  },
+  {
+    "w": "claim",
+    "m": "权利，所有权；主张，要求",
+    "p": "/kleɪm/",
+    "s": "Walk into any health food store, and you will find various nutritional formulas—with names like Brainstorm and Smart ALEC—that claim to sharpen the brainpower.",
+    "sc": "走进任何一家健康食品店，你都会发现各种营养配方——名字如“Brainstorm”和“Smart ALEC”——声称能提高脑力。",
+    "a": [
+      "声称",
+      "宣称",
+      "主张",
+      "说法",
+      "断言",
+      "权利要求",
+      "要求拥有或得到的权利",
+      "索赔",
+      "申请获得应得的款项",
+      "保险赔付或福利"
+    ]
+  },
+  {
+    "w": "cast a glance at",
+    "m": "瞥一眼",
+    "p": "/kɑːst ə ɡlɑːns æt/",
+    "s": "I cast a glance at the clock before leaving.",
+    "sc": "我离开前瞥了一眼时钟。",
+    "a": [
+      "匆匆看一眼",
+      "瞥一眼"
+    ]
+  },
+  {
+    "w": "celestial",
+    "m": "天上的，太空的",
+    "p": "/səˈlestʃəl/",
+    "s": "Radio astronomy is the study of celestial objects using radio waves rather than visible light.",
+    "sc": "射电天文学是用无线电波而不是可见光来研究天体的学科。",
+    "a": [
+      "天上的",
+      "与天空",
+      "天堂或天体有关的",
+      "也指极美妙的",
+      "像天堂一样的"
+    ]
+  },
+  {
+    "w": "cast doubt on",
+    "m": "质疑",
+    "p": "/kɑːst daʊt ɒn/",
+    "s": "During the last several years, however, a few experiments began to cast doubt on the viceroy's supposed tastiness.",
+    "sc": "然而，在过去几年里，少数几项实验开始让人怀疑帝王蝶所谓的美味。",
+    "a": [
+      "对……提出质疑",
+      "使人怀疑……的真实性",
+      "正确性或可靠性"
+    ]
+  },
+  {
+    "w": "coerce",
+    "m": "胁迫",
+    "p": "/kəʊˈɜːs/",
+    "s": "The law can coerce people into paying their debts.",
+    "sc": "法律可以迫使人们偿还债务。",
+    "a": [
+      "强迫",
+      "胁迫",
+      "使服从"
+    ]
+  },
+  {
+    "w": "cognitive",
+    "m": "认知的",
+    "p": "/ˈkɒɡnətɪv/",
+    "s": "Yet how does this complex cognitive system actually function?",
+    "sc": "然而，这个复杂的认知系统究竟是如何运作的？",
+    "a": [
+      "认知的",
+      "与思维",
+      "理解",
+      "知识获取有关的"
+    ]
+  },
+  {
+    "w": "call into question",
+    "m": "质疑",
+    "p": "/kɔːl ˌɪntuː ˈkwestʃən/",
+    "s": "His credibility alone would call into question the government's version of events.",
+    "sc": "他单凭自己的可信度就会让政府对事件的说法受到质疑。",
+    "a": [
+      "对……提出质疑",
+      "使……受到怀疑"
+    ]
+  },
+  {
+    "w": "complementary",
+    "m": "互补的，补充的",
+    "p": "/ˌkɒmplɪˈmentəri/",
+    "s": "Another integral concept is the tension between two ever-present, complementary forces of nature, yin and yang.",
+    "sc": "另一个核心概念是两种始终存在、彼此互补的自然力量——阴与阳——之间的张力。",
+    "a": [
+      "互补的",
+      "彼此补足的",
+      "相辅相成的"
+    ]
+  },
+  {
+    "w": "coinage",
+    "m": "创造（词、硬币）；铸币",
+    "p": "/ˈkɔɪnɪdʒ/",
+    "s": "A hoard of coinage was discovered in the cellar.",
+    "sc": "在地窖里发现了一批硬币。",
+    "a": [
+      "一个国家或地区的硬币",
+      "铸币制度",
+      "造币"
+    ]
+  },
+  {
+    "w": "coincide with",
+    "m": "与...同时发生、符合、想同",
+    "p": "/ˌkəʊ.ɪnˈsaɪd wɪð/",
+    "s": "The brothers had not anticipated the advent of their work would coincide with a boom of children's literature in Europe.",
+    "sc": "这对兄弟没有预料到，他们的作品问世会与欧洲儿童文学的繁荣同时到来。",
+    "a": [
+      "与……同时发生",
+      "与……一致",
+      "与……相符"
+    ]
+  },
+  {
+    "w": "commodity",
+    "m": "商品、有价值的东西",
+    "p": "/kəˈmɒdɪti/",
+    "s": "When rubber was first commercially produced in Europe during the nineteenth century, it rapidly became a very important commodity, particularly in the fields of transportation and electricity.",
+    "sc": "当橡胶在十九世纪首次在欧洲商业化生产时，它很快就成了一种非常重要的商品，尤其是在交通和电力领域。",
+    "a": [
+      "商品",
+      "日用商品",
+      "可交易的货物"
+    ]
+  },
+  {
+    "w": "compelling",
+    "m": "有说服力的",
+    "p": "/kəmˈpelɪŋ/",
+    "s": "So far, though, the most compelling evidence for laughter beyond primates comes from research done by Jaak Panksepp from Bowling Green State University, Ohio, into the ultrasonic chirps produced by rats during play and in response to tickling.",
+    "sc": "不过到目前为止，最有说服力的证据来自鲍林格林州立大学贾克·潘克塞普关于大鼠在玩耍和受挠痒时发出的超声啁啾的研究，证明笑声并非灵长类动物所独有。",
+    "a": [
+      "引人注目的",
+      "令人信服的",
+      "强烈吸引人的"
+    ]
+  },
+  {
+    "w": "coincidence",
+    "m": "巧合",
+    "p": "/ˌkəʊˈɪnsɪdəns/",
+    "s": "It is no coincidence that these are the areas where languages are disappearing the fastest.",
+    "sc": "这些地区的语言消失得最快，这绝非巧合。",
+    "a": [
+      "巧合",
+      "偶然一致",
+      "看似相关但实际上并无必然联系的情况"
+    ]
+  },
+  {
+    "w": "commonplace",
+    "m": "常见的、普通的",
+    "p": "/ˈkɒmənpleɪs/",
+    "s": "By 1910, Morse radio equipment was commonplace on ships.",
+    "sc": "到一九一〇年，船上已有摩尔斯无线电设备，已是司空见惯。",
+    "a": [
+      "平凡的",
+      "普遍的",
+      "司空见惯的"
+    ]
+  },
+  {
+    "w": "communicate",
+    "m": "传达，表达",
+    "p": "/kəˈmjuːnɪkeɪt/",
+    "s": "This manager may communicate future organisational goals or ethical guidelines to employees at company meetings.",
+    "sc": "这位经理可能会在公司会议上向员工传达未来的组织目标或伦理准则。",
+    "a": [
+      "交流",
+      "沟通",
+      "传达",
+      "表达",
+      "通讯",
+      "信息",
+      "传达的内容"
+    ]
+  },
+  {
+    "w": "comparative",
+    "m": "相对的",
+    "p": "/kəmˈpærətɪv/",
+    "s": "Scientists are currently testing such stories with a comparative analysis of just how common laughter is among animals.",
+    "sc": "科学家们目前正通过一种比较性的分析来检验这些说法，看看动物中的笑声究竟有多常见。",
+    "a": [
+      "比较的",
+      "比较性的",
+      "用于比较的"
+    ]
+  },
+  {
+    "w": "compensate for",
+    "m": "弥补；补偿",
+    "p": "/ˈkɒmpənseɪt fɔː/",
+    "s": "For the patient, persistent, and lucky performer, though, the financial rewards more than compensate for the many disappointments.",
+    "sc": "不过，对于耐心、坚持且幸运的表演者来说，经济回报完全足以弥补那些许多失望。",
+    "a": [
+      "弥补",
+      "补偿",
+      "抵消",
+      "作为对……的补救"
+    ]
+  },
+  {
+    "w": "collapse",
+    "m": "崩溃",
+    "p": "/kəˈlæps/",
+    "s": "Gravity causes part of a cloud of gas and dust to collapse and heat up, creating a pre-MS star.",
+    "sc": "重力使一团气体和尘埃的部分塌缩并升温，从而形成一颗前主序星。",
+    "a": [
+      "倒塌",
+      "崩溃",
+      "塌陷",
+      "突然失去效力或功能",
+      "垮台",
+      "经济或制度上的突然失灵"
+    ]
+  },
+  {
+    "w": "comparable",
+    "m": "相似的",
+    "p": "/ˈkɒmpərəbəl/",
+    "s": "In one study, patients receiving placebo \"painkillers\" reported pain relief comparable to the one produced by actual painkillers, highlighting the brain's powerful role.",
+    "sc": "在一项研究中，服用安慰剂“止痛药”的患者报告的止痛效果可与真正止痛药产生的效果相比，这凸显了大脑强大的作用。",
+    "a": [
+      "可比较的",
+      "相当的",
+      "类似的",
+      "可比的"
+    ]
+  },
+  {
+    "w": "compel",
+    "m": "vt. 强迫，迫使；强使发生 \nn. (Compel)人名；(法)孔佩尔",
+    "p": "/kəmˈpel/",
+    "s": "If writers have a compulsion to narrate they compel themselves to find insights about the human condition.",
+    "sc": "如果作家有一种叙述的强迫冲动，他们就会迫使自己去寻找关于人性的洞见。",
+    "a": [
+      "迫使",
+      "强迫",
+      "使不得不"
+    ]
+  },
+  {
+    "w": "compact",
+    "m": "压紧；紧凑的，紧实的",
+    "p": "/kəmˈpækt/",
+    "s": "Their version was a flat, oval, more compact type of pencil.",
+    "sc": "他们的版本是一种扁平、椭圆、更加紧凑的铅笔。",
+    "a": [
+      "紧凑的",
+      "小而密实的",
+      "坚实的",
+      "结构简洁的",
+      "契约",
+      "协议",
+      "盟约",
+      "粉盒",
+      "小型化妆盒"
+    ]
+  },
+  {
+    "w": "collective",
+    "m": "集体的",
+    "p": "/kəˈlektɪv/",
+    "s": "Aisha Kahlil, and Carol Maillard are the women who currently compose the musical collective.",
+    "sc": "艾莎·哈利勒和卡罗尔·梅拉德是目前组成这个音乐团体的女性。",
+    "a": [
+      "集体",
+      "团体",
+      "集合体",
+      "集体的",
+      "共同的"
+    ]
+  },
+  {
+    "w": "combat",
+    "m": "抵挡、打击",
+    "p": "/ˈkɒmbæt/",
+    "s": "The combat was fierce and brief.",
+    "sc": "战斗激烈而短暂。",
+    "a": [
+      "战斗",
+      "搏斗",
+      "交战",
+      "与……战斗",
+      "与……交战",
+      "以武力对抗",
+      "对抗",
+      "设法阻止或减轻有害事物"
+    ]
+  },
+  {
+    "w": "combatant",
+    "m": "斗士",
+    "p": "/ˈkɒmbətənt/",
+    "s": "The combatant stood in silence before the ruined wall.",
+    "sc": "这名交战者静静地站在倒塌的墙前。",
+    "a": [
+      "交战者",
+      "战斗人员",
+      "参战者"
+    ]
+  },
+  {
+    "w": "complex",
+    "m": "复杂的；综合体",
+    "p": "/ˈkɒmpleks/",
+    "s": "For this to be possible, the interpreter must record the original messages using a complex system of symbols to express what the speaker is saying.",
+    "sc": "要做到这一点，译员必须使用一套复杂的符号系统来记录原始信息，以表达说话者所说的话。",
+    "a": [
+      "复杂的",
+      "由许多部分组成的",
+      "难以理解的"
+    ]
+  },
+  {
+    "w": "combination",
+    "m": "结合",
+    "p": "/ˌkɒmbɪˈneɪʃn/",
+    "s": "The first flat glass mirrors were produced in Venice in the late fifteenth century thanks to two major technical developments: the discovery of a new type of glass known as 'cristallo', so clear it was compared to rock crystal, and an improved silvering technique achieved through the combination of mercury and tin.",
+    "sc": "十五世纪末威尼斯开始生产第一批平板玻璃镜子，这要归功于两项重要的技术进步：一种名为“cristallo”的新型玻璃的发现，其清澈程度可与水晶相比，以及通过汞和锡的组合实现的改进镀银技术。",
+    "a": [
+      "组合",
+      "搭配",
+      "安排",
+      "混合",
+      "由若干部分",
+      "因素或特征构成的整体"
+    ]
+  },
+  {
+    "w": "compile",
+    "m": "vt. 编译；编制；编辑；[图情] 汇编",
+    "p": "/kəmˈpaɪl/",
+    "s": "In the meantime, Peacock continues to compile ethnographic data on the prairie turnip.",
+    "sc": "与此同时，皮科克继续编纂有关草原蕪菁的民族志资料。",
+    "a": [
+      "汇编",
+      "编纂",
+      "收集并整理成册或成文"
+    ]
+  },
+  {
+    "w": "commandment",
+    "m": "训诫，规则",
+    "p": "/ˈkaʊnmənt/",
+    "s": "The commandment is clear: do not steal.",
+    "sc": "这条诫命很明确：不可偷窃。",
+    "a": [
+      "（尤指宗教中的）戒律",
+      "诫命",
+      "命令"
+    ]
+  },
+  {
+    "w": "commit",
+    "m": "犯下；承诺；投入",
+    "p": "/kəˈmɪt/",
+    "s": "I commit to studying every day.",
+    "sc": "我承诺每天学习。",
+    "a": [
+      "犯下",
+      "承诺",
+      "投入"
+    ]
+  },
+  {
+    "w": "compatible",
+    "m": "可兼容的；能共存的",
+    "p": "/ˈkɒmpətəbl/",
+    "s": "Every provider has control over its own short codes, but not until recently have they come to realise that it would make much more sense to work together to offer short codes compatible with all networks.",
+    "sc": "每个服务提供商都能控制自己的短代码，但直到最近他们才意识到，携手合作提供与所有网络兼容的短代码会更合理。",
+    "a": [
+      "兼容的",
+      "可配合的",
+      "能和谐共存的"
+    ]
+  },
+  {
+    "w": "candidate",
+    "m": "候选人、可能的对象",
+    "p": "/ˈkændɪdət/",
+    "s": "We need another approach, and there is a promising candidate.",
+    "sc": "我们需要另一种方法，而且有一个很有希望的候选对象。",
+    "a": [
+      "候选人",
+      "候选物",
+      "有望成为合适人选的人或事物"
+    ]
+  }
+]

@@ -1,14 +1,14 @@
 [
   {
     "id": "default",
-    "name": "SAT Core Vocabulary",
-    "description": "100 SAT reading core vocabulary words (original)",
+    "name": "SAT 词汇题词汇 list 3",
+    "description": "100 SAT机考阅读词汇题词汇-3",
     "file": "word_banks/default.json",
     "wordCount": 100
   },
   {
     "id": "sat_vocab_4",
-    "name": "10S SAT 词汇-4",
+    "name": "SAT 词汇题词汇 list 4",
     "description": "100 SAT机考阅读词汇题词汇-4 (from Flying Tiger)",
     "file": "word_banks/sat_vocab_4.json",
     "wordCount": 100
@@ -25,6 +25,27 @@
     "name": "SAT核心词汇list 1",
     "description": "100 SAT核心词汇 list 1 (from Flying Tiger)",
     "file": "word_banks/sat_core_list_1.json",
+    "wordCount": 100
+  },
+  {
+    "id": "sat_core_list_2",
+    "name": "SAT 核心词汇 list 2",
+    "description": "100 SAT核心词汇 list 2 (from Flying Tiger)",
+    "file": "word_banks/sat_core_list_2.json",
+    "wordCount": 100
+  },
+  {
+    "id": "sat_core_list_3",
+    "name": "SAT 核心词汇 list 3",
+    "description": "100 SAT核心词汇 list 3 (from Flying Tiger)",
+    "file": "word_banks/sat_core_list_3.json",
+    "wordCount": 100
+  },
+  {
+    "id": "sat_core_list_4",
+    "name": "SAT 核心词汇 list 4",
+    "description": "100 SAT核心词汇 list 4 (from Flying Tiger)",
+    "file": "word_banks/sat_core_list_4.json",
     "wordCount": 100
   }
 ]
