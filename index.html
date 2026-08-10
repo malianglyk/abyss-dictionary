@@ -320,7 +320,7 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-y: auto;
   min-height: 0;
   background:
     radial-gradient(ellipse at 50% 0%, rgba(22,18,28,0.6) 0%, transparent 60%),
@@ -329,13 +329,12 @@ body {
 
 #monster-zone {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: 24px;
   padding: 16px 20px;
   flex-wrap: wrap;
   min-height: 30%;
-  max-height: 62vh;
   overflow-y: auto;
 }
 
