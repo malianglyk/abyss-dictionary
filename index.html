@@ -2685,7 +2685,7 @@ function startRestStudy() {
   if (dvBtn) dvBtn.style.display = 'none';
   var mz = document.getElementById('monster-zone');
   var cards = G.deck.slice();
-  var html = '<div id="scene-area"><div class="scene-icon">📖</div><div class="scene-title">Focused Study</div><div class="scene-desc">Choose a card, then type its Chinese meaning. If correct, +1 star.</div><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:12px;overflow-y:auto;max-height:50vh;padding:4px;">';
+  var html = '<div id="scene-area"><div class="scene-icon">📖</div><div class="scene-title">Focused Study</div><div class="scene-desc">Choose a card, then type its Chinese meaning. If correct, +1 star.</div><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:12px;padding:4px;">';
   if (cards.length === 0) {
     html += '<div style="color:var(--text-dim);">Deck is empty! <button onclick="restStudyCancel()" style="background:var(--gold);color:var(--bg);border:none;padding:6px 14px;cursor:pointer;border-radius:4px;">Go Back</button></div>';
   } else {
