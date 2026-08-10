@@ -2330,7 +2330,55 @@ function startShopNode() {
     </div>`;
   });
 
-  html += `</div><div style="margin-top:10px;color:var(--text-dim);">Type p1-p3 for potions, a1-a3 for abilities, "inv" to use inventory, or "leave" to exit</div></div>`;
+  html += `</div><div style="margin-top:10px;color:var(--text-dim);">Type p1-p3 for potions, a1-a3 for abilities, "inv" for inventory, "discard" to drop an item, or "leave" to exit</div></div>`;
+  mz.innerHTML = html;
+  document.getElementById('hand-zone').innerHTML = '';
+  disableInput();
+  enableInput();
+  focusInput();
+}
+
+
+function renderShopNode() {
+  // Re-render shop using EXISTING G._shopItems — no re-randomization
+  const mz = document.getElementById('monster-zone');
+  const potions = G._shopItems.potions;
+  const abilities = G._shopItems.abilities;
+  let html = `<div id="scene-area">
+    <div class="scene-icon">🛒</div>
+    <div class="scene-title">Abyss Merchant</div>
+    <div class="scene-desc">Gold: ${G.gold} 🪙 | Inventory: ${G.inventory.length}/${MAX_INVENTORY} 🎒</div>
+    <div style="color:var(--gold);font-size:0.9em;margin-bottom:6px;">🧪 Potions — single use, stored in inventory</div>
+    <div id="shop-grid">`;
+
+  potions.forEach((item, i) => {
+    const sold = G._shopItems.soldPotions.has(i);
+    const canBuy = G.gold >= item.price && G.inventory.length < MAX_INVENTORY && !sold;
+    html += `<div class="shop-item ${sold?'sold':''}">
+      <div class="shop-icon">${item.icon}</div>
+      <div class="shop-name">${item.name}</div>
+      <div class="shop-desc">${item.desc}</div>
+      <div class="shop-price">🪙 ${item.price}</div>
+      <button onclick="buyPotion(${i})" ${canBuy?'':'disabled'}>${sold?'Sold Out':(G.inventory.length>=MAX_INVENTORY?'Inv Full':'Buy [p'+(i+1)+']')}</button>
+    </div>`;
+  });
+
+  html += `</div><div style="color:var(--gold);font-size:0.9em;margin:8px 0 6px;">🔮 Abilities — permanent, more expensive</div><div id="shop-grid">`;
+
+  abilities.forEach((item, i) => {
+    const sold = G._shopItems.soldAbilities.has(i);
+    const alreadyHave = G.abilities.includes(item.id);
+    const canBuy = G.gold >= item.price && !sold && !alreadyHave;
+    html += `<div class="shop-item ability ${sold||alreadyHave?'sold':''}">
+      <div class="shop-icon">${item.icon}</div>
+      <div class="shop-name">${item.name}</div>
+      <div class="shop-desc">${item.desc}</div>
+      <div class="shop-price">🪙 ${item.price}</div>
+      <button onclick="buyAbility(${i})" ${canBuy?'':'disabled'}>${sold?'Sold Out':(alreadyHave?'Owned':'Buy [a'+(i+1)+']')}</button>
+    </div>`;
+  });
+
+  html += `</div><div style="margin-top:10px;color:var(--text-dim);">Type p1-p3 for potions, a1-a3 for abilities, "inv" for inventory, "discard" to drop an item, or "leave" to exit</div></div>`;
   mz.innerHTML = html;
   document.getElementById('hand-zone').innerHTML = '';
   disableInput();
@@ -2348,7 +2396,7 @@ function buyPotion(idx) {
   G.inventory.push({ id:item.id, name:item.name, desc:item.desc, icon:item.icon, action:item.action });
   logSystem(`🧪 Bought ${item.name}! Stored in inventory.`);
   updateDisplay();
-  startShopNode();
+  renderShopNode();
 }
 
 function buyAbility(idx) {
@@ -2362,7 +2410,7 @@ function buyAbility(idx) {
   logSystem(`🔮 Acquired ${item.name}!`);
   item.action();
   updateDisplay();
-  startShopNode();
+  renderShopNode();
 }
 
 function useInventoryItem(slotIdx) {
@@ -2374,8 +2422,18 @@ function useInventoryItem(slotIdx) {
   updateDisplay();
   renderInventory();
   G._shopInventoryView = false;
-  if (G._shopMode) { startShopNode(); }
+  if (G._shopMode) { renderShopNode(); }
   if (result === 'defer') return;
+}
+
+function discardInventoryItem(slotIdx) {
+  if (slotIdx < 0 || slotIdx >= G.inventory.length) { logSystem('No item in that slot.'); return; }
+  const item = G.inventory[slotIdx];
+  G.inventory.splice(slotIdx, 1);
+  logSystem(`🗑️ Discarded ${item.name} from inventory.`);
+  updateDisplay();
+  renderInventory();
+  if (G._shopMode) { renderShopNode(); }
 }
 
 // Keep forge mode for the Forge Vial
@@ -2428,7 +2486,7 @@ function handleShopInput(input) {
   if (G._shopInventoryView) {
     const invNum = parseInt(cmd);
     if (invNum >= 1 && invNum <= G.inventory.length) { useInventoryItem(invNum-1); }
-    else { G._shopInventoryView = false; startShopNode(); }
+    else { G._shopInventoryView = false; renderShopNode(); }
     focusInput();
     return;
   }
@@ -2444,6 +2502,27 @@ function handleShopInput(input) {
   }
   if (cmd === 'inv') {
     showInventoryDialog();
+    focusInput();
+    return;
+  }
+  if (cmd === 'discard' || cmd === 'drop') {
+    if (G.inventory.length === 0) { logSystem('Nothing to discard.'); focusInput(); return; }
+    showInventoryDialog();
+    focusInput();
+    return;
+  }
+  // d1-d2 for discarding items (works in shop or inventory view)
+  var dMatch = cmd.match(/^d(d)$/);
+  if (dMatch) {
+    if (G._shopInventoryView) {
+      var dIdx = parseInt(dMatch[1]) - 1;
+      if (dIdx >= 0 && dIdx < G.inventory.length) { discardInventoryItem(dIdx); }
+      else logSystem('Type d1-d' + G.inventory.length + ' to discard.');
+    } else {
+      var dIdx2 = parseInt(dMatch[1]) - 1;
+      if (dIdx2 >= 0 && dIdx2 < G.inventory.length) { discardInventoryItem(dIdx2); }
+      else logSystem('Type d1-d' + G.inventory.length + ' to discard.');
+    }
     focusInput();
     return;
   }
@@ -2483,15 +2562,16 @@ function showInventoryDialog() {
     html += '<div style="color:var(--text-dim);">Inventory is empty.</div>';
   } else {
     G.inventory.forEach((item, i) => {
-      html += `<div class="shop-item" onclick="useInventoryItem(${i})" style="cursor:pointer;">
+      html += `<div class="shop-item" style="cursor:pointer;">
         <div class="shop-icon">${item.icon||'🧪'}</div>
         <div class="shop-name">${item.name}</div>
         <div class="shop-desc">${item.desc}</div>
-        <button>Use [${i+1}]</button>
+        <button onclick="useInventoryItem(${i})">Use [${i+1}]</button>
+        <button onclick="discardInventoryItem(${i})" style="background:rgba(184,48,64,0.15);color:var(--crimson-glow);border:1px solid rgba(184,48,64,0.3);margin-top:3px;font-size:0.7em;">🗑️ Discard</button>
       </div>`;
     });
   }
-  html += `</div><div style="margin-top:8px;color:var(--text-dim);">Type 1-${G.inventory.length} to use, any other key to go back to shop.</div></div>`;
+  html += `</div><div style="margin-top:8px;color:var(--text-dim);">Type 1-${G.inventory.length} to use, "d1"-"d${G.inventory.length}" to discard, any other key to go back.</div></div>`;
   mz.innerHTML = html;
 }
 
@@ -2655,6 +2735,15 @@ document.getElementById('cmd-input').addEventListener('keydown', function(e) {
   if (G._forgeMode) return;
   if (G._eventMode) return;
   if (G.gameOver) return;
+  // Global discard command
+  var globalDiscard = input.match(/^(?:discard|drop|d)(d)$/i);
+  if (globalDiscard) {
+    var dIdx = parseInt(globalDiscard[1]) - 1;
+    if (dIdx >= 0 && dIdx < G.inventory.length) { discardInventoryItem(dIdx); }
+    else logSystem('No item in slot ' + (dIdx+1) + '.');
+    focusInput();
+    return;
+  }
   handleCardAnswer(input);
 });
 
