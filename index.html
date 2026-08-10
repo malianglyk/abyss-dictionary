@@ -486,7 +486,9 @@ body {
   text-align: center;
   margin: 4px 0;
   padding: 0 4px;
-  word-break: break-word;
+  white-space: nowrap;
+	  overflow: hidden;
+	  text-overflow: ellipsis;
   font-weight: 600;
   letter-spacing: 0.03em;
 }
@@ -2495,16 +2497,16 @@ function showInventoryDialog() {
 
 // ============ REST NODE ============
 function startRestNode() {
-  const heal = Math.max(2, Math.floor(G.maxHp * 0.2));
-  G.hp = Math.min(G.maxHp, G.hp + heal);
-  logSystem(`🛌 Rested... restored ${heal} HP. HP: ${G.hp}/${G.maxHp}`);
+  G._restMode = true;
   const mz = document.getElementById('monster-zone');
   mz.innerHTML = `<div id="scene-area">
     <div class="scene-icon">🛌</div>
     <div class="scene-title">Quiet Sanctuary</div>
-    <div class="scene-desc">Restored ${heal} HP. You prepare to descend deeper...</div>
-    <button onclick="openDeckViewer()" style="background:transparent;color:var(--gold);border:1px solid var(--gold);padding:8px 20px;cursor:pointer;border-radius:4px;margin-bottom:8px;">📚 Study Deck</button>
-    <br><button onclick="continueFromRest()" style="background:var(--gold);color:var(--bg);border:none;padding:10px 28px;cursor:pointer;border-radius:4px;font-weight:bold;font-size:1em;">Continue ▸</button>
+    <div class="scene-desc">A peaceful place to recover or focus on your studies...</div>
+    <div id="choice-buttons">
+      <button onclick="restChoice('A')"><span class="choice-label">🅰 Rest</span><br>Restore 3 HP</button>
+      <button onclick="restChoice('B')"><span class="choice-label">🅱 Study</span><br>Choose a card and type its meaning. If correct, +1 star.<br><small style="color:var(--text-dim);">(Cannot view deck during study)</small></button>
+    </div>
   </div>`;
   document.getElementById('hand-zone').innerHTML = '';
   disableInput();
@@ -2517,6 +2519,96 @@ function continueFromRest() {
   G._restContinueReady = false;
   G.nodes[G.nodeIdx].cleared = true;
   advanceNode();
+}
+
+function restChoice(choice) {
+  G._restContinueReady = false;
+  if (choice === 'A') {
+    G.hp = Math.min(G.maxHp, G.hp + 3);
+    logSystem(`🛌 Rested peacefully... restored 3 HP. HP: ${G.hp}/${G.maxHp}`);
+    G.nodes[G.nodeIdx].cleared = true;
+    updateDisplay();
+    document.getElementById('monster-zone').innerHTML = '';
+    setTimeout(function() { advanceNode(); }, 800);
+  } else {
+    startRestStudy();
+  }
+}
+
+function startRestStudy() {
+  G._restStudyMode = true;
+  G._restStudySelectedCard = -1;
+  var dvBtn = document.getElementById('deck-viewer-btn');
+  if (dvBtn) dvBtn.style.display = 'none';
+  var mz = document.getElementById('monster-zone');
+  var cards = G.deck.slice();
+  var html = '<div id="scene-area"><div class="scene-icon">📖</div><div class="scene-title">Focused Study</div><div class="scene-desc">Choose a card, then type its Chinese meaning. If correct, +1 star.</div><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:12px;">';
+  if (cards.length === 0) {
+    html += '<div style="color:var(--text-dim);">Deck is empty! <button onclick="restStudyCancel()" style="background:var(--gold);color:var(--bg);border:none;padding:6px 14px;cursor:pointer;border-radius:4px;">Go Back</button></div>';
+  } else {
+    cards.forEach(function(c, i) {
+      var w = WORD_DATA[c.wordIndex];
+      html += '<div class="game-card ' + c.type + '" onclick="selectRestStudyCard(' + i + ')" id="rest-card-' + i + '" style="cursor:pointer;"><div class="card-word">' + w.w + '</div><div class="card-badge ' + c.type + '">' + (c.type === 'defensive' ? '🛡️ Def' : '⚔️ Off') + '</div><div class="card-stars">' + '★'.repeat(c.stars) + '☆'.repeat(Math.max(0, STARS_TO_MASTER - c.stars)) + '</div></div>';
+    });
+  }
+  html += '</div><div style="text-align:center;margin-top:8px;"><button onclick="restStudyCancel()" style="background:transparent;color:var(--text-dim);border:1px solid var(--border);padding:5px 14px;cursor:pointer;border-radius:4px;">Cancel</button></div></div>';
+  mz.innerHTML = html;
+  enableInput();
+  focusInput();
+}
+
+function selectRestStudyCard(idx) {
+  G._restStudySelectedCard = idx;
+  // Re-render to show selection
+  for (var i = 0; i < G.deck.length; i++) {
+    var el = document.getElementById('rest-card-' + i);
+    if (el) {
+      if (i === idx) el.classList.add('selected');
+      else el.classList.remove('selected');
+    }
+  }
+  focusInput();
+}
+
+function restStudyCancel() {
+  G._restStudyMode = false;
+  var dvBtn = document.getElementById('deck-viewer-btn');
+  if (dvBtn) dvBtn.style.display = '';
+  disableInput();
+  // Go back to rest choices
+  startRestNode();
+}
+
+function handleRestStudyInput(input) {
+  if (G._restStudySelectedCard < 0) {
+    logSystem('Click a card first.');
+    focusInput();
+    return;
+  }
+  var card = G.deck[G._restStudySelectedCard];
+  var word = WORD_DATA[card.wordIndex];
+  var isCorrect = checkAnswer(input, word.a);
+  if (isCorrect) {
+    card.stars += 1;
+    logLine('✓ Correct! "' + word.w + '" = ' + word.m + ' — +1 star!', 'correct');
+    if (card.stars >= STARS_TO_MASTER) {
+      removeCardFromDeck(card.wordIndex);
+      G.masteredCount++;
+      logLine('🌟 "' + word.w + '" mastered! (' + G.masteredCount + '/' + WORD_DATA.length + ')', 'gold');
+    }
+  } else {
+    logLine('✗ Wrong! "' + word.w + '" = ' + word.m + '. No star awarded.', 'wrong');
+  }
+  G._restStudyMode = false;
+  G.nodes[G.nodeIdx].cleared = true;
+  disableInput();
+  updateDisplay();
+  var dvBtn = document.getElementById('deck-viewer-btn');
+  if (dvBtn) dvBtn.style.display = '';
+  document.getElementById('monster-zone').innerHTML = '';
+  document.getElementById('hand-zone').innerHTML = '<div id="end-turn-wrap"><button id="end-turn-btn" onclick="endTurn()">End Turn ⏎</button></div>';
+  if (G.masteredCount >= WORD_DATA.length) { victory(); return; }
+  setTimeout(function() { advanceNode(); }, 1000);
 }
 
 // ============ SPRING NODE ============
@@ -2559,6 +2651,7 @@ document.getElementById('cmd-input').addEventListener('keydown', function(e) {
   if (!input) return;
   this.value = '';
   if (G._shopMode) { handleShopInput(input); return; }
+  if (G._restStudyMode) { handleRestStudyInput(input); return; }
   if (G._forgeMode) return;
   if (G._eventMode) return;
   if (G.gameOver) return;
@@ -2609,6 +2702,7 @@ let deckViewerSort = 'stars';
 
 function openDeckViewer() {
   if (G.battleInProgress && !G._trainingMode) { logSystem('Cannot view deck during combat!'); return; }
+  if (G._restStudyMode) { logSystem('Cannot view deck during focused study!'); return; }
   G._deckViewerOpen = true;
   document.getElementById('deck-viewer-overlay').style.display = 'flex';
   renderDeckViewer();
