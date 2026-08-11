@@ -489,8 +489,6 @@ body {
   margin: 4px 0;
   padding: 0 4px;
   white-space: nowrap;
-	  overflow: hidden;
-	  text-overflow: ellipsis;
   font-weight: 600;
   letter-spacing: 0.03em;
 }
@@ -1436,6 +1434,18 @@ function focusInput() {
 }
 
 // ============ CARD SYSTEM ============
+function fitWordSize(word) {
+  const len = word.length;
+  if (len <= 9) return '1.1em';
+  if (len <= 10) return '1.02em';
+  if (len <= 11) return '0.92em';
+  if (len <= 12) return '0.84em';
+  if (len <= 13) return '0.76em';
+  if (len <= 14) return '0.7em';
+  if (len <= 15) return '0.64em';
+  if (len <= 16) return '0.59em';
+  return '0.54em';
+}
 function categorizeWords() {
   const indices = WORD_DATA.map((_, i) => i);
   shuffle(indices);
@@ -2508,7 +2518,7 @@ function startForgeMode() {
   cards.forEach((c, i) => {
     const w = WORD_DATA[c.wordIndex];
     html += `<div class="game-card ${c.type}" onclick="forgeCard(${i})" style="cursor:pointer;width:130px;min-height:140px;padding:8px;">
-      <div class="card-word" style="font-size:1em;">${w.w}</div>
+      <div class="card-word" style="font-size:${fitWordSize(w.w)};">${w.w}</div>
       <div class="card-badge ${c.type}">${c.type==='defensive'?'🛡️ Def':'⚔️ Off'}</div>
       <div class="card-stars">${'★'.repeat(c.stars)}${'☆'.repeat(Math.max(0,3-c.stars))}</div>
     </div>`;
@@ -2690,7 +2700,7 @@ function startRestStudy() {
   } else {
     cards.forEach(function(c, i) {
       var w = WORD_DATA[c.wordIndex];
-      html += '<div class="game-card ' + c.type + '" onclick="selectRestStudyCard(' + i + ')" id="rest-card-' + i + '" style="cursor:pointer;"><div class="card-word">' + w.w + '</div><div class="card-badge ' + c.type + '">' + (c.type === 'defensive' ? '🛡️ Def' : '⚔️ Off') + '</div><div class="card-stars">' + '★'.repeat(c.stars) + '☆'.repeat(Math.max(0, STARS_TO_MASTER - c.stars)) + '</div></div>';
+      html += '<div class="game-card ' + c.type + '" onclick="selectRestStudyCard(' + i + ')" id="rest-card-' + i + '" style="cursor:pointer;"><div class="card-word" style="font-size:' + fitWordSize(w.w) + ';">' + w.w + '</div><div class="card-badge ' + c.type + '">' + (c.type === 'defensive' ? '🛡️ Def' : '⚔️ Off') + '</div><div class="card-stars">' + '★'.repeat(c.stars) + '☆'.repeat(Math.max(0, STARS_TO_MASTER - c.stars)) + '</div></div>';
     });
   }
   html += '</div><div style="text-align:center;margin-top:8px;"><button onclick="restStudyCancel()" style="background:transparent;color:var(--text-dim);border:1px solid var(--border);padding:5px 14px;cursor:pointer;border-radius:4px;">Cancel</button></div></div>';
@@ -2823,7 +2833,7 @@ function showNewCardsStudy(indices, onDone) {
     html += `<div class="flashcard ${ct}" onclick="flipCard(this)">
       <div class="flashcard-inner">
         <div class="flashcard-front">
-          <div class="fc-word">${w.w}</div>
+          <div class="fc-word" style="font-size:${fitWordSize(w.w)};">${w.w}</div>
           <div class="fc-sentence">${w.s || ''}</div>
           <div class="fc-badge ${ct}">${ct==='defensive'?'🛡️ Defensive':'⚔️ Offensive'}</div>
           <div class="fc-stars">☆☆☆</div>
@@ -2906,7 +2916,7 @@ function renderDeckViewer() {
     html += `<div class="flashcard ${c.type}" onclick="flipCard(this)">
       <div class="flashcard-inner">
         <div class="flashcard-front">
-          <div class="fc-word">${w.w}</div>
+          <div class="fc-word" style="font-size:${fitWordSize(w.w)};">${w.w}</div>
           <div class="fc-sentence">${w.s || ''}</div>
           <div class="fc-badge ${c.type}">${c.type==='defensive'?'🛡️ Defensive':'⚔️ Offensive'}</div>
           <div class="fc-stars">${'★'.repeat(c.stars)}${'☆'.repeat(Math.max(0,STARS_TO_MASTER-c.stars))}</div>
@@ -2979,7 +2989,7 @@ function renderBattle() {
       const w = WORD_DATA[c.wordIndex];
       const isSelected = i === G.selectedCardIdx;
       hhtml += `<div class="game-card ${c.type} ${isSelected ? 'selected' : ''}" onclick="selectCard(${i})">
-        <div class="card-word">${w.w}</div>
+        <div class="card-word" style="font-size:${fitWordSize(w.w)};">${w.w}</div>
         <div class="card-badge ${c.type}">${c.type === 'defensive' ? '🛡️ Defensive' : '⚔️ Offensive'}</div>
         <div class="card-stars">${'★'.repeat(c.stars)}${'☆'.repeat(Math.max(0, STARS_TO_MASTER - c.stars))}</div>
       </div>`;
