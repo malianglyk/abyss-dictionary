@@ -761,7 +761,7 @@
     ]
   },
   {
-    "w": "a owe b a debt to do sth",
+    "w": "A owe B a debt to do sth",
     "m": "A有义务向B做某事",
     "p": "/əʊ/",
     "s": "I owe B a debt to do sth for all the help you gave me.",
@@ -834,7 +834,7 @@
     ]
   },
   {
-    "w": "a is behind b",
+    "w": "A is behind B",
     "m": "A导致B",
     "p": "/eɪ ɪz bɪˈhaɪnd biː/",
     "s": "A is behind B.",
@@ -1343,7 +1343,7 @@
     ]
   },
   {
-    "w": "alternative to a",
+    "w": "alternative to A",
     "m": "可供替代A的一个选择",
     "p": "/ɔːlˈtɜːnətɪv tə eɪ/",
     "s": "There was no alternative to A.",
