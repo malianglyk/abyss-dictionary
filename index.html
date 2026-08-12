@@ -483,7 +483,7 @@ body {
 .game-card.offensive { border-left: 3px solid var(--off-color); }
 .game-card .card-word {
   font-family: 'Crimson Text', 'Georgia', serif;
-  font-size: 1.1em;
+  font-size: 1.3em;
   color: var(--text-bright);
   text-align: center;
   margin: 4px 0;
@@ -759,7 +759,7 @@ body {
 .flashcard.offensive .flashcard-front { border-left: 3px solid var(--off-color); }
 .flashcard .fc-word {
   font-family: 'Crimson Text', 'Georgia', serif;
-  font-size: 1.1em;
+  font-size: 1.3em;
   color: var(--text-bright);
   margin-bottom: 6px;
   font-weight: 600;
@@ -767,7 +767,7 @@ body {
 }
 .flashcard-back .fc-word {
   color: var(--gold);
-  font-size: 1em;
+  font-size: 1.2em;
 }
 .flashcard .fc-sentence {
   font-size: 0.6em;
@@ -1002,7 +1002,7 @@ body {
 /* ============ RESPONSIVE ============ */
 @media (max-width: 700px) {
   .game-card { width: 110px; min-height: 150px; padding: 10px 4px 24px 4px; }
-  .game-card .card-word { font-size: 0.9em; }
+  .game-card .card-word { font-size: 1.05em; }
   .monster-card { width: 120px; padding: 10px; }
   #status-bar { font-size: 0.7em; gap: 10px; }
   .flashcard { width: 140px; height: 200px; }
@@ -1438,15 +1438,15 @@ function focusInput() {
 // ============ CARD SYSTEM ============
 function fitWordSize(word) {
   const len = word.length;
-  if (len <= 9) return '1.1em';
-  if (len <= 10) return '1.02em';
-  if (len <= 11) return '0.92em';
-  if (len <= 12) return '0.84em';
-  if (len <= 13) return '0.76em';
-  if (len <= 14) return '0.7em';
-  if (len <= 15) return '0.64em';
-  if (len <= 16) return '0.59em';
-  return '0.54em';
+  if (len <= 9) return '1.3em';
+  if (len <= 10) return '1.2em';
+  if (len <= 11) return '1.1em';
+  if (len <= 12) return '1.0em';
+  if (len <= 13) return '0.9em';
+  if (len <= 14) return '0.82em';
+  if (len <= 15) return '0.76em';
+  if (len <= 16) return '0.7em';
+  return '0.64em';
 }
 function categorizeWords() {
   const indices = WORD_DATA.map((_, i) => i);
