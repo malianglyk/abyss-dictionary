@@ -1150,7 +1150,7 @@ let currentWordBankId = 'default';
 
 async function initWordBanks() {
   try {
-    const resp = await fetch('word_banks/manifest.json?v=2');
+    const resp = await fetch('word_banks/manifest.json?v=' + Date.now(), { cache: 'no-store' });
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
     const manifest = await resp.json();
     WORD_BANKS = {};
@@ -1199,10 +1199,6 @@ async function initWordBanks() {
 }
 
 async function loadWordBank(bankId) {
-  if (bankId === 'default') {
-    WORD_DATA = JSON.parse(JSON.stringify(DEFAULT_WORD_DATA));
-    return true;
-  }
   if (bankId === 'custom') {
     const saved = localStorage.getItem('abyss_custom_words');
     if (saved) {
@@ -1217,21 +1213,19 @@ async function loadWordBank(bankId) {
     WORD_DATA = JSON.parse(JSON.stringify(DEFAULT_WORD_DATA));
     return true;
   }
-  const cacheKey = 'abyss_word_bank_v2_' + bankId;
-  const cached = localStorage.getItem(cacheKey);
-  if (cached) {
-    try { WORD_DATA = JSON.parse(cached); return true; } catch(e) {}
-  }
   const bank = WORD_BANKS[bankId];
-  if (!bank || !bank.file) return false;
+  if (!bank || !bank.file) {
+    WORD_DATA = JSON.parse(JSON.stringify(DEFAULT_WORD_DATA));
+    return false;
+  }
   try {
-    const resp = await fetch(bank.file + '?v=2');
+    const resp = await fetch(bank.file + '?v=' + Date.now(), { cache: 'no-store' });
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
     WORD_DATA = await resp.json();
-    localStorage.setItem(cacheKey, JSON.stringify(WORD_DATA));
     return true;
   } catch(e) {
     console.warn('Failed to fetch word bank:', bankId, e);
+    WORD_DATA = JSON.parse(JSON.stringify(DEFAULT_WORD_DATA));
     return false;
   }
 }
