@@ -1308,6 +1308,7 @@ function resetGameState() {
     wordTypeMap: {},
     usedWordIndices: new Set(),
     masteredCount: 0,
+    masteredWords: [],     // word indices fully mastered (3 stars) — for Memory Spring review
     monsters: [],
     selectedCardIdx: -1,
     selectedTargetIdx: 0,
@@ -1335,6 +1336,8 @@ function resetGameState() {
     _restContinueReady: false,
     _pendingStudyCards: null,
     _studyOnDone: null,
+    _springReviewMode: false,
+    _springReviewWordIdx: -1,
   };
 }
 
@@ -1501,6 +1504,21 @@ function getDeckCardByWordIndex(wordIndex) {
 
 function removeCardFromDeck(wordIndex) {
   G.deck = G.deck.filter(c => c.wordIndex !== wordIndex);
+}
+
+// Master a card: remove from deck, count it, and record it for Memory Spring review
+function masterCard(wordIndex) {
+  removeCardFromDeck(wordIndex);
+  G.masteredCount++;
+  if (!G.masteredWords.includes(wordIndex)) G.masteredWords.push(wordIndex);
+}
+
+// A mastered word is forgotten during review: it slips back into the deck at 2 stars
+function slipMasteredCard(wordIndex) {
+  G.masteredWords = G.masteredWords.filter(w => w !== wordIndex);
+  G.masteredCount = Math.max(0, G.masteredCount - 1);
+  G.deck.push({ wordIndex: wordIndex, type: G.wordTypeMap[wordIndex] || 'defensive', stars: 2 });
+  shuffle(G.deck);
 }
 
 // ============ MONSTER SYSTEM ============
@@ -1832,9 +1850,7 @@ function endBattle_victory() {
 
       if (card.stars >= STARS_TO_MASTER) {
 
-        removeCardFromDeck(wi);
-
-        G.masteredCount++;
+        masterCard(wi);
 
         masteredThisBattle++;
 
@@ -2033,7 +2049,7 @@ const EVENTS = [
       const picks = shuffle([...G.deck]).slice(0, Math.min(2, G.deck.length));
       picks.forEach(c => {
         c.stars += 1;
-        if (c.stars >= STARS_TO_MASTER) { removeCardFromDeck(c.wordIndex); G.masteredCount++; logLine(`🌟 "${WORD_DATA[c.wordIndex].w}" mastered!`, 'gold'); }
+        if (c.stars >= STARS_TO_MASTER) { masterCard(c.wordIndex); logLine(`🌟 "${WORD_DATA[c.wordIndex].w}" mastered!`, 'gold'); }
         else logLine(`⭐ "${WORD_DATA[c.wordIndex].w}" +1 star (now ${c.stars})`, 'info');
       });
       if (G.masteredCount >= WORD_DATA.length) { victory(); }
@@ -2159,7 +2175,7 @@ const EVENTS = [
       const c = G.deck[Math.floor(Math.random() * G.deck.length)];
       c.stars += 1;
       logSystem(`👁️ "${WORD_DATA[c.wordIndex].w}" +1 star (now ${c.stars}).`);
-      if (c.stars >= STARS_TO_MASTER) { removeCardFromDeck(c.wordIndex); G.masteredCount++; logLine(`🌟 Mastered!`, 'gold'); }
+      if (c.stars >= STARS_TO_MASTER) { masterCard(c.wordIndex); logLine(`🌟 Mastered!`, 'gold'); }
       if (Math.random() < 0.4) { G.hp = Math.max(1, G.hp - 2); logSystem('The whisper drains your life... -2 HP.'); }
       if (G.masteredCount >= WORD_DATA.length) { victory(); }
     }},
@@ -2327,7 +2343,7 @@ const POTION_POOL = [
     if(G.deck.length===0){logSystem('Deck empty! No effect.');return;}
     const c=G.deck[Math.floor(Math.random()*G.deck.length)];c.stars+=1;
     logSystem(`✨ Star Dust: "${WORD_DATA[c.wordIndex].w}" +1 star (now ${c.stars}).`);
-    if(c.stars>=STARS_TO_MASTER){removeCardFromDeck(c.wordIndex);G.masteredCount++;logLine(`🌟 Mastered! (${G.masteredCount}/${WORD_DATA.length})`,'gold');}
+    if(c.stars>=STARS_TO_MASTER){masterCard(c.wordIndex);logLine(`🌟 Mastered! (${G.masteredCount}/${WORD_DATA.length})`,'gold');}
     if(G.masteredCount>=WORD_DATA.length){victory();}
   }},
   { id:'lucky_brew', name:'Lucky Brew', price:2, desc:'Gain 5 gold immediately. (Stored in inventory)', icon:'🍀', action(){ G.gold+=5; logSystem('🍀 +5 gold!'); }},
@@ -2740,8 +2756,7 @@ function handleRestStudyInput(input) {
     card.stars += 1;
     logLine('✓ Correct! "' + word.w + '" = ' + word.m + ' — +1 star!', 'correct');
     if (card.stars >= STARS_TO_MASTER) {
-      removeCardFromDeck(card.wordIndex);
-      G.masteredCount++;
+      masterCard(card.wordIndex);
       logLine('🌟 "' + word.w + '" mastered! (' + G.masteredCount + '/' + WORD_DATA.length + ')', 'gold');
     }
   } else {
@@ -2761,12 +2776,16 @@ function handleRestStudyInput(input) {
 
 // ============ SPRING NODE ============
 function startSpringNode() {
+  // Primary purpose: review a word you've already mastered.
+  if (G.masteredWords.length > 0) { startSpringReview(); return; }
+
+  // Fallback: nothing mastered yet — a random card simply gains 1 star.
   if (G.deck.length === 0) { logSystem('💧 Memory Spring: deck empty, nothing happens.'); }
   else {
     const card = G.deck[Math.floor(Math.random() * G.deck.length)];
     card.stars += 1;
     logSystem(`💧 Memory Spring: "${WORD_DATA[card.wordIndex].w}" +1 star (now ${card.stars}).`);
-    if (card.stars >= STARS_TO_MASTER) { removeCardFromDeck(card.wordIndex); G.masteredCount++; logLine(`🌟 Mastered! (${G.masteredCount}/${WORD_DATA.length})`, 'gold'); }
+    if (card.stars >= STARS_TO_MASTER) { masterCard(card.wordIndex); logLine(`🌟 Mastered! (${G.masteredCount}/${WORD_DATA.length})`, 'gold'); }
   }
   const mz = document.getElementById('monster-zone');
   mz.innerHTML = `<div id="scene-area"><div class="scene-icon">💧</div><div class="scene-title">Memory Spring</div><div class="scene-desc">A random card gained 1 star.</div></div>`;
@@ -2776,6 +2795,48 @@ function startSpringNode() {
   updateDisplay();
   if (G.masteredCount >= WORD_DATA.length) { victory(); return; }
   setTimeout(() => advanceNode(), 1000);
+}
+
+function startSpringReview() {
+  G._springReviewMode = true;
+  G._springReviewWordIdx = G.masteredWords[Math.floor(Math.random() * G.masteredWords.length)];
+  const w = WORD_DATA[G._springReviewWordIdx];
+  const dvBtn = document.getElementById('deck-viewer-btn');
+  if (dvBtn) dvBtn.style.display = 'none';
+  const mz = document.getElementById('monster-zone');
+  mz.innerHTML = `<div id="scene-area">
+    <div class="scene-icon">💧</div>
+    <div class="scene-title">Memory Spring</div>
+    <div class="scene-desc">The waters ripple with a word you once mastered...</div>
+    <div style="margin:14px 0 4px;font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--gold);font-size:${fitWordSize(w.w)};">${w.w.toLowerCase()}</div>
+    <div class="scene-desc" style="color:var(--text-dim);">Type its Chinese meaning to prove you still remember it.</div>
+  </div>`;
+  document.getElementById('hand-zone').innerHTML = '';
+  enableInput();
+  focusInput();
+}
+
+function handleSpringReviewInput(input) {
+  const wi = G._springReviewWordIdx;
+  const w = WORD_DATA[wi];
+  const isCorrect = checkAnswer(input, w.a);
+  G._springReviewMode = false;
+  G._springReviewWordIdx = -1;
+  if (isCorrect) {
+    G.gold += 2;
+    logLine(`✓ You still remember "${w.w}" (= ${w.m})! +2 gold.`, 'correct');
+  } else {
+    slipMasteredCard(wi);
+    logLine(`✗ Forgotten! "${w.w}" = ${w.m}. It slips back into your deck (2★).`, 'wrong');
+  }
+  const dvBtn = document.getElementById('deck-viewer-btn');
+  if (dvBtn) dvBtn.style.display = '';
+  disableInput();
+  G.nodes[G.nodeIdx].cleared = true;
+  updateDisplay();
+  document.getElementById('monster-zone').innerHTML = '';
+  document.getElementById('hand-zone').innerHTML = '';
+  setTimeout(() => advanceNode(), 1500);
 }
 
 // ============ INPUT HANDLING ============
@@ -2800,6 +2861,7 @@ document.getElementById('cmd-input').addEventListener('keydown', function(e) {
   this.value = '';
   if (G._shopMode) { handleShopInput(input); return; }
   if (G._restStudyMode) { handleRestStudyInput(input); return; }
+  if (G._springReviewMode) { handleSpringReviewInput(input); return; }
   if (G._forgeMode) return;
   if (G._eventMode) return;
   if (G.gameOver) return;
