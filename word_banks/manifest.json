@@ -47,5 +47,33 @@
     "description": "100 SAT核心词汇 list 4 (from Flying Tiger)",
     "file": "word_banks/sat_core_list_4.json",
     "wordCount": 100
+  },
+  {
+    "id": "sat_core_list_5",
+    "name": "SAT 词汇题词汇 list 5",
+    "description": "100 SAT机考阅读词汇题词汇-5 (from Flying Tiger)",
+    "file": "word_banks/sat_core_list_5.json",
+    "wordCount": 100
+  },
+  {
+    "id": "sat_core_list_6",
+    "name": "SAT 词汇题词汇 list 6",
+    "description": "100 SAT机考阅读词汇题词汇-6 (from Flying Tiger)",
+    "file": "word_banks/sat_core_list_6.json",
+    "wordCount": 100
+  },
+  {
+    "id": "sat_core_list_7",
+    "name": "SAT 词汇题词汇 list 7",
+    "description": "100 SAT机考阅读词汇题词汇-7 (from Flying Tiger)",
+    "file": "word_banks/sat_core_list_7.json",
+    "wordCount": 100
+  },
+  {
+    "id": "sat_core_list_8",
+    "name": "SAT 词汇题词汇 list 8",
+    "description": "73 SAT机考阅读词汇题词汇-8 (from Flying Tiger)",
+    "file": "word_banks/sat_core_list_8.json",
+    "wordCount": 73
   }
 ]
