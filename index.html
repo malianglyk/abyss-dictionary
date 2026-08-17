@@ -2776,6 +2776,21 @@ function handleRestStudyInput(input) {
 
 // ============ SPRING NODE ============
 function startSpringNode() {
+  const mz = document.getElementById('monster-zone');
+  mz.innerHTML = `<div id="scene-area">
+    <div class="scene-icon">💧</div>
+    <div class="scene-title">Memory Spring</div>
+    <div class="scene-desc">A spring whose waters restore memory...</div>
+    <div id="choice-buttons">
+      <button onclick="springDrink()">💧 Drink?</button>
+    </div>
+  </div>`;
+  document.getElementById('hand-zone').innerHTML = '';
+  disableInput();
+  updateDisplay();
+}
+
+function springDrink() {
   // Primary purpose: review a word you've already mastered.
   if (G.masteredWords.length > 0) { startSpringReview(); return; }
 
