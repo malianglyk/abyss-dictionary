@@ -1027,6 +1027,634 @@ button:focus-visible, select:focus-visible, input:focus-visible {
   }
 }
 
+/* ============ ✦ VISUAL ENHANCEMENTS — backgrounds, figures, combat FX ============ */
+
+/* --- Animated ambient background --- */
+body {
+  background:
+    radial-gradient(1100px 800px at 16% -10%, rgba(61,95,140,0.18) 0%, transparent 55%),
+    radial-gradient(1000px 700px at 86% 112%, rgba(139,37,48,0.20) 0%, transparent 55%),
+    radial-gradient(1500px 1000px at 50% 42%, #0b0914 0%, #08070d 58%, #04030a 100%);
+  background-attachment: fixed;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: -60%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 30% 30%, rgba(201,160,80,0.05) 0%, transparent 45%),
+    radial-gradient(ellipse at 72% 68%, rgba(139,37,48,0.06) 0%, transparent 45%);
+  animation: ambient-drift 52s ease-in-out infinite alternate;
+}
+@keyframes ambient-drift {
+  from { transform: translate3d(-2.5%, -1.5%, 0) rotate(0.001deg); }
+  to   { transform: translate3d(2.5%, 1.5%, 0) rotate(0.001deg); }
+}
+
+#title-screen h1 { animation: title-glow 4.2s ease-in-out infinite; }
+@keyframes title-glow {
+  0%,100% { text-shadow: 0 0 50px rgba(201,160,80,0.5), 0 2px 4px rgba(0,0,0,0.6); }
+  50% { text-shadow: 0 0 90px rgba(201,160,80,0.9), 0 2px 6px rgba(0,0,0,0.7); }
+}
+
+/* --- Battle field scenery --- */
+#battle-field {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(30,22,44,0.55) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 100%, rgba(14,10,22,0.75) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(12,9,19,0.35) 0%, rgba(8,7,13,0.15) 50%, rgba(12,9,19,0.45) 100%);
+}
+#battle-field::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(201,160,80,0.012) 0 2px, transparent 2px 130px);
+  animation: mist-rise 24s linear infinite;
+}
+@keyframes mist-rise {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-130px); }
+}
+
+/* --- Monsters as spectral figures (not cards) --- */
+#monster-zone { perspective: 900px; }
+
+.monster-card {
+  width: 150px;
+  height: 208px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: 8px 4px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.35s cubic-bezier(0.25,0.8,0.25,1.2), opacity 0.4s ease, filter 0.4s ease;
+}
+.monster-card::before {
+  content: '';
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  width: 92px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, transparent 70%);
+  transform: translateX(-50%);
+  animation: pedestal-breathe 3.2s ease-in-out infinite;
+}
+.monster-card::after {
+  content: '';
+  position: absolute;
+  top: 26px;
+  left: 50%;
+  width: 126px;
+  height: 126px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,48,64,0.20) 0%, rgba(184,48,64,0.05) 45%, transparent 70%);
+  filter: blur(3px);
+  pointer-events: none;
+  transform: translateX(-50%);
+  animation: aura-pulse 3.2s ease-in-out infinite;
+}
+.monster-card .monster-icon {
+  font-size: 4.2em;
+  line-height: 1;
+  margin: 18px 0 8px;
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,0.6)) drop-shadow(0 0 16px rgba(184,48,64,0.35));
+  animation: monster-float 3.4s ease-in-out infinite;
+}
+.monster-card .monster-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.8em;
+  color: #dcc3b3;
+  margin: 2px 0;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+}
+.monster-card .monster-archetype {
+  font-size: 0.55em;
+  padding: 1px 8px;
+  border-radius: 8px;
+  margin: 2px 0 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.monster-card .monster-hp-bar {
+  width: 76%;
+  height: 5px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 6px 0 3px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.6);
+}
+.monster-card .monster-hp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #7a1f28, var(--crimson-glow));
+  transition: width 0.45s ease;
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(184,48,64,0.7);
+}
+.monster-card .monster-atk {
+  font-size: 0.62em;
+  color: var(--crimson-glow);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  margin-top: 1px;
+}
+
+.monster-card:hover {
+  border: none;
+  box-shadow: none;
+  transform: translateY(-6px) scale(1.05);
+}
+.monster-card:hover .monster-icon {
+  filter: drop-shadow(0 12px 20px rgba(0,0,0,0.65)) drop-shadow(0 0 24px rgba(184,48,64,0.65));
+}
+
+.monster-card.targeted { border: none; box-shadow: none; }
+.monster-card.targeted::after {
+  background: radial-gradient(circle, rgba(201,160,80,0.30) 0%, rgba(201,160,80,0.08) 45%, transparent 70%);
+  animation: target-aura 1.4s ease-in-out infinite;
+}
+.monster-card.targeted .monster-icon {
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,0.6)) drop-shadow(0 0 24px rgba(201,160,80,0.9));
+}
+
+.monster-card.elite,
+.monster-card.boss { background: transparent; border: none; box-shadow: none; }
+.monster-card.elite::after {
+  background: radial-gradient(circle, rgba(139,37,48,0.34) 0%, rgba(139,37,48,0.10) 45%, transparent 70%);
+}
+.monster-card.boss { transform: scale(1.12); }
+.monster-card.boss::after {
+  top: 14px;
+  width: 152px; height: 152px;
+  background: radial-gradient(circle, rgba(184,48,64,0.42) 0%, rgba(139,37,48,0.14) 50%, transparent 72%);
+  animation: aura-pulse 2s ease-in-out infinite;
+}
+.monster-card.boss .monster-icon {
+  font-size: 5em;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.7)) drop-shadow(0 0 26px rgba(184,48,64,0.85));
+}
+
+.monster-card.defeated {
+  opacity: 0.13;
+  filter: grayscale(1) brightness(0.5) blur(1px);
+  transform: scale(0.8) translateY(16px);
+  pointer-events: none;
+  transition: opacity 0.5s ease, filter 0.5s ease, transform 0.5s ease;
+}
+.monster-card.defeated .monster-icon { animation: none; filter: grayscale(1) brightness(0.6); }
+
+/* combat one-shot fx (applied via JS) */
+.monster-card.hit { animation: monster-hit 0.5s cubic-bezier(0.36,0.07,0.19,0.97); }
+.monster-card.lunge { animation: monster-lunge 0.55s cubic-bezier(0.36,0.07,0.19,0.97); }
+
+@keyframes monster-float {
+  0%,100% { transform: translateY(0) rotateY(-6deg); }
+  50% { transform: translateY(-10px) rotateY(6deg); }
+}
+@keyframes aura-pulse {
+  0%,100% { transform: translateX(-50%) scale(1); opacity: 0.85; }
+  50% { transform: translateX(-50%) scale(1.15); opacity: 1; }
+}
+@keyframes target-aura {
+  0%,100% { transform: translateX(-50%) scale(1); opacity: 0.9; }
+  50% { transform: translateX(-50%) scale(1.3); opacity: 1; }
+}
+@keyframes pedestal-breathe {
+  0%,100% { transform: translateX(-50%) scaleX(1); opacity: 0.9; }
+  50% { transform: translateX(-50%) scaleX(0.82); opacity: 0.7; }
+}
+@keyframes monster-hit {
+  0% { transform: translateX(0) rotateZ(0); }
+  20% { transform: translateX(-9px) rotateZ(-4deg); }
+  45% { transform: translateX(7px) rotateZ(3deg); filter: brightness(2.1) saturate(1.6); }
+  70% { transform: translateX(-4px); }
+  100% { transform: translateX(0) rotateZ(0); filter: brightness(1); }
+}
+@keyframes monster-lunge {
+  0% { transform: translateY(0) scale(1); }
+  35% { transform: translateY(36px) scale(1.14); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* --- Player figure (3D, not a card) --- */
+#player-figure {
+  position: absolute;
+  left: 26px;
+  bottom: 10px;
+  width: 128px;
+  height: 180px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 2;
+  pointer-events: none;
+  perspective: 700px;
+}
+#player-figure .player-shield {
+  position: absolute;
+  bottom: 54px;
+  left: 50%;
+  width: 118px; height: 118px;
+  margin-left: -59px;
+  border-radius: 50%;
+  border: 2px solid rgba(79,122,181,0.55);
+  background: radial-gradient(circle, rgba(79,122,181,0.16) 0%, transparent 70%);
+  box-shadow: 0 0 26px rgba(79,122,181,0.45), inset 0 0 22px rgba(79,122,181,0.25);
+  opacity: 0;
+  pointer-events: none;
+}
+#player-figure .player-sprite {
+  font-size: 4.3em;
+  line-height: 1;
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,0.6)) drop-shadow(0 0 18px rgba(79,122,181,0.55));
+  animation: player-float 3.2s ease-in-out infinite;
+}
+#player-figure .player-pedestal {
+  width: 90px;
+  height: 20px;
+  margin-top: 6px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, transparent 70%);
+  animation: pedestal-breathe-center 3.2s ease-in-out infinite;
+}
+#player-figure .player-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72em;
+  color: var(--ink-blue-glow);
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 10px rgba(79,122,181,0.6);
+  margin-top: 2px;
+}
+#player-figure.attack .player-sprite { animation: player-attack 0.6s cubic-bezier(0.36,0.07,0.19,0.97); }
+#player-figure.defend .player-shield { opacity: 1; animation: shield-pop 0.75s ease; }
+#player-figure.hurt { animation: player-hurt 0.55s ease; }
+
+@keyframes player-float {
+  0%,100% { transform: translateY(0) rotateY(-5deg); }
+  50% { transform: translateY(-9px) rotateY(5deg); }
+}
+@keyframes player-attack {
+  0% { transform: translateX(0) scale(1); }
+  40% { transform: translateX(22px) scale(1.14) rotateZ(2deg); filter: brightness(1.5); }
+  100% { transform: translateX(0) scale(1); }
+}
+@keyframes shield-pop {
+  0% { transform: scale(0.4); opacity: 0; }
+  40% { transform: scale(1.2); opacity: 1; }
+  70% { transform: scale(0.95); opacity: 1; }
+  100% { transform: scale(1); opacity: 0; }
+}
+@keyframes player-hurt {
+  0%,100% { transform: translateX(0); }
+  20% { transform: translateX(-9px); }
+  40% { transform: translateX(8px); filter: brightness(1.6) saturate(1.4); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(3px); }
+}
+@keyframes pedestal-breathe-center {
+  0%,100% { transform: scaleX(1); opacity: 0.9; }
+  50% { transform: scaleX(0.82); opacity: 0.7; }
+}
+
+/* --- Bolder floating combat text --- */
+.float-text {
+  font-size: 1.5em;
+  font-family: 'Cinzel', serif;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 12px currentColor, 0 2px 6px rgba(0,0,0,0.8);
+  animation: floatUp 1.6s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+
+/* --- Responsive figure scaling --- */
+@media (max-width: 700px) {
+  .monster-card { width: 118px; height: 176px; padding: 0; margin: 6px 2px; }
+  .monster-card .monster-icon { font-size: 3.4em; margin: 14px 0 6px; }
+  .monster-card::after { width: 96px; height: 96px; }
+  .monster-card::before { width: 70px; height: 16px; }
+  #player-figure { left: 8px; bottom: 6px; width: 92px; height: 132px; }
+  #player-figure .player-sprite { font-size: 3em; }
+  #player-figure .player-shield { width: 82px; height: 82px; margin-left: -41px; bottom: 40px; }
+  #player-figure .player-pedestal { width: 66px; height: 15px; }
+}
+
+/* ============ ✦ SLAY THE SPIRE — FULL ABYSS REDESIGN (appearance only) ============ */
+
+/* --- 1. Deep abyss background + grain + vignette --- */
+body {
+  background:
+    radial-gradient(1300px 900px at 50% 125%, #0c0917 0%, transparent 62%),
+    radial-gradient(1100px 720px at 12% -8%, #1b1032 0%, transparent 55%),
+    radial-gradient(1100px 720px at 88% -8%, #2a0f22 0%, transparent 55%),
+    radial-gradient(700px 460px at 50% -6%, rgba(201,160,80,0.07) 0%, transparent 60%),
+    radial-gradient(900px 700px at 50% 55%, rgba(61,95,140,0.06) 0%, transparent 60%),
+    linear-gradient(180deg, #0a0813 0%, #07060f 46%, #040309 100%);
+  background-attachment: fixed;
+}
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 45%, transparent 52%, rgba(0,0,0,0.55) 100%),
+    url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  background-size: auto, 320px 320px;
+  opacity: 0.07;
+}
+
+/* --- 2. Title screen — gilded plaque --- */
+#title-screen {
+  background:
+    radial-gradient(1300px 900px at 50% 120%, #0c0917 0%, transparent 62%),
+    radial-gradient(1000px 700px at 50% -10%, rgba(201,160,80,0.10) 0%, transparent 55%),
+    radial-gradient(800px 600px at 50% 40%, rgba(139,37,48,0.07) 0%, transparent 60%),
+    linear-gradient(180deg, #0b0915 0%, #06050c 100%);
+}
+#title-screen h1 {
+  font-size: 4em;
+  color: #e8c877;
+  padding: 0.32em 0.85em;
+  border: 1px solid rgba(201,160,80,0.42);
+  border-radius: 6px;
+  background: linear-gradient(180deg, #f6e6b6 0%, #d4af37 45%, #8b6914 62%, #e8c877 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  box-shadow: 0 0 46px rgba(201,160,80,0.28), inset 0 0 26px rgba(201,160,80,0.10);
+}
+#title-screen .subtitle { color: #a99778; }
+#title-screen button {
+  border-radius: 6px;
+  border-color: rgba(201,160,80,0.5);
+  background: linear-gradient(180deg, rgba(201,160,80,0.14), rgba(201,160,80,0.02));
+  box-shadow: 0 0 18px rgba(201,160,80,0.15), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+/* --- 3. Status bar — gold stat plates --- */
+#status-bar {
+  background: linear-gradient(180deg, #141020 0%, #0c0915 100%);
+  border-bottom: 1px solid rgba(201,160,80,0.25);
+  gap: 10px;
+  padding: 8px 16px;
+}
+#status-bar .stat {
+  background: linear-gradient(180deg, rgba(30,23,44,0.92), rgba(17,13,26,0.92));
+  border: 1px solid rgba(201,160,80,0.24);
+  border-radius: 7px;
+  padding: 4px 11px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.045), 0 2px 6px rgba(0,0,0,0.4);
+  gap: 6px;
+}
+#status-bar .stat .val { color: #f3e6c0; font-size: 1.12em; }
+#status-bar .stat:nth-child(1) .val { color: #ff8b9a; text-shadow: 0 0 8px rgba(184,48,64,0.6); }
+#status-bar .stat:nth-child(2) .val { color: #a9c7ef; text-shadow: 0 0 8px rgba(79,122,181,0.6); }
+#status-bar .stat:nth-child(4) .val { color: #f2d98c; text-shadow: 0 0 8px rgba(201,160,80,0.6); }
+
+/* --- 4. Map bar — StS-style room tokens --- */
+#map-bar {
+  background: linear-gradient(180deg, #0e0a18 0%, #08060f 100%);
+  border-bottom: 1px solid rgba(201,160,80,0.2);
+}
+#map-label { color: #9a8f78; }
+#map-label span { color: #e8c877; }
+.map-node {
+  min-width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  font-size: 0.7em;
+  background: linear-gradient(180deg, rgba(28,21,42,0.95), rgba(15,11,24,0.95));
+  border: 1px solid rgba(90,78,118,0.35);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 2px 5px rgba(0,0,0,0.4);
+}
+.map-node.battle { border-color: rgba(184,48,64,0.7); color: #ff9aa6; box-shadow: 0 0 8px rgba(184,48,64,0.35); }
+.map-node.elite { border-color: #b83040; color: #ffc1c8; box-shadow: 0 0 12px rgba(184,48,64,0.5); }
+.map-node.boss { border-color: #ff5a6a; color: #ffd0d5; min-width: 36px; height: 36px; background: radial-gradient(circle at 50% 50%, rgba(184,48,64,0.28), #140a0d); box-shadow: 0 0 16px rgba(184,48,64,0.6); }
+.map-node.event { border-color: rgba(79,122,181,0.7); color: #a8c6f0; }
+.map-node.shop { border-color: rgba(201,160,80,0.8); color: #f3e6c0; box-shadow: 0 0 8px rgba(201,160,80,0.4); }
+.map-node.rest { border-color: rgba(90,158,111,0.8); color: #a5e0b6; }
+.map-node.spring { border-color: rgba(107,79,140,0.8); color: #cbb4e8; }
+.map-node.current { border-color: var(--gold); box-shadow: 0 0 18px rgba(201,160,80,0.7); }
+.map-node.hidden { border-color: rgba(40,34,52,0.6); color: rgba(64,54,82,0.7); background: rgba(8,6,14,0.6); }
+.map-path { background: rgba(90,78,118,0.3); height: 2px; }
+.map-path.active { background: var(--gold); box-shadow: 0 0 6px rgba(201,160,80,0.6); }
+
+/* --- 5. Battle field — cinematic stage --- */
+#battle-field {
+  background:
+    radial-gradient(ellipse at 50% -20%, rgba(52,38,74,0.5) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 115%, rgba(10,7,18,0.85) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(12,9,19,0.2) 0%, rgba(6,5,12,0.1) 55%, rgba(10,8,16,0.5) 100%);
+}
+#field-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,160,80,0.35), rgba(201,160,80,0.5), rgba(201,160,80,0.35), transparent);
+}
+
+/* --- 6. Cards — StS ornate frames + type color-coding (centerpiece) --- */
+.game-card {
+  width: 164px;
+  min-height: 218px;
+  border-radius: 10px;
+  padding: 30px 12px 34px;
+  border: 2px solid #4a3b22;
+  background:
+    radial-gradient(140% 70% at 50% -10%, rgba(201,160,80,0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #1b1526 0%, #130e1c 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,0.6),
+    inset 0 0 22px rgba(0,0,0,0.5),
+    0 8px 20px rgba(0,0,0,0.55);
+  overflow: hidden;
+  transition: transform 0.22s cubic-bezier(0.2,0.8,0.3,1.2), box-shadow 0.22s ease, border-color 0.22s ease;
+}
+.game-card::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(201,160,80,0.28);
+  border-radius: 6px;
+  pointer-events: none;
+  z-index: 1;
+}
+.game-card.defensive {
+  border: 2px solid #2a4a78;
+  background:
+    radial-gradient(140% 70% at 50% -10%, rgba(79,122,181,0.16) 0%, transparent 50%),
+    linear-gradient(180deg, #16202f 0%, #0f1722 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,0.6),
+    inset 0 0 24px rgba(79,122,181,0.16),
+    0 8px 20px rgba(0,0,0,0.55),
+    0 0 14px rgba(79,122,181,0.14);
+}
+.game-card.defensive::before { border-color: rgba(120,160,220,0.4); }
+.game-card.offensive {
+  border: 2px solid #5a1f2b;
+  background:
+    radial-gradient(140% 70% at 50% -10%, rgba(184,48,64,0.18) 0%, transparent 50%),
+    linear-gradient(180deg, #2a1620 0%, #180e14 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,0.6),
+    inset 0 0 24px rgba(184,48,64,0.2),
+    0 8px 20px rgba(0,0,0,0.55),
+    0 0 14px rgba(184,48,64,0.14);
+}
+.game-card.offensive::before { border-color: rgba(224,90,105,0.45); }
+.game-card .card-word {
+  position: relative;
+  z-index: 2;
+  font-family: 'Cinzel', 'Georgia', serif;
+  color: #f3e6c0;
+  text-transform: none;
+  letter-spacing: 0.05em;
+  width: 100%;
+  padding: 7px 3px;
+  margin: 0 0 8px;
+  border-top: 1px solid rgba(201,160,80,0.35);
+  border-bottom: 1px solid rgba(201,160,80,0.35);
+  background: linear-gradient(180deg, rgba(201,160,80,0.12), rgba(201,160,80,0.02));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.game-card .card-badge {
+  position: relative;
+  z-index: 2;
+  font-size: 0.6em;
+  font-weight: 700;
+  padding: 6px 16px;
+  margin: 10px 0 12px;
+  border: none;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
+}
+.game-card .card-badge.offensive {
+  background: linear-gradient(180deg, #a32a3a, #6b1a26);
+  color: #ffe0e4;
+  clip-path: polygon(14% 0, 86% 0, 100% 50%, 86% 100%, 14% 100%, 0 50%);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+.game-card .card-badge.defensive {
+  background: linear-gradient(180deg, #3a5f94, #233f68);
+  color: #dce9ff;
+  border-radius: 9px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+.game-card .card-stars {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  color: #e8c877;
+  font-size: 0.88em;
+  letter-spacing: 3px;
+  text-shadow: 0 0 8px rgba(232,200,119,0.75);
+}
+.game-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  border-color: var(--gold-dim);
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,0.6),
+    0 14px 28px rgba(0,0,0,0.65),
+    0 0 26px rgba(201,160,80,0.35);
+  z-index: 10;
+}
+.game-card.selected {
+  transform: translateY(-16px) scale(1.05);
+  border-color: var(--gold);
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,0.6),
+    0 14px 30px rgba(0,0,0,0.65),
+    0 0 34px rgba(201,160,80,0.6);
+}
+.game-card.selected::before { border-color: rgba(201,160,80,0.7); }
+
+/* --- Monster intent chip polish --- */
+.monster-card .monster-atk {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 9px;
+  background: rgba(184,48,64,0.16);
+  border: 1px solid rgba(184,48,64,0.4);
+  color: #ff9aa6;
+  font-size: 0.6em;
+  margin-top: 3px;
+}
+
+/* --- 7. Flashcards / shop / overlays — ornate frames --- */
+.flashcard-front, .flashcard-back { border-radius: 10px; border: 2px solid #4a3b22; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.6), 0 4px 16px rgba(0,0,0,0.5); }
+.flashcard-front { background: radial-gradient(140% 70% at 50% -10%, rgba(201,160,80,0.08), transparent 50%), linear-gradient(180deg, #1b1526, #130e1c); }
+.flashcard-back { background: linear-gradient(180deg, #2a1f14, #1a1410); border-color: rgba(201,160,80,0.42); }
+.flashcard.defensive .flashcard-front { border: 2px solid #2a4a78; }
+.flashcard.offensive .flashcard-front { border: 2px solid #5a1f2b; }
+.flashcard .fc-word { font-family: 'Cinzel', serif; color: #f3e6c0; }
+.flashcard-back .fc-word { color: var(--gold-pale); }
+.shop-item {
+  border-radius: 8px;
+  border: 1px solid rgba(201,160,80,0.28);
+  background: linear-gradient(180deg, #1b1526, #120d1a);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.5), 0 4px 14px rgba(0,0,0,0.45);
+}
+.shop-item.ability { border-color: rgba(107,79,140,0.5); }
+.overlay { background: rgba(5,4,10,0.94); }
+.overlay h2 {
+  color: #e8c877;
+  background: linear-gradient(180deg, #f6e6b6 0%, #d4af37 45%, #8b6914 62%, #e8c877 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.overlay button { border-radius: 6px; }
+#deck-viewer-overlay h2 { color: #e8c877; }
+#deck-viewer-toolbar button { border-radius: 6px; }
+
+/* --- 8. Input bar + log — ornate command console --- */
+#input-bar {
+  background: linear-gradient(180deg, #0d0a16, #090711);
+  border-top: 1px solid rgba(201,160,80,0.25);
+  padding: 10px 20px;
+}
+#input-bar .prompt { color: #e8c877; text-shadow: 0 0 8px rgba(232,200,119,0.6); }
+#log-area {
+  background: linear-gradient(180deg, #07060e, #050409);
+  border-top: 1px solid rgba(90,78,118,0.3);
+}
+
+/* --- 9. Responsive --- */
+@media (max-width: 700px) {
+  .game-card { width: 112px; min-height: 158px; padding: 22px 6px 28px; border-radius: 8px; }
+  .game-card .card-badge { font-size: 0.54em; padding: 4px 10px; }
+  .map-node { min-width: 26px; height: 26px; font-size: 0.6em; }
+  .map-node.boss { min-width: 32px; height: 32px; }
+  #title-screen h1 { font-size: 2.2em; padding: 0.28em 0.6em; }
+  #status-bar .stat { padding: 3px 7px; }
+}
+
 </style>
 </head>
 <body>
@@ -1074,6 +1702,12 @@ button:focus-visible, select:focus-visible, input:focus-visible {
   <div id="battle-field">
     <div id="monster-zone"></div>
     <div id="field-divider"></div>
+    <div id="player-figure">
+      <div class="player-shield"></div>
+      <div class="player-sprite">🧙</div>
+      <div class="player-pedestal"></div>
+      <div class="player-name">Scholar</div>
+    </div>
     <div id="hand-zone">
       <div id="end-turn-wrap"><button id="end-turn-btn" onclick="endTurn()">End Turn ⏎</button></div>
     </div>
@@ -1390,6 +2024,34 @@ function spawnFloatText(text, color) {
   setTimeout(() => el.remove(), 1500);
 }
 
+// ============ VISUAL EFFECTS (appearance only — no game-logic change) ============
+function updatePlayerFigure() {
+  const pf = document.getElementById('player-figure');
+  if (!pf) return;
+  pf.style.display = (G.battleInProgress || G._trainingMode) ? 'flex' : 'none';
+}
+
+function playerFx(fx) {
+  const pf = document.getElementById('player-figure');
+  if (!pf) return;
+  pf.classList.remove('attack', 'defend', 'hurt');
+  void pf.offsetWidth; // restart animation
+  pf.classList.add(fx);
+  clearTimeout(playerFx._t);
+  playerFx._t = setTimeout(() => pf.classList.remove(fx), 800);
+}
+
+function flashMonster(idx, fx) {
+  setTimeout(() => {
+    const el = document.querySelectorAll('#monster-zone .monster-card')[idx];
+    if (!el) return;
+    el.classList.remove('hit', 'lunge');
+    void el.offsetWidth; // restart animation
+    el.classList.add(fx);
+    setTimeout(() => el.classList.remove(fx), 700);
+  }, 15);
+}
+
 function updateDisplay() {
   document.getElementById('hp-val').textContent = G.hp;
   document.getElementById('maxhp-val').textContent = G.maxHp;
@@ -1685,6 +2347,7 @@ function handleCardAnswer(input) {
       G.armor += pow;
       logLine(`✓ Correct! "${word.w}" — +${pow} Armor (now ${G.armor})`, 'correct');
       spawnFloatText(`+${pow} 🛡️`, '#3498db');
+      playerFx('defend');
     } else {
       const target = G.monsters[G.selectedTargetIdx];
       let killedMonster = false;
@@ -1692,6 +2355,8 @@ function handleCardAnswer(input) {
         target.hp -= pow;
         logLine(`✓ Correct! "${word.w}" — ${pow} damage to ${target.name}`, 'correct');
         spawnFloatText(`-${pow}`, '#e74c3c');
+        playerFx('attack');
+        flashMonster(G.selectedTargetIdx, 'hit');
         if (target.hp <= 0) {
           target.defeated = true;
           target.hp = 0;
@@ -1810,6 +2475,8 @@ function monsterPhase() {
   if (totalDmg > 0) {
     document.getElementById('battle-field').classList.add('flash-red');
     setTimeout(() => document.getElementById('battle-field').classList.remove('flash-red'), 300);
+    playerFx('hurt');
+    G.monsters.forEach((m, i) => { if (!m.defeated) flashMonster(i, 'lunge'); });
   }
   updateDisplay();
   renderBattle();
@@ -3072,6 +3739,7 @@ function renderBattle() {
   } else if (!G._shopMode && !G._eventMode && !G._forgeMode) {
     hz.innerHTML = '<div id="end-turn-wrap"><button id="end-turn-btn" onclick="endTurn()">End Turn ⏎</button></div>';
   }
+  updatePlayerFigure();
 }
 
 // ============ GAME FLOW ============
