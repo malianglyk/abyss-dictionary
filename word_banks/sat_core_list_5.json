@@ -1,1304 +1,994 @@
 [
   {
-    "w": "novelty",
-    "m": "新颖性；新奇事物",
-    "p": "/ˈnɒvəlti/",
-    "s": "Weeks later, when the novelty of the coins had faded, I exchanged them with a classmate for a bag of marbles.",
-    "sc": "几个星期后，当硬币的新鲜感消失了，我把它们和一位同学换成了一袋弹珠。",
+    "w": "devalue",
+    "m": "使...贬值，缩减...的价值",
+    "p": "/diːˈvæljuː/",
+    "s": "We must not devalue the currency.",
+    "sc": "我们绝不能让货币贬值。",
     "a": [
-      "新奇",
-      "新颖性",
-      "新鲜感",
-      "新奇事物",
-      "新颖性；新奇事物"
+      "使贬值",
+      "使降低价值",
+      "使失去价值",
+      "使...贬值",
+      "缩减...的价值",
+      "使...贬值，缩减...的价值"
     ]
   },
   {
-    "w": "behold",
-    "m": "看见；注视",
-    "p": "/bɪˈhəʊld/",
-    "s": "Once again do I behold these steep and lofty cliffs.",
-    "sc": "我又一次看见这些陡峭而高耸的悬崖。",
+    "w": "dabble in",
+    "m": "涉猎，涉足",
+    "p": "/ˈdæb.əl ɪn/",
+    "s": "He likes to dabble in painting on weekends.",
+    "sc": "他喜欢在周末涉猎绘画。",
     "a": [
-      "看见",
-      "注视",
-      "凝视",
-      "目睹",
-      "感叹语",
-      "表示“瞧",
-      "看哪",
-      "果然”",
-      "用于引出意外出现或令人惊讶的结果",
-      "看见；注视"
+      "涉猎",
+      "浅尝",
+      "对某事略知一二但不深入",
+      "涉足",
+      "涉猎，涉足"
     ]
   },
   {
-    "w": "estimate",
-    "m": "估计；评估",
-    "p": "/ˈestɪmeɪt/",
-    "s": "So too would be the replacement of cesspits with proper sewerage—one estimate puts the cost at $650 million.",
-    "sc": "同样，把露天粪坑更换为正规排污系统也会如此——一项估算把成本定为六点五亿美元。",
+    "w": "decree",
+    "m": "命令；颁布法令",
+    "p": "/dɪˈkriː/",
+    "s": "Furthermore, the decree required that governors ensure the physical examination of all persons suspected of carrying the disease and their subsequent isolation.",
+    "sc": "此外，这项法令要求各州长确保对所有疑似携带该疾病的人进行身体检查，并随后将其隔离。",
     "a": [
-      "估计",
-      "估算",
-      "估价",
-      "对数量",
-      "价值或规模的大致判断",
-      "判断……的数值或可能性",
-      "评估",
-      "估计；评估"
+      "法令",
+      "正式命令",
+      "法院或当局作出的裁定",
+      "以正式命令规定",
+      "正式颁布或裁定",
+      "命令",
+      "颁布法令",
+      "命令；颁布法令"
     ]
   },
   {
-    "w": "appeasement",
-    "m": "安抚；绥靖",
-    "p": "/əˈpiːzmənt/",
-    "s": "However, there is another type of laughter, the laughter of social appeasement and it is important to understand this too.",
-    "sc": "然而，还有另一种笑声，即社交性安抚的笑声，也需要理解这一点。",
+    "w": "deplete",
+    "m": "耗尽",
+    "p": "/dɪˈpliːt/",
+    "s": "When we deplete one resource (e.",
+    "sc": "当我们耗尽一种资源时。",
     "a": [
-      "安抚",
-      "绥靖",
-      "通过让步来平息冲突或不满的做法",
-      "安抚；绥靖"
+      "使耗尽",
+      "使枯竭",
+      "大量消耗到不足",
+      "耗尽"
     ]
   },
   {
-    "w": "inducement",
-    "m": "诱因；激励",
-    "p": "/ɪnˈdjuːsmənt/",
-    "s": "The inducement was enough to make him reconsider his refusal.",
-    "sc": "这个诱因足以让他重新考虑自己的拒绝。",
+    "w": "defensive",
+    "m": "防御的，自我保护的",
+    "p": "/dɪˈfensɪv/",
+    "s": "Sprawled over the mountainside are the ruins of an enormous city, contained by crumbling defensive walls seven kilometers long.",
+    "sc": "山坡上散布着一座巨大城市的废墟，四周由长达七公里的残破防御墙围住。",
     "a": [
-      "诱因",
-      "劝诱",
-      "引诱性条件",
-      "激励",
-      "诱因；激励"
+      "防御性的",
+      "用于防守的",
+      "有戒备心的",
+      "防御体系",
+      "防守动作",
+      "防守姿态",
+      "防御的",
+      "自我保护的",
+      "防御的，自我保护的"
     ]
   },
   {
-    "w": "extraneous to",
-    "m": "与……无关或多余的",
-    "p": "/ɪkˈstriːniəs tuː/",
-    "s": "The detail was extraneous to the plot in The Godfather.",
-    "sc": "这个细节与《教父》的情节无关。",
-    "a": [
-      "与……无关的",
-      "超出……范围的",
-      "多余的",
-      "与……无关或多余的"
-    ]
-  },
-  {
-    "w": "reconstitute",
-    "m": "重新组成；恢复",
-    "p": "/ˌriːkɒnstɪˈtjuːt/",
-    "s": "You can reconstitute the dried mushrooms in warm water before cooking.",
-    "sc": "你可以先把干蘑菇用温水泡发后再烹饪。",
-    "a": [
-      "使干燥",
-      "粉状或压缩的东西加水后恢复可用",
-      "也指把某物重新组成",
-      "重建或复原",
-      "重新组成",
-      "恢复",
-      "重新组成；恢复"
-    ]
-  },
-  {
-    "w": "fanciful",
-    "m": "想象丰富但不切实际的",
-    "p": "/ˈfænsɪfl/",
-    "s": "But the author entertained a variety of fanciful ideas, including a belief in the mythical beings known as fairies.",
-    "sc": "但这位作者怀有各种异想天开的想法，包括相信所谓的仙子等神话生物。",
-    "a": [
-      "异想天开的",
-      "不切实际的",
-      "过分华丽的",
-      "装饰繁复的",
-      "想象丰富但不切实际的"
-    ]
-  },
-  {
-    "w": "discretion",
-    "m": "自行决定权；审慎判断",
-    "p": "/dɪˈskreʃən/",
-    "s": "All reports, invoices and other essential data should be prepared promptly and honestly, and treated with discretion.",
-    "sc": "所有报告、发票和其他重要资料都应及时、诚实地准备，并谨慎处理。",
-    "a": [
-      "谨慎",
-      "审慎",
-      "在决定",
-      "行动或处理事务时不轻率的态度或判断力",
-      "自行决定权",
-      "审慎判断",
-      "自行决定权；审慎判断"
-    ]
-  },
-  {
-    "w": "inexplicable",
-    "m": "无法解释的",
-    "p": "/ˌɪn.ɪkˈsplɪk.ə.bəl/",
-    "s": "That would certainly explain something that is otherwise inexplicable.",
-    "sc": "那当然可以解释某些原本无法解释的事情。",
-    "a": [
-      "无法解释的",
-      "难以理解的",
-      "莫名其妙的"
-    ]
-  },
-  {
-    "w": "demarcate",
-    "m": "划定界限；区分",
-    "p": "/ˈdiːmɑːkeɪt/",
-    "s": "Or are there important lines that demarcate entertainment and art?",
-    "sc": "或者说，是否存在一些重要界线，将娱乐与艺术划分开来？",
-    "a": [
-      "划定",
-      "标示……的界线",
-      "划定界限",
-      "区分",
-      "划定界限；区分"
-    ]
-  },
-  {
-    "w": "immutability",
-    "m": "不可改变性",
-    "p": "/ˌɪmjuːtəˈbɪləti/",
-    "s": "Additionally, the immutability of blockchain records, though beneficial for trust, could pose challenges when errors or privacy concerns arise.",
-    "sc": "此外，区块链记录的不可变性虽然有助于建立信任，但在出现错误或隐私问题时可能带来挑战。",
-    "a": [
-      "不可变性",
-      "不可改变",
-      "不受更改的状态或性质",
-      "不可改变性"
-    ]
-  },
-  {
-    "w": "robust",
-    "m": "强劲的；稳健的",
-    "p": "/rəʊˈbʌst/",
-    "s": "In general, they are more robust.",
-    "sc": "总的来说，他们更强健。",
-    "a": [
-      "结实的",
-      "强健的",
-      "坚固耐用的",
-      "稳健的",
-      "强劲的",
-      "强劲的；稳健的"
-    ]
-  },
-  {
-    "w": "grudgingly",
-    "m": "勉强地；不情愿地",
-    "p": "/ˈɡrʌdʒɪŋli/",
-    "s": "I grudgingly pulled on the wool hat, trudging behind Kayla until we reached the main observation point.",
-    "sc": "我勉强地戴上羊毛帽，拖着步子跟在凯拉后面，直到我们到达主观景点。",
-    "a": [
-      "勉强地",
-      "不情愿地",
-      "带着怨气地",
-      "勉强地；不情愿地"
-    ]
-  },
-  {
-    "w": "augment",
-    "m": "增加；增强",
-    "p": "/ˈɔːɡment/",
-    "s": "One strategy, known as 'infuse and augment’，is to design a product or service that retains most of the attributes and functions of existing products in the category but adds others that address the needs and desires unleashed by a major trend.",
-    "sc": "一种被称为“注入并扩充”的策略，是设计一种产品或服务，使其保留该类别中现有产品的大部分属性和功能，同时增加其他功能，以满足某种重大趋势所释放出的需求和愿望。",
-    "a": [
-      "增加",
-      "补充",
-      "扩充",
-      "加强",
-      "增强",
-      "增加；增强"
-    ]
-  },
-  {
-    "w": "fecundity",
-    "m": "繁殖力；丰产性",
-    "p": "/fiːˈkʌndɪti/",
-    "s": "The fecundity of the garden impressed everyone.",
-    "sc": "这个花园的丰饶令人印象深刻。",
-    "a": [
-      "多产",
-      "丰饶",
-      "生殖力",
-      "繁殖力",
-      "丰产性",
-      "繁殖力；丰产性"
-    ]
-  },
-  {
-    "w": "evince",
-    "m": "表明；显示",
-    "p": "/ɪˈvɪns/",
-    "s": "His calm voice evinces a confidence he does not feel.",
-    "sc": "他的平静语气表明了他并不真正感到的自信。",
-    "a": [
-      "表明",
-      "显示",
-      "表达",
-      "显出",
-      "证明",
-      "表明；显示"
-    ]
-  },
-  {
-    "w": "scrupulous",
-    "m": "严谨认真的；恪守原则的",
-    "p": "/ˈskruːpjələs/",
-    "s": "For larger studies, scrupulous attention has been paid to the sampling theory employed, and in all cases, decisions have to be made about the best investigative techniques to use.",
-    "sc": "对于更大规模的研究，人们已经对所采用的抽样理论给予了极其细致的关注，而且在所有情况下，都必须决定使用哪种最佳的调查技术。",
-    "a": [
-      "一丝不苟的",
-      "严谨细致的",
-      "诚实正直的",
-      "讲道德良知的",
-      "严谨认真的",
-      "恪守原则的",
-      "严谨认真的；恪守原则的"
-    ]
-  },
-  {
-    "w": "unfounded",
-    "m": "无事实根据的",
-    "p": "/ʌnˈfaʊndɪd/",
-    "s": "That doesn't mean conceding to unfounded arguments which are based on prejudice rather than evidence.",
-    "sc": "这并不意味着要向那些建立在偏见而非证据之上的无根据论点让步。",
-    "a": [
-      "无根据的",
-      "缺乏事实或证据支持的",
-      "无事实根据的"
-    ]
-  },
-  {
-    "w": "equivocal",
-    "m": "模棱两可的；含糊的",
-    "p": "/ɪˈkwɪvəkəl/",
-    "s": "The equivocal tone of his equivocal reply made her pause.",
-    "sc": "他那含糊不清的回答语气让她停了下来。",
-    "a": [
-      "模棱两可的",
-      "含糊不清的",
-      "可有多种解释的",
-      "含糊的",
-      "模棱两可的；含糊的"
-    ]
-  },
-  {
-    "w": "convene",
-    "m": "召集；开会",
-    "p": "/kənˈviːn/",
-    "s": "How about we convene at 9 instead of 11?",
-    "sc": "我们改成九点集合，而不是十一点，怎么样？",
-    "a": [
-      "召集",
-      "集合",
-      "召开（会议",
-      "委员会等）",
-      "开会",
-      "召集；开会"
-    ]
-  },
-  {
-    "w": "palpable",
-    "m": "明显可感的；触手可及的",
-    "p": "/ˈpælpəbəl/",
-    "s": "But the special power of the structure is its palpable connection to the people who work there.",
-    "sc": "但这种结构的特殊力量在于它与在这里工作的人之间那种几乎可触知的联系。",
-    "a": [
-      "可触知的",
-      "明显可感的",
-      "几乎能触摸到的",
-      "触手可及的",
-      "明显可感的；触手可及的"
-    ]
-  },
-  {
-    "w": "anomalous",
-    "m": "异常的；不合常规的",
-    "p": "/əˈnɒmələs/",
-    "s": "The anomalous data point stood out in the graph.",
-    "sc": "那个异常的数据点在图表中格外显眼。",
-    "a": [
-      "异常的",
-      "反常的",
-      "不正常的",
-      "不合常规的",
-      "异常的；不合常规的"
-    ]
-  },
-  {
-    "w": "paradigm",
-    "m": "范式；典型模式",
-    "p": "/ˈpærədaɪm/",
-    "s": "Working under the right paradigm helped Americans Orville and Wilbur Wright to succeed even as a wrong one sabotaged the hopes of Europe's many experimenters.",
-    "sc": "在正确的范式下工作帮助美国人奥维尔和威尔伯·莱特取得成功，而错误的范式却破坏了欧洲许多实验者的希望。",
-    "a": [
-      "典范",
-      "范例",
-      "可作为比较或归类依据的典型模式",
-      "样本或理论框架",
-      "范式",
-      "典型模式",
-      "范式；典型模式"
-    ]
-  },
-  {
-    "w": "exhaustiveness",
-    "m": "详尽全面",
-    "p": "/ɪɡˌzɔːstəˈvɪnəs/",
-    "s": "The exhaustiveness of the report impressed the committee.",
-    "sc": "这份报告的穷尽性给委员会留下了深刻印象。",
-    "a": [
-      "穷尽性",
-      "彻底性",
-      "不遗漏任何细节的程度",
-      "详尽全面"
-    ]
-  },
-  {
-    "w": "ubiquity",
-    "m": "无处不在；普遍存在",
-    "p": "/juːˈbɪkwəti/",
-    "s": "Marveling at the ubiquity of this Pacific language and culture, he later wondered in his journal: \"How shall we account for this Nation spreading itself so far over this vast ocean?",
-    "sc": "他惊叹于这种太平洋语言与文化的无处不在，后来又在日记中写道：“我们该如何解释这个民族竟能如此广泛地散布到这片浩瀚的海洋之上？”",
-    "a": [
-      "无所不在",
-      "普遍存在",
-      "无处不在",
-      "无处不在；普遍存在"
-    ]
-  },
-  {
-    "w": "unfailingly",
-    "m": "始终如一地；无一例外地",
-    "p": "/ʌnˈfeɪlɪŋli/",
-    "s": "He unfailingly arrived before dawn, as if the hour itself obeyed him.",
-    "sc": "他总是在黎明前到达，仿佛连时间本身都听命于他。",
-    "a": [
-      "总是",
-      "一贯地",
-      "毫不失败地",
-      "始终如一地",
-      "无一例外地",
-      "始终如一地；无一例外地"
-    ]
-  },
-  {
-    "w": "facetious",
-    "m": "轻浮打趣的；不严肃的",
-    "p": "/fəˈsiːʃəs/",
-    "s": "He was facetious about the deadline, but no one laughed.",
-    "sc": "他对截止日期说得很戏谑，但没人笑。",
-    "a": [
-      "爱开玩笑的",
-      "戏谑的",
-      "言语轻佻的",
-      "轻浮打趣的",
-      "不严肃的",
-      "轻浮打趣的；不严肃的"
-    ]
-  },
-  {
-    "w": "self-servingly",
-    "m": "自利地；只为自己打算地",
-    "p": "/ˌselfˈsɜːvɪŋli/",
-    "s": "She self-servingly changed her story to make herself look innocent.",
-    "sc": "她出于私利地篡改了说法，让自己看起来无辜。",
-    "a": [
-      "自私地",
-      "出于自身利益地",
-      "只顾个人得失地",
-      "自利地",
-      "只为自己打算地",
-      "自利地；只为自己打算地"
-    ]
-  },
-  {
-    "w": "unnerve",
-    "m": "使紧张不安；使失去勇气",
-    "p": "/ʌnˈnɜːv/",
-    "s": "The silence began to unnerve him.",
-    "sc": "这沉默开始使他不安。",
-    "a": [
-      "使紧张",
-      "使不安",
-      "使失去镇定",
-      "使紧张不安",
-      "使失去勇气",
-      "使紧张不安；使失去勇气"
-    ]
-  },
-  {
-    "w": "complex",
-    "m": "复杂的；由多部分组成的",
-    "p": "/ˈkɒmpleks/",
-    "s": "For this to be possible, the interpreter must record the original messages using a complex system of symbols to express what the speaker is saying.",
-    "sc": "要做到这一点，译员必须使用一套复杂的符号系统来记录原始信息，以表达说话者所说的话。",
-    "a": [
-      "复杂的",
-      "由许多部分组成的",
-      "难以理解的",
-      "由多部分组成的",
-      "复杂的；由多部分组成的"
-    ]
-  },
-  {
-    "w": "expediency",
-    "m": "权宜之计；便利性",
-    "p": "/ˌekspiːdiˈensi/",
-    "s": "Stanton, Gornick argues, is the model for this revolutionary feminism, because she was the one who always refused to scale back her just demands out of political expediency, who remained faithful to the radical vision of full equality.",
-    "sc": "斯坦顿，戈尼克认为，是这种革命女性主义的典范，因为她始终拒绝出于政治权宜而缩减自己正当的要求，并始终忠于完全平等的激进愿景。",
-    "a": [
-      "权宜",
-      "便利",
-      "为求方便而采取的做法",
-      "未必以原则或长远利益为先",
-      "权宜之计",
-      "便利性",
-      "权宜之计；便利性"
-    ]
-  },
-  {
-    "w": "hominid",
-    "m": "人科动物；早期人类成员",
-    "p": "/ˈhɒmɪnɪd/",
-    "s": "Indeed, given the age of the mats and other artefacts at the site, it's clear that Homo sapiens was the hominid who slept in the cave.",
-    "sc": "确实，考虑到该地点席子和其他器物的年代，很明显睡在洞穴里的是那个人科成员，即智人。",
-    "a": [
-      "人科动物",
-      "人科成员",
-      "早期人类成员",
-      "人科动物；早期人类成员"
-    ]
-  },
-  {
-    "w": "assertion",
-    "m": "断言；主张",
-    "p": "/əˈsɜːʃən/",
-    "s": "Mark Clifford is not convinced by Allen's assertion.",
-    "sc": "马克·克利福德并不相信艾伦的断言。",
-    "a": [
-      "断言",
-      "主张",
-      "声称",
-      "明确表示的意见或看法",
-      "断言；主张"
-    ]
-  },
-  {
-    "w": "sporadically",
-    "m": "偶尔地；零星地",
-    "p": "/spəˈrædɪkli/",
-    "s": "Moreover, turbulence exhibits intermittency, where intense fluctuations occur sporadically, complicating statistical descriptions.",
-    "sc": "此外，湍流表现出间歇性，其中强烈波动会零星出现，从而使统计描述变得复杂。",
-    "a": [
-      "偶尔地",
-      "不时地",
-      "零星地",
-      "偶尔地；零星地"
-    ]
-  },
-  {
-    "w": "pernicious to",
-    "m": "对……有严重危害的",
+    "w": "date from",
+    "m": "追溯到",
     "p": "",
-    "s": "Smoking is pernicious to your health.",
-    "sc": "吸烟对你的健康有害。",
+    "s": "The ancient ruins date from over a thousand years ago.",
+    "sc": "这些古代遗址的历史可以追溯到一千多年前。",
     "a": [
-      "对……有严重危害的"
+      "来源于",
+      "追溯到"
     ]
   },
   {
-    "w": "conflate",
-    "m": "合并混淆",
-    "p": "/kənˈfleɪt/",
-    "s": "The film conflate history and myth to create a powerful story.",
-    "sc": "这部电影把历史和神话混为一体，创造出一个有力的故事。",
+    "w": "cultivate",
+    "m": "栽培",
+    "p": "/ˈkʌltɪveɪt/",
+    "s": "After the arrival of the potato in Spain in 1570, a few Spanish farmers began to cultivate them on a small scale, mostly as food for livestock.",
+    "sc": "1570年土豆传入西班牙后，少数西班牙农民开始小规模种植它们，主要作为牲畜饲料。",
     "a": [
-      "把不同的事物混为一谈",
-      "合并",
-      "使混合在一起",
-      "合并混淆"
+      "耕种",
+      "培育",
+      "培养",
+      "栽培"
     ]
   },
   {
-    "w": "sympathetic",
-    "m": "同情的；赞同支持的",
-    "p": "/ˌsɪmpəˈθetɪk/",
-    "s": "Be warm, sympathetic, reassuring and enthusiastic.",
-    "sc": "要热情、富有同情心、令人安心并充满热忱。",
+    "w": "decode",
+    "m": "解码，解密",
+    "p": "/diːˈkəʊd/",
+    "s": "We can decode their signals of distress or read a million messages into their first smile.",
+    "sc": "我们可以解读他们的求救信号，或者从他们的第一个微笑里读出无数信息。",
     "a": [
-      "富有同情心的",
-      "表示支持和理解的",
-      "同情的",
-      "赞同支持的",
-      "同情的；赞同支持的"
+      "解码",
+      "破译",
+      "把编码的信息还原为可读或可理解的形式",
+      "解密",
+      "解码，解密"
     ]
   },
   {
-    "w": "retailer",
-    "m": "零售商",
-    "p": "/ˈriːteɪlə/",
-    "s": "You can see the results in the quarterly reports for any major electronics retailer.",
-    "sc": "你可以在任何一家大型电子产品零售商的季度报告中看到这些结果。",
+    "w": "database",
+    "m": "数据",
+    "p": "/ˈdeɪtəbeɪs/",
+    "s": "The organization's database of members is used by photography editors and others in the media industry around the world.",
+    "sc": "该组织的成员数据库被世界各地的摄影编辑和媒体行业的其他人使用。",
     "a": [
-      "零售商",
-      "零售店经营者"
+      "数据库",
+      "按结构化方式存储和管理的数据集合",
+      "数据"
     ]
   },
   {
-    "w": "diffuse in",
-    "m": "在……中扩散或分布",
-    "p": "/dɪˈfjuːz ɪn/",
-    "s": "The smoke can diffuse in the room.",
-    "sc": "烟雾可以弥漫进房间里。",
+    "w": "cultivated",
+    "m": "有文化的",
+    "p": "/ˈkʌltɪveɪtɪd/",
+    "s": "This results in much larger cores in cultivated pearls than those in natural pearls.",
+    "sc": "这会使养殖珍珠的核比天然珍珠更大。",
     "a": [
-      "弥漫进",
-      "向内扩散到……中",
-      "在……中扩散或分布"
+      "经过栽培的",
+      "人工养殖的",
+      "受过良好教育而有修养的",
+      "耕种",
+      "栽培",
+      "培育",
+      "有文化的"
     ]
   },
   {
-    "w": "propensity",
-    "m": "倾向；习性",
-    "p": "/prəˈpen.sɪ.ti/",
-    "s": "‘Humans have a tremendous propensity to bond with artifacts, whether it be a car, a doll, or a robot,’he said.",
-    "sc": "他说：“人类对与人工制品建立联结有着极强的倾向，无论是汽车、玩偶还是机器人。”",
+    "w": "deficient",
+    "m": "不足的",
+    "p": "/dɪˈfɪʃənt/",
+    "s": "Some birds even have difficulty in laying down this reserve because their diet is deficient in calcium.",
+    "sc": "有些鸟甚至难以形成这种储备，因为它们的饮食中缺乏钙。",
     "a": [
-      "倾向",
-      "癖好",
-      "容易性",
-      "习性",
-      "倾向；习性"
+      "缺乏的",
+      "不够的",
+      "不足的"
     ]
   },
   {
-    "w": "paleontologist",
-    "m": "古生物学家",
-    "p": "/ˌpeɪliˈɒntələdʒɪst/",
-    "s": "\"We see the same well-vascularized bone in mammals but not in turtles and crocodiles,\" says Kevin Padian, a paleontologist at the University of California-Berkeley.",
-    "sc": "“我们在哺乳动物身上看到同样血管丰富的骨骼，但在龟和鳄鱼身上没有，”加州大学伯克利分校的古生物学家凯文·帕迪安说。",
+    "w": "dedicated",
+    "m": "专门的，专用的",
+    "p": "/ˈdedɪkeɪtɪd/",
+    "s": "In this way, school turns into an institution dedicated to shaping the minds, behaviour and morals of the young.",
+    "sc": "这样，学校就变成了一个致力于塑造年轻人思想、行为和道德的机构。",
     "a": [
-      "古生物学家",
-      "研究化石和史前生物的人"
+      "专注投入的",
+      "专用的",
+      "专门的",
+      "专门的，专用的"
     ]
   },
   {
-    "w": "insectivore",
-    "m": "食虫动物",
-    "p": "/ˈɪn.sɛk.tɪ.vɔː/",
-    "s": "The insectivore crept under the leaf litter and snapped up ants.",
-    "sc": "这种食虫动物钻到落叶层下，迅速捕食蚂蚁。",
+    "w": "decrepit",
+    "m": "破旧的，垂垂老矣的",
+    "p": "/dɪˈkrepɪt/",
+    "s": "The decrepit house needed a new roof and fresh paint.",
+    "sc": "这座破旧不堪的房子需要换新屋顶并重新粉刷。",
     "a": [
-      "食虫动物",
-      "以昆虫为食的动物"
+      "衰老失修的",
+      "破旧不堪的",
+      "虚弱不堪的",
+      "破旧的",
+      "垂垂老矣的",
+      "破旧的，垂垂老矣的"
     ]
   },
   {
-    "w": "reign",
-    "m": "统治时期；统治",
-    "p": "/reɪn/",
-    "s": "The reign of the king lasted for many years.",
-    "sc": "国王的统治持续了很多年。",
+    "w": "defining",
+    "m": "标志性的",
+    "p": "/ˈdefaɪnɪŋ/",
+    "s": "But defining boredom so that it can be studied in the lab has proved difficult.",
+    "sc": "但是，给无聊下定义以便在实验室中研究它，已被证明很困难。",
     "a": [
-      "统治时期",
-      "统治",
-      "统治时期；统治"
-    ]
-  },
-  {
-    "w": "critical",
-    "m": "关键的；批判性的",
-    "p": "/ˈkrɪtɪkəl/",
-    "s": "These days, technology plays a critical role in many aspects of life, including security.",
-    "sc": "如今，技术在生活的许多方面都发挥着至关重要的作用，包括安全保障。",
-    "a": [
-      "至关重要的",
+      "界定",
+      "给……下定义",
+      "规定",
+      "典型的",
+      "特征性的",
       "决定性的",
-      "关键的",
-      "批判性的",
-      "关键的；批判性的"
+      "起关键作用的",
+      "标志性的"
     ]
   },
   {
-    "w": "feminist",
-    "m": "女权主义的；支持性别平等的",
-    "p": "/ˈfem.ɪ.nɪst/",
-    "s": "Having grown up in the feminist era, comments about what is appropriate behavior for girls,boys, women, and men I did not now expect to hear.",
-    "sc": "在女权主义盛行的年代长大后，我现在已不再指望听到别人对女孩、男孩、女人和男人何为合适行为的那些评论。",
+    "w": "decay",
+    "m": "衰朽",
+    "p": "/dɪˈkeɪ/",
+    "s": "So not everyone, no matter how old he or she is, has to confront the decay of the mind.",
+    "sc": "所以，并不是每个人，不管年龄多大，都必须面对心智的衰退。",
     "a": [
-      "女权主义者",
-      "支持男女在权利和机会方面平等的人",
-      "女权主义的",
-      "支持性别平等的",
-      "女权主义的；支持性别平等的"
+      "衰退",
+      "衰败",
+      "腐烂",
+      "衰变",
+      "处于腐败或恶化状态",
+      "逐渐腐烂",
+      "恶化",
+      "衰减",
+      "发生放射性衰变",
+      "衰朽"
     ]
   },
   {
-    "w": "generalization",
-    "m": "概括；笼统结论",
-    "p": "/ˌdʒenərəlaɪˈzeɪʃən/",
-    "s": "But unlike his distinguished (and often dogmatic) predecessors—who concentrated on scenes from ancient history, mythology, and the Bible, presented with a mix of archaeological accuracy and polite generalization—he does not restrict himself to imaginary visions of a remote.",
-    "sc": "但与他那些杰出而又常常武断的前辈不同——他们把重点放在古代历史、神话和《圣经》中的场景上，并以考古上的准确性和温和的概括相结合来呈现——他并不把自己局限于对遥远事物的虚构想象。",
+    "w": "decompose",
+    "m": "分解、腐烂",
+    "p": "/ˌdiːkəmˈpəʊz/",
+    "s": "The 4 containers were then left in a warm location for about a week to allow the materials to decompose.",
+    "sc": "随后将这四个容器放在温暖处约一周，以便让材料分解。",
     "a": [
-      "概括",
-      "泛化",
-      "普遍化",
-      "从个别事例推出一般结论的过程或结果",
-      "笼统结论",
-      "概括；笼统结论"
+      "使分解",
+      "使腐烂分解",
+      "使拆分成部分",
+      "分解",
+      "腐烂",
+      "分解、腐烂"
     ]
   },
   {
-    "w": "conduct",
-    "m": "实施；进行",
-    "p": "/ˈkɒndʌkt/",
-    "s": "Our reaction patterns or our semantic habits, are the internal and most important residue of whatever years of education or miseducation we may have received from our parents' conduct toward us in childhood as well as their teachings, from the formal education we may have had, from all the lectures we have listened to, from the radio programs and the movies and television shows we have experienced, from all the books and newspapers and comic strips we have read, from the conversations we have had with friends and associates, and from all our experiences.",
-    "sc": "我们的反应模式或语义习惯，是我们在童年时从父母对我们的举止以及他们的教导、从正式教育、从听过的讲座、从经历过的广播节目、电影和电视节目、从读过的书报和连环画、从与朋友和同事的交谈，以及从所有经历中所获得的一切教育或误教育留下的最重要的内在残余。",
+    "w": "decisive",
+    "m": "决定性的",
+    "p": "/dɪˈsaɪsɪv/",
+    "s": "That was a decisive moment in the history of bike-sharing.",
+    "sc": "那是共享单车历史上一个决定性的时刻。",
     "a": [
-      "行为",
-      "品行",
-      "举止",
-      "进行",
-      "执行",
-      "主持",
-      "指挥",
-      "带领",
-      "导电",
-      "传导电流",
-      "热或声音",
-      "实施",
-      "实施；进行"
+      "果断的",
+      "起决定作用的",
+      "决定性的"
     ]
   },
   {
-    "w": "pervasiveness",
-    "m": "普遍性；广泛影响",
-    "p": "/pəˈveɪsɪvnəs/",
-    "s": "Their pervasiveness in the urban environment is simply a reflection of the continual disruption that characterizes that habitat—they are not its cause.",
-    "sc": "它们在城市环境中的普遍存在，只是该栖息地持续扰动的一种反映——它们并不是这种扰动的原因。",
+    "w": "devastate",
+    "m": "摧毁、破坏",
+    "p": "/ˈdevəsteɪt/",
+    "s": "Escovopsis turns out to be a highly virulent pathogen that can devastate a fungus garden in a couple of days.",
+    "sc": "结果表明，Escovopsis 是一种高度致病的病原体，几天之内就能把真菌园彻底摧毁。",
     "a": [
-      "普遍存在",
-      "无所不在的程度",
-      "普遍性",
-      "广泛影响",
-      "普遍性；广泛影响"
+      "彻底摧毁",
+      "重创",
+      "使遭受严重破坏或打击",
+      "摧毁",
+      "破坏",
+      "摧毁、破坏"
     ]
   },
   {
-    "w": "altitude",
-    "m": "海拔；高度",
-    "p": "/ˈæltɪtjuːd/",
-    "s": "The figure also indicates the layers of the atmosphere and how atmospheric density, pressure, and temperature vary with altitude.",
-    "sc": "这张图还说明了大气层的各个层次，以及大气密度、气压和温度如何随海拔变化。",
+    "w": "dispose of",
+    "m": "处理，对待",
+    "p": "/dɪˈspəʊz ɒv/",
+    "s": "They said it is much more than a place to dispose of garbage.",
+    "sc": "他们说，这里远不只是一个处理垃圾的地方。",
     "a": [
-      "海拔",
-      "高度",
-      "尤指相对于海平面或地面的位置高度",
-      "海拔；高度"
+      "处理",
+      "处置",
+      "丢弃",
+      "清除",
+      "对待",
+      "处理，对待"
     ]
   },
   {
-    "w": "precede",
-    "m": "先于；在……之前发生",
-    "p": "/prɪˈsiːd/",
-    "s": "Our perception of a moving cinematic image, he explained, is always determined by the frames that both precede and follow it.",
-    "sc": "他解释说，我们对运动电影画面的感知总是由其前后帧决定的。",
+    "w": "dismal",
+    "m": "凄凉的，沉闷的，惨淡的",
+    "p": "/ˈdɪzməl/",
+    "s": "Chelsea Rochman, an ecologist at the University of California, Davis, has been trying to answer a dismal question: Is everything terrible, or are things just very, very bad?",
+    "sc": "加州大学戴维斯分校的生态学家切尔西·罗奇曼一直在试图回答一个令人沮丧的问题：一切都很糟糕，还是事情只是非常非常糟？",
     "a": [
-      "在时间",
-      "顺序或位置上先于",
-      "先行于",
-      "先于",
-      "在……之前发生",
-      "先于；在……之前发生"
+      "凄凉的",
+      "阴沉的",
+      "糟糕透顶的",
+      "沉闷的",
+      "惨淡的",
+      "凄凉的，沉闷的，惨淡的"
     ]
   },
   {
-    "w": "primarily",
-    "m": "主要地；首要地",
-    "p": "/praɪˈmerəli/",
-    "s": "Many scientists and psychologists, like James Paul Gee, point out that the individuals can actually benefit from video games—primarily being smarter.",
-    "sc": "许多科学家和心理学家，例如詹姆斯·保罗·吉，指出个人实际上可以从电子游戏中受益——主要体现在更聪明。",
+    "w": "dismiss",
+    "m": "轻视，认为...不值得考虑",
+    "p": "/dɪˈsmɪs/",
+    "s": "There are also those such as CEO Dan Rathbourne who dismiss SRBs as a passing fad which have had little impact on the real world of business.",
+    "sc": "还有一些人，比如首席执行官丹·拉思伯恩，把可持续发展责任认证标准斥为一时风尚，认为它们对现实商业世界几乎没有影响。",
     "a": [
-      "主要地",
-      "首先",
-      "首要地",
-      "主要地；首要地"
+      "解雇",
+      "免职",
+      "解散",
+      "不予理会",
+      "轻视",
+      "认为...不值得考虑",
+      "轻视，认为...不值得考虑"
     ]
   },
   {
-    "w": "spurious",
-    "m": "虚假的；站不住脚的",
-    "p": "/ˈspjʊəriəs/",
-    "s": "His spurious argument sounded convincing, but it collapsed under the slightest scrutiny.",
-    "sc": "他的貌似真实的论点听起来很有说服力，但在稍微审视下就站不住脚了。",
+    "w": "dispersal",
+    "m": "分散",
+    "p": "/dɪˈspɜːsəl/",
+    "s": "We can never resurrect globally extinct species, and restoring locally extinct animals may require reintroductions from elsewhere, if natural dispersal from remaining populations is insufficient.",
+    "sc": "我们永远无法使全球已灭绝的物种复活，而恢复局部灭绝的动物，如果剩余种群的自然分散不足，可能需要从别处重新引入。",
     "a": [
-      "假的",
-      "虚假的",
-      "貌似真实的",
-      "不真诚的",
-      "伪造的",
-      "站不住脚的",
-      "虚假的；站不住脚的"
+      "散布",
+      "分布扩散",
+      "分散"
     ]
   },
   {
-    "w": "uneventful",
-    "m": "平静无事的；无重大事件的",
-    "p": "/ˌʌnɪˈventf(ə)l/",
-    "s": "The day was uneventful and quiet.",
-    "sc": "这一天平淡无奇且安静。",
+    "w": "dispirited",
+    "m": "气馁的、不开心的",
+    "p": "/dɪˈspɪrɪtɪd/",
+    "s": "She looked dispirited after the meeting.",
+    "sc": "开完会后，她看上去很沮丧。",
     "a": [
-      "平静无事的",
-      "无重大事件的",
-      "平静无事的；无重大事件的"
+      "沮丧的",
+      "意气消沉的",
+      "灰心丧气的",
+      "气馁的",
+      "不开心的",
+      "气馁的、不开心的"
     ]
   },
   {
-    "w": "insular in",
-    "m": "在……方面狭隘封闭的",
+    "w": "dire",
+    "m": "严重的，可怕的",
+    "p": "/ˈdaɪə(r)/",
+    "s": "Bringing in high-paid talent from outside is rarely worthwhile, and the impact can be dire.",
+    "sc": "从外部引进高薪人才通常并不划算，而且其影响可能非常糟糕。",
+    "a": [
+      "可怕的",
+      "严重的",
+      "极其糟糕的",
+      "严重的，可怕的"
+    ]
+  },
+  {
+    "w": "cumulative",
+    "m": "累积而成的、汇总而成的",
+    "p": "/ˈkjuːmjələtɪv/",
+    "s": "Still, the cumulative effects of numerous small improvements have made a difference to the costs.",
+    "sc": "不过，许多小改进带来的累积效应已经对成本产生了影响。",
+    "a": [
+      "累计的",
+      "逐步累积的",
+      "总和不断增加的",
+      "累积而成的",
+      "汇总而成的",
+      "累积而成的、汇总而成的"
+    ]
+  },
+  {
+    "w": "disfranchised",
+    "m": "被剥夺选举权",
     "p": "",
-    "s": "He is insular in his thinking and rarely considers other opinions.",
-    "sc": "他的思维很狭隘，几乎不考虑其他人的观点。",
+    "s": "Many people feel disfranchised when they cannot vote.",
+    "sc": "当许多人无法投票时，他们感到被剥夺了权利。",
     "a": [
-      "在……方面狭隘封闭的"
+      "被剥夺权利的",
+      "被剥夺选举权"
     ]
   },
   {
-    "w": "projection",
-    "m": "预测；推算",
-    "p": "/prəˈdʒekʃn/",
-    "s": "The delays are unlikely to affect her projection entirely but will almost certainly extend its time frame.",
-    "sc": "这些延误不太可能完全影响她的预计，但几乎肯定会延长其时间范围。",
+    "w": "curious",
+    "m": "奇怪的",
+    "p": "/ˈkjʊəriəs/",
+    "s": "I'm curious to learn your thoughts.",
+    "sc": "我想知道你的想法。",
     "a": [
-      "预计",
-      "对未来结果",
-      "规模或趋势的估计或预测",
-      "预测",
-      "推算",
-      "预测；推算"
+      "好奇的",
+      "感到兴趣的",
+      "想知道的",
+      "奇怪的"
     ]
   },
   {
-    "w": "overemphasize",
-    "m": "过分强调",
-    "p": "/ˌəʊvərˈemfəsaɪz/",
-    "s": "We must not overemphasize the risks and ignore the benefits.",
-    "sc": "我们不能过分强调风险而忽视收益。",
+    "w": "disrupt",
+    "m": "扰乱",
+    "p": "/dɪsˈrʌpt/",
+    "s": "Employees are requested to give their immediate manager as much notice as possible and arrange appointments, insofar as is possible, so as not to disrupt the business of the company.",
+    "sc": "要求员工尽可能提前通知直接主管并安排约见，以免扰乱公司的业务运作。",
     "a": [
-      "过分强调",
-      "过度重视"
+      "打乱",
+      "使中断",
+      "使失去正常秩序或连续性",
+      "扰乱"
     ]
   },
   {
-    "w": "indisputable",
-    "m": "无可争辩的",
-    "p": "/ˌɪndɪˈspjuːtəbl/",
-    "s": "Aitken's case collapsed in June 1997, when the defence finally found indisputable evidence about his Paris trip.",
-    "sc": "一九九七年六月，辩方终于找到了关于他巴黎之行的确凿证据，艾特肯的案子随之崩溃。",
+    "w": "devoid of",
+    "m": "缺乏",
+    "p": "/dɪˈvɔɪd ɒv/",
+    "s": "Each is a virtual clone,almost devoid of genetic diversity.",
+    "sc": "它们几乎都毫无遗传多样性，宛如虚拟克隆体。",
     "a": [
-      "无可争议的",
-      "确凿的",
-      "不容置疑的",
-      "无可争辩的"
+      "缺少",
+      "没有",
+      "毫无",
+      "缺乏"
     ]
   },
   {
-    "w": "concurrent",
-    "m": "同时发生的",
-    "p": "/kənˈkʌrənt/",
-    "s": "The War of 1812 has concurrent place in historical memory in Britain, partly because it is overshadowed by the much larger concurrent conflict against Napoleonic France and partly because it essentially maintained the geopolitical status quo for Britain: the country neither gained nor lost significant territory or position as a result of its participation in the war.",
-    "sc": "一八一二年战争在英国的历史记忆中占有同时并存的位置，部分原因在于它被更大规模的同时发生的对法兰西拿破仑战争所掩盖，部分原因在于它基本上维持了英国的地缘政治现状：英国并未因参加这场战争而获得或失去重要领土或地位。",
+    "w": "determinant",
+    "m": "原因、决定性因素",
+    "p": "/dɪˈtɜːmɪnənt/",
+    "s": "The weather is a key determinant of our picnic plans.",
+    "sc": "天气是我们野餐计划的一个关键决定因素。",
     "a": [
-      "同时发生的",
-      "同时存在的",
-      "并行的"
+      "决定因素",
+      "原因",
+      "决定性因素",
+      "原因、决定性因素"
     ]
   },
   {
-    "w": "ambiguity",
-    "m": "歧义；模糊不确定",
-    "p": "/ˌæmbɪˈɡjuːɪti/",
-    "s": "Writing a short, clear agreement reduces ambiguity.",
-    "sc": "写一份简短清晰的协议可以减少歧义。",
+    "w": "diverge",
+    "m": "产生分歧",
+    "p": "/dɪˈvɜːdʒ/",
+    "s": "Coaster historians diverge on the exact evolution of these ice slides into actual rolling carts.",
+    "sc": "过山车历史学家在这些冰滑道如何演变成真正的滚动手推车这一确切过程上意见分歧。",
     "a": [
-      "模棱两可",
-      "含混不清",
-      "歧义",
-      "模糊不确定",
-      "歧义；模糊不确定"
+      "分歧",
+      "岔开",
+      "偏离",
+      "逐渐不同",
+      "产生分歧"
     ]
   },
   {
-    "w": "monarch",
-    "m": "君主；帝王",
-    "p": "/ˈmɒnək/",
-    "s": "Instead its depiction of Charles II in his final years as an ineffective, pleasure-loving monarch doesn't do justice to the man (neither is it accurate), or to the complexity of his character.",
-    "sc": "相反，它把查理二世晚年的形象描绘成一个无能、贪享逸乐的君主，这并没有公允地展现此人（也并不准确），也没有体现他性格的复杂性。",
+    "w": "deem",
+    "m": "认为",
+    "p": "/diːm/",
+    "s": "Today, in the same spirit, environmentalists instinctively deem GMOs the antithesis of environmental responsibility.",
+    "sc": "如今，本着同样的精神，环保主义者本能地认为转基因生物是环境责任的反面。",
     "a": [
-      "君主",
-      "帝王",
-      "统治者",
-      "君主；帝王"
+      "视为",
+      "把……看作",
+      "认为"
     ]
   },
   {
-    "w": "heterogeneity",
-    "m": "异质性；多样性",
-    "p": "/ˌhetərəʊdʒəˈniːəti/",
-    "s": "Engineers manipulate hysteresis through surface patterning, lubrication layers, or coatings that reduce surface energy heterogeneity.",
-    "sc": "工程师通过表面纹理、润滑层或涂层来调节滞后现象，这些方法能够降低表面能的异质性。",
+    "w": "devise",
+    "m": "设计，想出",
+    "p": "/dɪˈvaɪz/",
+    "s": "Want to devise a new form of alternative medicine?",
+    "sc": "想要构思一种新的替代医学形式吗？",
     "a": [
-      "异质性",
-      "多样性",
-      "由不同成分或性质组成的状态",
-      "异质性；多样性"
+      "构思",
+      "设计",
+      "计划",
+      "策划",
+      "想出",
+      "设计，想出"
     ]
   },
   {
-    "w": "consequential",
-    "m": "重要的；产生重大后果的",
-    "p": "/ˌkɒnsɪˈkwenʃl/",
-    "s": "Researchers' decisions on such matters therefore can be highly consequential.",
-    "sc": "研究人员在这类问题上的决定因此可能会产生重大影响。",
+    "w": "current",
+    "m": "当今的",
+    "p": "/ˈkʌrənt/",
+    "s": "The limitations of current theories remind us that the deeper we explore planetary science, the more we challenge our understanding of it.",
+    "sc": "当前理论的局限提醒我们，对行星科学探索得越深入，就越会挑战我们对它的理解。",
     "a": [
-      "重要的",
-      "影响重大的",
-      "后果严重的",
-      "产生重大后果的",
-      "重要的；产生重大后果的"
+      "当前的",
+      "现时的",
+      "目前的",
+      "水流",
+      "电流",
+      "流动",
+      "当今的"
     ]
   },
   {
-    "w": "legitimacy",
-    "m": "合法性；正当性",
-    "p": "/ˌledʒɪˈtɪməsi/",
-    "s": "The psychological laboratory has a strong claim to legitimacy and evokes trust and confidence in those who perform there.",
-    "sc": "这座心理实验室具有很强的合法性，并唤起在那里工作的人们的信任和信心。",
+    "w": "dawdle",
+    "m": "闲逛；磨洋工",
+    "p": "/ˈdɔːdəl/",
+    "s": "If we dawdle, we’ll miss the train.",
+    "sc": "如果我们再磨蹭，就会赶不上火车。",
     "a": [
-      "合法性",
-      "正当性",
-      "被社会",
-      "政治或制度承认为有效",
-      "正当的状态",
-      "合法性；正当性"
+      "拖拖拉拉",
+      "磨蹭",
+      "不紧不慢地消磨时间",
+      "闲逛",
+      "磨洋工",
+      "闲逛；磨洋工"
     ]
   },
   {
-    "w": "specimen",
-    "m": "标本；样本",
-    "p": "/ˈspesɪmən/",
-    "s": "The specimen was stored in a glass jar.",
-    "sc": "这个标本被保存在一个玻璃罐里。",
+    "w": "dificiency",
+    "m": "缺乏、缺陷",
+    "p": "/dɪˈfɪʃənsi/",
+    "s": "There was a dificiency in the report that made the conclusion unreliable.",
+    "sc": "这份报告存在缺陷，使结论不可靠。",
     "a": [
-      "标本",
-      "样本",
-      "用于检查",
-      "研究或展示的个体",
-      "标本；样本"
+      "缺乏",
+      "不足",
+      "缺陷",
+      "缺失",
+      "缺乏、缺陷"
     ]
   },
   {
-    "w": "status quo",
-    "m": "现状",
-    "p": "/stəˌtjuːs ˈkwəʊ/",
-    "s": "What’s more, any transport system that threatened the car’s dominance would be up against all those with a stake in maintaining the status quo, from private car owners to manufacturers and oil multinationals.",
-    "sc": "而且，任何威胁汽车主导地位的交通系统都将遭到所有既得利益者的阻力，从私家车主到制造商和石油跨国公司，都希望维持现状。",
+    "w": "diffusion",
+    "m": "散播；传播",
+    "p": "/dɪˈfjuːʒən/",
+    "s": "However, dense planting can limit the diffusion of oxygen into the water.",
+    "sc": "然而，密植会限制氧气向水中的扩散。",
     "a": [
-      "现状",
-      "当前的局面或既定状态",
-      "通常指不希望被改变的情况"
+      "扩散",
+      "弥散",
+      "传播",
+      "（光线",
+      "热量",
+      "气体等的）散开",
+      "尤其指光的漫射与柔化",
+      "散播",
+      "散播；传播"
     ]
   },
   {
-    "w": "recruit",
-    "m": "招募；吸收",
-    "p": "/rɪˈkruːt/",
-    "s": "Drs Stewart and Halpern are now working together to recruit survey participants for a study looking at whether people at different stages of life experience earworms differently.",
-    "sc": "斯图尔特和哈尔彭博士现在正合作招募问卷参与者，进行一项研究，考察处在人生不同阶段的人是否会以不同方式经历耳虫效应。",
+    "w": "distinctive",
+    "m": "独特的、与众不同的",
+    "p": "/dɪˈstɪŋk.tɪv/",
+    "s": "Then, I noticed the distinctive smell of rotting meat.",
+    "sc": "然后，我注意到了腐烂肉类的独特气味。",
     "a": [
-      "招募",
-      "吸收",
-      "征募",
-      "被招募的人",
-      "新成员",
-      "新兵",
-      "招募；吸收"
+      "有特色的",
+      "独特的",
+      "与众不同的",
+      "独特的、与众不同的"
     ]
   },
   {
-    "w": "subject pool",
-    "m": "受试者群体",
-    "p": "/ˈsʌbdʒekt puːl/",
-    "s": "After screening 217 individuals who responded to advertisements requesting people who experience ‘chills' to instrumental music, the scientists narrowed down the subject pool to ten.",
-    "sc": "在筛选了二百一十七名回应招募广告、表示会对器乐音乐产生“战栗感”的人之后，科学家把受试者群体缩小到了十人。",
+    "w": "cycle",
+    "m": "循环",
+    "p": "/ˈsaɪkəl/",
+    "s": "The cycle keeps repeating.",
+    "sc": "这个循环不断重复。",
     "a": [
-      "受试者群体",
-      "研究对象样本库"
+      "周期",
+      "反复出现的一套过程或阶段",
+      "骑自行车",
+      "骑行",
+      "乘自行车移动",
+      "循环"
     ]
   },
   {
-    "w": "festive",
-    "m": "节庆的；欢乐的",
-    "p": "/ˈfestɪv/",
-    "s": "Providing a festive conclusion to a perfect day, a troupe of flamenco dancers was performing in the amphitheater at the edge of town.",
-    "sc": "一支弗拉门戈舞团正在镇外边缘的圆形剧场里表演，为完美的一天画上了喜庆的句号。",
+    "w": "distress",
+    "m": "痛苦的",
+    "p": "/dɪˈstres/",
+    "s": "He sucks his fingers for comfort, but, finding no solace, his month crumples, his body stiffens, and he lets rip an almighty shriek of distress.",
+    "sc": "他吮吸手指寻求安慰，但毫无慰藉，于是嘴巴皱起，身体僵住，发出一声极其响亮的痛苦尖叫。",
     "a": [
-      "节日的",
-      "喜庆的",
-      "欢快热闹的",
-      "节庆的",
-      "欢乐的",
-      "节庆的；欢乐的"
+      "痛苦",
+      "忧伤",
+      "苦恼",
+      "困境",
+      "经济困难",
+      "痛苦的"
     ]
   },
   {
-    "w": "throne",
-    "m": "王位；君主地位",
-    "p": "/θrəʊn/",
-    "s": "On 14 January 1892, Queen Victoria's grandson Prince Albert Victor, second in line to the British throne, died from flu.",
-    "sc": "一八九二年一月十四日，维多利亚女王的外孙阿尔伯特·维克多王子，作为英国王位的第二顺位继承人，死于流感。",
+    "w": "definitve",
+    "m": "确定的",
+    "p": "/dɪˈfɪnɪtɪv/",
+    "s": "This is the definitve answer.",
+    "sc": "这是最终的答案。",
     "a": [
-      "王座",
-      "君主的宝座",
-      "王权或王位的象征",
-      "王位",
-      "君主地位",
-      "王位；君主地位"
+      "拼写错误",
+      "意为“最后的",
+      "决定性的",
+      "定论性的”",
+      "确定的"
     ]
   },
   {
-    "w": "chafe",
-    "m": "烦躁；擦痛",
-    "p": "/tʃeɪf/",
-    "s": "The collar began to chafe after a long day in the saddle.",
-    "sc": "骑了一整天之后，衣领开始把脖子磨痛了。",
+    "w": "defy",
+    "m": "违抗，藐视",
+    "p": "/dɪˈfaɪ/",
+    "s": "The Voynich manuscript has continued to defy the efforts of world-class experts.",
+    "sc": "《伏尼契手稿》一直让世界顶尖专家难以破解。",
     "a": [
-      "（皮肤",
-      "衣物或物体边缘因摩擦而）擦痛",
-      "磨损",
-      "擦伤",
-      "烦躁",
-      "擦痛",
-      "烦躁；擦痛"
+      "公然违抗",
+      "挑战",
+      "激…去做",
+      "不受…影响",
+      "似乎超越（如重力",
+      "限制",
+      "解释）",
+      "违抗",
+      "藐视",
+      "违抗，藐视"
     ]
   },
   {
-    "w": "secluded",
-    "m": "偏僻安静的；与世隔绝的",
-    "p": "/sɪˈkluːdɪd/",
-    "s": "It stands in a secluded comer of Hampstead, high up on a hill, and separated from foggy London by farms and heath.",
-    "sc": "它坐落在汉普斯特德一个僻静的角落，高高地立在山上，隔着农田和荒原，与雾蒙蒙的伦敦分开。",
+    "w": "detectable",
+    "m": "可以被察觉出",
+    "p": "/dɪˈtektəbl/",
+    "s": "This energy transfer generates seismic waves detectable by seismometers worldwide.",
+    "sc": "这种能量转移会产生全球地震仪都能检测到的地震波。",
     "a": [
-      "僻静的",
-      "偏僻的",
-      "隐蔽的",
-      "私密的",
-      "与外界隔绝的",
-      "偏僻安静的",
-      "与世隔绝的",
-      "偏僻安静的；与世隔绝的"
+      "可检测的",
+      "可察觉的",
+      "能被发现的",
+      "可以被察觉出"
     ]
   },
   {
-    "w": "pierce",
-    "m": "穿透；刺穿",
-    "p": "/pɪəs/",
-    "s": "Any serious attempt to pierce through this veil must begin by recovering the specific conditions inside that room on Market and Seventh streets in June 1776.",
-    "sc": "任何试图穿透这层迷雾的严肃努力都必须从恢复一七七六年六月市场街和第七街那间屋子里的具体情况开始。",
+    "w": "dispassionate",
+    "m": "冷静客观的",
+    "p": "/dɪsˈpæʃənət/",
+    "s": "We have come to a sorry pass when scientists, who should above all be dispassionate scholars, feel they should misrepresent such a principle for the purposes of commercial and political propaganda.",
+    "sc": "当科学家——他们本应最不带感情、最客观公正的学者——为了商业和政治宣传而觉得自己应当歪曲这样一项原则时，我们已经陷入了可悲的境地。",
     "a": [
-      "刺穿",
-      "戳穿",
-      "穿透",
-      "穿透；刺穿"
+      "不带感情的",
+      "不偏不倚的",
+      "冷静客观的"
     ]
   },
   {
-    "w": "lofty",
-    "m": "高耸的；崇高的",
-    "p": "/ˈlɒfti/",
-    "s": "Japanese was, during the entire Heian era, considered unsuited to the lofty thoughts of serious poetry, for which the Chinese language was reserved.",
-    "sc": "在整个平安时代，日语都被认为不适合表达严肃诗歌那种崇高的思想，而汉语则被保留用于此。",
+    "w": "deposit",
+    "m": "放置、存放",
+    "p": "/dɪˈpɒzɪt/",
+    "s": "The company might just have wriggled out of it if it hadn't added the bit about the £1000 deposit.",
+    "sc": "如果不是加上那条一千英镑的押金条款，公司也许就能侥幸脱身了。",
     "a": [
-      "高耸的",
-      "巍峨的",
-      "崇高的",
-      "高傲的",
-      "高耸的；崇高的"
+      "押金",
+      "订金",
+      "定金",
+      "保证金",
+      "存款",
+      "沉积物",
+      "矿床",
+      "放下",
+      "使沉积",
+      "把钱存入（银行）",
+      "放置",
+      "存放",
+      "放置、存放"
     ]
   },
   {
-    "w": "endeavor",
-    "m": "努力；尝试",
-    "p": "/ɪnˈdevə/",
-    "s": "Their endeavor, counterintuitive as it seems, points to an emerging green biotech frontier—a hidden realm of opportunity to feed the world's impending 9 billion a diet produced in an environmentally responsible way.",
-    "sc": "他们的这项努力看似反直觉，却指向一个正在兴起的绿色生物技术前沿——一个以环境负责方式为世界即将到来的九十亿人口提供饮食的隐藏机遇领域。",
+    "w": "decipher",
+    "m": "破译、解读",
+    "p": "/dɪˈsaɪfər/",
+    "s": "Our concern is with some of the most critical factors such as genetic features, experiences, friends, family relationships and schools to help us decipher the influences that contribute to a child's development.",
+    "sc": "我们的关注在于一些最关键的因素，例如遗传特征、经历、朋友、家庭关系和学校，以帮助我们破译那些促成儿童发展的影响因素。",
     "a": [
-      "努力",
-      "尽力",
-      "尝试",
-      "事业",
-      "努力；尝试"
+      "破译",
+      "解读",
+      "辨认出难以理解的信息",
+      "破译、解读"
     ]
   },
   {
-    "w": "pose",
-    "m": "提出；造成",
-    "p": "/pəʊz/",
-    "s": "We understand that the elevator's unavailability may pose challenges for some residents.",
-    "sc": "我们理解电梯无法使用可能会给一些居民带来困难。",
+    "w": "dismay",
+    "m": "沮丧",
+    "p": "/dɪsˈmeɪ/",
+    "s": "She watched in growing dismay.",
+    "sc": "她看着，越来越沮丧不安。",
     "a": [
-      "使处于",
-      "造成",
-      "带来",
-      "提出",
-      "姿势",
-      "姿态",
-      "摆姿",
-      "特定的站姿或坐姿",
-      "尤指用于拍照",
-      "绘画或表演",
-      "提出；造成"
+      "惊愕",
+      "惊慌",
+      "失望不安",
+      "使沮丧",
+      "使惊慌",
+      "使失望不安",
+      "沮丧"
     ]
   },
   {
-    "w": "drudging",
-    "m": "繁重单调的",
-    "p": "/ˈdrʌdʒɪŋ/",
-    "s": "The motorman chafed in his box, thinking of the drudging lot of the laboring man.",
-    "sc": "司机在驾驶室里烦躁不安，想着劳动者那辛苦乏味的命运。",
+    "w": "distortion",
+    "m": "扭曲，误解",
+    "p": "/dɪˈstɔːʃn/",
+    "s": "It requires strong anchorage at each end to resist the inward tension of the cables, and the deck is strengthened to control distortion by moving loads or high winds.",
+    "sc": "它需要两端有很强的锚固来抵抗缆索向内的张力，而且桥面经过加固，以控制因移动荷载或强风造成的变形。",
     "a": [
-      "做苦工的状态",
-      "辛苦乏味的劳作",
-      "繁重单调的"
+      "扭曲",
+      "失真",
+      "变形",
+      "误解",
+      "扭曲，误解"
     ]
   },
   {
-    "w": "ephemeral",
-    "m": "短暂的；转瞬即逝的",
-    "p": "/ɪˈfemərəl/",
-    "s": "Chinatown was like its host city -- small and compressed in physical dimensions, boundless and ephemeral in spirit.",
-    "sc": "唐人街像它所依附的城市——在物理空间上狭小而紧凑，在精神上却无边无际、转瞬即逝。",
+    "w": "diminish",
+    "m": "减少",
+    "p": "/dɪˈmɪnɪʃ/",
+    "s": "They are looking to diminish their risk.",
+    "sc": "他们正想要降低他们的风险。",
     "a": [
-      "短暂的",
-      "转瞬即逝的",
-      "易消失的",
-      "转瞬即逝的事物",
-      "短暂存在的东西",
-      "一闪而过的人或事",
-      "短暂的；转瞬即逝的"
+      "减弱",
+      "使变小",
+      "减少"
     ]
   },
   {
-    "w": "norm",
-    "m": "规范；常态",
-    "p": "/nɔːm/",
-    "s": "In the trendier areas, where the hot restaurants are likely to be found and where large crowds are the norm, valet parking is more than a convenience—it’s almost a necessity.",
-    "sc": "在那些更时髦的地区，人群拥挤是常态，代客泊车不仅仅是方便——几乎成了必需品。",
+    "w": "deference",
+    "m": "尊敬，服从",
+    "p": "/ˈdefərəns/",
+    "s": "Single-gender schools are often the most prestigious in society, demanding the highest entry marks from their new students, who, in turn, receive more deference and respect from society.",
+    "sc": "单性别学校往往是社会中最有声望的学校，它们要求新生达到最高录取分数，而这些学生也因此从社会中获得更多的尊重和敬意。",
     "a": [
-      "常态",
-      "标准",
-      "规范",
-      "平均水平",
-      "规范；常态"
+      "尊重",
+      "敬意",
+      "顺从",
+      "对他人权威",
+      "地位或意愿的礼让与让步",
+      "尊敬",
+      "服从",
+      "尊敬，服从"
     ]
   },
   {
-    "w": "philosopher",
-    "m": "哲学家",
-    "p": "/ˈfɪləsəfə/",
-    "s": "Johann Wolfgang von Goethe was an eighteenth-century German poet and philosopher; Hermann von Helmholtz was a nineteenth-century scientist and philosopher.",
-    "sc": "约翰·沃尔夫冈·冯·歌德是十八世纪的德国诗人兼哲学家；赫尔曼·冯·亥姆霍兹是十九世纪的科学家兼哲学家。",
+    "w": "discrepancy",
+    "m": "不符合、不一致",
+    "p": "/dɪˈskrepənsi/",
+    "s": "In both developed and developing nations there is often a very large discrepancy between the options available to people in different social classes, income brackets, and levels of education.",
+    "sc": "在发达国家和发展中国家，处于不同社会阶层、收入档次和教育水平的人所能获得的选择之间，往往存在很大的差异。",
     "a": [
-      "哲学家",
-      "从事哲学研究或思考的人"
+      "不一致",
+      "差异",
+      "出入",
+      "差额",
+      "不符合",
+      "不符合、不一致"
+    ]
+  },
+  {
+    "w": "degradation",
+    "m": "降级，堕落",
+    "p": "/ˌdeɡrəˈdeɪʃən/",
+    "s": "It might be true that the explosion in world population, especially in developing countries, is the primary cause of soil degradation and desertification.",
+    "sc": "也许世界人口的激增，尤其是在发展中国家，是土壤退化和荒漠化的主要原因。",
+    "a": [
+      "退化",
+      "恶化",
+      "质量",
+      "状态或标准的降低",
+      "降级",
+      "堕落",
+      "降级，堕落"
+    ]
+  },
+  {
+    "w": "divide",
+    "m": "分隔，分割，分水岭",
+    "p": "/dɪˈvaɪd/",
+    "s": "Therefore, he has tried to divide the studio into smaller parts, disregarding the risk of higher expenses.",
+    "sc": "因此，他一直试图把工作室分成更小的部分，而不顾更高开支的风险。",
+    "a": [
+      "把……分开",
+      "划分",
+      "使分成若干部分",
+      "分界线",
+      "分水岭",
+      "界限",
+      "差距",
+      "鸿沟",
+      "区别",
+      "尤指群体",
+      "观点或地区之间的明显差异",
+      "分隔",
+      "分割",
+      "分隔，分割，分水岭"
+    ]
+  },
+  {
+    "w": "disperse",
+    "m": "分散",
+    "p": "/dɪˈspɜːs/",
+    "s": "Chili peppers, like other fruit, lure birds and other animals to eat them and disperse their seeds.",
+    "sc": "辣椒和其他果实一样，吸引鸟类和其他动物来吃它们，并把种子传播开去。",
+    "a": [
+      "使分散",
+      "使散开",
+      "使消散",
+      "分散"
+    ]
+  },
+  {
+    "w": "disguise",
+    "m": "掩饰；伪装",
+    "p": "/dɪsˈɡaɪz/",
+    "s": "Spider crabs do it by disguise: adorning themselves with strips of kelp and other debris, they pretend to be something they are not—and so escape their enemies.",
+    "sc": "蜘蛛蟹通过伪装来做到这一点：用海带条和其他碎屑装扮自己，它们假装成并非自己本来的样子——从而逃离天敌。",
+    "a": [
+      "伪装",
+      "隐瞒",
+      "用来掩盖真实身份",
+      "性质或意图的东西或手段",
+      "掩饰",
+      "把外表或性质弄成别的样子",
+      "以隐藏真实身份",
+      "意图或特征",
+      "掩饰；伪装"
+    ]
+  },
+  {
+    "w": "desert",
+    "m": "离开，遗弃",
+    "p": "/ˈdezət/",
+    "s": "The desert ants of the genus Cataglyphis perform this method to get back from foraging as far as 100 yards away.",
+    "sc": "这种沙漠蚂蚁会用这种方法从远达一百码的觅食地点返回。",
+    "a": [
+      "沙漠",
+      "荒漠",
+      "也指极其干旱",
+      "荒凉的地方或状态",
+      "离开",
+      "遗弃",
+      "离开，遗弃"
+    ]
+  },
+  {
+    "w": "despoil",
+    "m": "掠夺",
+    "p": "/dɪˈspɔɪl/",
+    "s": "If you despoil the land, you despoil the people who depend on it.",
+    "sc": "如果你掠夺这片土地，你就掠夺了依赖它的人们。",
+    "a": [
+      "洗劫",
+      "蹂躏并夺走某处的财物",
+      "资源或原有价值",
+      "掠夺"
+    ]
+  },
+  {
+    "w": "detect",
+    "m": "检测；察觉，注意到（差异、区别）",
+    "p": "/dɪˈtekt/",
+    "s": "I can detect a small sound in the quiet room.",
+    "sc": "我能在安静的房间里听到微小的声音。",
+    "a": [
+      "发现",
+      "侦测",
+      "检测",
+      "察觉",
+      "注意到（差异",
+      "区别）",
+      "检测；察觉，注意到（差异、区别）"
+    ]
+  },
+  {
+    "w": "dissolve",
+    "m": "溶解，解除（议会，婚姻等）",
+    "p": "/dɪˈzɒlv/",
+    "s": "Water can dissolve different kinds of substances and then rinse them away.",
+    "sc": "水可以溶解不同种类的物质，然后把它们冲洗掉。",
+    "a": [
+      "溶解",
+      "使分散并融入液体",
+      "使消失",
+      "溶解过程",
+      "溶解状态",
+      "溶解这一现象",
+      "解除（议会",
+      "婚姻等）",
+      "溶解，解除（议会，婚姻等）"
     ]
   },
   {
     "w": "deliberately",
-    "m": "故意地；有意识地",
+    "m": "故意地",
     "p": "/dɪˈlɪb.ər.ət.li/",
     "s": "Most of these fires are prescribed burns, deliberately set with a drip torch.",
     "sc": "这些火灾中大多数都是计划性焚烧，是用滴火炬故意点燃的。",
     "a": [
-      "故意地",
       "有意地",
       "蓄意地",
-      "有意识地",
-      "故意地；有意识地"
+      "故意地"
     ]
   },
   {
-    "w": "miasma",
-    "m": "污浊空气；有害氛围",
-    "p": "/miˈæzmə/",
-    "s": "But in the 19th century, most experts believed that the disease was produced by “miasma” or “poisoning of the air”.",
-    "sc": "但在十九世纪，大多数专家认为这种疾病是由“瘴气”或“空气中毒”造成的。",
+    "w": "delicate",
+    "m": "精致的；脆弱的",
+    "p": "/ˈdelɪkət/",
+    "s": "This delicate balance between harnessing the placebo effect and maintaining ethical standards continues to be a topic of debate.",
+    "sc": "在利用安慰剂效应与维持伦理标准之间的这种微妙平衡，仍然是一个争论的话题。",
     "a": [
-      "瘴气",
-      "有害空气",
-      "令人不快或压抑的气氛",
-      "污浊空气",
-      "有害氛围",
-      "污浊空气；有害氛围"
+      "脆弱的",
+      "娇嫩的",
+      "精致的",
+      "细致的",
+      "微妙的",
+      "棘手的",
+      "婉转的",
+      "精致的；脆弱的"
     ]
   },
   {
-    "w": "trajectory",
-    "m": "发展轨迹；路径",
-    "p": "/trəˈdʒektəri/",
-    "s": "The rocket followed a curved trajectory into the sky.",
-    "sc": "火箭沿着弯曲的轨迹飞向天空。",
+    "w": "disintegrating",
+    "m": "碎裂，分裂；瓦解，衰败",
+    "p": "/ˌdɪsɪnˈteɡreɪtɪŋ/",
+    "s": "Researchers say that is not surprising because they are probably too delicate to survive such passage without disintegrating or being eaten.",
+    "sc": "研究人员说，这并不奇怪，因为它们可能太脆弱了，无法在那样的过程中存活下来而不瓦解或被吃掉。",
     "a": [
-      "发展轨迹",
-      "路径",
-      "发展轨迹；路径"
+      "正在瓦解的",
+      "正在崩解的",
+      "逐渐分崩离析的",
+      "碎裂",
+      "分裂",
+      "瓦解",
+      "衰败",
+      "碎裂，分裂；瓦解，衰败"
     ]
   },
   {
-    "w": "humanity",
-    "m": "人类；人性",
-    "p": "/hjuːˈmænəti/",
-    "s": "Some people argue that humans already consume too many goods, from clothing to electronics to food; they believe that excessive consumption has created serious problems for humanity and even the planet.",
-    "sc": "有些人认为，人类已经消费了太多商品，从衣物到电子产品再到食物；他们相信，过度消费给人类甚至地球带来了严重问题。",
+    "w": "dependable",
+    "m": "可靠的",
+    "p": "/dɪˈpendəbl/",
+    "s": "It is the most precise and hence most dependable method, but it can be undone by routine memory lapses.",
+    "sc": "这是最精确、因此也是最可靠的方法，但它会因为日常的记忆疏漏而失效。",
     "a": [
-      "人类",
-      "人性",
-      "人道",
-      "人类；人性"
+      "可信赖的",
+      "靠得住的",
+      "可靠的"
     ]
   },
   {
-    "w": "anthology",
-    "m": "选集；文集",
-    "p": "/ænˈθɒlədʒi/",
-    "s": "The story appeared in the anthology Iguana Dreams: New Latino Fiction.",
-    "sc": "这个故事收录在《鬣蜥之梦：新拉丁裔小说选》中。",
+    "w": "deliver",
+    "m": "实现",
+    "p": "/dɪˈlɪvə/",
+    "s": "The preface gives a good idea of what the book will deliver.",
+    "sc": "前言很好地说明了这本书会带来什么内容。",
     "a": [
-      "选集",
-      "文集",
-      "汇编",
-      "选集；文集"
+      "递送",
+      "运送",
+      "交付",
+      "传达",
+      "兑现（承诺",
+      "结果等）",
+      "实现"
     ]
   },
   {
-    "w": "discontent",
-    "m": "不满；不满足",
-    "p": "/ˌdɪskənˈtent/",
-    "s": "This shift sheds light on our present discontent.",
-    "sc": "这一转变揭示了我们当下的不满情绪。",
+    "w": "disparage",
+    "m": "贬低，贬损",
+    "p": "/dɪˈspærɪdʒ/",
+    "s": "He would never disparage a colleague in public.",
+    "sc": "他绝不会在公开场合贬低同事。",
     "a": [
-      "不满",
-      "不满足",
-      "不平之情",
-      "不满；不满足"
+      "贬低",
+      "轻视",
+      "诋毁",
+      "贬损",
+      "贬低，贬损"
     ]
   },
   {
-    "w": "corollary",
-    "m": "必然结果；推论",
-    "p": "/ˈkɒrələri/",
-    "s": "This, too, is a corollary of “flawed competence.",
-    "sc": "这也同样是“有缺陷的能力”的必然结果。",
+    "w": "desire",
+    "m": "想要获得",
+    "p": "/dɪˈzaɪə/",
+    "s": "For Nadolny, Franklin's fascination with the Arctic stems from his desire to find an environment suited to his peculiar slowness.",
+    "sc": "对纳多尔尼来说，富兰克林对北极的着迷源于他想要寻找一个适合其独特缓慢节奏的环境的渴望。",
     "a": [
-      "必然结果",
-      "推论",
-      "随之而来的结论",
-      "必然结果；推论"
+      "渴望",
+      "愿望",
+      "欲望",
+      "想要获得"
     ]
   },
   {
-    "w": "seclusion",
-    "m": "隐居；隔离",
-    "p": "/sɪˈkluːʒən/",
-    "s": "She moved to Texas last fall in part because it offers seclusion for working and writing.",
-    "sc": "她去年秋天搬到得克萨斯州，部分原因是那里能提供适合工作和写作的隐居环境。",
+    "w": "dissipate",
+    "m": "消散；挥霍",
+    "p": "/ˈdɪsɪpeɪt/",
+    "s": "My worries began to dissipate, though, as I walked out of the airport and into the balmy Hawaiian air.",
+    "sc": "不过，当我走出机场，走进温暖宜人的夏威夷空气中时，我的忧虑开始消散。",
     "a": [
-      "隐居",
-      "隐退",
-      "与世隔绝的状态",
-      "隔离",
-      "隐居；隔离"
-    ]
-  },
-  {
-    "w": "noteworthy",
-    "m": "值得注意的；显著的",
-    "p": "/ˈnəʊtwɜːði/",
-    "s": "The diversity of forms of greenhouse-friendly energy under development in Australia is noteworthy.",
-    "sc": "澳大利亚正在开发的温室友好型能源形式多样，这一点值得注意。",
-    "a": [
-      "值得注意的",
-      "显著的",
-      "重要的",
-      "值得注意的；显著的"
-    ]
-  },
-  {
-    "w": "frivolous",
-    "m": "轻浮的；无实际价值的",
-    "p": "/ˈfrɪvələs/",
-    "s": "She spent her money on frivolous things.",
-    "sc": "她把钱花在了轻浮的东西上。",
-    "a": [
-      "轻浮的",
-      "无实际价值的",
-      "轻浮的；无实际价值的"
-    ]
-  },
-  {
-    "w": "multitude",
-    "m": "大量；众多人",
-    "p": "/ˈmʌltɪtjuːd/",
-    "s": "Her book highlights a multitude of design problems with current packaging, such as look-alikes and sound-alikes, small type sizes and glare on blister foils.",
-    "sc": "她的书强调了当前包装存在的诸多设计问题，例如外观相似和读音相似、字号过小以及泡罩膜上的眩光。",
-    "a": [
-      "众多",
-      "大量",
-      "大群人",
-      "众多人",
-      "大量；众多人"
-    ]
-  },
-  {
-    "w": "cohort",
-    "m": "群体；同一时期的一组人",
-    "p": "/ˈkəʊhɔːt/",
-    "s": "They were part of a growing cohort of computer scientists that has become fundamental to moviemaking.",
-    "sc": "他们是一个不断壮大的计算机科学家群体的一部分，这个群体已经成为电影制作的基础。",
-    "a": [
-      "同伴群",
-      "一组同时期",
-      "同类或共同经历某事的人",
-      "群体",
-      "同一时期的一组人",
-      "群体；同一时期的一组人"
-    ]
-  },
-  {
-    "w": "pursuit",
-    "m": "追求；活动",
-    "p": "/pəˈsjuːt/",
-    "s": "Surely this pursuit of knowledge is still important to the university system.",
-    "sc": "当然，对知识的追求对大学体系仍然很重要。",
-    "a": [
-      "追求",
-      "寻求",
-      "追赶",
-      "从事某项活动",
-      "活动",
-      "追求；活动"
+      "消散",
+      "逐渐消失",
+      "使分散开来",
+      "挥霍",
+      "消散；挥霍"
     ]
   },
   {
     "w": "distinction",
-    "m": "区别；差别",
+    "m": "差异",
     "p": "/dɪˈstɪŋkʃn/",
     "s": "A key distinction in value theory is between intrinsic value and instrumental value.",
     "sc": "价值理论中的一个关键区别在于内在价值和工具性价值之间的差别。",
@@ -1308,91 +998,462 @@
       "区分",
       "卓越",
       "荣誉",
-      "区别；差别"
+      "差异"
     ]
   },
   {
-    "w": "scholarship",
-    "m": "学术研究；学术成果",
-    "p": "/ˈskɒləʃɪp/",
-    "s": "This means not only upgraded uniforms for our varsity teams but also a significant new investment in our athletic scholarship fund.",
-    "sc": "这意味着不仅校队队服升级了，而且对我们的体育奖学金基金也有了一笔重要的新投入。",
+    "w": "devastating",
+    "m": "有摧毁力的",
+    "p": "/ˈdevəsteɪtɪŋ/",
+    "s": "In addition, prolonged periods of high inflation can have a devastating effect on both the economy and the people.",
+    "sc": "此外，长期的高通胀会对经济和人民造成毁灭性影响。",
     "a": [
-      "奖学金",
-      "学术研究",
-      "学识",
-      "学问",
-      "学术成果",
-      "学术研究；学术成果"
+      "毁灭性的",
+      "极其严重的",
+      "令人震惊的",
+      "有摧毁力的"
     ]
   },
   {
-    "w": "indigenous",
-    "m": "本土的；原住民的",
-    "p": "/ɪnˈdɪdʒənəs/",
-    "s": "As an exotic, it has fewer of the built-in defenses that many indigenous plants have evolved through living among insects for millions of years.",
-    "sc": "作为一种外来植物，它比许多本地植物少了那种在与昆虫共同生存数百万年中进化出来的内在防御。",
+    "w": "desolation",
+    "m": "荒凉",
+    "p": "/ˌdezəˈleɪʃn/",
+    "s": "The desolation of the abandoned house made her shiver.",
+    "sc": "那座废弃房屋的荒凉让她不寒而栗。",
     "a": [
-      "本土的",
-      "土著的",
-      "原生于某地的",
-      "原住民的",
-      "本土的；原住民的"
+      "凄凉",
+      "极度孤寂",
+      "忧伤或绝望的状态",
+      "荒凉"
     ]
   },
   {
-    "w": "geopolitical",
-    "m": "地缘政治的",
-    "p": "/ˌdʒiːəʊpəˈlɪtɪkəl/",
-    "s": "The geopolitical landscape of Europe and the Mediterranean changed after the fall of the Roman Empire.",
-    "sc": "罗马帝国灭亡后，欧洲和地中海地区的地缘政治格局发生了变化。",
+    "w": "demanding",
+    "m": "要求高的，费力的",
+    "p": "/dɪˈmɑːndɪŋ/",
+    "s": "Americans have become the most demanding consumers in the history of the world—we expect our machines to work.",
+    "sc": "美国人已经成为世界历史上要求最高的消费者——我们希望机器能够正常工作。",
     "a": [
-      "地缘政治的",
-      "与地理位置",
-      "国际权力关系及国家利益相关的"
+      "要求高的",
+      "费力的",
+      "难以满足的",
+      "要求高的，费力的"
     ]
   },
   {
-    "w": "incorporate",
-    "m": "纳入；合并",
-    "p": "/ɪnˈkɔːpəreɪt/",
-    "s": "It would be a great way to incorporate exercise into people's routines.",
-    "sc": "这将是把锻炼纳入人们日常习惯的好方法。",
+    "w": "dictated by",
+    "m": "支配，决定",
+    "p": "/ˈdɪkteɪtɪd baɪ/",
+    "s": "The length of your description is dictated by the length limitations on the application form.",
+    "sc": "你的描述长度由申请表上的字数限制决定。",
     "a": [
-      "把……纳入",
-      "把……并入",
-      "使包含",
-      "纳入",
-      "合并",
-      "纳入；合并"
+      "受……支配",
+      "由……决定",
+      "支配",
+      "决定",
+      "支配，决定"
     ]
   },
   {
-    "w": "resonance",
-    "m": "共鸣；深远意义",
-    "p": "/ˈrezənəns/",
-    "s": "The key way in which artistic \"lies\" differ from normal lies, and from the \"honest lying\" of chronic confabulators, is that they have a meaning and resonance beyond their creator.",
-    "sc": "艺术“谎言”与普通谎言，以及慢性编造者那种“诚实的撒谎”不同的关键在于，它们具有超越创作者本人的意义和共鸣。",
+    "w": "discrete",
+    "m": "分离的、独立的",
+    "p": "/dɪˈskriːt/",
+    "s": "There are not really discrete 'lines' but a continuous 'field,' an invisible cocoon of electricity surrounding the fish's body.",
+    "sc": "其实并没有彼此分开的“线”，而是一个连续的“场”，一种围绕鱼身体的无形电力茧。",
     "a": [
-      "共鸣",
-      "回响",
-      "振荡共振",
-      "引起共鸣的影响力",
-      "深远意义",
-      "共鸣；深远意义"
+      "分开的",
+      "独立的",
+      "彼此不相连的",
+      "分离的",
+      "分离的、独立的"
     ]
   },
   {
-    "w": "suspicion",
-    "m": "怀疑；猜疑",
-    "p": "/səˈspɪʃən/",
-    "s": "Throughout Europe, potatoes were regarded with suspicion, distaste and fear.",
-    "sc": "在整个欧洲，人们对土豆持怀疑、厌恶和恐惧的态度。",
+    "w": "displace",
+    "m": "使...流离失所，取代",
+    "p": "/dɪsˈpleɪs/",
+    "s": "What's more, it is possible that livestock guard dogs merely displace predators to unprotected neighbouring properties, where their fate isn't recorded.",
+    "sc": "更重要的是，牲畜护卫犬也许只是把捕食者赶到邻近没有保护的地块，而那里的下场并未被记录下来。",
     "a": [
-      "怀疑",
-      "疑虑",
-      "猜疑",
-      "怀疑；猜疑"
+      "使移位",
+      "使离开原位",
+      "取代",
+      "排挤",
+      "使...流离失所",
+      "使...流离失所，取代"
+    ]
+  },
+  {
+    "w": "democratise",
+    "m": "使...民主化",
+    "p": "/dɪˈmɒkrətaɪz/",
+    "s": "Libraries democratise knowledge.",
+    "sc": "图书馆使知识更易为大众获取。",
+    "a": [
+      "使民主化",
+      "使更平等地参与或获得",
+      "使...民主化"
+    ]
+  },
+  {
+    "w": "dense",
+    "m": "稠密的",
+    "p": "/dens/",
+    "s": "Since only fresh water freezes into ice, the water that remains becomes increasingly salty and dense, sinking until it spills over the continental shelf.",
+    "sc": "由于只有淡水会结成冰，剩下的水变得越来越咸而且越来越稠密，下沉直到漫过大陆架。",
+    "a": [
+      "密集的",
+      "浓厚的",
+      "难懂的",
+      "愚钝的",
+      "稠密的"
+    ]
+  },
+  {
+    "w": "deteriorate",
+    "m": "恶化",
+    "p": "/dɪˈtɪəriəreɪt/",
+    "s": "If they are used, they deteriorate, yet if they are merely stored, the owner does not fully enjoy the pleasure of possession.",
+    "sc": "如果它们被使用，就会变坏；但如果只是被存放着，主人又无法充分享受拥有它们的乐趣。",
+    "a": [
+      "变坏",
+      "变差",
+      "恶化"
+    ]
+  },
+  {
+    "w": "demur",
+    "m": "反对",
+    "p": "/dɪˈmɜː/",
+    "s": "The Minoans, like most of their rival thalassocracies, accepted without demur the legends that enfolded the Atlantic, the stories and the sagas that conspired to keep even the boldest away.",
+    "sc": "米诺斯人和他们大多数竞争的海权国家一样，对那些围绕大西洋的传说、故事和传奇毫不表示异议地接受了，这些传说和故事合谋把最勇敢的人都挡在外面。",
+    "a": [
+      "表示异议",
+      "提出反对",
+      "迟疑不愿",
+      "反对"
+    ]
+  },
+  {
+    "w": "depiction",
+    "m": "描绘",
+    "p": "/dɪˈpɪkʃən/",
+    "s": "One artist's bucolic depiction shows pedestrians and horsemen on the bridge, as if on a woodland trail.",
+    "sc": "一位艺术家的田园描绘展现了桥上的行人和骑马者，仿佛置身林间小径。",
+    "a": [
+      "刻画",
+      "描写",
+      "描绘"
+    ]
+  },
+  {
+    "w": "detrimental",
+    "m": "有害的",
+    "p": "/ˌdetrɪˈmentl/",
+    "s": "Her own training tells her that the school's lack of stability, can only be detrimental to the kids.",
+    "sc": "她自己的训练告诉她，学校缺乏稳定性只会对孩子们有害。",
+    "a": [
+      "造成损害的",
+      "有害的"
+    ]
+  },
+  {
+    "w": "deter",
+    "m": "阻止，震慑",
+    "p": "/dɪˈtɜː/",
+    "s": "Learning costs deter initial engagement; compliance costs (forms, attestations) produce episodic drop‑outs; psychological costs—shame, perceived scrutiny—attenuate persistence.",
+    "sc": "学习成本会阻碍最初参与；合规成本（表格、证明）会导致间歇性流失；心理成本——羞耻感、被审视的感觉——会削弱持续性。",
+    "a": [
+      "阻止",
+      "威慑",
+      "使打消做某事的念头",
+      "震慑",
+      "阻止，震慑"
+    ]
+  },
+  {
+    "w": "designation",
+    "m": "指定（命名）、身份标识",
+    "p": "/ˌdezɪɡˈneɪʃn/",
+    "s": "The designation is granted by an organization committed to protecting natural darkness from artificial light pollution, the status of Dark Sky Park has been conferred on only a select few places around the world.",
+    "sc": "该指定由一个致力于保护自然黑暗免受人为光污染的组织授予，黑暗天空公园这一称号只授予了世界上极少数地方。",
+    "a": [
+      "指定",
+      "指定名称",
+      "命名",
+      "指派的身份或称号",
+      "指定（命名）",
+      "身份标识",
+      "指定（命名）、身份标识"
+    ]
+  },
+  {
+    "w": "disgrace",
+    "m": "不体面，不光彩；使丢脸",
+    "p": "/dɪsˈɡreɪs/",
+    "s": "His disgrace was complete after the scandal.",
+    "sc": "丑闻过后，他彻底蒙羞了。",
+    "a": [
+      "耻辱",
+      "丢脸",
+      "可耻的人或事",
+      "使蒙羞",
+      "使丢脸",
+      "玷污名誉",
+      "不体面",
+      "不光彩",
+      "不体面，不光彩；使丢脸"
+    ]
+  },
+  {
+    "w": "demographic",
+    "m": "人口的，人口统计的",
+    "p": "/ˌdeməˈɡræfɪk/",
+    "s": "Neighborhood identity ‍is often perceived as ‍a straightforward refl‍ection of ‍geographic boundaries and demographic composition.",
+    "sc": "社区认同常常被看作是地理边界和人口构成的直接反映。",
+    "a": [
+      "人口的",
+      "人口统计的",
+      "有关人口结构的",
+      "人口的，人口统计的"
+    ]
+  },
+  {
+    "w": "discipline",
+    "m": "纪律；学科",
+    "p": "/ˈdɪsəplɪn/",
+    "s": "The US biologist Edward O Wilson sees evolutionary psychology as being a discipline which is based on both socio-biology, which is the study of the biological basis of social behavior, and psychology, which is the systematic study of human behavior.",
+    "sc": "美国生物学家爱德华·o·威尔逊认为进化心理学是一门建立在社会生物学和心理学之上的学科，前者研究社会行为的生物学基础，后者系统研究人类行为。",
+    "a": [
+      "纪律",
+      "自律",
+      "训练",
+      "学科",
+      "管教",
+      "约束",
+      "纪律；学科"
+    ]
+  },
+  {
+    "w": "denote",
+    "m": "标志着、表明",
+    "p": "/dɪˈnəʊt/",
+    "s": "The symbol denote a special status in the story.",
+    "sc": "这个符号表示故事中的一种特殊状态。",
+    "a": [
+      "表示",
+      "指代",
+      "意味着",
+      "标志着",
+      "表明",
+      "标志着、表明"
+    ]
+  },
+  {
+    "w": "discard",
+    "m": "丢弃、抛弃",
+    "p": "/dɪˈskɑːd/",
+    "s": "Some, like Chapman, aim to create objects we will want to keep rather than discard.",
+    "sc": "有些人，比如查普曼，力求创造出我们会想保留而不是丢弃的物件。",
+    "a": [
+      "丢弃",
+      "抛弃",
+      "扔掉不需要的东西",
+      "丢弃、抛弃"
+    ]
+  },
+  {
+    "w": "disrupted",
+    "m": "被打乱的",
+    "p": "/dɪsˈrʌptɪd/",
+    "s": "Visibility was reduced to a few meters, and transportation was disrupted.",
+    "sc": "能见度降到几米，交通也被中断了。",
+    "a": [
+      "被中断的",
+      "受干扰的",
+      "打乱",
+      "干扰",
+      "破坏正常进行",
+      "被打乱的"
+    ]
+  },
+  {
+    "w": "diffuse",
+    "m": "散播、扩散",
+    "p": "/dɪˈfjuːs/",
+    "s": "Does it just diffuse from the warmer air vertically into the water, and heat only the surface layer of the sea?",
+    "sc": "它只是从较暖的空气中垂直扩散到水里，并且只加热海洋的表层吗？",
+    "a": [
+      "使扩散",
+      "使散开",
+      "使弥漫",
+      "（自身）扩散",
+      "散开",
+      "分散的",
+      "弥漫的",
+      "不集中的",
+      "（光",
+      "思路等）不清晰的",
+      "柔和不锐利的",
+      "散播",
+      "扩散",
+      "散播、扩散"
+    ]
+  },
+  {
+    "w": "derive",
+    "m": "获得",
+    "p": "/dɪˈraɪv/",
+    "s": "Many of us derive satisfaction from working and doing our jobs well.",
+    "sc": "我们很多人都从认真工作、把本职工作做好中获得满足感。",
+    "a": [
+      "得出",
+      "源自",
+      "通过推理或加工得到",
+      "获得"
+    ]
+  },
+  {
+    "w": "designate",
+    "m": "命名；任命",
+    "p": "/ˈdezɪɡneɪt/",
+    "s": "The word 'cobot', from 'collaborative robot', has been invented to designate this type of robot.",
+    "sc": "“cobot”这个词来自“协作机器人”，是用来指称这种机器人类型的。",
+    "a": [
+      "指定",
+      "命名",
+      "选定",
+      "指派",
+      "任命",
+      "命名；任命"
+    ]
+  },
+  {
+    "w": "discord",
+    "m": "不和",
+    "p": "/ˈdɪskɔːd/",
+    "s": "True to form, his family's discord faded quickly.",
+    "sc": "果然不出所料，他家的不和很快就消散了。",
+    "a": [
+      "纷争",
+      "争执",
+      "不一致",
+      "不和"
+    ]
+  },
+  {
+    "w": "dispute",
+    "m": "对...有争议，质疑",
+    "p": "/dɪˈspjuːt/",
+    "s": "Is there a way of settling the dispute?",
+    "sc": "有办法解决这场争议吗？",
+    "a": [
+      "争议",
+      "纠纷",
+      "争执",
+      "质疑",
+      "争辩",
+      "对……提出异议",
+      "对...有争议",
+      "对...有争议，质疑"
+    ]
+  },
+  {
+    "w": "diversified",
+    "m": "多元化的",
+    "p": "/ˌdaɪvərˈsɪfaɪd/",
+    "s": "The result was that the plant was blessed with a far more diversified base of raw materials than had ever been imagined.",
+    "sc": "结果，这家工厂拥有了比以往设想的更加多样化的原材料来源。",
+    "a": [
+      "多样化的",
+      "已变得更加多元的",
+      "由多种成分组成的",
+      "使分化",
+      "使演化成不同类型",
+      "使变得多样",
+      "多元化的"
+    ]
+  },
+  {
+    "w": "disseminate",
+    "m": "传播",
+    "p": "/dɪˈsemɪneɪt/",
+    "s": "We must disseminate the news quickly.",
+    "sc": "我们必须迅速传播这消息。",
+    "a": [
+      "散布",
+      "使广泛流传",
+      "传播"
+    ]
+  },
+  {
+    "w": "detach",
+    "m": "分离",
+    "p": "/dɪˈtætʃ/",
+    "s": "These jellyfish then detach from the colony and drift away, reaching maturity in a few weeks.",
+    "sc": "这些水母随后会从群体中分离出来，漂走，并在几周内成熟。",
+    "a": [
+      "使分离",
+      "拆开",
+      "脱离",
+      "脱落",
+      "分离"
+    ]
+  },
+  {
+    "w": "deploy",
+    "m": "使用",
+    "p": "/dɪˈplɔɪ/",
+    "s": "Numbers could rise even more sharply if leading space companies follow through on plans to deploy hundreds to thousands of large constellations of satellites to space in the next few years.",
+    "sc": "如果领先的太空公司在未来几年继续推进把数百到数千颗大型卫星星座部署到太空的计划，数字可能会更大幅度上升。",
+    "a": [
+      "部署",
+      "调配",
+      "展开使用",
+      "使用"
+    ]
+  },
+  {
+    "w": "divert",
+    "m": "转移、改变方向",
+    "p": "/daɪˈvɜːt/",
+    "s": "Adding more duties, such as administrative tasks or non-teaching responsibilities, can divert their focus from teaching.",
+    "sc": "增加更多职责，例如行政任务或非教学责任，可能会使他们的注意力从教学上转移开。",
+    "a": [
+      "转移",
+      "使转向",
+      "转移注意力",
+      "资源或话题",
+      "改变方向",
+      "转移、改变方向"
+    ]
+  },
+  {
+    "w": "distinct",
+    "m": "不同的；截然不同的；明显的",
+    "p": "/dɪˈstɪŋkt/",
+    "s": "Advanced computer models now depict the core not as a homogeneous sphere, but as a layered structure with distinct regions.",
+    "sc": "先进的计算机模型现在把地核描绘成不是一个同质球体，而是一个具有不同区域的分层结构。",
+    "a": [
+      "清楚可辨的",
+      "有明显区别的",
+      "独立的",
+      "不同的",
+      "截然不同的",
+      "明显的",
+      "不同的；截然不同的；明显的"
+    ]
+  },
+  {
+    "w": "dilemma",
+    "m": "进退两难的境地",
+    "p": "/dɪˈlemə/",
+    "s": "When challenged by the dilemma between holding on tight to their margins and permitting the emergence of a new medium, no provider has ever chosen the latter.",
+    "sc": "当面临在坚守利润空间与允许一种新媒介兴起之间的进退两难时，没有一家提供商曾选择后者。",
+    "a": [
+      "进退两难的困境",
+      "左右为难的局面",
+      "进退两难的境地"
     ]
   }
 ]
